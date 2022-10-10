@@ -1,9 +1,23 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import NavBar from "./components/Navbar";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
-  return <div className="App">Hello</div>;
+  return (
+    <div className="App">
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="aboutus" element={<AboutUs />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
