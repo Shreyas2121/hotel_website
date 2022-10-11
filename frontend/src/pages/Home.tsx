@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import PhotoGrid from "../components/Grid/PhotoGrid";
+import Service from "../components/services/Service";
 import Slider from "../components/Slider/Slider";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <Slider />
       <br />
       <PhotoGrid />
+      <Service />
     </Container>
   );
 };
