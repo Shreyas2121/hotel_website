@@ -1,33 +1,22 @@
-import React from 'react'
-import './roomcards.css';
+import React from "react";
+import "./roomcards.css";
 
-import image1 from "../../assets/images/luxury.png";
-import image2 from "../../assets/images/delux.png";
-import image3 from "../../assets/images/premier.png";
+// import image1 from "../../assets/images/luxury.png";
+// import image2 from "../../assets/images/delux.png";
+// import image3 from "../../assets/images/premier.png";
+import { Room } from "../../types/types";
 
-export const Roomcards = () => {
+interface Props {
+  roomData: Room;
+}
+
+const Roomcards = ({ roomData }: Props) => {
+  console.log(roomData);
   return (
     <section className="slider room flex">
       <div className="tm-rooms">
-        <img src={image1} />
-        <a href="rooms.html">
-          {" "}
-          <p className="s">Luxury Suite</p>{" "}
-        </a>
-      </div>
-      <div className="tm-rooms">
-        <img src={image2} />
-        <a href="rooms.html">
-          {" "}
-          <p className="s">Delux Suite</p>
-        </a>
-      </div>
-      <div className="tm-rooms">
-        <img src={image3} />
-        <a href="rooms.html">
-          {" "}
-          <p>Premier Suite</p>
-        </a>
+        <img src={roomData.room_images.living_room} />
+        <p className="s">{roomData.room_type}</p>
       </div>
     </section>
   );
