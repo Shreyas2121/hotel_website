@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 import BookingDetails from "../components/BookingDetails/BookingDetails";
 import Roomcards from "../components/Roomcards/Roomcards";
+import Search from "../components/Search/Search";
+
 import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
 import axios from "axios";
@@ -18,9 +21,9 @@ const Rooms = () => {
   );
 
   return (
-    <div style={{ minHeight: "100vh" }}>
-      <BookingDetails />
-      <div className="tm-rooms">
+    <div style={{ minHeight: "100vh", margin:"2%" }}>
+      <Search />
+      <div style={{display:"flex"}}>
         {loading ? (
           <h1>Loading...</h1>
         ) : (
