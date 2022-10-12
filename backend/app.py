@@ -4,11 +4,13 @@ from db_connect import connection_db
 from models.room import Room
 from models.add_on import AddOns
 from routes.rooms_route import rooms_route
+from routes.halls_route import halls_route
 
 
 
 app = Flask(__name__)
 app.register_blueprint(rooms_route)
+app.register_blueprint(halls_route)
 CORS(app)
 
 
