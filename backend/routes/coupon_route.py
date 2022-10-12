@@ -1,4 +1,3 @@
-from typing import Dict
 from flask import jsonify, request,Blueprint
 
 from models.coupon import Coupon
