@@ -1,0 +1,84 @@
+.tm-hall-booking{
+    display: flex;
+}
+
+
+.tm-hall{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    text-align: center;  
+}
+
+.tm-form3{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center; 
+    justify-content: left; 
+    justify-content: space-between;
+}
+
+.tm-form2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    text-align: center;
+}
+ .tm-num1{
+
+    justify-content:right;
+    align-items: baseline;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+} 
+
+.submit{
+    background: #fff;
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 20px;
+
+}
+
+.sel_date{
+  
+    background: rgba(0,0,0,0.5);
+    justify-content:right;
+    align-items: baseline;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+/* .selection{
+    background:white
+    justify-content:right;
+    align-items: baseline;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+} */
+
+
+
+
+
