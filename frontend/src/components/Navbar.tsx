@@ -20,11 +20,15 @@ const NavBar = () => {
               About Us
             </Nav.Link>
             <NavDropdown title="Book" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Room</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item as={Link} to="/booking/room">
+                Room
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/booking/hall">
                 Conference Room/Hall
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Restaurant</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/booking/restaurant">
+                Restaurant
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
