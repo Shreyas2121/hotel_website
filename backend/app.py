@@ -3,24 +3,19 @@ from flask_cors import CORS
 from db_connect import connection_db
 from models.room import Room
 from models.add_on import AddOns
+from routes.rooms_route import rooms_route
+
+
 
 app = Flask(__name__)
+app.register_blueprint(rooms_route)
 CORS(app)
 
-# db = connection_db()
 
 
 @app.route('/')
 def index():
-#    fetch data from room collection
-    rooms = Room.objects()
-    room_list = []
-    for room in rooms:
-        room_list.append(room.to_json())
-    print(room_list)
-    return room_list
-
-
+    return "Hello World"
 
 if __name__ == '__main__':
     app.run(debug=True)
