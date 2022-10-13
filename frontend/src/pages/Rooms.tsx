@@ -17,7 +17,7 @@ interface Res {
 
 const Rooms = () => {
   const { data, loading }: Res = UseFetch(
-    "http://127.0.0.1:5000/booking/room/getDetails"
+    `http://127.0.0.1:5000/booking/room/getDetails`
   );
 
   const [checkIn, setCheckIn] = useState("");

@@ -28,20 +28,12 @@ export const BookingDetails = () => {
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
 
   const { data, loading }: ResAddon = UseFetch(
-    `${process.env.KEY}/booking/addon/`
+    `http://127.0.0.1:5000/booking/addon/`
   );
 
   const [selectCheck, setSelectCheck] = useState({
     addon: [],
   });
-
-  const getData = async () => {
-    const response = await axios.get("/");
-    console.log(response);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
 
   const type = data?.addOn_type;
   // const ent = Object.entries(type);
@@ -85,12 +77,14 @@ export const BookingDetails = () => {
       checkout,
       roomType,
     };
-    const res = await axios.post(`${process.env.KEY}/booking/room`, data, {
+    console.log(data);
+    const res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
       headers: {
         "Content-Type": "application/json",
       },
     });
     console.log(res);
+    // const res = await fetch("http://127.0.0.1:5000/booking/room");
   };
 
   return (
