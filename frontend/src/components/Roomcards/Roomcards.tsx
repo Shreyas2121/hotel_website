@@ -18,6 +18,7 @@ const Roomcards = ({ roomData }: Props) => {
           <p className="roomamenities">Amenities: {roomData.room_amenties}</p>
         </div>
         <p id="status">STATUS : Availabel/Not Available</p>
+        <button id="booknow">Book Now</button>
       </div>
   );
 };

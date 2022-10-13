@@ -4,6 +4,7 @@
   margin: 1% auto;
   max-width: 33.3333333333%;
   padding: 1%;
+  justify-content: space-evenly;
 }
 
 .tm-rooms img {
@@ -25,9 +26,24 @@
   color: rgb(255, 0, 0);
   background-color: #fff;
   text-align: center;
-  width: 100%;
+  width: 90%;
+}
+
+.tm-rooms__details {
+  min-height: 40vh;
 }
 
 .roomamenities {
   display: flex;
+}
+
+#booknow {
+  background-color: #1b3d4d;
+  color: #fff;
+  padding: 1%;
+  margin: 2%;
+  width: 90%;
+  height: 6%;
+  text-align: center;
+  font-size: 1vw;
 }

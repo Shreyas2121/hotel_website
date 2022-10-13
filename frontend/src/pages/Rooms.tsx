@@ -29,6 +29,7 @@ const Rooms = () => {
         ) : (
           data?.rooms.map((room) => <Roomcards roomData={room} />)
         )}
+
       </div>
     </div>
   );

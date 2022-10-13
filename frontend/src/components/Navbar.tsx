@@ -30,6 +30,14 @@ const NavBar = () => {
                 Restaurant
               </NavDropdown.Item>
             </NavDropdown>
+
+            <Nav.Link as={Link} to="/booking">
+              booking Room
+            </Nav.Link>
+            <Nav.Link as={Link} to="/payment">
+              Payment
+            </Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>
