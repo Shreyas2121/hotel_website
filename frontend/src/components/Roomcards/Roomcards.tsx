@@ -6,10 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
   roomData: Room;
+  checkin: Date;
+  checkout: Date;
 }
 
-const Roomcards = ({ roomData }: Props) => {
+const Roomcards = ({ roomData, checkin, checkout }: Props) => {
   const [no, setNo] = useState(0);
+  const roomType = roomData.room_type;
 
   return (
     <div className="tm-rooms">
@@ -29,7 +32,7 @@ const Roomcards = ({ roomData }: Props) => {
         <button onClick={(e) => setNo((prev) => prev + 1)}>+</button>
       </div>
 
-      <Link to="/booking" state={no}>
+      <Link to="/booking" state={{ no, checkin, checkout, roomType }}>
         Book Now
       </Link>
     </div>

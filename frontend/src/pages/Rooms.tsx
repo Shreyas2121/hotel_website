@@ -24,10 +24,12 @@ const Rooms = () => {
 
   const [checkOut, setCheckOut] = useState("");
 
+  let checkin = new Date(checkIn);
+  let checkout = new Date(checkOut);
+
   const handleSearch = (e) => {
     e.preventDefault();
-    let checkin = new Date(checkIn);
-    let checkout = new Date(checkOut);
+
     console.log(checkin);
   };
 
@@ -49,7 +51,12 @@ const Rooms = () => {
           <h1>Loading...</h1>
         ) : (
           data?.rooms.map((room) => (
-            <Roomcards key={room.room_id} roomData={room} />
+            <Roomcards
+              key={room.room_id}
+              roomData={room}
+              checkin={checkin}
+              checkout={checkout}
+            />
           ))
         )}
       </div>
