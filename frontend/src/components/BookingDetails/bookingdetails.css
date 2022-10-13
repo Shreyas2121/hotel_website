@@ -11,10 +11,9 @@ div.elem-group {
   margin: 20px 0;
 }
 
-div.elem-group.inlined {
-  width: 49%;
-  display: inline-block;
-  margin-left: 1%;
+.inlined {
+  width: 100%;
+  display: flex;
 }
 
 label {
@@ -47,7 +46,7 @@ hr {
   border: 1px dotted #ccc;
 }
 
-button {
+#applyCode, #book{
   height: 50px;
   background: orange;
   border: none;
@@ -56,8 +55,18 @@ button {
   font-family: 'Nanum Gothic';
   border-radius: 4px;
   cursor: pointer;
+  margin: 0 1%;
+  padding: 0 1%;
 }
 
-button:hover {
-  border: 2px solid black;
+.checkbox-container {
+  display: flex;
+  width: 100%;
+}
+
+.icheckbox-container {
+  display: flex;
+  min-width: 200px;
+  padding: 1%;
+  justify-content: left;
 }

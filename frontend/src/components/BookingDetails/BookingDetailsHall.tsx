@@ -164,8 +164,8 @@ export const BookingDetailsHall = () => {
                 {checkin.getDate()}/{checkin.getMonth()}/{checkin.getFullYear()}
               </p>
             </div>
-            <div className="elem-group">
-              <label htmlFor="room-selection">Hall Type</label>
+            <div className="inlined">
+              <label htmlFor="room-selection">Hall Type : </label>
               <p>{hallType}</p>
             </div>
             <hr />
@@ -176,7 +176,7 @@ export const BookingDetailsHall = () => {
             ) : (
               <div className="checkbox-container">
                 {Object.entries(type).map(([key, value]) => (
-                  <div>
+                  <div className="icheckbox-container">
                     <input
                       ref={checkRef}
                       className="checkbox-input"
@@ -206,20 +206,23 @@ export const BookingDetailsHall = () => {
               />
             </div>
     
-            <div>
-              <span>{total}</span>
-              <br />
-              {/* <span>{discountedTotal}</span> */}
-            </div>
-    
-            <div>
+            <div className="inlined">
+              <label>Apply Copon Code:</label>
               <input type="text" ref={couponRef} />
-              <button ref={buttonRef} onClick={handleCoupon}>
+              <button  id="applyCode" ref={buttonRef} onClick={handleCoupon}>
                 Apply
               </button>
             </div>
-    
-            <button type="button" onClick={handleSubmit}>
+                  
+            <div>
+              <span>Applied Discount : {discount}%</span>
+              <br />
+              <span>Final Price : {total}</span>
+              <br />
+              {/* <span>{discountedTotal}</span> */}
+            </div>
+
+            <button id="book" type="button" onClick={handleSubmit}>
               Book The Rooms
             </button>
           </form>
