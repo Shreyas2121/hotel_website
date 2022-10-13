@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { UseFetch } from "../../customHook/UseFetch";
 import { Addon } from "../../types/types";
@@ -27,12 +28,20 @@ export const BookingDetails = () => {
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
 
   const { data, loading }: ResAddon = UseFetch(
-    "http://127.0.0.1:5000/booking/addon/"
+    `${process.env.KEY}/booking/addon/`
   );
 
   const [selectCheck, setSelectCheck] = useState({
     addon: [],
   });
+
+  const getData = async () => {
+    const response = await axios.get("/");
+    console.log(response);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   const type = data?.addOn_type;
   // const ent = Object.entries(type);
@@ -60,7 +69,7 @@ export const BookingDetails = () => {
     return a;
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const name = nameRef.current?.value;
     const email = emailRef.current?.value;
@@ -76,7 +85,12 @@ export const BookingDetails = () => {
       checkout,
       roomType,
     };
-    console.log(data);
+    const res = await axios.post(`${process.env.KEY}/booking/room`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log(res);
   };
 
   return (
