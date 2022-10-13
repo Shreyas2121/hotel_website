@@ -78,13 +78,12 @@ export const BookingDetails = () => {
       roomType,
     };
     console.log(data);
-    const res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
+    const res = await axios.post(`http://127.0.0.1:5000/booking/room/`, data, {
       headers: {
         "Content-Type": "application/json",
       },
     });
     console.log(res);
-    // const res = await fetch("http://127.0.0.1:5000/booking/room");
   };
 
   return (
