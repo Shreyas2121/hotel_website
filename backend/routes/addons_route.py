@@ -7,4 +7,4 @@ addons_route = Blueprint('addons_route', __name__)
 @addons_route.route('/booking/addon/',methods=['GET'])
 def get_addons():
     addonObj = AddOns.objects()
-    return dict({'addons': [addon.to_json() for addon in addonObj]})["addons"][0]
+    return  list(map(lambda x: x.to_json(), addonObj))[0]

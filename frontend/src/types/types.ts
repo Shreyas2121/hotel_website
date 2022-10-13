@@ -12,3 +12,15 @@ export interface Room {
   total_rooms: number;
   room_max_occ: number;
 }
+
+export interface Addon {
+  Breakfast: number;
+  Brunch: number;
+  Extra_bed: number;
+  Swimming_pool: number;
+  bar: number;
+  dinner: number;
+  gym: number;
+  lunch: number;
+  spa: number;
+}

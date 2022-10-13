@@ -1,11 +1,48 @@
-import React from "react";
-import { Addon } from "../Addons/Addon";
+import React, { useState } from "react";
+import { UseFetch } from "../../customHook/UseFetch";
+import { Addon } from "../../types/types";
+// import { Addon } from "../Addons/Addon";
 import "./bookingdetails.css";
 
+interface ResAddon {
+  data: {
+    addOn_type: Addon;
+  };
+  loading: boolean;
+}
+
 export const BookingDetails = () => {
+  const { data, loading }: ResAddon = UseFetch(
+    "http://127.0.0.1:5000/booking/addon/"
+  );
+
+  const [selectCheck, setSelectCheck] = useState({
+    addon: [],
+  });
+
+  const type = data?.addOn_type;
+  // const ent = Object.entries(type);
+
+  const handleAddon = (e) => {
+    if (e.target.checked) {
+      setSelectCheck({
+        addon: [...selectCheck.addon, e.target.value],
+      });
+    }
+    if (!e.target.checked) {
+      setSelectCheck({
+        addon: selectCheck.addon.filter((item) => item !== e.target.value),
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="bookingdetails_container">
-      <form action="reservation.php" method="post">
+      <form>
         <div className="elem-group">
           <label htmlFor="name">Your Name</label>
           <input
@@ -27,55 +64,43 @@ export const BookingDetails = () => {
             // required=""
           />
         </div>
-        <div className="elem-group">
-          <label htmlFor="phone">Your Phone</label>
-          <input
-            type="tel"
-            id="phone"
-            name="visitor_phone"
-            placeholder="498-348-3872"
-            pattern="(\d{3})-?\s?(\d{3})-?\s?(\d{4})"
-            // required=""
-          />
-        </div>
         <hr />
         <div className="elem-group inlined">
-          <label htmlFor="adult">Adults</label>
-          <input
-            type="number"
-            id="adult"
-            name="total_adults"
-            placeholder="2"
-            min={1}
-            // required=""
-          />
+          <label htmlFor="adult">Guests</label>
+          <p></p>
         </div>
         <div className="elem-group inlined">
-          <label htmlFor="child">Children</label>
-          <input
-            type="number"
-            id="child"
-            name="total_children"
-            placeholder="2"
-            min={0}
-            // required=""
-          />
-        </div>
-        <div className="elem-group inlined">
-          <label htmlFor="checkin-date">Check-in Date</label>
-          <input type="date" id="checkin-date" name="checkin" />
-        </div>
-        <div className="elem-group inlined">
-          <label htmlFor="checkout-date">Check-out Date</label>
-          <input type="date" id="checkout-date" name="checkout"  />
+          <label htmlFor="checkin-date">Date : </label>
+          <p></p>
         </div>
         <div className="elem-group">
           <label htmlFor="room-selection">Room Type</label>
-          <input type="text" id="room-selection" name="room_type" placeholder="Deluxe" />
+          <p></p>
         </div>
         <hr />
 
-        <Addon  />
+        {/* <Addon /> */}
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <div className="checkbox-container">
+            {Object.entries(type).map(([key, value]) => (
+              <div>
+                <input
+                  className="checkbox-input"
+                  id={key}
+                  name={key}
+                  value={key}
+                  type="checkbox"
+                  onChange={handleAddon}
+                />
+                <label className="checkbox">
+                  {key} : {value}
+                </label>
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="elem-group">
           <label htmlFor="message">Special Request?</label>
@@ -87,7 +112,9 @@ export const BookingDetails = () => {
             defaultValue={""}
           />
         </div>
-        <button type="submit">Book The Rooms</button>
+        <button type="button" onClick={handleSubmit}>
+          Book The Rooms
+        </button>
       </form>
     </div>
   );
