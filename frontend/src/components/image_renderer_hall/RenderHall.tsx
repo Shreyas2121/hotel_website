@@ -1,8 +1,8 @@
 import React from "react";
 // import { UseFetch } from '../../customHook/UseFetch'
 import "./render_hall.css";
-// import image2 from "../../assets/images/hall2.jpg";
-// import image1 from "../../assets/images/meetinghall.png";
+import image2 from "../../assets/images/weddinghall.png";
+import image1 from "../../assets/images/meetinghall.png";
 
 const RenderHall = () => {
   return (
@@ -17,7 +17,7 @@ const RenderHall = () => {
 
           <div className="tm-hall">
             <div>
-              <img src="" />
+              <img src={image1} />
               <p>
                 <h2>Conference Room</h2>
               </p>
@@ -25,7 +25,7 @@ const RenderHall = () => {
             <br />
 
             <div>
-              <img className="hall-images" src="" />
+              <img className="hall-images" src= {image2} />
               <p>
                 <h2>Wedding Hall</h2>
               </p>
