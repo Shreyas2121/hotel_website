@@ -36,3 +36,10 @@ export interface Addon {
   lunch: number;
   spa: number;
 }
+
+export interface Review {
+  name: string;
+  email: string;
+  review: string;
+  rating: number;
+}
