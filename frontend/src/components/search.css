@@ -1,0 +1,28 @@
+.search{
+    background-color: rgb(46, 44, 44);
+    display: flex;
+    color: white;
+    margin: 2% auto;
+    padding: 1%;
+    min-height: auto;
+    justify-content: space-evenly;
+}
+
+.search button{
+    background-color: rgb(255, 196, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 0 1%;
+    margin: 1%;
+    font-size: 1.5rem;
+}
+
+.search button:hover{
+    background-color: rgb(17, 255, 0);
+    border: 2px solid white;
+}
+
+.search input :hover{
+    cursor: pointer;
+}

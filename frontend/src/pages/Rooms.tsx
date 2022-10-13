@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import BookingDetails from "../components/BookingDetails/BookingDetails";
 import Roomcards from "../components/Roomcards/Roomcards";
-import "../components/Search/search.css";
+import "../components/search.css";
 
 import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
@@ -44,7 +44,7 @@ const Rooms = () => {
           Check-out:{" "}
           <input type="date" onChange={(e) => setCheckOut(e.target.value)} />
         </p>
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch}>Check Availability</button>
       </div>
       <div style={{ display: "flex" }}>
         {loading ? (

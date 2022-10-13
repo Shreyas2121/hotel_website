@@ -27,18 +27,20 @@ const Roomcards = ({ roomData, checkin, checkout }: Props) => {
       </div>
       <p id="status">STATUS : Availabel/Not Available</p>
 
-      <div>
-        <button onClick={(e) => setNo((prev) => prev - 1)}>-</button>
+      <div id="no_of_rooms">
+        <button className="no_of_rooms_btn" onClick={(e) => setNo((prev) => prev - 1)}>-</button>
         <span>{no}</span>
-        <button onClick={(e) => setNo((prev) => prev + 1)}>+</button>
+        <button className="no_of_rooms_btn" onClick={(e) => setNo((prev) => prev + 1)}>+</button>
       </div>
 
+      <p id="booknow">
       <Link
         to="/booking"
         state={{ no, checkin, checkout, roomType, roomPrice }}
       >
         Book Now
       </Link>
+      </p>
     </div>
   );
 };

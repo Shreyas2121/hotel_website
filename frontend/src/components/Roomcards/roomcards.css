@@ -26,6 +26,29 @@
   background-color: #fff;
   text-align: center;
   width: 90%;
+  margin: 2% auto;
+}
+
+#no_of_rooms{
+  width: 100%;
+  font-size: 1.5vw;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  height: auto;
+  padding: 5%;
+}
+
+.no_of_rooms_btn{
+  font-size: 1.5vw;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0 5%;
+  margin: auto 5%;
+}
+
+.no_of_rooms_btn:hover{
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .tm-rooms__details {
@@ -37,12 +60,8 @@
 }
 
 #booknow {
-  background-color: #1b3d4d;
-  color: #fff;
-  padding: 1%;
-  margin: 2%;
-  width: 90%;
-  height: 6%;
+  background-color: #aab2b6;
+  padding: 2%;
   text-align: center;
-  font-size: 1vw;
+  font-size: 2vw;
 }

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { UseFetch } from "../customHook/UseFetch";
 import { Hall } from "../types/types";
 import Hallcards from "../components/Roomcards/Hallcards";
+import "../components/search.css";
+
 
 interface Res {
   data: {
@@ -20,10 +22,10 @@ const Halls = () => {
 
   const [checkIn, setCheckIn] = useState("");
 
+  let checkin = new Date(checkIn);
+
   const handleSearch = (e) => {
     e.preventDefault();
-    let checkin = new Date(checkIn);
-    console.log(checkin);
   };
 
   return (
@@ -40,7 +42,7 @@ const Halls = () => {
         <h1>Loading...</h1>
       ) : (
         data?.halls.map((hall) => (
-          <Hallcards key={hall.hall_id} hallData={hall} />
+          <Hallcards key={hall.hall_id} hallData={hall} checkin={checkin} />
         ))
       )}
     </div>
