@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { UseFetch } from "../../customHook/UseFetch";
 import { Addon } from "../../types/types";
 // import { Addon } from "../Addons/Addon";
@@ -12,6 +13,9 @@ interface ResAddon {
 }
 
 export const BookingDetails = () => {
+  const location = useLocation();
+  console.log(location.state);
+
   const { data, loading }: ResAddon = UseFetch(
     "http://127.0.0.1:5000/booking/addon/"
   );

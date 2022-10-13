@@ -24,20 +24,13 @@ const NavBar = () => {
                 Room
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/booking/hall">
-                Conference Room/Hall
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/booking/restaurant">
-                Restaurant
+                Hall
               </NavDropdown.Item>
             </NavDropdown>
 
-            <Nav.Link as={Link} to="/booking">
-              booking Room
-            </Nav.Link>
             <Nav.Link as={Link} to="/payment">
               Payment
             </Nav.Link>
-
           </Nav>
         </Navbar.Collapse>
       </Container>

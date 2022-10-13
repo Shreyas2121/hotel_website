@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import BookingDetails from "../components/BookingDetails/BookingDetails";
 import Roomcards from "../components/Roomcards/Roomcards";
-import Search from "../components/Search/Search";
+import "../components/Search/search.css";
 
 import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
@@ -20,16 +20,38 @@ const Rooms = () => {
     "http://127.0.0.1:5000/booking/room/getDetails"
   );
 
+  const [checkIn, setCheckIn] = useState("");
+
+  const [checkOut, setCheckOut] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    let checkin = new Date(checkIn);
+    let checkout = new Date(checkOut);
+    console.log(checkin);
+  };
+
   return (
-    <div style={{ minHeight: "100vh", margin:"2%" }}>
-      <Search />
-      <div style={{display:"flex"}}>
+    <div style={{ minHeight: "100vh", margin: "2%" }}>
+      <div className="search">
+        <p>
+          Check-in:{" "}
+          <input type="date" onChange={(e) => setCheckIn(e.target.value)} />
+        </p>
+        <p>
+          Check-out:{" "}
+          <input type="date" onChange={(e) => setCheckOut(e.target.value)} />
+        </p>
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      <div style={{ display: "flex" }}>
         {loading ? (
           <h1>Loading...</h1>
         ) : (
-          data?.rooms.map((room) => <Roomcards roomData={room} />)
+          data?.rooms.map((room) => (
+            <Roomcards key={room.room_id} roomData={room} />
+          ))
         )}
-
       </div>
     </div>
   );
