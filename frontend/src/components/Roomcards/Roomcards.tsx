@@ -13,6 +13,7 @@ interface Props {
 const Roomcards = ({ roomData, checkin, checkout }: Props) => {
   const [no, setNo] = useState(0);
   const roomType = roomData.room_type;
+  const roomPrice = Number(roomData.room_price);
 
   return (
     <div className="tm-rooms">
@@ -32,7 +33,10 @@ const Roomcards = ({ roomData, checkin, checkout }: Props) => {
         <button onClick={(e) => setNo((prev) => prev + 1)}>+</button>
       </div>
 
-      <Link to="/booking" state={{ no, checkin, checkout, roomType }}>
+      <Link
+        to="/booking"
+        state={{ no, checkin, checkout, roomType, roomPrice }}
+      >
         Book Now
       </Link>
     </div>

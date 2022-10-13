@@ -18,14 +18,23 @@ interface State {
   checkin: Date;
   checkout: Date;
   roomType: string;
+  roomPrice: number;
 }
 
 export const BookingDetails = () => {
   const location = useLocation();
-  const { no, checkin, checkout, roomType }: State = location.state;
+  const { no, checkin, checkout, roomType, roomPrice }: State = location.state;
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
+  const couponRef = useRef<HTMLInputElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const checkRef = useRef<HTMLInputElement>(null);
+
+  console.log(no, checkin, checkout, roomType, roomPrice);
+
+  let total_price = roomPrice * no;
+  console.log(total_price);
 
   const { data, loading }: ResAddon = UseFetch(
     `http://127.0.0.1:5000/booking/addon/`
@@ -34,6 +43,18 @@ export const BookingDetails = () => {
   const [selectCheck, setSelectCheck] = useState({
     addon: [],
   });
+
+  const [total, setTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+
+  useEffect(() => {
+    Object.values(filtAddOn()).forEach((each: any) => {
+      console.log(typeof each);
+      total_price += each;
+    });
+    setTotal(total_price);
+    // setTotal();
+  }, [selectCheck]);
 
   const type = data?.addOn_type;
   // const ent = Object.entries(type);
@@ -61,29 +82,56 @@ export const BookingDetails = () => {
     return a;
   };
 
+  const handleCoupon = async (e) => {
+    e.preventDefault();
+    const coupon = couponRef.current?.value;
+    const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
+      coupon,
+    });
+
+    if (res.data == "Invalid Coupon") {
+      alert(res.data);
+    } else {
+      setDiscount(res.data);
+      let price = total * (res.data / 100);
+      setTotal(total - price);
+      buttonRef.current.disabled = true;
+    }
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const name = nameRef.current?.value;
     const email = emailRef.current?.value;
     const specialReq = specialReqRef.current?.value;
+
     const selectedAddons = filtAddOn();
     const data = {
       name,
       email,
+      date: new Date(),
       specialReq,
       selectedAddons,
       no,
       checkin,
       checkout,
       roomType,
+      roomPrice,
+      couponId: couponRef.current?.value,
+      discount: discount.toString(),
+      total,
     };
-    console.log(data);
-    const res = await axios.post(`http://127.0.0.1:5000/booking/room/`, data, {
+
+    const res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log(res);
+    if (res.data == "Booking Successful") {
+      alert(res.data);
+    } else {
+      alert(res.data);
+    }
   };
 
   return (
@@ -138,6 +186,7 @@ export const BookingDetails = () => {
             {Object.entries(type).map(([key, value]) => (
               <div>
                 <input
+                  ref={checkRef}
                   className="checkbox-input"
                   id={key}
                   name={key}
@@ -164,6 +213,20 @@ export const BookingDetails = () => {
             defaultValue={""}
           />
         </div>
+
+        <div>
+          <span>{total}</span>
+          <br />
+          {/* <span>{discountedTotal}</span> */}
+        </div>
+
+        <div>
+          <input type="text" ref={couponRef} />
+          <button ref={buttonRef} onClick={handleCoupon}>
+            Apply
+          </button>
+        </div>
+
         <button type="button" onClick={handleSubmit}>
           Book The Rooms
         </button>

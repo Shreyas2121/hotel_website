@@ -4,19 +4,21 @@ from models.room import Room
 db = connection_db()
 
 class BookingRoom(db.Document):
-    booking_id = db.IntField()
+    booking_id = db.DateField()
     booking_username = db.StringField()
     booking_useremail = db.EmailField()
-    booking_date = db.DateTimeField()
-    booking_check_in = db.DateTimeField()
-    booking_check_out = db.DateTimeField()
+    booking_date = db.StringField()
+    booking_check_in = db.StringField()
+    booking_check_out = db.StringField()
     booking_room_type = db.StringField()
     booking_room_price = db.DecimalField()
     booking_no_of_rooms = db.IntField()
     booking_addOns = db.DictField(field=db.IntField())
-    booking_discount = db.StringField()
+    booking_coupon_id = db.StringField(default="")
+    booking_coupon_discount = db.StringField(default="")
     booking_total = db.DecimalField()
     booking_special_request = db.StringField()
+
 
     def to_json(self):
         return {
@@ -30,7 +32,8 @@ class BookingRoom(db.Document):
             "booking_room_price": self.booking_room_price,
             "booking_no_of_rooms": self.booking_no_of_rooms,
             "booking_addOns": self.booking_addOns,
-            "booking_discount": self.booking_discount,
+            "booking_coupon_id": self.booking_coupon_id,
+            "booking_coupon_discount": self.booking_coupon_discount,
             "booking_total": self.booking_total,
             "booking_special_request": self.booking_special_request
         }
