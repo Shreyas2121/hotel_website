@@ -14,7 +14,7 @@ import Halls from "./pages/Halls";
 import Restaurants from "./pages/Restaurants";
 import { Booking } from "./pages/Booking";
 import { Payment } from "./pages/Payment";
-import Reviews from "./pages/Reviews";
+
 
 function App() {
   return (
@@ -29,7 +29,6 @@ function App() {
         <Route path="booking/restaurant" element={<Restaurants />} />
         <Route path="booking" element={<Booking />} />
         <Route path="payment" element={<Payment />} />
-        <Route path="reviews" element={<Reviews />} />
       </Routes>
       <Footer />
     </div>

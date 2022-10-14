@@ -1,25 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { UseFetch } from "../customHook/UseFetch";
+import { Review } from "../types/types";
+import Reviewcards from "../components/Roomcards/Reviewcards";
 
-const AboutUs = () => {
-  const [data, setData] = useState<Array<any>>([]);
+const  Aboutus = () => {
+  const { data, loading }: Res = UseFetch(
+    "http://127.0.0.1:5000/reviews"
+  );
+ 
+  interface Res {
+    data: {
+      Reviews: Review[];
+    };
+    loading: boolean;
+  }
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:5000/")
-      .then((res) => res.json())
-      .then((data: any) => setData(data));
-  }, []);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
-      {data.map((item: any) => (
-        <div key={item.id}>
-          <img src={item.room_images.bathroom} />
-          <img src={item.room_images.bedroom} />
-          <img src={item.room_images.living_room} />
-        </div>
-      ))}
+  <div style={{ minHeight: "100vh", margin: "2%" }}>
+    <div id="reviews" className="reviews">
+      <p>
+        <h1>Top Reviews</h1>
+      </p>
     </div>
-  );
+    <div className="Review-card" style={{ display: "block"}}>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        data?.Reviews?.map((review) => (
+          <Reviewcards reviewData={review} />
+        ))
+      )}
+      </div>
+  </div>
+          );
+     
+
 };
 
-export default AboutUs;
+export default Aboutus;
+
