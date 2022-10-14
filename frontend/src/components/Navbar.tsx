@@ -35,6 +35,10 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/reviews">
                Reviews
             </Nav.Link>
+
+            <Nav.Link as={Link} to="/checkbooking">
+              Check Booking
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
