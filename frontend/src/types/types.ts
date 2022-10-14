@@ -39,6 +39,6 @@ export interface Addon {
 export interface Review {
   name: string;
   email: string;
-  review: string;
+  reviews: string;
   rating: number;
 }
