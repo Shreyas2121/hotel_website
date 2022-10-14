@@ -1,12 +1,6 @@
 node_modules
 menv
 nenv
-<<<<<<< HEAD
 __pycache__
 .vscode
 .idea
-=======
-.vscode
-__pycache__
-.idea
->>>>>>> 346da31cad25d330efa0be1e17513cf384f35b08
