@@ -15,7 +15,8 @@ import Restaurants from "./pages/Restaurants";
 import { Booking } from "./pages/Booking";
 import { Payment } from "./pages/Payment";
 import AddReview from "./pages/AddReview";
-
+import Reviews from "./pages/Reviews";
+import { Checkbooking } from "./pages/Checkbooking";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
         <Route path="booking" element={<Booking />} />
         <Route path="payment" element={<Payment />} />
         <Route path="addreview" element={<AddReview />} />
+        <Route path="reviews" element={<Reviews />} />
+        <Route path="checkbooking" element={<Checkbooking />} />
       </Routes>
       <Footer />
     </div>
