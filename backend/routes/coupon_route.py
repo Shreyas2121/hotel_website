@@ -9,6 +9,12 @@ coupons_route = Blueprint('coupons_route', __name__)
 #     couponObj = Coupon.objects() # type: ignore
 #     return jsonify({'coupons': [coupon.to_json() for coupon in couponObj]})
 
+
+@coupons_route.route('/booking/coupon/get',methods=['GET'])
+def get_coupons():
+    couponObj = Coupon.objects()
+    return jsonify({'coupons': [coupon.to_json() for coupon in couponObj]})
+
 @coupons_route.route('/booking/coupon',methods=['POST'])
 def check_coupon():
     coupon_res = request.get_json()['coupon']
