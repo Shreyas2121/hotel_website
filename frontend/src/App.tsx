@@ -14,7 +14,7 @@ import Halls from "./pages/Halls";
 import Restaurants from "./pages/Restaurants";
 import { Booking } from "./pages/Booking";
 import { Payment } from "./pages/Payment";
-import Reviews from "./pages/reviews";
+import Reviews from "./pages/Reviews";
 
 function App() {
   return (
