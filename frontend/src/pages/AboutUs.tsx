@@ -2,6 +2,7 @@ import React from "react";
 import { UseFetch } from "../customHook/UseFetch";
 import { Review } from "../types/types";
 import Reviewcards from "../components/Roomcards/Reviewcards";
+import { Link } from "react-router-dom";
 
 const  Aboutus = () => {
   const { data, loading }: Res = UseFetch(
@@ -22,6 +23,9 @@ const  Aboutus = () => {
       <p>
         <h1>Top Reviews</h1>
       </p>
+     <p >
+        <Link to="/addreview">Add Review</Link>
+     </p>
     </div>
     <div className="Review-card" style={{ display: "block"}}>
       {loading ? (

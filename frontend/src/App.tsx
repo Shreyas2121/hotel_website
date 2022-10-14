@@ -14,6 +14,7 @@ import Halls from "./pages/Halls";
 import Restaurants from "./pages/Restaurants";
 import { Booking } from "./pages/Booking";
 import { Payment } from "./pages/Payment";
+import AddReview from "./pages/AddReview";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="booking/restaurant" element={<Restaurants />} />
         <Route path="booking" element={<Booking />} />
         <Route path="payment" element={<Payment />} />
+        <Route path="addreview" element={<AddReview />} />
       </Routes>
       <Footer />
     </div>
