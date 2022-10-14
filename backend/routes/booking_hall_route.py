@@ -25,9 +25,8 @@ def book_room():
     ).save()
     return jsonify({"message":"Booking Successful"})
 
-@booking_hall_route.route('/booking/hall',methods=['GET'])
+@booking_hall_route.route('/booking/hall/check',methods=['POST'])
 def get_bookings():
-    bookings = BookingHall.objects()
-    # return jsonify({'bookings': [ booking.to_json() for booking in bookings]})
-    return list(map(lambda x: x.to_json(), bookings))
-    
+    bookings = BookingHall.objects(booking_date=request.get_json()['date'])
+    print(list(map(lambda x: x.booking_hall_type, bookings)))
+    return list(map(lambda x: x.booking_hall_type, bookings))

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { LinkHTMLAttributes, useState } from "react";
 import "./roomcards.css";
 
 import { Hall } from "../../types/types";
@@ -7,11 +7,20 @@ import { Link, useNavigate } from "react-router-dom";
 interface Props {
   hallData: Hall;
   checkin: Date;
+  bookedHalls: Array<string>;
 }
 
-const Roomcards = ({ hallData, checkin }: Props) => {
+const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
   const hallType = hallData.hall_type;
   const hallPrice = Number(hallData.hall_price);
+
+  const linkRef = React.useRef<any>(null);
+
+  const check = (type: string) => {
+    const status = bookedHalls.includes(type) ? true : false;
+    // linkRef.current!.innerText = status ? "Booked" : "Available";
+    return status;
+  };
 
   return (
     <div className="tm-rooms">
@@ -23,15 +32,25 @@ const Roomcards = ({ hallData, checkin }: Props) => {
         <p className="roomdesc">Description: {hallData.hall_desc}</p>
         <p className="roomamenities">Amenities: {hallData.hall_amenties}</p>
       </div>
-      <p id="status">STATUS : Availabel/Not Available</p>
+      <p id="status">
+        STATUS : {check(hallType) ? "Not Available" : "Available"}{" "}
+      </p>
 
       <p id="booknow">
-      <Link to="/booking" state={{ checkin, hallType, hallPrice}}>
-        Book Now
-      </Link>
+        {check(hallType) ? (
+          <p>Sold Out</p>
+        ) : (
+          <Link
+            ref={linkRef}
+            to="/booking"
+            state={{ checkin, hallType, hallPrice }}
+          >
+            Book Now
+          </Link>
+        )}
       </p>
     </div>
   );
 };
 
-export default Roomcards;
+export default Hallcards;
