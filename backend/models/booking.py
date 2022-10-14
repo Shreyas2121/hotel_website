@@ -1,3 +1,4 @@
+from datetime import datetime
 from db_connect import connection_db
 from models.room import Room
 
@@ -8,11 +9,11 @@ class BookingRoom(db.Document):
     booking_username = db.StringField()
     booking_useremail = db.EmailField()
     booking_date = db.StringField()
-    booking_check_in = db.StringField()
-    booking_check_out = db.StringField()
+    booking_check_in  = db.DateTimeField()
+    booking_check_out = db.DateTimeField()
     booking_room_type = db.StringField()
     booking_room_price = db.DecimalField()
-    booking_no_of_rooms = db.IntField()
+    booking_no_of_rooms = db.IntField(default=1)
     booking_addOns = db.DictField(field=db.IntField())
     booking_coupon_id = db.StringField(default="")
     booking_coupon_discount = db.StringField(default="")

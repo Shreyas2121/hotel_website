@@ -8,3 +8,5 @@ rooms_route = Blueprint('rooms_route', __name__)
 def get_rooms():
     rooms = Room.objects()  # type: ignore
     return jsonify({'rooms': [room.to_json() for room in rooms]})
+
+

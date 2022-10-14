@@ -6,11 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
   hallData: Hall;
-  checkin: Date;
+  checkIn: string;
   bookedHalls: Array<string>;
 }
 
-const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
+const Hallcards = ({ hallData, checkIn, bookedHalls }: Props) => {
   const hallType = hallData.hall_type;
   const hallPrice = Number(hallData.hall_price);
 
@@ -24,7 +24,7 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
 
   return (
     <div className="tm-rooms">
-      <img src={hallData.hall_images} />
+      <img src={hallData.hall_image} />
       <div className="tm-rooms__details">
         <p className="roomtype">Type: {hallData.hall_type}</p>
         <p className="roomprice">Price: {hallData.hall_price}</p>
@@ -43,7 +43,7 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
           <Link
             ref={linkRef}
             to="/booking"
-            state={{ checkin, hallType, hallPrice }}
+            state={{ checkin: checkIn, hallType, hallPrice }}
           >
             Book Now
           </Link>

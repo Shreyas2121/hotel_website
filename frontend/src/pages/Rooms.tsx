@@ -15,6 +15,15 @@ interface Res {
   loading: boolean;
 }
 
+interface Status {
+  Basic: number;
+  Suite: number;
+  Deluxe: number;
+}
+interface ResStatus {
+  data: Status;
+}
+
 const Rooms = () => {
   const { data, loading }: Res = UseFetch(
     `http://127.0.0.1:5000/booking/room/getDetails`
@@ -24,13 +33,37 @@ const Rooms = () => {
 
   const [checkOut, setCheckOut] = useState("");
 
+  const [status, setStatus] = useState<Status>();
+
+  const [clicked, setClicked] = useState(false);
+
   let checkin = new Date(checkIn);
   let checkout = new Date(checkOut);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+  const conv = (date: Date) => {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  };
 
-    console.log(checkin);
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const formatedCheckIn = checkin.toISOString();
+    const formatedCheckOut = checkout.toISOString();
+    console.log(formatedCheckIn, formatedCheckOut);
+
+    const { data }: ResStatus = await axios.post(
+      "http://127.0.0.1:5000/booking/room/check",
+      {
+        checkIn: formatedCheckIn,
+        checkOut: formatedCheckOut,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    setStatus(data);
+    setClicked(true);
   };
 
   return (
@@ -38,28 +71,41 @@ const Rooms = () => {
       <div className="search">
         <p>
           Check-in:{" "}
-          <input type="date" onChange={(e) => setCheckIn(e.target.value)} />
+          <input
+            min={new Date().toISOString().split("T")[0]}
+            type="date"
+            onChange={(e) => setCheckIn(e.target.value)}
+          />
         </p>
         <p>
           Check-out:{" "}
-          <input type="date" onChange={(e) => setCheckOut(e.target.value)} />
+          <input
+            min={conv(checkin)}
+            type="date"
+            onChange={(e) => setCheckOut(e.target.value)}
+          />
         </p>
         <button onClick={handleSearch}>Check Availability</button>
       </div>
-      <div style={{ display: "flex" }}>
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          data?.rooms.map((room) => (
-            <Roomcards
-              key={room.room_id}
-              roomData={room}
-              checkin={checkin}
-              checkout={checkout}
-            />
-          ))
-        )}
-      </div>
+      {!clicked ? (
+        <div></div>
+      ) : (
+        <div style={{ display: "flex" }}>
+          {loading ? (
+            <h1>Loading...</h1>
+          ) : (
+            data?.rooms.map((room) => (
+              <Roomcards
+                key={room.room_id}
+                roomData={room}
+                checkin={checkin}
+                checkout={checkout}
+                status={status}
+              />
+            ))
+          )}
+        </div>
+      )}
     </div>
   );
 };
