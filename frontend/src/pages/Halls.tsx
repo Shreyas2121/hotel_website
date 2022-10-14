@@ -73,7 +73,7 @@ const Halls = () => {
               <Hallcards
                 key={hall.hall_id}
                 hallData={hall}
-                checkin={checkin}
+                checkIn={checkIn}
                 bookedHalls={hallData}
               />
             ))
