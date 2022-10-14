@@ -9,6 +9,7 @@ from routes.coupon_route import coupons_route
 from routes.addons_route import addons_route
 from routes.booking_route import booking_route
 from routes.booking_hall_route import booking_hall_route
+from routes.reviews_route import reviews_route
 
 
 app = Flask(__name__)
@@ -20,6 +21,7 @@ app.register_blueprint(coupons_route)
 app.register_blueprint(addons_route)
 app.register_blueprint(booking_route)
 app.register_blueprint(booking_hall_route)
+app.register_blueprint(reviews_route)
 
 
 @app.route('/')
