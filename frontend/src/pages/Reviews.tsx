@@ -20,10 +20,10 @@ const Reviews = () => {
   <div style={{ minHeight: "100vh", margin: "2%" }}>
     <div id="reviews" className="reviews">
       <p>
-        Reviews:{" "}
+        <h1>Top Reviews</h1>
       </p>
     </div>
-    <div style={{ display: "flex" }}>
+    <div className="Review-card" style={{ display: "block"}}>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
