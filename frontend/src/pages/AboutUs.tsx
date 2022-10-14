@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Reviews from "../components/HotelReview/Reviews";
 
 const AboutUs = () => {
   const [data, setData] = useState<Array<any>>([]);
@@ -12,7 +11,6 @@ const AboutUs = () => {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      <Reviews />
       {data.map((item: any) => (
         <div key={item.id}>
           <img src={item.room_images.bathroom} />

@@ -13,17 +13,16 @@ export interface Room {
   room_max_occ: number;
 }
 
-export interface Hall{
+export interface Hall {
   hall_id: number;
   hall_type: string;
   hall_price: number;
   hall_max_occ: number;
   hall_desc: string;
-  hall_images: string;
+  hall_image: string;
   total_halls: number;
   hall_amenties: string[];
 }
-
 
 export interface Addon {
   Breakfast: number;
@@ -40,6 +39,6 @@ export interface Addon {
 export interface Review {
   name: string;
   email: string;
-  review: string;
+  reviews: string;
   rating: number;
 }

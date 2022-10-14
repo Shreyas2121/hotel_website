@@ -1,6 +1,6 @@
 node_modules
 menv
 nenv
-.vscode
 __pycache__
+.vscode
 .idea
