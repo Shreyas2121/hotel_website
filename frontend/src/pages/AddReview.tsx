@@ -90,9 +90,10 @@ const AddReview = () => {
             placeholder="Type your review here"
             rows={5}
             cols={50}
+            defaultValue={""}
             />
         </div>
-        <button id="book" type="button" onClick={handleSubmit}>
+        <button  type="button" onClick={handleSubmit}>
           Submit Review
         </button>
         </Form>
