@@ -15,11 +15,14 @@ import { Payment } from "./pages/Payment";
 import AddReview from "./pages/AddReview";
 import Reviews from "./pages/Reviews";
 import { Checkbooking } from "./pages/Checkbooking";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div>
       <NavBar />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="aboutus" element={<AboutUs />} />

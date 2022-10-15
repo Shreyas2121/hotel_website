@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Button, Card, Container, Form } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UseFetch } from "../../customHook/UseFetch";
 import { Addon } from "../../types/types";
 // import { Addon } from "../Addons/Addon";
@@ -31,10 +33,9 @@ export const BookingDetails = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
-  console.log(no, checkin, checkout, roomType, roomPrice);
+  const navigate = useNavigate();
 
   let total_price = roomPrice * no;
-  console.log(total_price);
 
   const { data, loading }: ResAddon = UseFetch(
     `http://127.0.0.1:5000/booking/addon/`
@@ -127,111 +128,155 @@ export const BookingDetails = () => {
         "Content-Type": "application/json",
       },
     });
-    if (res.data == "Booking Successful") {
-      alert(res.data);
+    if (res.data.message == "Booking Successful") {
+      toast.success("Booking Successful");
+      navigate("/");
     } else {
-      alert(res.data);
+      toast.error("Booking Failed");
     }
   };
 
   return (
-    <div className="bookingdetails_container">
-      <form>
-        <div className="elem-group">
-          <label htmlFor="name">Your Name</label>
-          <input
-            type="text"
-            ref={nameRef}
-            id="name"
-            name="visitor_name"
-            placeholder="John Doe"
-            pattern="[A-Z\sa-z]{3,20}"
-            // required=""
-          />
-        </div>
-        <div className="elem-group">
-          <label htmlFor="email">Your E-mail</label>
-          <input
-            ref={emailRef}
-            type="email"
-            id="email"
-            name="visitor_email"
-            placeholder="john.doe@email.com"
-            // required=""
-          />
-        </div>
-        <hr />
-        <div className="elem-group inlined">
-          <label htmlFor="adult">No of rooms : {no}</label>
-          <p></p>
-        </div>
-        <div className="elem-group inlined">
-          <label htmlFor="checkin-date">Date : </label>
-          <p>
-            {checkin.getDate()}/{checkin.getMonth()}/{checkin.getFullYear()} -{" "}
-            {checkout.getDate()}/{checkout.getMonth()}/{checkout.getFullYear()}
-          </p>
-        </div>
-        <div className="elem-group">
-          <label htmlFor="room-selection">Room Type</label>
-          <p>{roomType}</p>
-        </div>
-        <hr />
+    <Container
+      style={{
+        marginTop: "20px",
+        marginBottom: "20px",
+      }}
+    >
+      <div
+        style={{
+          boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
+          padding: "20px",
+          borderRadius: "10px",
+        }}
+      >
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" required={true} ref={nameRef} />
+          </Form.Group>
 
-        {/* <Addon /> */}
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          <div className="checkbox-container">
-            {Object.entries(type).map(([key, value]) => (
-              <div>
-                <input
-                  ref={checkRef}
-                  className="checkbox-input"
-                  id={key}
-                  name={key}
-                  value={key}
-                  type="checkbox"
-                  onChange={handleAddon}
-                />
-                <label className="checkbox">
-                  {key} : {value}
-                </label>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label htmlFor="email">Your E-mail</Form.Label>
+            <Form.Control
+              ref={emailRef}
+              type="email"
+              id="email"
+              name="visitor_email"
+              required={true}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="adult">No of rooms : {no}</Form.Label>
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label htmlFor="adult">
+              Check-in : {checkin.toDateString()}
+              <br />
+              Check-out : {checkout.toDateString()}
+            </Form.Label>
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label htmlFor="adult">Room Type : {roomType}</Form.Label>
+          </Form.Group>
+
+          <Form.Group>
+            <br />
+            <Form.Label> Select Addons: </Form.Label>
+            {loading ? (
+              <h1>Loading...</h1>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  justifyContent: "space-between",
+                }}
+              >
+                {Object.entries(type).map(([key, value]) => (
+                  <Form.Group>
+                    <Form.Check
+                      ref={checkRef}
+                      className="checkbox-Form.Control"
+                      id={key}
+                      name={key}
+                      value={key}
+                      type="checkbox"
+                      onChange={handleAddon}
+                    />
+                    <Form.Label className="checkbox">
+                      {key} : {value}
+                    </Form.Label>
+                  </Form.Group>
+                ))}
               </div>
-            ))}
-          </div>
-        )}
+            )}
+          </Form.Group>
 
-        <div className="elem-group">
-          <label htmlFor="message">Special Request?</label>
-          <textarea
-            ref={specialReqRef}
-            id="message"
-            name="visitor_message"
-            placeholder="Tell us anything else that might be important."
-            // required=""
-            defaultValue={""}
-          />
-        </div>
+          <Form.Group>
+            <Form.Label htmlFor="message">Special Request?</Form.Label>
+            <textarea
+              style={{
+                width: "100%",
+                height: "100px",
+                padding: "12px 20px",
+                boxSizing: "border-box",
+                border: "2px solid #ccc",
+                borderRadius: "4px",
+                backgroundColor: "#f8f8f8",
+                resize: "none",
+              }}
+              ref={specialReqRef}
+              id="message"
+              name="visitor_message"
+              placeholder="Tell us anything else that might be important."
+              defaultValue={""}
+            />
+          </Form.Group>
 
-        <div>
-          <span>{total}</span>
-          <br />
-          {/* <span>{discountedTotal}</span> */}
-        </div>
+          <Form.Group>
+            <Form.Text
+              style={{
+                color: "red",
+                fontSize: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Total: {total}
+            </Form.Text>
+          </Form.Group>
 
-        <div>
-          <input type="text" ref={couponRef} />
-          <button ref={buttonRef} onClick={handleCoupon}>
-            Apply
-          </button>
-        </div>
+          <Form.Group>
+            <br />
+            <br />
+            <Form.Label htmlFor="coupon">Coupon Code: </Form.Label>
+            <Form.Control type="text" ref={couponRef} />
+            <Button
+              style={{
+                backgroundColor: "black",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                padding: "5px 10px",
+                cursor: "pointer",
+                marginTop: "10px",
+              }}
+              ref={buttonRef}
+              onClick={handleCoupon}
+            >
+              Apply
+            </Button>
+          </Form.Group>
 
-        <button type="button" onClick={handleSubmit}>
-          Book The Rooms
-        </button>
-      </form>
-    </div>
+          <Button onClick={handleSubmit} variant="primary" type="button">
+            Submit
+          </Button>
+        </Form>
+      </div>
+    </Container>
   );
 };
 

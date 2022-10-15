@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "./admin.css";
+// import "./admin.css";?
 
 const Admin = () => {
   return (
