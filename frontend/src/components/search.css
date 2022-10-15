@@ -1,11 +1,28 @@
 .search{
     background-color: rgb(46, 44, 44);
-    display: flex;
     color: white;
-    margin: 2% auto;
-    padding: 1%;
     min-height: auto;
     justify-content: space-evenly;
+    margin:0;
+    padding:1rem;
+    align-items: center;
+}
+
+#checkAvailability{
+    background-color: rgb(255, 196, 0);
+    color: white;
+    min-height: auto;
+    justify-content: space-evenly;
+    margin:0;
+    font-weight: bold;
+    padding:0.5rem;
+    border: white 0.1rem solid;
+    align-items: center;
+}
+
+#checkAvailability:hover{
+    background-color: rgb(160, 125, 12);
+    cursor: pointer;
 }
 
 .search input :hover{

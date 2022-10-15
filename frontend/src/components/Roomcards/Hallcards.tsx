@@ -27,7 +27,7 @@ const Hallcards = ({ hallData, checkIn, bookedHalls }: Props) => {
   return (
 
     <Card style={{ width: '25%', margin:"1rem" }}>
-    <div>
+    <div style={{margin:"0.5rem"}}>
       <PhotoSlider images={hallData.hall_image} />
       </div>
     <Card.Body>
@@ -48,14 +48,23 @@ const Hallcards = ({ hallData, checkIn, bookedHalls }: Props) => {
       {hallData.hall_amenties}
       </Card.Text>
       <div>
-        <p id="booknow">
+        <p id="booknow"
+          style={{
+            fontWeight: "bold",
+            cursor: "pointer",
+            textAlign: "center",
+            fontSize: "1.5rem",
+            margin: "0.5rem",
+          }}
+        >
           {check(hallType) ? (
             <p 
             style={{
               color: "red",
               fontWeight: "bold",
-              fontSize: "1.5rem",
-              textAlign: "center"
+              textAlign: "center",
+              backgroundColor: "grey",
+              borderRadius: "0.5rem",
               }}>
               Sold Out
             </p>
@@ -67,10 +76,8 @@ const Hallcards = ({ hallData, checkIn, bookedHalls }: Props) => {
               style={{
                 textDecoration: "none",
                 color: "white",
-                backgroundColor: "black",
+                backgroundColor: "green",
                 padding: "0.5rem",
-                borderRadius: "0.5rem",
-
               }}
             >
               Book Now

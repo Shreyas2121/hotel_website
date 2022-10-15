@@ -37,7 +37,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
 
   return (
     <Card style={{ width: '25%', margin:"1rem" }}>
-    <div>
+    <div style={{margin:"0.5rem"}}>
       <PhotoSlider images={Object.values(roomData.room_images)} />
     </div>
     <Card.Body>
@@ -54,12 +54,44 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
       <Card.Text>
       {roomData.room_amenties}
       </Card.Text>
-      {check() ? <div>Available</div> : <div>Not Available</div>}
+      {check() ? <div 
+                  style={{
+                    color: "green",
+                    fontWeight: "bold",
+                    fontSize: "1.5rem",
+                    textAlign: "center"
+                    }}
+                >
+                  Available
+                </div> : <div
+                  style={{
+                    color: "red",
+                    fontWeight: "bold",
+                    fontSize: "1.5rem",
+                    textAlign: "center"
+                    }}
+                >
+                  Not Available
+                </div>}
 
-      <p id="booknow">
+      <p id="booknow"
+        style={{
+          fontWeight: "bold",
+          textAlign: "center",
+          margin: "0.5rem",
+          }}
+      >
         <Link
           to="/booking"
           state={{ no:1, checkin, checkout, roomType, roomPrice }}
+          style={{
+            fontSize: "1.5rem",
+            textDecoration: "none",
+            color: "white",
+            backgroundColor: "green",
+            padding: "0.5rem",
+            borderRadius: "0.5rem",
+          }}
         >
           Book Now
         </Link>

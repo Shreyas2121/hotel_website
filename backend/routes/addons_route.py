@@ -1,5 +1,4 @@
 from flask import jsonify, request,Blueprint
-
 from models.add_on import AddOns
 
 addons_route = Blueprint('addons_route', __name__)
