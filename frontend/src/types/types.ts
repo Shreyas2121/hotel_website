@@ -42,3 +42,20 @@ export interface Review {
   reviews: string;
   rating: number;
 }
+
+export interface Booking {
+  booking_id: number;
+  booking_date: string;
+  booking_check_in: string;
+  booking_check_out: string;
+  booking_total: string;
+  booking_addOns: Addon;
+  booking_coupon_id: string;
+  booking_coupon_discount: string;
+  booking_no_of_rooms: number;
+  booking_room_price: string;
+  booking_room_type: string;
+  booking_special_request: string;
+  booking_useremail: string;
+  booking_username: string;
+}

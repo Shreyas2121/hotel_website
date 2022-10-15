@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import NavBar from "./components/Navbar";
 
@@ -20,7 +18,7 @@ import { Checkbooking } from "./pages/Checkbooking";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
