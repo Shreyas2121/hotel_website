@@ -4,43 +4,35 @@ import { Review } from "../types/types";
 import Reviewcards from "../components/Roomcards/Reviewcards";
 import { Link } from "react-router-dom";
 
-const  Aboutus = () => {
-  const { data, loading }: Res = UseFetch(
-    "http://127.0.0.1:5000/reviews"
-  );
- 
-  interface Res {
-    data: {
-      Reviews: Review[];
-    };
-    loading: boolean;
-  }
+interface Res {
+  data: {
+    Reviews: Review[];
+  };
+  loading: boolean;
+}
 
+const Aboutus = () => {
+  const { data, loading }: Res = UseFetch("http://127.0.0.1:5000/reviews");
 
   return (
-  <div style={{ minHeight: "100vh", margin: "2%" }}>
-    <div id="reviews" className="reviews">
-      <p>
-        <h1>Top Reviews</h1>
-      </p>
-     <p >
-        <Link to="/addreview">Add Review</Link>
-     </p>
-    </div>
-    <div className="Review-card" style={{ display: "block"}}>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        data?.Reviews?.map((review) => (
-          <Reviewcards reviewData={review} />
-        ))
-      )}
+    <div style={{ minHeight: "100vh", margin: "2%" }}>
+      <div id="reviews" className="reviews">
+        <p>
+          <h1>Top Reviews</h1>
+        </p>
+        <p>
+          <Link to="/addreview">Add Review</Link>
+        </p>
       </div>
-  </div>
-          );
-     
-
+      <div className="Review-card" style={{ display: "block" }}>
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          data?.Reviews?.map((review) => <Reviewcards reviewData={review} />)
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Aboutus;
-

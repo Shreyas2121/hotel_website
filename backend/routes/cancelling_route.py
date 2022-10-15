@@ -15,8 +15,7 @@ def cancel_booking(id):
 
 @cancel_route.route('/reservation/<string:email>',methods=['GET'])
 def cancel_bookings(email):
-        bookings = BookingRoom.objects().filter(booking_useremail=email)
-        # BookingRoom.objects(booking_useremail=email).filter()
-        # #BookingRoom.objects().delete()
-        # #return jsonify({'bookings': [ booking.to_json() for booking in bookings]})
-        return list(map(lambda x: x.to_json(), bookings))
+    print(email)
+    bookings = BookingRoom.objects().filter(booking_useremail=email)
+
+    return list(map(lambda x: x.to_json(), bookings))
