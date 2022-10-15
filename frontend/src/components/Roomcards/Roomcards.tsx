@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "./roomcards.css";
+
+import Card from 'react-bootstrap/Card';
+import { PhotoSlider } from "../PhotoSlider/PhotoSlider";
 
 import { Room } from "../../types/types";
 import { Link, useNavigate } from "react-router-dom";
@@ -34,42 +36,36 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
   };
 
   return (
-    <div className="tm-rooms">
-      <img src={roomData.room_images.living_room} />
-      <div className="tm-rooms__details">
-        <p className="roomtype">Type: {roomData.room_type}</p>
-        <p className="roomprice">Price: {roomData.room_price}</p>
-        <p>Max Occupancy: {roomData.room_max_occ}</p>
-        <p className="roomdesc">Description: {roomData.room_desc}</p>
-        <p className="roomamenities">Amenities: {roomData.room_amenties}</p>
-      </div>
+    <Card style={{ width: '25%', margin:"1rem" }}>
+    <div>
+      <PhotoSlider images={Object.values(roomData.room_images)} />
+    </div>
+    <Card.Body>
+      <Card.Title>{roomData.room_type}</Card.Title>
+      <Card.Text>
+      {roomData.room_price}
+      </Card.Text>
+      <Card.Text>
+      {roomData.room_desc}
+      </Card.Text>
+      <Card.Text>
+      {roomData.room_max_occ}
+      </Card.Text>
+      <Card.Text>
+      {roomData.room_amenties}
+      </Card.Text>
       {check() ? <div>Available</div> : <div>Not Available</div>}
-
-      <div id="no_of_rooms">
-        <button
-          className="no_of_rooms_btn"
-          onClick={(e) => setNo((prev) => prev - 1)}
-        >
-          -
-        </button>
-        <span>{no}</span>
-        <button
-          className="no_of_rooms_btn"
-          onClick={(e) => setNo((prev) => prev + 1)}
-        >
-          +
-        </button>
-      </div>
 
       <p id="booknow">
         <Link
           to="/booking"
-          state={{ no, checkin, checkout, roomType, roomPrice }}
+          state={{ no:1, checkin, checkout, roomType, roomPrice }}
         >
           Book Now
         </Link>
       </p>
-    </div>
+    </Card.Body>
+    </Card>
   );
 };
 

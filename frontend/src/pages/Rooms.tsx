@@ -90,7 +90,7 @@ const Rooms = () => {
       {!clicked ? (
         <div></div>
       ) : (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent:"space-evenly" }}>
           {loading ? (
             <h1>Loading...</h1>
           ) : (

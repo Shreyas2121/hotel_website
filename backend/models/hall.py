@@ -9,7 +9,7 @@ class Hall(db.Document):
     hall_max_occ = db.IntField(requird=True)
     hall_desc = db.StringField(requird=True)
     hall_amenities = db.ListField(db.StringField())
-    hall_image = db.StringField(requird=True)
+    hall_image = db.ListField(db.StringField(),requird=True)
     total_halls = db.IntField(requird=True)
 
 
