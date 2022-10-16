@@ -1,10 +1,7 @@
-from flask import jsonify, request,Blueprint
+from flask import jsonify, request
 from typing import Any
 from models.booking import BookingRoom
 
-cancel_route = Blueprint('cancel_route', __name__)
-
-@cancel_route.route('/reservation/<string:id>',methods=['DELETE'])
 def cancel_booking(id):
     try:
         BookingRoom.objects(booking_useremail=id).delete()
@@ -13,7 +10,6 @@ def cancel_booking(id):
         return jsonify({"message":"Booking Not Found"})
 
 
-@cancel_route.route('/reservation/<string:email>',methods=['GET'])
 def cancel_bookings(email):
     print(email)
     bookings = BookingRoom.objects().filter(booking_useremail=email)

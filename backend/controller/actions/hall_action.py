@@ -1,10 +1,6 @@
-from flask import jsonify, request,Blueprint
+from flask import jsonify
 from models.hall import Hall
 
-halls_route = Blueprint('halls_route', __name__)
-
-
-# @halls_route.route('/booking/hall/post',methods=['GET'])
 # def create_hall():
 #     hall = Hall(
 #         hall_id = 2,
@@ -21,7 +17,6 @@ halls_route = Blueprint('halls_route', __name__)
 #     return jsonify({'hall': hall.to_json()})
 
 
-@halls_route.route('/booking/hall/getDetails',methods=['GET'])
 def get_halls():
     halls = Hall.objects()
     return jsonify({'halls': [hall.to_json() for hall in halls]})

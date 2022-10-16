@@ -3,14 +3,14 @@ from flask_cors import CORS
 from db_connect import connection_db
 from models.room import Room
 from models.add_on import AddOns
-from routes.rooms_route import rooms_route
-from routes.halls_route import halls_route
-from routes.coupon_route import coupons_route
-from routes.addons_route import addons_route
-from routes.booking_route import booking_route
-from routes.booking_hall_route import booking_hall_route
-from routes.reviews_route import reviews_route
-from routes.cancelling_route import cancel_route
+from controller.routes.halls_route import halls_route
+from controller.routes.rooms_route import rooms_route
+from controller.routes.coupon_route import coupons_route
+from controller.routes.addons_route import addons_route
+from controller.routes.booking_route import booking_route
+from controller.routes.booking_hall_route import booking_hall_route
+from controller.routes.reviews_route import reviews_route
+from controller.routes.cancelling_route import cancel_route
 
 
 app = Flask(__name__)
