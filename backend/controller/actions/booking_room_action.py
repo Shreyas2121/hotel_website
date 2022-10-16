@@ -41,7 +41,7 @@ def check_booking():
     parsed_check_in = parser.isoparse(checkin)
     parsed_check_out = parser.isoparse(checkout)
 
-    booking_obj = BookingRoom.objects(booking_check_in__lte=parsed_check_in, booking_check_out__gte=parsed_check_in)
+    booking_obj = BookingRoom.objects(booking_check_in__lte=parsed_check_in, booking_check_out__gte=parsed_check_in,)
     booking_data = list(map(lambda x: x.to_json(), booking_obj))
 
     res = requests.get('http://127.0.0.1:5000/booking/room/getDetails')
