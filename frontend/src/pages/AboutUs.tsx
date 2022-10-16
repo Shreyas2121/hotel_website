@@ -4,15 +4,9 @@ import { Review } from "../types/types";
 import Reviewcards from "../components/Roomcards/Reviewcards";
 import { Link } from "react-router-dom";
 
-interface Res {
-  data: {
-    Reviews: Review[];
-  };
-  loading: boolean;
-}
 
 const Aboutus = () => {
-  const { data, loading }: Res = UseFetch("http://127.0.0.1:5000/reviews");
+
 
   return (
     <div style={{ minHeight: "100vh", margin: "2%" }}>
@@ -23,15 +17,10 @@ const Aboutus = () => {
         <p>
           <Link to="/addreview">Add Review</Link>
         </p>
-      </div>
-      <div className="Review-card" style={{ display: "block" }}>
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          data?.Reviews?.map((review) => <Reviewcards reviewData={review} />)
-        )}
+        <Reviewcards />
       </div>
     </div>
+    
   );
 };
 

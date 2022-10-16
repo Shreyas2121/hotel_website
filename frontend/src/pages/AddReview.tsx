@@ -18,7 +18,7 @@ const AddReview = () => {
     const email = emailRef.current?.value;
     const rating = ratingRef.current?.value;
     const review = reviewRef.current?.value;
-
+    
     const data = {
       name,
       email,
