@@ -5,6 +5,7 @@ import { Hall } from "../types/types";
 import Hallcards from "../components/Roomcards/Hallcards";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import Slider from "../components/Slider/Slider";
 
 interface Res {
   data: {
