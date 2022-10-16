@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-
-import BookingDetails from "./BookingDetails/BookingDetails";
+import React, { useState } from "react";
 import Roomcards from "../components/Roomcards/Roomcards";
 import "../components/search.css";
 import Slider from "../components/Slider/Slider";
