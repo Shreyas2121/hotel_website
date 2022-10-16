@@ -5,7 +5,7 @@ import { Hall } from "../types/types";
 import Hallcards from "../components/Roomcards/Hallcards";
 // import "../components/search.css";
 import axios from "axios";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 interface Res {
   data: {
@@ -31,16 +31,17 @@ const Halls = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const selectedDate = `${checkin.getDate()}/${
-      checkin.getMonth() + 1
-    }/${checkin.getFullYear()}`;
+    // const selectedDate = `${checkin.getDate()}/${
+    //   checkin.getMonth() + 1
+    // }/${checkin.getFullYear()}`;
+    const selectedDate = checkin.toISOString();
 
     setCheckIn(selectedDate);
     setClicked(true);
 
     const { data }: ResHallS = await axios.post(
       "http://127.0.0.1:5000/booking/hall/check",
-      { date: selectedDate },
+      { checkin: selectedDate },
       {
         headers: {
           "Content-Type": "application/json",
@@ -63,15 +64,15 @@ const Halls = () => {
         </p>
         {/* <button onClick={handleSearch}>Search</button> */}
         <div>
-        <Button variant="primary" size="sm" onClick={handleSearch}>
-        Search
-        </Button>{' '}
-      </div>
+          <Button variant="primary" size="sm" onClick={handleSearch}>
+            Search
+          </Button>{" "}
+        </div>
       </div>
       {!clicked ? (
         <div></div>
       ) : (
-        <div style={{ display: "flex", justifyContent:"space-evenly"}}>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           {loading ? (
             <h1>Loading...</h1>
           ) : (
@@ -79,7 +80,7 @@ const Halls = () => {
               <Hallcards
                 key={hall.hall_id}
                 hallData={hall}
-                checkIn={checkIn}
+                checkin={checkin}
                 bookedHalls={hallData}
               />
             ))

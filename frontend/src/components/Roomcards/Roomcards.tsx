@@ -54,7 +54,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
       <Card.Text>
       {roomData.room_amenties}
       </Card.Text>
-      {check() ? <div 
+      {check() ? <div
                   style={{
                     color: "green",
                     fontWeight: "bold",
@@ -83,7 +83,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
       >
         <Link
           to="/booking"
-          state={{ no:1, checkin, checkout, roomType, roomPrice }}
+          state={{ no:1, checkin, checkout, roomType, roomPrice,key:"Room" }}
           style={{
             fontSize: "1.5rem",
             textDecoration: "none",

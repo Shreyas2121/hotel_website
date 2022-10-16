@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import BookingDetails from "../components/BookingDetails/BookingDetails";
+import BookingDetails from "./BookingDetails/BookingDetails";
 import Roomcards from "../components/Roomcards/Roomcards";
 import "../components/search.css";
 import Slider from "../components/Slider/Slider";
@@ -70,7 +70,8 @@ const Rooms = () => {
   return (
     <div style={{ margin: "2%" }}>
       <Slider />
-      <div className="search"
+      <div
+        className="search"
         style={{
           display: "flex",
         }}
@@ -91,12 +92,14 @@ const Rooms = () => {
             onChange={(e) => setCheckOut(e.target.value)}
           />
         </p>
-        <button id="checkAvailability" onClick={handleSearch}>Check Availability</button>
+        <button id="checkAvailability" onClick={handleSearch}>
+          Check Availability
+        </button>
       </div>
       {!clicked ? (
         <div></div>
       ) : (
-        <div style={{ display: "flex", justifyContent:"space-evenly" }}>
+        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
           {loading ? (
             <h1>Loading...</h1>
           ) : (

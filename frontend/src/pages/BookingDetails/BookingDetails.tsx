@@ -21,11 +21,13 @@ interface State {
   checkout: Date;
   roomType: string;
   roomPrice: number;
+  key: string;
 }
 
 export const BookingDetails = () => {
   const location = useLocation();
-  const { no, checkin, checkout, roomType, roomPrice }: State = location.state;
+  const { no, checkin, checkout, roomType, roomPrice, key }: State =
+    location.state;
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
@@ -50,7 +52,6 @@ export const BookingDetails = () => {
 
   useEffect(() => {
     Object.values(filtAddOn()).forEach((each: any) => {
-      console.log(typeof each);
       total_price += each;
     });
     setTotal(total_price);
@@ -122,12 +123,22 @@ export const BookingDetails = () => {
       discount: discount.toString(),
       total,
     };
+    let res: any;
 
-    const res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    if (key == "Hall") {
+      res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } else {
+      res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+
     if (res.data.message == "Booking Successful") {
       toast.success("Booking Successful");
       navigate("/");
@@ -170,13 +181,20 @@ export const BookingDetails = () => {
             <Form.Label htmlFor="adult">No of rooms : {no}</Form.Label>
           </Form.Group>
 
-          <Form.Group>
-            <Form.Label htmlFor="adult">
-              Check-in : {checkin.toDateString()}
-              <br />
-              Check-out : {checkout.toDateString()}
-            </Form.Label>
-          </Form.Group>
+          {key == 'Hall' ? (
+            <Form.Group>
+              <Form.Label>{checkin.toDateString()}</Form.Label>
+            </Form.Group>
+          ) : (
+            <Form.Group>
+              <Form.Label htmlFor="adult">
+                Check In : {checkin.toDateString()}
+              </Form.Label>
+              <Form.Label htmlFor="adult">
+                Check Out : {checkout.toDateString()}
+              </Form.Label>
+            </Form.Group>
+          )}
 
           <Form.Group>
             <Form.Label htmlFor="adult">Room Type : {roomType}</Form.Label>

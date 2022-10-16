@@ -9,8 +9,7 @@ import Footer from "./components/Footer/Footer";
 import Admin from "./pages/Admin";
 import Rooms from "./pages/Rooms";
 import Halls from "./pages/Halls";
-import Restaurants from "./pages/Restaurants";
-import { Booking } from "./pages/Booking";
+import { BookingDetails } from "./pages/BookingDetails/BookingDetails";
 import { Payment } from "./pages/Payment";
 import AddReview from "./pages/AddReview";
 import Reviews from "./pages/Reviews";
@@ -29,8 +28,7 @@ function App() {
         <Route path="admin" element={<Admin />} />
         <Route path="booking/room" element={<Rooms />} />
         <Route path="booking/hall" element={<Halls />} />
-        <Route path="booking/restaurant" element={<Restaurants />} />
-        <Route path="booking" element={<Booking />} />
+        <Route path="booking" element={<BookingDetails />} />
         <Route path="payment" element={<Payment />} />
         <Route path="addreview" element={<AddReview />} />
         <Route path="reviews" element={<Reviews />} />
