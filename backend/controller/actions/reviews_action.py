@@ -8,7 +8,7 @@ def get_reviews():
 
 
 def add_reviews():
-    data = request.get_json()
+    data: Any = request.get_json()
     Reviews(
         name = data['name'],
         email = data['email'],
