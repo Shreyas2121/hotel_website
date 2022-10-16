@@ -10,9 +10,7 @@ import Admin from "./pages/Admin";
 import Rooms from "./pages/Rooms";
 import Halls from "./pages/Halls";
 import { BookingDetails } from "./pages/BookingDetails/BookingDetails";
-import { Payment } from "./pages/Payment";
 import AddReview from "./pages/AddReview";
-import Reviews from "./pages/Reviews";
 import { Checkbooking } from "./pages/Checkbooking";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -29,9 +27,7 @@ function App() {
         <Route path="booking/room" element={<Rooms />} />
         <Route path="booking/hall" element={<Halls />} />
         <Route path="booking" element={<BookingDetails />} />
-        <Route path="payment" element={<Payment />} />
         <Route path="addreview" element={<AddReview />} />
-        <Route path="reviews" element={<Reviews />} />
         <Route path="checkbooking" element={<Checkbooking />} />
       </Routes>
       <Footer />
