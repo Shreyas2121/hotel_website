@@ -1,5 +1,7 @@
 import React, { LinkHTMLAttributes, useState } from "react";
-import "./roomcards.css";
+
+import Card from 'react-bootstrap/Card';
+import { PhotoSlider } from "../PhotoSlider/PhotoSlider";
 
 import { Hall } from "../../types/types";
 import { Link, useNavigate } from "react-router-dom";
@@ -23,33 +25,68 @@ const Hallcards = ({ hallData, checkIn, bookedHalls }: Props) => {
   };
 
   return (
-    <div className="tm-rooms">
-      <img src={hallData.hall_image} />
-      <div className="tm-rooms__details">
-        <p className="roomtype">Type: {hallData.hall_type}</p>
-        <p className="roomprice">Price: {hallData.hall_price}</p>
-        <p>Max Occupancy: {hallData.hall_max_occ}</p>
-        <p className="roomdesc">Description: {hallData.hall_desc}</p>
-        <p className="roomamenities">Amenities: {hallData.hall_amenties}</p>
-      </div>
-      <p id="status">
-        STATUS : {check(hallType) ? "Not Available" : "Available"}{" "}
-      </p>
 
-      <p id="booknow">
-        {check(hallType) ? (
-          <p>Sold Out</p>
-        ) : (
-          <Link
-            ref={linkRef}
-            to="/booking"
-            state={{ checkin: checkIn, hallType, hallPrice }}
-          >
-            Book Now
-          </Link>
-        )}
-      </p>
-    </div>
+    <Card style={{ width: '25%', margin:"1rem" }}>
+    <div style={{margin:"0.5rem"}}>
+      <PhotoSlider images={hallData.hall_image} />
+      </div>
+    <Card.Body>
+      <Card.Title>{hallData.hall_type}</Card.Title>
+      <Card.Text>
+      {hallData.hall_price}
+      </Card.Text>
+      <Card.Text>
+      {hallData.hall_desc}
+      </Card.Text>
+      <Card.Text>
+      {hallData.hall_max_occ}
+      </Card.Text>
+      <Card.Text>
+      {hallData.hall_desc}
+      </Card.Text>
+      <Card.Text>
+      {hallData.hall_amenties}
+      </Card.Text>
+      <div>
+        <p id="booknow"
+          style={{
+            fontWeight: "bold",
+            cursor: "pointer",
+            textAlign: "center",
+            fontSize: "1.5rem",
+            margin: "0.5rem",
+          }}
+        >
+          {check(hallType) ? (
+            <p 
+            style={{
+              color: "red",
+              fontWeight: "bold",
+              textAlign: "center",
+              backgroundColor: "grey",
+              borderRadius: "0.5rem",
+              }}>
+              Sold Out
+            </p>
+          ) : (
+            <Link
+              ref={linkRef}
+              to="/booking"
+              state={{ checkin: checkIn, hallType, hallPrice }}
+              style={{
+                textDecoration: "none",
+                color: "white",
+                backgroundColor: "green",
+                padding: "0.5rem",
+              }}
+            >
+              Book Now
+            </Link>
+          )}
+        </p>
+      </div>
+    </Card.Body>
+    </Card>
   );
 };
 

@@ -19,7 +19,7 @@ export interface Hall {
   hall_price: number;
   hall_max_occ: number;
   hall_desc: string;
-  hall_image: string;
+  hall_image: string[];
   total_halls: number;
   hall_amenties: string[];
 }

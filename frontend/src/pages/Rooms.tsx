@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BookingDetails from "../components/BookingDetails/BookingDetails";
 import Roomcards from "../components/Roomcards/Roomcards";
 import "../components/search.css";
+import Slider from "../components/Slider/Slider";
 
 import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
@@ -67,8 +68,13 @@ const Rooms = () => {
   };
 
   return (
-    <div style={{ minHeight: "100vh", margin: "2%" }}>
-      <div className="search">
+    <div style={{ margin: "2%" }}>
+      <Slider />
+      <div className="search"
+        style={{
+          display: "flex",
+        }}
+      >
         <p>
           Check-in:{" "}
           <input
@@ -85,12 +91,12 @@ const Rooms = () => {
             onChange={(e) => setCheckOut(e.target.value)}
           />
         </p>
-        <button onClick={handleSearch}>Check Availability</button>
+        <button id="checkAvailability" onClick={handleSearch}>Check Availability</button>
       </div>
       {!clicked ? (
         <div></div>
       ) : (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", justifyContent:"space-evenly" }}>
           {loading ? (
             <h1>Loading...</h1>
           ) : (
