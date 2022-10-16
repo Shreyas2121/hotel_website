@@ -6,6 +6,7 @@ import Slider from "../components/Slider/Slider";
 import Reviewcards from "../components/Roomcards/Reviewcards";
 
 const Home = () => {
+  
   return (
     <Container>
       <br />
@@ -13,7 +14,9 @@ const Home = () => {
       <br />
       <PhotoGrid />
       <Service />
+      <br />
       <Reviewcards />
+      
     </Container>
   );
 };

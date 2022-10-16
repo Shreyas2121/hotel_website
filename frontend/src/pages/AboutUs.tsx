@@ -1,7 +1,9 @@
 import Reviewcards from "../components/Roomcards/Reviewcards";
 import { Link } from "react-router-dom";
 
+
 const Aboutus = () => {
+
 
   return (
     <div style={{ minHeight: "100vh", margin: "2%" }}>
@@ -12,9 +14,10 @@ const Aboutus = () => {
         <p>
           <Link to="/addreview">Add Review</Link>
         </p>
+        <Reviewcards />
       </div>
-      <Reviewcards />
     </div>
+    
   );
 };
 
