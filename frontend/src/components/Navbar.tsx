@@ -16,9 +16,6 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/aboutus">
-              About Us
-            </Nav.Link>
             <NavDropdown title="Book" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/booking/room">
                 Room
@@ -27,6 +24,9 @@ const NavBar = () => {
                 Hall
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link as={Link} to="/aboutus">
+              About Us
+            </Nav.Link>
             <Nav.Link as={Link} to="/checkbooking">
               Check Booking
             </Nav.Link>
