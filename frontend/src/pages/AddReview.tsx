@@ -18,6 +18,8 @@ const AddReview = () => {
     const email = emailRef.current?.value;
     const rating = ratingRef.current?.value;
     const review = reviewRef.current?.value;
+
+ 
     
     const data = {
       name,
@@ -40,10 +42,10 @@ const AddReview = () => {
 
   return (
     <div>
-      <div>Add A Review</div>
       <Container>
         <br />
         <Form>
+          <Form.Group className="Name"  id="Name">
           <div className="elem-group">
             <label htmlFor="name">Name</label>
             <input
@@ -55,6 +57,9 @@ const AddReview = () => {
               pattern="[A-Z\sa-z]{3,20}"
             />
           </div>
+          </Form.Group>
+
+          <Form.Group className="Email" id="Email">
           <div className="elem-group">
             <label htmlFor="email">Your E-mail</label>
             <input
@@ -66,6 +71,9 @@ const AddReview = () => {
               pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
             />
           </div>
+          </Form.Group>
+
+          <Form.Group className="Rating" id="Rating">
           <div className="elem-group">
             <label htmlFor="rating">Rating</label>
             <input
@@ -78,6 +86,9 @@ const AddReview = () => {
               max="5"
             />
           </div>
+          </Form.Group>
+
+          <Form.Group className="Review" id="Review">
           <div className="elem-group">
             <label htmlFor="review">Review</label>
             <textarea
@@ -90,9 +101,11 @@ const AddReview = () => {
             defaultValue={""}
             />
         </div>
-        <button  type="button" onClick={handleSubmit}>
+          </Form.Group>
+
+        <Button ref={buttonRef} onClick={handleSubmit} variant="primary" type="submit">
           Submit Review
-        </button>
+        </Button>
         </Form>
       </Container>
     </div>

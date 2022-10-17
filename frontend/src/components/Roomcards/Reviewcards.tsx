@@ -4,6 +4,8 @@ import { Carousel } from "react-bootstrap";
 import "./slider.css"
 import { UseFetch } from "../../customHook/UseFetch";
 import {Review} from "../../types/types";
+import { Rating } from '@mui/material';
+
 
 interface Res {
     data: {
@@ -33,7 +35,8 @@ const Reviewcards = () => {
             </div>  
            
             <div className="Review-rating-card">
-            <p className="rating">Rating: {review.rating}</p>
+           
+            <p className="rating">Rating: <Rating name="read-only" value={review.rating} readOnly /> </p>
             <p className="The-review">Review: {review.reviews}</p>
             </div>
             </div>
