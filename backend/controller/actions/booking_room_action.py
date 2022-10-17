@@ -31,7 +31,6 @@ def book_room():
 def get_bookings():
 
     bookings = BookingRoom.objects()
-    print(bookings)
     # return jsonify({'bookings': [ booking.to_json() for booking in bookings]})
     return list(map(lambda x: x.to_json(), bookings))
 
@@ -64,6 +63,5 @@ def check_booking():
     for key, value in new.items():
         if key in available_rooms:
             available_rooms[key] -= int(value)
-    print(available_rooms)
 
     return available_rooms
