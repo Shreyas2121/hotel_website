@@ -162,21 +162,58 @@ export const BookingDetails = () => {
         }}
       >
         <Form>
-          <Form.Group className="mb-3">
-            <Form.Label>Name</Form.Label>
-            <Form.Control type="text" required={true} ref={nameRef} />
-          </Form.Group>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "20px",
+              gap: "5px",
+            }}
+          >
+            <Form.Group
+              style={{
+                width: "50%",
+              }}
+              className="mb-3"
+            >
+              <Form.Label
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                }}
+              >
+                Name
+              </Form.Label>
+              <Form.Control type="text" required={true} ref={nameRef} />
+            </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label htmlFor="email">Your E-mail</Form.Label>
-            <Form.Control
-              ref={emailRef}
-              type="email"
-              id="email"
-              name="visitor_email"
-              required={true}
-            />
-          </Form.Group>
+            <Form.Group
+              style={{
+                width: "50%",
+              }}
+              className="mb-3"
+              controlId="formBasicEmail"
+            >
+              <Form.Label
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                }}
+                htmlFor="email"
+              >
+                E-mail
+              </Form.Label>
+              <Form.Control
+                ref={emailRef}
+                type="email"
+                id="email"
+                name="visitor_email"
+                required={true}
+              />
+            </Form.Group>
+          </div>
+          <hr />
           <Form.Group>
             <Form.Label htmlFor="adult">No of rooms : {no}</Form.Label>
           </Form.Group>
@@ -200,7 +237,7 @@ export const BookingDetails = () => {
           <Form.Group>
             <Form.Label htmlFor="adult">Room Type : {roomType}</Form.Label>
           </Form.Group>
-
+          <hr />
           <Form.Group>
             <br />
             <Form.Label> Select Addons: </Form.Label>
@@ -209,10 +246,10 @@ export const BookingDetails = () => {
             ) : (
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  flexWrap: "wrap",
-                  justifyContent: "space-between",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4,1fr)",
+                  gap: "10px",
+                  marginBottom: "20px",
                 }}
               >
                 {Object.entries(type).map(([key, value]) => (
@@ -234,6 +271,7 @@ export const BookingDetails = () => {
               </div>
             )}
           </Form.Group>
+          <hr />
 
           <Form.Group>
             <Form.Label htmlFor="message">Special Request?</Form.Label>
@@ -254,25 +292,25 @@ export const BookingDetails = () => {
               placeholder="Tell us anything else that might be important."
               defaultValue={""}
             />
+            <hr />
           </Form.Group>
 
-          <Form.Group>
-            <Form.Text
-              style={{
-                color: "red",
-                fontSize: "20px",
-                fontWeight: "bold",
-              }}
-            >
-              Total: {total}
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group>
-            <br />
-            <br />
+          <Form.Group
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
             <Form.Label htmlFor="coupon">Coupon Code: </Form.Label>
-            <Form.Control type="text" ref={couponRef} />
+            <Form.Control
+              style={{
+                width: "50%",
+              }}
+              type="text"
+              ref={couponRef}
+            />
             <Button
               style={{
                 backgroundColor: "black",
@@ -289,6 +327,21 @@ export const BookingDetails = () => {
               Apply
             </Button>
           </Form.Group>
+          <hr />
+
+          <Form.Group>
+            <Form.Text
+              style={{
+                color: "red",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginLeft: "50%",
+              }}
+            >
+              Total: {total}
+            </Form.Text>
+          </Form.Group>
+          <hr />
           <br />
           <Button onClick={handleSubmit} variant="primary" type="button">
             Submit
