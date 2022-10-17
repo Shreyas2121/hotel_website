@@ -1,7 +1,10 @@
 import React from "react";
 import Reviewcards from "../components/Roomcards/Reviewcards";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
+// import React from "react";
+import { Card, Button } from "react-bootstrap";
+
 
 
 
@@ -19,12 +22,13 @@ const NavigateToAddReview = () => {
         <p>
           <h1>Top Reviews</h1>
         </p>
-        <Button  onClick={NavigateToAddReview}>
-          Add Review
-        </Button>
-        
-        <Reviewcards />
-      </div>
+        <Button onClick={NavigateToAddReview}>
+           Add Review
+         </Button>
+         <br/>
+          <br/>
+         <Reviewcards />
+     </div>
     </div>
     
   );

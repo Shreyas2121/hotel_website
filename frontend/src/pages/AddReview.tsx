@@ -41,74 +41,41 @@ const AddReview = () => {
   };
 
   return (
-    <div>
-      <Container>
-        <br />
-        <Form>
-          <Form.Group className="Name"  id="Name">
-          <div className="elem-group">
-            <label htmlFor="name">Name</label>
-            <input
-              ref={nameRef}
-              type="text"
-              id="name"
-              name="visitor_name"
-              placeholder="Type your name Here "
-              pattern="[A-Z\sa-z]{3,20}"
-            />
-          </div>
+  
+    <Container className="d-flex align-items-center justify-content-center">
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group id="name">
+            <Form.Label>Name : </Form.Label>
+            <Form.Control type="text" ref={nameRef} required />
           </Form.Group>
-
-          <Form.Group className="Email" id="Email">
-          <div className="elem-group">
-            <label htmlFor="email">Your E-mail</label>
-            <input
-              ref={emailRef}
-              type="email"
-              id="email"
-              name="visitor_email"
-              placeholder="john.doe@email.com"
-              pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
-            />
-          </div>
+          <Form.Group id="email">
+            <Form.Label>Email : </Form.Label>
+            <Form.Control type="email" ref={emailRef} required />
           </Form.Group>
-
-          <Form.Group className="Rating" id="Rating">
-          <div className="elem-group">
-            <label htmlFor="rating">Rating</label>
-              <Rating
-              name="visitor_rating"
-              id="rating"
-              defaultValue={0}
+          <Form.Group id="rating" style={{
+            display: "flex",
+          }}>
+            <Form.Label>Rating :   </Form.Label>
+            <Rating
+              name="simple-controlled"
+              value={rating}
               onChange={(event, newValue) => {
                 setRating(newValue);
               }}
-              max={5}
             />
-          </div>
           </Form.Group>
-
-          <Form.Group className="Review" id="Review">
-          <div className="elem-group">
-            <label htmlFor="review">Review</label>
-            <textarea
-            ref={reviewRef}
-            id="review"
-            name="visitor_review"
-            placeholder="Type your review here"
-            rows={5}
-            cols={50}
-            defaultValue={""}
-            />
-        </div>
+          <Form.Group id="review">
+            <Form.Label>Review : </Form.Label>
+              
+            <Form.Control as="textarea" rows={3} ref={reviewRef} required />
           </Form.Group>
-
-        <Button ref={buttonRef} onClick={handleSubmit} variant="primary" type="submit">
-          Submit Review
-        </Button>
+          <Button className="w-100" type="submit" ref={buttonRef}>
+            Submit
+          </Button>
         </Form>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 };
 

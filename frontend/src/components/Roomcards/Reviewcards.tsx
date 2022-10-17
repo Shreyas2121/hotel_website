@@ -5,6 +5,7 @@ import "./slider.css"
 import { UseFetch } from "../../customHook/UseFetch";
 import {Review} from "../../types/types";
 import { Rating } from '@mui/material';
+import image1 from "../../assets/images/HotelReview.png";
 
 
 interface Res {
@@ -19,32 +20,33 @@ const Reviewcards = () => {
 
 
     return (
-        <Carousel>
+      <div style={{
+        backgroundImage: `url(${image1})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "50vh",
+      }}>
+        <Carousel >
             {loading ? (
                 <h1>Loading...</h1>
             ) : (
                 data?.Reviews?.map((review) => (
-
-        <Carousel.Item>
-            
-            <div className="tm-review">
-            <div className="tm-reviews_details">
-            <div className="Reviewer-details">
-            <p className="reviewer-name">Name: {review.name} </p>
-            <p className="reviewer-email">Email: {review.email}</p> 
-            </div>  
-           
-            <div className="Review-rating-card">
-           
-            <p className="rating">Rating: <Rating name="read-only" value={review.rating} readOnly /> </p>
-            <p className="The-review">Review: {review.reviews}</p>
-            </div>
-            </div>
-            </div>
-        </Carousel.Item>
+                    
+                  <Carousel.Item interval={5000}>
+                    <div className="Review-rating-card">
+                    <p className="rating">Rating: <Rating name="read-only" value={review.rating} readOnly /> </p>
+                    <p className="reviewer-email">Email: {review.email}</p>
+                    <p className="reviewer-name">Name: {review.name} </p>
+                    <p className="The-review">Review: {review.reviews}</p>
+                    </div>
+                  </Carousel.Item>
+                  
+    
         ))
             )}
        </Carousel>
+      </div>
     );
 };
 
