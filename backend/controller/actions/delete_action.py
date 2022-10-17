@@ -11,7 +11,6 @@ def cancel_booking(id):
 
 
 def cancel_bookings(email):
-    print(email)
     bookings = BookingRoom.objects().filter(booking_useremail=email)
 
     return list(map(lambda x: x.to_json(), bookings))
