@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Booking } from "../../types/types";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
@@ -21,13 +21,36 @@ const DisplayDetails = ({ bookingDetails }: Props) => {
     <div>
       <Card style={{ width: "18rem" }}>
         <Card.Body>
+          <Card.Title>Booking Details</Card.Title>
           <Card.Title>{bookingDetails.booking_username}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            Card Subtitle
+            Name
           </Card.Subtitle>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            <Card.Text>{bookingDetails.booking_useremail}</Card.Text>
+          <Card.Subtitle className="mb-2 text-muted">
+            <Card.Text>Email</Card.Text>
+          </Card.Subtitle>
+            <Card.Text>{bookingDetails.booking_check_in}</Card.Text>
+            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Text>Check-in Date</Card.Text>
+          </Card.Subtitle>
+            <Card.Text>{bookingDetails.booking_check_out}</Card.Text>
+            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Text>Check-out Date</Card.Text>
+          </Card.Subtitle>
+            <Card.Text>{bookingDetails.booking_room_type}</Card.Text>
+            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Text>Room Type</Card.Text>
+          </Card.Subtitle>
+            <Card.Text>{bookingDetails.booking_no_of_rooms}</Card.Text>
+            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Text>Number of Rooms</Card.Text>
+          </Card.Subtitle>
+            <Card.Text>{bookingDetails.booking_total}</Card.Text>
+            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Text>Total</Card.Text>
+          </Card.Subtitle>
           </Card.Text>
           <Card.Link onClick={(e) => handleSubmit(bookingDetails._id)} as={Button}>
             Cancel Booking
