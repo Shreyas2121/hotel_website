@@ -1,11 +1,13 @@
-from datetime import datetime
+import uuid
+
+import bson
 from db_connect import connection_db
 from models.room import Room
 
 db = connection_db()
 
 class BookingRoom(db.Document):
-    booking_id = db.DateField()
+    _id = db.ObjectIdField(default=bson.ObjectId())
     booking_username = db.StringField()
     booking_useremail = db.EmailField()
     booking_date = db.StringField()
@@ -23,6 +25,7 @@ class BookingRoom(db.Document):
 
     def to_json(self):
         return {
+            "_id":str(self._id),
             "booking_id": self.booking_id,
             "booking_username": self.booking_username,
             "booking_useremail": self.booking_useremail,
@@ -38,3 +41,4 @@ class BookingRoom(db.Document):
             "booking_total": self.booking_total,
             "booking_special_request": self.booking_special_request
         }
+

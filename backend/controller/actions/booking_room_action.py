@@ -10,8 +10,7 @@ from models.booking import BookingRoom
 
 def book_room():
     data: Any = request.get_json()
-    BookingRoom(
-        booking_id=date.isoformat(date.today()),
+    booking_obj = BookingRoom(
         booking_username=data['name'],
         booking_useremail=data['email'],
         booking_date=data['date'],
@@ -25,11 +24,14 @@ def book_room():
         booking_coupon_discount=data['discount'],
         booking_special_request=data['specialReq'],
         booking_total=data['total'],
-    ).save()
-    return jsonify({"message": "Booking Successful"})
+    )
+    booking_obj.save()
+    return jsonify({"message": "Booking Successful",})
 
 def get_bookings():
+
     bookings = BookingRoom.objects()
+    print(bookings)
     # return jsonify({'bookings': [ booking.to_json() for booking in bookings]})
     return list(map(lambda x: x.to_json(), bookings))
 

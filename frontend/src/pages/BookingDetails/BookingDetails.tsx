@@ -181,7 +181,7 @@ export const BookingDetails = () => {
             <Form.Label htmlFor="adult">No of rooms : {no}</Form.Label>
           </Form.Group>
 
-          {key == 'Hall' ? (
+          {key == "Hall" ? (
             <Form.Group>
               <Form.Label>{checkin.toDateString()}</Form.Label>
             </Form.Group>
@@ -190,6 +190,7 @@ export const BookingDetails = () => {
               <Form.Label htmlFor="adult">
                 Check In : {checkin.toDateString()}
               </Form.Label>
+              <br />
               <Form.Label htmlFor="adult">
                 Check Out : {checkout.toDateString()}
               </Form.Label>
@@ -288,7 +289,7 @@ export const BookingDetails = () => {
               Apply
             </Button>
           </Form.Group>
-
+          <br />
           <Button onClick={handleSubmit} variant="primary" type="button">
             Submit
           </Button>
