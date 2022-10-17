@@ -123,7 +123,7 @@ const Rooms = () => {
       {!clicked ? (
         <div></div>
       ) : (
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div style={{ margin:"2rem" }}>
           {loading ? (
             <h1>Loading...</h1>
           ) : (

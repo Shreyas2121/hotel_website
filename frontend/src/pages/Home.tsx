@@ -22,9 +22,9 @@ const Home = () => {
               }}
               >Relax Your Mind</h1>
               <h6 className='mb-3'>AWAY FROM MONOTONOUS LIFE</h6>
-              <a className='btn btn-outline-light btn-lg' href='#!' role='button'>
+              {/* <a className='btn btn-outline-light btn-lg' href='#!' role='button'>
                 Call to action
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
