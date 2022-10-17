@@ -8,7 +8,6 @@ from models.booking_hall import BookingHall
 def book_hall():
     data : Any = request.get_json()
     BookingHall(
-        booking_id = date.isoformat(date.today()),
         booking_username = data['name'],
         booking_useremail = data['email'],
         booking_date = data['date'],

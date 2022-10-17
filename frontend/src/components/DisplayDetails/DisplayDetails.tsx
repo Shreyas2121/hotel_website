@@ -2,12 +2,21 @@ import React from "react";
 import { Container, Button } from "react-bootstrap";
 import { Booking } from "../../types/types";
 import Card from "react-bootstrap/Card";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 interface Props {
   bookingDetails: Booking;
 }
 
-export const DisplayDetails = ({ bookingDetails }: Props) => {
+const handleSubmit = async (id: string) => {
+  const res = await axios.delete(`http://127.0.0.1:5000/reservation/${id}`);
+  if (res.status === 200) {
+    toast.success("Reservation deleted successfully");
+  }
+};
+
+const DisplayDetails = ({ bookingDetails }: Props) => {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
@@ -20,7 +29,9 @@ export const DisplayDetails = ({ bookingDetails }: Props) => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </Card.Text>
-          <Card.Link as={Button}>Cancel Booking</Card.Link>
+          <Card.Link onClick={(e) => handleSubmit(bookingDetails._id)} as={Button}>
+            Cancel Booking
+          </Card.Link>
         </Card.Body>
       </Card>
     </div>

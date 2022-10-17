@@ -7,7 +7,7 @@ from models.room import Room
 db = connection_db()
 
 class BookingRoom(db.Document):
-    _id = db.ObjectIdField(default=bson.ObjectId())
+    _id = db.SequenceField(primary_key=True, default=bson.ObjectId)
     booking_username = db.StringField()
     booking_useremail = db.EmailField()
     booking_date = db.StringField()
@@ -26,7 +26,6 @@ class BookingRoom(db.Document):
     def to_json(self):
         return {
             "_id":str(self._id),
-            "booking_id": self.booking_id,
             "booking_username": self.booking_username,
             "booking_useremail": self.booking_useremail,
             "booking_date": self.booking_date,

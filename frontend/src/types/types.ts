@@ -44,7 +44,7 @@ export interface Review {
 }
 
 export interface Booking {
-  booking_id: number;
+  _id: string;
   booking_date: string;
   booking_check_in: string;
   booking_check_out: string;

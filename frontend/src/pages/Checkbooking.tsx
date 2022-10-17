@@ -22,9 +22,8 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://127.0.0.1:5000/reservation/${email}`
+      `http://127.0.0.1:5000/reservation/get/${email}`
     );
-    console.log(data);
     setBookingDetails(data);
     setLoading(false);
     setClicked(true);
