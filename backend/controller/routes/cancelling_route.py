@@ -4,9 +4,9 @@ from controller.actions.delete_action import cancel_booking,get_bookings_by_emai
 
 cancel_route = Blueprint('cancel_route', __name__)
 
-@cancel_route.route('/reservation/<string:id>',methods=['DELETE'])
-def cancel(id):
-    return cancel_booking(id)
+@cancel_route.route('/reservation/<string:_id>',methods=['DELETE'])
+def cancel(_id):
+    return cancel_booking(_id)
 
 
 @cancel_route.route('/reservation/get/<string:email>',methods=['GET'])

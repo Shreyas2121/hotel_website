@@ -4,6 +4,10 @@ import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import DisplayDetails from "../components/DisplayDetails/DisplayDetails";
 import { Booking } from "../types/types";
+// import Col from 'react-bootstrap/Col';
+// import Row from 'react-bootstrap/Row';
+// import InputGroup from 'react-bootstrap/InputGroup';
+import Stack from 'react-bootstrap/Stack';
 import axios from "axios";
 
 interface Res {
@@ -32,16 +36,10 @@ export const Checkbooking = () => {
   return (
     <Container style={{ minHeight: "100vh" }}>
       <br />
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
-        </Form.Group>
-
-        <Button onClick={handleSubmit} variant="outline-primary" type="button">
-          Check Booking
-        </Button>
-      </Form>
+      <Stack direction="horizontal" gap={3}>
+      <Form.Control  ref={emailRef} type="email" className="me-auto" placeholder="Enter Email" />
+      <Button onClick={handleSubmit}  type="button" variant="secondary">Check</Button>
+    </Stack>
       <br />
       {clicked && (
         <div>

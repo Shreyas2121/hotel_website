@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { Booking } from "../../types/types";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
+import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
 
 interface Props {
@@ -19,44 +20,30 @@ const handleSubmit = async (id: string) => {
 const DisplayDetails = ({ bookingDetails }: Props) => {
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
-        <Card.Body>
-          <Card.Title>Booking Details</Card.Title>
-          <Card.Title>{bookingDetails.booking_username}</Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
-            Name
-          </Card.Subtitle>
-          <Card.Text>
-            <Card.Text>{bookingDetails.booking_useremail}</Card.Text>
-          <Card.Subtitle className="mb-2 text-muted">
-            <Card.Text>Email</Card.Text>
-          </Card.Subtitle>
-            <Card.Text>{bookingDetails.booking_check_in}</Card.Text>
-            <Card.Subtitle className="mb-2 text-muted">
-            <Card.Text>Check-in Date</Card.Text>
-          </Card.Subtitle>
-            <Card.Text>{bookingDetails.booking_check_out}</Card.Text>
-            <Card.Subtitle className="mb-2 text-muted">
-            <Card.Text>Check-out Date</Card.Text>
-          </Card.Subtitle>
-            <Card.Text>{bookingDetails.booking_room_type}</Card.Text>
-            <Card.Subtitle className="mb-2 text-muted">
-            <Card.Text>Room Type</Card.Text>
-          </Card.Subtitle>
-            <Card.Text>{bookingDetails.booking_no_of_rooms}</Card.Text>
-            <Card.Subtitle className="mb-2 text-muted">
-            <Card.Text>Number of Rooms</Card.Text>
-          </Card.Subtitle>
-            <Card.Text>{bookingDetails.booking_total}</Card.Text>
-            <Card.Subtitle className="mb-2 text-muted">
-            <Card.Text>Total</Card.Text>
-          </Card.Subtitle>
-          </Card.Text>
-          <Card.Link onClick={(e) => handleSubmit(bookingDetails._id)} as={Button}>
-            Cancel Booking
-          </Card.Link>
-        </Card.Body>
-      </Card>
+      <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Check-in Date</th>
+          <th>Check-out Date</th>
+          <th>Room Type</th>
+          <th>No. of rooms</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{bookingDetails.booking_username}</td>
+          <td>{bookingDetails.booking_check_in}</td>
+          <td>{bookingDetails.booking_check_out}</td>
+          <td>{bookingDetails.booking_room_type}</td>
+          <td>{bookingDetails.booking_no_of_rooms}</td>
+          <td>{bookingDetails.booking_total}</td>
+          <td><Button onClick={(e) => handleSubmit(bookingDetails._id)}>Cancel Booking</Button></td>
+        </tr>
+      </tbody>
+    </Table>
     </div>
   );
 };
