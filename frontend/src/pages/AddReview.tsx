@@ -1,14 +1,16 @@
+import { Rating } from "@mui/material";
 import axios from "axios";
 import React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+
 const AddReview = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
-  const ratingRef = useRef<HTMLInputElement>(null);
+  const [rating, setRating] = useState<number>(0);
   const reviewRef = useRef<HTMLTextAreaElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -16,11 +18,9 @@ const AddReview = () => {
     e.preventDefault();
     const name = nameRef.current?.value;
     const email = emailRef.current?.value;
-    const rating = ratingRef.current?.value;
     const review = reviewRef.current?.value;
 
- 
-    
+
     const data = {
       name,
       email,
@@ -76,14 +76,14 @@ const AddReview = () => {
           <Form.Group className="Rating" id="Rating">
           <div className="elem-group">
             <label htmlFor="rating">Rating</label>
-            <input
-              ref={ratingRef}
-              type="number"
-              id="rating"
+              <Rating
               name="visitor_rating"
-              placeholder="Type your rating here"
-              min="1"
-              max="5"
+              id="rating"
+              defaultValue={0}
+              onChange={(event, newValue) => {
+                setRating(newValue);
+              }}
+              max={5}
             />
           </div>
           </Form.Group>
