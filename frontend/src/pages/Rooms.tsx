@@ -70,55 +70,6 @@ const Rooms = () => {
   };
 
   return (
-    // <div style={{ margin: "2%" }}>
-    //   <Slider />
-    //   <div
-    //     className="search"
-    //     style={{
-    //       display: "flex",
-    //     }}
-    //   >
-    //     <p>
-    //       Check-in:{" "}
-    //       <input
-    //         min={new Date().toISOString().split("T")[0]}
-    //         type="date"
-    //         onChange={(e) => setCheckIn(e.target.value)}
-    //       />
-    //     </p>
-    //     <p>
-    //       Check-out:{" "}
-    //       <input
-    //         min={conv(checkin)}
-    //         type="date"
-    //         onChange={(e) => setCheckOut(e.target.value)}
-    //       />
-    //     </p>
-    //     <button id="checkAvailability" onClick={handleSearch}>
-    //       Check Availability
-    //     </button>
-    //   </div>
-    //   {!clicked ? (
-    //     <div></div>
-    //   ) : (
-    //     <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-    //       {loading ? (
-    //         <h1>Loading...</h1>
-    //       ) : (
-    //         data?.rooms.map((room) => (
-    //           <Roomcards
-    //             key={room.room_id}
-    //             roomData={room}
-    //             checkin={checkin}
-    //             checkout={checkout}
-    //             status={status}
-    //           />
-    //         ))
-    //       )}
-    //     </div>
-    //   )}
-    // </div>
-
     <header>
     <div
       className='p-5 text-center bg-image'
@@ -140,31 +91,29 @@ const Rooms = () => {
           margin: "auto",
         }}
       >
-        <p>
+        <div style={{display:"flex", justifyContent:"space-around", width:"60%"}}>
           Check-in:{" "}
           <input
+          className="dates"
             min={new Date().toISOString().split("T")[0]}
             type="date"
             onChange={(e) => setCheckIn(e.target.value)}
           />
-        </p>
-        <p>
+
+
           Check-out:{" "}
           <input
+          className="dates"
             min={conv(checkin)}
             type="date"
             onChange={(e) => setCheckOut(e.target.value)}
           />
-        </p>
-        {/* <button id="checkAvailability" onClick={handleSearch}>
-          Check Availability
-        </button> */}
+        </div>
         <Button variant="primary" size="sm" onClick={handleSearch}>
         Check Availability
           </Button>{" "}
       </div>
-      <br />
-        <br />
+
           </div>
         </div>
       </div>

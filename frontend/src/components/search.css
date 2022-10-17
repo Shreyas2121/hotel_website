@@ -1,10 +1,10 @@
 .search{
-    background-color: rgb(46, 44, 44);
+    background-color: rgb(0, 0, 0);
     color: white;
     min-height: auto;
     justify-content: space-evenly;
     margin:0;
-    padding:1rem;
+    padding:2rem;
     align-items: center;
 }
 
@@ -27,4 +27,11 @@
 
 .search input :hover{
     cursor: pointer;
+}
+
+.dates{
+    color: grey;
+    background-color: white;
+    padding: 0 1%;
+    border: 3px solid grey;
 }

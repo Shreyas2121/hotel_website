@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import Slider from "../components/Slider/Slider";
 
 import roomsBackground from "../assets/images/about_banner.jpg";
+import { Placeholder } from "react-bootstrap";
 
 
 interface Res {
@@ -55,45 +56,6 @@ const Halls = () => {
   };
 
   return (
-    // <div style={{ margin: "2%" }}>
-    //   <Slider />
-    //   <div id="search" className="search"  style={{
-    //       display: "flex",
-    //     }}>
-    //     <p>
-    //       Date:{" "}
-    //       <input
-    //         min={new Date().toISOString().split("T")[0]}
-    //         type="date"
-    //         onChange={(e) => setCheckIn(e.target.value)}
-    //       />
-    //     </p>
-    //     <div>
-    //       <Button variant="primary" size="sm" onClick={handleSearch}>
-    //         Search
-    //       </Button>{" "}
-    //     </div>
-    //   </div>
-    //   {!clicked ? (
-    //     <div></div>
-    //   ) : (
-    //     <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-    //       {loading ? (
-    //         <h1>Loading...</h1>
-    //       ) : (
-    //         data?.halls.map((hall) => (
-    //           <Hallcards
-    //             key={hall.hall_id}
-    //             hallData={hall}
-    //             checkin={checkin}
-    //             bookedHalls={hallData}
-    //           />
-    //         ))
-    //       )}
-    //     </div>
-    //   )}
-    // </div>
-
       <header>
       <div
         className='p-5 text-center bg-image'
@@ -111,22 +73,21 @@ const Halls = () => {
           display: "flex",
           width: "40rem",
         }}>
-        <p>
-          Date:{" "}
+        <div style={{width:"50%", display:"flex", justifyContent:"space-evenly"}}>
+          Date :{" "}
           <input
+          className="dates"
             min={new Date().toISOString().split("T")[0]}
             type="date"
             onChange={(e) => setCheckIn(e.target.value)}
           />
-        </p>
+        </div>
         <div>
           <Button variant="primary" size="sm" onClick={handleSearch}>
           Check Availability
           </Button>{" "}
         </div>
       </div>
-        <br />
-          <br />
             </div>
           </div>
         </div>
