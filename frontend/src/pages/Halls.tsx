@@ -7,6 +7,9 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Slider from "../components/Slider/Slider";
 
+import roomsBackground from "../assets/images/about_banner.jpg";
+
+
 interface Res {
   data: {
     halls: Hall[];
@@ -52,10 +55,61 @@ const Halls = () => {
   };
 
   return (
-    <div style={{ margin: "2%" }}>
-      <Slider />
-      <div id="search" className="search"  style={{
+    // <div style={{ margin: "2%" }}>
+    //   <Slider />
+    //   <div id="search" className="search"  style={{
+    //       display: "flex",
+    //     }}>
+    //     <p>
+    //       Date:{" "}
+    //       <input
+    //         min={new Date().toISOString().split("T")[0]}
+    //         type="date"
+    //         onChange={(e) => setCheckIn(e.target.value)}
+    //       />
+    //     </p>
+    //     <div>
+    //       <Button variant="primary" size="sm" onClick={handleSearch}>
+    //         Search
+    //       </Button>{" "}
+    //     </div>
+    //   </div>
+    //   {!clicked ? (
+    //     <div></div>
+    //   ) : (
+    //     <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+    //       {loading ? (
+    //         <h1>Loading...</h1>
+    //       ) : (
+    //         data?.halls.map((hall) => (
+    //           <Hallcards
+    //             key={hall.hall_id}
+    //             hallData={hall}
+    //             checkin={checkin}
+    //             bookedHalls={hallData}
+    //           />
+    //         ))
+    //       )}
+    //     </div>
+    //   )}
+    // </div>
+
+      <header>
+      <div
+        className='p-5 text-center bg-image'
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "30rem" }}
+      >
+        <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+          <div className='d-flex justify-content-center align-items-center h-100'>
+            <div className='text-white'>
+              <h1 className='mb-3'>HALLS</h1>
+              <h4 className='mb-3'>AWAY FROM MONOTONOUS LIFE</h4>
+              <br />
+              <br />
+              <br />
+              <div id="search" className="search"  style={{
           display: "flex",
+          width: "40rem",
         }}>
         <p>
           Date:{" "}
@@ -67,10 +121,18 @@ const Halls = () => {
         </p>
         <div>
           <Button variant="primary" size="sm" onClick={handleSearch}>
-            Search
+          Check Availability
           </Button>{" "}
         </div>
       </div>
+        <br />
+          <br />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       {!clicked ? (
         <div></div>
       ) : (
@@ -89,7 +151,7 @@ const Halls = () => {
           )}
         </div>
       )}
-    </div>
+      </header>
   );
 };
 
