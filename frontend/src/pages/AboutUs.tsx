@@ -44,14 +44,15 @@ const NavigateToAddReview = () => {
     <Reviewcards />
     <br/>
     <br/>
-    
-          <Button onClick={NavigateToAddReview}>
+<div style={{display:"flex", justifyContent:"center"}}>
+<Button onClick={NavigateToAddReview} style={{width:800, padding:8}}>
             Add Review
           </Button>
+</div>
+          
         <br/>
         <br/>
 
-      
     </header>
     </div>
   );

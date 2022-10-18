@@ -5,11 +5,19 @@ import { useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Reviews.css";
 import image1 from "../assets/images/HotelReview.png";
 
 
 const AddReview = () => {
+  const navigate = useNavigate();
+
+  const NavigateToAboutUs = () => {
+     navigate("/AboutUs");
+  };
+
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const [rating, setRating] = useState<number>(0);
@@ -35,11 +43,17 @@ const AddReview = () => {
         "Content-Type": "application/json",
       },
     });
-    if (res.data == "Review Added") {
-      alert(res.data);
+
+
+    if (res.data.message === "Review Added") {
+      toast.success("Review Submitted Successfully");
+      console.log(res.data.message);
+      NavigateToAboutUs();
     } else {
-      alert(res.data);
+      toast.error("Review Submission Failed");
     }
+    
+
   };
 
   return (
