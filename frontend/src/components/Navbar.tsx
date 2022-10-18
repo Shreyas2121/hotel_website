@@ -15,7 +15,7 @@ const NavBar = () => {
           alignItems: "center",
         }}
       >
-        <Navbar.Brand href="#home">Hotel</Navbar.Brand>
+        <Navbar.Brand href="#home">useHotel</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           style={{

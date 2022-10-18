@@ -332,7 +332,7 @@ export const BookingDetails = () => {
           <Form.Group>
             <Form.Text
               style={{
-                color: "red",
+                color: "black",
                 fontSize: "20px",
                 fontWeight: "bold",
                 marginLeft: "50%",

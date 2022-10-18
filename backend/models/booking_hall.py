@@ -4,7 +4,6 @@ from db_connect import connection_db
 db = connection_db()
 
 class BookingHall(db.Document):
-    _id = db.ObjectIdField(default=bson.ObjectId())
     booking_username = db.StringField()
     booking_useremail = db.EmailField()
     booking_date = db.StringField()
@@ -19,7 +18,7 @@ class BookingHall(db.Document):
 
     def to_json(self):
         return {
-            "_id": str(self._id),
+            "_id": str(self.pk),
             "booking_username": self.booking_username,
             "booking_useremail": self.booking_useremail,
             "booking_date": self.booking_date,
