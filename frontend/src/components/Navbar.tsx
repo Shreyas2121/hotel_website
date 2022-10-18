@@ -8,13 +8,7 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <Navbar bg="light" variant="light" expand="lg" sticky="top">
-      <Container
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Container>
         <Navbar.Brand href="#home">Hotel</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
