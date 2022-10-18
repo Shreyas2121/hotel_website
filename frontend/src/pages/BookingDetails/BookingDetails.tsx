@@ -107,6 +107,11 @@ export const BookingDetails = () => {
     const email = emailRef.current?.value;
     const specialReq = specialReqRef.current?.value;
 
+    if (name === "" || email === "") {
+      toast.error("Please fill all the fields");
+      return;
+    }
+
     const selectedAddons = filtAddOn();
     const data = {
       name,
