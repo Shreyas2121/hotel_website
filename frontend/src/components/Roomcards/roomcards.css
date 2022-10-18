@@ -111,3 +111,15 @@
   box-sizing: border-box;
   
 }
+
+.add_subtract{
+  height: 1.2rem;
+  justify-content: center;
+  width: 1rem;
+  background-color: rgb(222, 222, 222);
+  margin: 0 0.5rem;
+  color: black;
+  font-size: x-small;
+  border: 1px solid black;
+  cursor: pointer;
+}

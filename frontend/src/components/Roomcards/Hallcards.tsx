@@ -1,6 +1,5 @@
 import React, { LinkHTMLAttributes, useState } from "react";
 
-import Card from "react-bootstrap/Card";
 import { PhotoSlider } from "../PhotoSlider/PhotoSlider";
 
 import { Hall } from "../../types/types";
@@ -28,101 +27,63 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
   };
 
   return (
-    // <Card style={{ width: "25%", margin: "1rem" }}>
-    //   <div style={{ margin: "0.5rem" }}>
-    //     <PhotoSlider images={hallData.hall_image} />
-    //   </div>
-    //   <Card.Body>
-    //     <Card.Title>{hallData.hall_type}</Card.Title>
-    //     <Card.Text>{hallData.hall_price}</Card.Text>
-    //     <Card.Text>{hallData.hall_desc}</Card.Text>
-    //     <Card.Text>{hallData.hall_max_occ}</Card.Text>
-    //     <Card.Text>{hallData.hall_desc}</Card.Text>
-    //     <Card.Text>{hallData.hall_amenties}</Card.Text>
-    //     <div>
-          // <p
-          //   id="booknow"
-          //   style={{
-          //     fontWeight: "bold",
-          //     cursor: "pointer",
-          //     textAlign: "center",
-          //     fontSize: "1.5rem",
-          //     margin: "0.5rem",
-          //   }}
-          // >
-          //   {check(hallType) ? (
-          //     <p
-          //       style={{
-          //         color: "red",
-          //         fontWeight: "bold",
-          //         textAlign: "center",
-          //         backgroundColor: "grey",
-          //         borderRadius: "0.5rem",
-          //       }}
-          //     >
-          //       Sold Out
-          //     </p>
-          //   ) : (
-          //     <Link
-          //       ref={linkRef}
-          //       to="/booking"
-          //       state={{
-          //         no: 1,
-          //         checkin: checkin,
-          //         checkout: new Date(),
-          //         roomType: hallType,
-          //         roomPrice: hallPrice,
-          //         key: "Hall",
-          //       }}
-          //       style={{
-          //         textDecoration: "none",
-          //         color: "white",
-          //         backgroundColor: "green",
-          //         padding: "0.5rem",
-          //       }}
-          //     >
-          //       Book Now
-          //     </Link>
-          //   )}
-          // </p>
-    //     </div>
-    //   </Card.Body>
-    // </Card>
+  <MDBContainer
+      className="shadow-4-strong"
+      style={{
+        margin: "1rem auto",
+        padding: "1rem",
+      }}
+    >
+      <MDBRow>
+        <MDBCol size="md" style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
 
-    <MDBContainer className="shadow-4-strong" style={{
-      margin:"1rem auto",
-      // border:"2px dashed black",
-      // backgroundColor:"grey",
-      padding:"1rem",
-      // borderRadius:"1rem",
-      }}>
-    <MDBRow>
-      <MDBCol size='md'>
-      <PhotoSlider images={Object.values(hallData.hall_image)} />
-      </MDBCol>
-      <MDBCol md="6">
-        <h3>{hallData.hall_type}</h3>
-        <p>{hallData.hall_desc}</p>
-        <p>{hallData.hall_max_occ}</p>
-        <div style={{display:"flex"}}>
-        {hallData?.hall_amenties.map((hall) => (
-              <p style={{marginRight:"5px"}}>{hall}</p>
+        }}>
+          <PhotoSlider images={Object.values(hallData.hall_image)} />
+        </MDBCol>
+        
+        <MDBCol md="6">
+          <h3>{hallData.hall_type}</h3>
+          <p>
+            <span
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              Max Occupancy:
+            </span>{" "}
+            {hallData.hall_max_occ}
+          </p>
+          <p>{hallData.hall_desc}</p>
+          <div style={{ display: "flex" }}>
+            <span style={{
+                fontWeight: "bold",
+              }}>Amenities: </span>
+            {hallData?.hall_amenties.map((room) => (
+              <p style={{ marginRight: "5px", marginLeft:"5px" }}>✓ {room}</p>
             ))}
-        </div>
-      </MDBCol>
-      <MDBCol size='md' style={{
-        alignSelf:"center"
-      }}>
-      <p
-            id="booknow"
-            style={{
-              fontWeight: "bold",
-              cursor: "pointer",
-              textAlign: "center",
-              fontSize: "1.5rem",
-              margin: "0.5rem",
-            }}
-          >
+          </div>
+          
+        </MDBCol>
+
+        <MDBCol
+          size="md"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            marginLeft:"8rem"
+          }}
+        >
+          <div>
+            <p style={{fontSize: "0.8rem", marginBottom:0}}>Per day for a hall</p>
+            <p style={{fontSize: "1.5rem", fontWeight:"bold"}}>₹ {hallPrice}/-</p>
+          </div>
+
+          <p
+            id="booknow">
             {check(hallType) ? (
               <p
                 style={{
@@ -148,20 +109,21 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
                   key: "Hall",
                 }}
                 style={{
+                  fontSize: "1rem",
                   textDecoration: "none",
                   color: "white",
-                  backgroundColor: "green",
-                  padding: "0.5rem",
+                  backgroundColor: "#1E90FF",
+                  padding: "0.75rem",
+                  borderRadius: "0.5rem",
                 }}
               >
                 Book Now
               </Link>
             )}
           </p>
-      </MDBCol>
-    </MDBRow>
-  </MDBContainer>
-
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
 

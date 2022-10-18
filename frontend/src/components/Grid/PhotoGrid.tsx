@@ -51,7 +51,8 @@ const PhotoGrid = () => {
             >
               <MDBCardImage
                 src="https://media-cdn.tripadvisor.com/media/photo-s/0b/f2/bc/a2/single-room-has-a-single.jpg"
-                fluid
+                // fluid
+                className="photogridimages"
                 alt="..."
               />
               <a>
@@ -75,7 +76,8 @@ const PhotoGrid = () => {
             >
               <MDBCardImage
                 src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTYJu5rTwm2LBvvdtkKuc10T-qFXTta4HLvJAGf55mG7Qx1cTjB"
-                fluid
+                // fluid
+                className="photogridimages"
                 alt="..."
               />
               <a>
@@ -99,7 +101,8 @@ const PhotoGrid = () => {
             >
               <MDBCardImage
                 src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSmDDeqwsXamzfNfzDiwaYDvtjCmeO2UTGJKXsaC_Q0LvjC2alr"
-                fluid
+                // fluid
+                className="photogridimages"
                 alt="..."
               />
               <a>
@@ -133,7 +136,8 @@ const PhotoGrid = () => {
             >
               <MDBCardImage
                 src="https://cdn0.weddingwire.in/vendor/0450/3_2/960/jpeg/setup2_15_80450-162745330529859.jpeg"
-                fluid
+                // fluid
+                className="photogridimages"
                 alt="..."
               />
               <a>
@@ -157,7 +161,8 @@ const PhotoGrid = () => {
             >
               <MDBCardImage
                 src="https://media.istockphoto.com/photos/conference-room-with-a-long-table-and-lots-of-chairs-picture-id98395721?k=20&m=98395721&s=612x612&w=0&h=aLPhhimrM4OYCsoFiK2EbMQqgKvNVSkPBl1M9Od0BYc="
-                fluid
+                // fluid
+                className="photogridimages"
                 alt="..."
               />
               <a>
@@ -181,7 +186,8 @@ const PhotoGrid = () => {
             >
               <MDBCardImage
                 src="https://www.chennaiconventioncentre.com/wp-content/uploads/2019/03/ccc-blog-825x412.jpg"
-                fluid
+                // fluid
+                className="photogridimages"
                 alt="..."
               />
               <a>
