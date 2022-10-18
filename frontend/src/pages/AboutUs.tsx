@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 // import { Button } from "react-bootstrap";
 // import React from "react";
 import { Card, Button } from "react-bootstrap";
+import hotelPicture from "../assets/images/abouts_us.png";
 import roomsBackground from "../assets/images/about_banner.jpg";
 
 
@@ -38,6 +39,29 @@ const NavigateToAddReview = () => {
         </div>
       </div>
     </div>
+    <br />
+    <div className="container">
+      <div className="row">
+        <div className="col">
+        <div>
+            <h2  className='d-flex justify-content-center align-items-center h-100'>Welcome to useHotel</h2>
+              <p>Our properties and services have set industry level benchmark for us as well as our competitors.
+                Making us Asias top hotel chains to serve world class Luxury that is truly uncompromised. A brand that works on principles and values.
+                Perfectly situated in the heart of Jaipur's most renowned shopping district.
+                The decor is a blend of traditional and contemporary, with a touch of modernity.
+                Makes the hotel a perfect blend of luxury and comfort. The hotel is inspired by the rich heritage of the city.
+                We are proud to be the best in the industry and we are working consistently to be the best in the industry for as long as the legacy stays.
+              </p>
+              </div>
+        </div>
+        <div className="col">
+          <img src={hotelPicture} alt="useMango Photo" />
+          </div>
+
+      </div>
+
+    </div>
+    <div>
     <p>
        <h1>Top Reviews</h1>
     </p>
@@ -52,6 +76,7 @@ const NavigateToAddReview = () => {
           
         <br/>
         <br/>
+    </div>
 
     </header>
     </div>
