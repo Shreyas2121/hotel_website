@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { Booking } from "../../types/types";
 import Card from "react-bootstrap/Card";
@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
-  bookingDetails: Booking;
+  bookingDetails: Booking[];
   setDel: React.Dispatch<React.SetStateAction<boolean>>;
 
 }
@@ -27,14 +27,12 @@ const DisplayDetails = ({ bookingDetails,setDel }: Props) => {
     if (res.status === 200) {
       setDel(true);
       toast.success("Reservation deleted successfully");
-      
     }
     else {
       toast.error("Something went wrong");
     }
     
   };
-
 
   return (
     <div>
@@ -51,19 +49,22 @@ const DisplayDetails = ({ bookingDetails,setDel }: Props) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{bookingDetails.booking_username}</td>
-            <td>{bookingDetails.booking_check_in}</td>
-            <td>{bookingDetails.booking_check_out}</td>
-            <td>{bookingDetails.booking_room_type}</td>
-            <td>{bookingDetails.booking_no_of_rooms}</td>
-            <td>{bookingDetails.booking_total}</td>
-            <td>
-              <Button onClick={(e) => handleSubmit(bookingDetails._id)}>
-                Cancel Booking
-              </Button>
-            </td>
-          </tr>
+          {bookingDetails.map((booking)=>(
+             <tr>
+             <td>{booking.booking_username}</td>
+             <td>{booking.booking_check_in}</td>
+             <td>{booking.booking_check_out}</td>
+             <td>{booking.booking_room_type}</td>
+             <td>{booking.booking_no_of_rooms}</td>
+             <td>{booking.booking_total}</td>
+             <td>
+               <Button onClick={(e) => handleSubmit(booking._id)}>
+                 Cancel Booking
+               </Button>
+             </td>
+           </tr>
+          ))}
+         
         </tbody>
       </Table>
     </div>

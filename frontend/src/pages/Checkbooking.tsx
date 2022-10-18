@@ -77,9 +77,8 @@ export const Checkbooking = () => {
                 gap: "1rem",
               }}
             >
-              {bookingDetails.map((booking) => {
-                return <DisplayDetails bookingDetails={booking} setDel={setDel} />;
-              })}
+              <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} />
+            
             </div>
           )}
         </div>
