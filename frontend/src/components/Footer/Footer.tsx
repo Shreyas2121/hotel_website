@@ -20,8 +20,8 @@ const Footer = () => {
       <div className="tm-address">
         <p className="bold">Address</p>
         <p>
-          415, Park Avenu, Hawai Phone : (211) 9275693451 Email :
-          majestic@info.com
+          415, UseHotel, Jaipur, Phone : (211) 9275693451 Email :
+          usehotel@info.com
         </p>
       </div>
       <br />

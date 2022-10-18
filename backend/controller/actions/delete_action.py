@@ -1,16 +1,21 @@
 from flask import jsonify, request
 from typing import Any
 from models.booking import BookingRoom
+from bson import ObjectId,objectid
 
 def cancel_booking(id):
-    try:
-        BookingRoom.objects(_id=id).delete()
-        return jsonify({"message":"Booking Cancelled"})
-    except Exception:
-        return jsonify({"message":"Booking Not Found"})
+    # i=objectid.ObjectId(id)
+    # print(i)
 
+    booking = BookingRoom.objects().get(pk=id)
+    print('test')
+    print(booking)
+    booking.delete()
+    return booking.to_json()
 
 def get_bookings_by_email(email):
+
     bookings = BookingRoom.objects().filter(booking_useremail=email)
+    print(bookings)
 
     return list(map(lambda x: x.to_json(), bookings))
