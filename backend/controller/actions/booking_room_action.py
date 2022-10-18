@@ -56,9 +56,9 @@ def check_booking():
         for key,value in i.items():
             if key == 'booking_room_type':
                 if value in new:
-                    new[value] += 1
+                    new[value] = new[value]+i['booking_no_of_rooms']
                 else:
-                    new[value] = 1
+                    new[value] = i['booking_no_of_rooms']
 
     for key, value in new.items():
         if key in available_rooms:

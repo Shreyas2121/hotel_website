@@ -41,7 +41,7 @@ const NavBar = () => {
               About Us
             </Nav.Link>
             <Nav.Link as={Link} to="/checkbooking">
-              Check Booking
+              Your Bookings
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
