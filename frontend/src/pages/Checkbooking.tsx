@@ -1,4 +1,4 @@
-import React, { ReactEventHandler } from "react";
+import React, { ReactEventHandler, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
@@ -20,6 +20,7 @@ export const Checkbooking = () => {
   const [bookingDetails, setBookingDetails] = React.useState<Booking[]>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [clicked, setClicked] = React.useState<boolean>(false);
+  const [del, setDel] = React.useState<boolean>(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -33,6 +34,20 @@ export const Checkbooking = () => {
     setLoading(false);
     setClicked(true);
   };
+
+  useEffect(() => {
+      const a = async() => {
+        const email = emailRef.current.value;
+    setLoading(true);
+    const { data }: Res = await axios.get(
+      `http://127.0.0.1:5000/reservation/get/${email}`
+    );
+    setBookingDetails(data);
+    console.log(data);
+    setLoading(false);
+      }
+      a(); 
+  },[del,setDel]) 
 
   return (
     <Container style={{ minHeight: "100vh" }}>
@@ -56,14 +71,14 @@ export const Checkbooking = () => {
           ) : (
             <div
               style={{
-                display: "flex",
+                // display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 gap: "1rem",
               }}
             >
               {bookingDetails.map((booking) => {
-                return <DisplayDetails bookingDetails={booking} />;
+                return <DisplayDetails bookingDetails={booking} setDel={setDel} />;
               })}
             </div>
           )}

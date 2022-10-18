@@ -38,6 +38,18 @@ const NavigateToAddReview = () => {
         </div>
       </div>
     </div>
+    <div>
+            <h2>Welcom to useHotel</h2>
+              <p>Our properties and services have set industry level benchmark for us as well as our competitors.
+                Making us Asias top hotel chains to serve world class Luxury that is truly unompromised. A brand that works on principles and values.
+                Drawing inspiration from time-honored Athenian wisdom, Academias Hotel, Autograph Collection offers a one-of-a-kind backdrop for your visit to Jaipur's capital city. 
+                Perfectly situated in the heart of Athens' most renowned shopping district, we're within walking distance of the Acropolis and other legendary destinations.
+                You'll find yourself entranced by our elegant decor, which echoes ancient Greek architecture, in addition to the stunning contemporary design elements that exist throughout our luxury hotel.
+                Experience a distinctive blend of historic charm, intellectual creativity and contemporary comfort at useHotel. 
+                We are proud to be the best in the industry and we are working consistently to be the best in the industry for as long as the legacy stays.
+              </p>
+              </div>
+    <div>
     <p>
        <h1>Top Reviews</h1>
     </p>
@@ -50,6 +62,7 @@ const NavigateToAddReview = () => {
           </Button>
         <br/>
         <br/>
+    </div>
 
       
     </header>

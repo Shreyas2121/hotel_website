@@ -5,25 +5,41 @@ import Card from "react-bootstrap/Card";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   bookingDetails: Booking;
+  setDel: React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 
-const handleSubmit = async (id: string) => {
-  console.log(id);
-  const res = await axios.delete(`http://127.0.0.1:5000/reservation/${id}`);
-  console.log(res);
-  if (res.status === 200) {
-    toast.success("Reservation deleted successfully");
-  }
-};
+const DisplayDetails = ({ bookingDetails,setDel }: Props) => {
 
-const DisplayDetails = ({ bookingDetails }: Props) => {
+  const [clicked, setClicked] = React.useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+
+  const handleSubmit = async (id: string) => {
+    console.log(id);
+    const res = await axios.delete(`http://127.0.0.1:5000/reservation/${id}`);
+    console.log(res);
+    if (res.status === 200) {
+      setDel(true);
+      toast.success("Reservation deleted successfully");
+      
+    }
+    else {
+      toast.error("Something went wrong");
+    }
+    
+  };
+
+
   return (
     <div>
       <Table striped bordered hover>
-        <thead>
+          <thead>
           <tr>
             <th>Name</th>
             <th>Check-in Date</th>
