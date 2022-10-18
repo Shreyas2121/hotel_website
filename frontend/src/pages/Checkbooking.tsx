@@ -7,7 +7,7 @@ import { Booking } from "../types/types";
 // import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
 // import InputGroup from 'react-bootstrap/InputGroup';
-import Stack from 'react-bootstrap/Stack';
+import Stack from "react-bootstrap/Stack";
 import axios from "axios";
 
 interface Res {
@@ -29,6 +29,7 @@ export const Checkbooking = () => {
       `http://127.0.0.1:5000/reservation/get/${email}`
     );
     setBookingDetails(data);
+    console.log(data);
     setLoading(false);
     setClicked(true);
   };
@@ -37,9 +38,16 @@ export const Checkbooking = () => {
     <Container style={{ minHeight: "100vh" }}>
       <br />
       <Stack direction="horizontal" gap={3}>
-      <Form.Control  ref={emailRef} type="email" className="me-auto" placeholder="Enter Email" />
-      <Button onClick={handleSubmit}  type="button" variant="secondary">Check</Button>
-    </Stack>
+        <Form.Control
+          ref={emailRef}
+          type="email"
+          className="me-auto"
+          placeholder="Enter Email"
+        />
+        <Button onClick={handleSubmit} type="button" variant="secondary">
+          Check
+        </Button>
+      </Stack>
       <br />
       {clicked && (
         <div>
