@@ -125,10 +125,12 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                 <button onClick={handleClickMinus}>-</button>
                 <span>{no} </span>
                 <button onClick={handleClickPlus}>+</button>
-                <p> Available rooms:</p>
-                <p>{avaiRooms}</p>
+                {/* <p> Available rooms:</p>
+                <p>{avaiRooms}</p> */}
                 {/* <button onClick={() => check1()}>Check</button> */}
               </div>
+              <div>Per night for one room: {roomPrice}</div>
+              <div>Total: {roomPrice * no}</div>
               <p
                 id="booknow"
                 style={{
