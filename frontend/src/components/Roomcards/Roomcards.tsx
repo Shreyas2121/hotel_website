@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "react-bootstrap/Card";
 import { PhotoSlider } from "../PhotoSlider/PhotoSlider";
@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { border, padding } from "@mui/system";
+import { toast } from "react-toastify";
 
 interface Status {
   Basic: number;
@@ -22,12 +23,12 @@ interface Props {
 }
 
 const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
-  const [no, setNo] = useState(0);
+  const [no, setNo] = useState(1);
+  const [avaiRooms, setAvaiRooms] = useState(0);
   const roomType = roomData.room_type;
   const roomPrice = Number(roomData.room_price);
 
   const check = () => {
-    console.log(status);
     let keys = Object.keys(status);
     if (keys.includes(roomType)) {
       if (status[roomType] > 0) {
@@ -37,6 +38,34 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
       }
     }
   };
+
+  const check1 = () => {
+    Object.entries(status).forEach(([key, value]) => {
+      if (roomType === key) {
+        setAvaiRooms(value);
+      }
+    });
+  };
+
+  const handleClickMinus = () => {
+    if (no > 1) {
+      setNo((prev) => prev - 1);
+    } else {
+      toast.error("Please select atleast one room");
+    }
+  };
+
+  const handleClickPlus = () => {
+    if (no < avaiRooms) {
+      setNo((prev) => prev + 1);
+    } else {
+      toast.error("No more rooms available");
+    }
+  };
+
+  useEffect(() => {
+    check1();
+  }, []);
 
   return (
     <MDBContainer
@@ -85,7 +114,23 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                 textAlign: "center",
               }}
             >
-              Available
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <label></label>
+                <button onClick={handleClickMinus}>-</button>
+                <span>{no} </span>
+                <button onClick={handleClickPlus}>+</button>
+                {/* <p> Available rooms:</p>
+                <p>{avaiRooms}</p> */}
+                {/* <button onClick={() => check1()}>Check</button> */}
+              </div>
+              <div>Per night for one room: {roomPrice}</div>
+              <div>Total: {roomPrice * no}</div>
               <p
                 id="booknow"
                 style={{
@@ -97,7 +142,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                 <Link
                   to="/booking"
                   state={{
-                    no: 1,
+                    no,
                     checkin,
                     checkout,
                     roomType,

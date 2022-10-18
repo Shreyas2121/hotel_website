@@ -107,6 +107,11 @@ export const BookingDetails = () => {
     const email = emailRef.current?.value;
     const specialReq = specialReqRef.current?.value;
 
+    if (name === "" || email === "") {
+      toast.error("Please fill all the fields");
+      return;
+    }
+
     const selectedAddons = filtAddOn();
     const data = {
       name,
@@ -214,9 +219,13 @@ export const BookingDetails = () => {
             </Form.Group>
           </div>
           <hr />
-          <Form.Group>
-            <Form.Label htmlFor="adult">No of rooms : {no}</Form.Label>
-          </Form.Group>
+          {key == "Hall" ? (
+            <div></div>
+          ) : (
+            <Form.Group>
+              <Form.Label htmlFor="adult">No of rooms : {no}</Form.Label>
+            </Form.Group>
+          )}
 
           {key == "Hall" ? (
             <Form.Group>
@@ -235,7 +244,7 @@ export const BookingDetails = () => {
           )}
 
           <Form.Group>
-            <Form.Label htmlFor="adult">Room Type : {roomType}</Form.Label>
+            <Form.Label htmlFor="adult">Type : {roomType}</Form.Label>
           </Form.Group>
           <hr />
           <Form.Group>

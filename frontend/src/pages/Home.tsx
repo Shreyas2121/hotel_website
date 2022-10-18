@@ -5,7 +5,6 @@ import Reviewcards from "../components/Roomcards/Reviewcards";
 
 import bannerImage from "../assets/images/banner_bg.jpg";
 
-
 const Home = () => {
   
   return (
