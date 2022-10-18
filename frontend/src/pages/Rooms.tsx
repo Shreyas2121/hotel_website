@@ -10,7 +10,6 @@ import axios from "axios";
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
 
-
 interface Res {
   data: {
     rooms: Room[];
@@ -71,59 +70,62 @@ const Rooms = () => {
 
   return (
     <header>
-    <div
-      className='p-5 text-center bg-image'
-      style={{ backgroundImage: `url(${roomsBackground})`, height: "30rem" }}
-    >
-      <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-        <div className='d-flex justify-content-center align-items-center h-100'>
-          <div className='text-white'>
-            <h1 className='mb-3'>ROOMS</h1>
-            <h4 className='mb-3'>AWAY FROM MONOTONOUS LIFE</h4>
-            <br />
-            <br />
-            <br />
-            <div
-        className="search"
-        style={{
-          display: "flex",
-          width: "60rem",
-          margin: "auto",
-        }}
+      <div
+        className="p-5 text-center bg-image"
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "30rem" }}
       >
-        <div style={{display:"flex", justifyContent:"space-around", width:"60%"}}>
-          Check-in:{" "}
-          <input
-          className="dates"
-            min={new Date().toISOString().split("T")[0]}
-            type="date"
-            onChange={(e) => setCheckIn(e.target.value)}
-          />
-
-
-          Check-out:{" "}
-          <input
-          className="dates"
-            min={conv(checkin)}
-            type="date"
-            onChange={(e) => setCheckOut(e.target.value)}
-          />
-        </div>
-        <Button variant="primary" size="sm" onClick={handleSearch}>
-        Check Availability
-          </Button>{" "}
-      </div>
-
+        <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <div className="text-white">
+              <h1 className="mb-3">ROOMS</h1>
+              <h4 className="mb-3">AWAY FROM MONOTONOUS LIFE</h4>
+              <br />
+              <br />
+              <br />
+              <div
+                className="search"
+                style={{
+                  display: "flex",
+                  width: "60rem",
+                  margin: "auto",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    width: "60%",
+                  }}
+                >
+                  Check-in:{" "}
+                  <input
+                    className="dates"
+                    min={new Date().toISOString().split("T")[0]}
+                    type="date"
+                    onChange={(e) => setCheckIn(e.target.value)}
+                  />
+                  Check-out:{" "}
+                  <input
+                    className="dates"
+                    min={conv(checkin)}
+                    type="date"
+                    disabled={checkIn === ""}
+                    onChange={(e) => setCheckOut(e.target.value)}
+                  />
+                </div>
+                <Button variant="primary" size="sm" onClick={handleSearch}>
+                  Check Availability
+                </Button>{" "}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    
       {!clicked ? (
         <div></div>
       ) : (
-        <div style={{ margin:"2rem" }}>
+        <div style={{ margin: "2rem" }}>
           {loading ? (
             <h1>Loading...</h1>
           ) : (
