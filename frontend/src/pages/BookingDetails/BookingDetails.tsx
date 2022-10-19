@@ -1,5 +1,4 @@
 import axios from "axios";
-import { truncate } from "fs/promises";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -235,7 +234,7 @@ export const BookingDetails = () => {
             ) : (
               <div id="addon-list">
                 {Object.entries(type).map(([key, value]) => (
-                  <Form.Group>
+                  <Form.Group style={{display:"flex"}}>
                     <Form.Check
                       ref={checkRef}
                       className="checkbox-Form.Control"
@@ -246,7 +245,7 @@ export const BookingDetails = () => {
                       onChange={handleAddon}
                     />
                     <Form.Label className="checkbox" id="check-box">
-                      {key} : ₹ {value}
+                      {key} <br/> <p style={{fontSize:"0.8rem"}}>₹ {value}</p>
                     </Form.Label>
                   </Form.Group>
                 ))}
