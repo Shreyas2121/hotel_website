@@ -288,7 +288,7 @@ export const BookingDetails = () => {
           <hr />
 
           <Form.Group>
-            <Form.Text id="total">Total: {total}</Form.Text>
+            <Form.Text id="total">Total: ₹{total}</Form.Text>
           </Form.Group>
           <hr />
           <br />
