@@ -82,6 +82,7 @@ const Halls = () => {
                 >
                   Date :{" "}
                   <input
+                    id="check-in"
                     className="dates"
                     min={new Date().toISOString().split("T")[0]}
                     type="date"
@@ -89,7 +90,7 @@ const Halls = () => {
                   />
                 </div>
                 <div>
-                  <Button variant="primary" size="sm" onClick={handleSearch}>
+                  <Button id="check-availability" variant="primary" size="sm" onClick={handleSearch}>
                     Check Availability
                   </Button>{" "}
                 </div>
