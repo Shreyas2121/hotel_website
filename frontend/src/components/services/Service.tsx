@@ -1,4 +1,3 @@
-import React from "react";
 import "./service.css";
 
 import {MDBContainer, MDBRow, MDBCol, MDBTypography } from 'mdb-react-ui-kit';
@@ -7,7 +6,6 @@ import {
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
-  MDBBtn
 } from 'mdb-react-ui-kit';
 
 import servicesBackground from "../../assets/images/facilites_bg.jpg";
@@ -42,11 +40,12 @@ const Service = () => {
       <MDBRow style={{
         display: "flex",
         justifyContent: "space-evenly",
-        
+        margin:"auto",
+        width: "90%",
       }}
       className='mb-3'>
         <MDBCol md='3'>
-        <MDBCard>
+        <MDBCard className="boxes">
           <MDBCardBody>
             <img className="tm-serimage" src={image1} />
             <MDBCardTitle>Swimming Pool</MDBCardTitle>
@@ -58,7 +57,7 @@ const Service = () => {
         </MDBCol>
 
         <MDBCol md='3'>
-        <MDBCard>
+        <MDBCard className="boxes">
           <MDBCardBody>
             <img className="tm-serimage" src={image2} />
             <MDBCardTitle>Gymnesium</MDBCardTitle>
@@ -70,7 +69,7 @@ const Service = () => {
         </MDBCol>
 
         <MDBCol md='3'>
-        <MDBCard>
+        <MDBCard className="boxes">
           <MDBCardBody>
             <img className="tm-serimage" src={image3} />
             <MDBCardTitle>Bar</MDBCardTitle>
@@ -86,11 +85,12 @@ const Service = () => {
       <MDBRow style={{
         display: "flex",
         justifyContent: "space-evenly",
-        
+        margin:"auto",
+        width: "90%",
       }}
       className='mb-3'>
         <MDBCol md='3'>
-        <MDBCard>
+        <MDBCard className="boxes">
           <MDBCardBody>
             <img className="tm-serimage" src={image4} />
             <MDBCardTitle>Restaurant</MDBCardTitle>
@@ -101,7 +101,7 @@ const Service = () => {
         </MDBCard>
         </MDBCol>
         <MDBCol md='3'>
-        <MDBCard>
+        <MDBCard className="boxes">
           <MDBCardBody>
             <img className="tm-serimage" src={image5} />
             <MDBCardTitle>Sports CLub</MDBCardTitle>
@@ -111,7 +111,7 @@ const Service = () => {
           </MDBCardBody>
         </MDBCard>        </MDBCol>
         <MDBCol md='3'>
-        <MDBCard>
+        <MDBCard className="boxes">
           <MDBCardBody>
             <img className="tm-serimage" src={image6} />
             <MDBCardTitle>Spa</MDBCardTitle>
