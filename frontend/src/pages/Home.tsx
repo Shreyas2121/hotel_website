@@ -6,6 +6,7 @@ import Reviewcards from "../components/Roomcards/Reviewcards";
 import bannerImage from "../assets/images/banner_bg.jpg";
 
 const Home = () => {
+  let  isHomepage="featured";
   
   return (
     <header>
@@ -45,7 +46,9 @@ const Home = () => {
       <PhotoGrid />
       <Service />
       <br />
-      <Reviewcards />
+      <Reviewcards
+       featured={isHomepage}
+      />
 
     </header>
   );

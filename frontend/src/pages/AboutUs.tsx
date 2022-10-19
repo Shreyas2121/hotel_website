@@ -5,17 +5,17 @@ import { useNavigate } from "react-router-dom";
 // import React from "react";
 import { Card, Button } from "react-bootstrap";
 import roomsBackground from "../assets/images/about_banner.jpg";
-
-
+import { UseFetch } from "../customHook/UseFetch";
 
 
 const Aboutus = () => {
-
   const navigate = useNavigate();
 
 const NavigateToAddReview = () => {
    navigate("/addreview/");
-};
+}; 
+
+let  isHomepage="";
 
   return (
   <div>
@@ -53,7 +53,9 @@ const NavigateToAddReview = () => {
     <p>
        <h1>Top Reviews</h1>
     </p>
-    <Reviewcards />
+    <Reviewcards
+     featured={isHomepage} 
+    />
     <br/>
     <br/>
 <div style={{display:"flex", justifyContent:"center"}}>

@@ -111,3 +111,29 @@
   box-sizing: border-box;
   
 }
+
+.review-text{
+  font-size: 1.2vw;
+  color: rgb(0, 0, 0);
+  text-align: center;
+
+
+
+}
+.Review-name{
+  font-size: 1.5vw;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+#review-cards{
+
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 1% auto;
+  padding: 2%;
+  max-width: 50%;
+  min-height: 22rem;
+  max-height: 22rem;
+  border-radius: 1rem;
+}
