@@ -10,7 +10,10 @@ from models.booking_room import BookingRoom
 
 def book_room():
     data: Any = request.get_json()
-    booking_obj = BookingRoom(
+    print(data)
+
+    try:
+        booking_obj = BookingRoom(
         booking_username=data['name'],
         booking_useremail=data['email'],
         booking_date=data['date'],
@@ -24,8 +27,11 @@ def book_room():
         booking_coupon_discount=data['discount'],
         booking_special_request=data['specialReq'],
         booking_total=data['total'],
-    )
-    booking_obj.save()
+        )
+        booking_obj.save()
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
     return jsonify({"message": "Booking Successful",})
 
 def get_bookings():

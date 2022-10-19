@@ -66,21 +66,11 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
   }, []);
 
   return (
-    <MDBContainer
-      className="shadow-4-strong"
-      style={{
-        margin: "1rem auto",
-        padding: "1rem",
-      }}
-    >
+    <MDBContainer className="shadow-4-strong room-container">
       <MDBRow>
-        <MDBCol size="md" style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
 
-        }}>
-          <PhotoSlider images={Object.values(roomData.room_images)}/>
+        <MDBCol className="card-column-one" size="md">
+            <PhotoSlider images={Object.values(roomData.room_images)}/>
         </MDBCol>
 
         <MDBCol md="6">
@@ -95,61 +85,52 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
             </span>{" "}
             {roomData.room_max_occ}
           </p>
+
           <p>{roomData.room_desc}</p>
+          
           <div style={{ display: "flex" }}>
             <span style={{
-                fontWeight: "bold",
-              }}>Amenities: </span>
+              fontWeight: "bold",
+            }}>
+              Amenities:
+            </span>
+
             {roomData?.room_amenties.map((room) => (
               <p style={{ marginRight: "5px", marginLeft:"5px" }}>✓ {room}</p>
             ))}
+
           </div>
 
         </MDBCol>
 
-        <MDBCol
-          size="md"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            marginLeft:"8rem"
-          }}
-        >
-          <div>
-            <p style={{fontSize: "0.8rem", marginBottom:0}}>Per night for one room</p>
-            <p style={{fontSize: "1.5rem", fontWeight:"bold"}}>₹ {roomPrice}/-</p>
-          </div>
+        <MDBCol className="card-column-three" size="md">
+
+            <div>
+              <p style={{fontSize: "0.8rem", marginBottom:0}}>Per night for one room</p>
+              <p style={{fontSize: "1.5rem", fontWeight:"bold"}}>₹ {roomPrice}/-</p>
+            </div>
 
           {check() ? (
             <>
+              <div>
 
-              <div >
-                <div  style={{
-                  display: "flex",
-                  alignItems:'center',
-                }}>
-
-                <label>Rooms :</label>
-                <button className=" add_subtract" onClick={handleClickMinus}>-</button>
-                <span style={{fontSize: "0.8rem"}}>{no}</span>
-                <button className=" add_subtract" onClick={handleClickPlus}>+</button>
+                <div className="col-3-div-2">
+                  <label>Rooms :</label>
+                  <button className="add_subtract" id="addButton" onClick={handleClickMinus}>-</button>
+                  <span style={{fontSize: "0.8rem"}}>{no}</span>
+                  <button className="add_subtract" id="subtractButton" onClick={handleClickPlus}>+</button>
                 </div>
-              <div>
-                <p style={{
-                  fontSize: "1rem",
-                  marginTop:'5px'
-                }}>Total: ₹ {roomPrice * no}</p>
-              </div>
+
+                <div>
+                  <p className="total-price">
+                    Total: ₹ {roomPrice * no}
+                  </p>
+                </div>
+
               </div>
 
               <div>
-                <p
-                  id="booknow"
-                  style={{
-                    fontWeight: "bold",
-                  }}
-                >
+                <p>
                   <Link
                     to="/booking"
                     state={{
@@ -160,32 +141,18 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                       roomPrice,
                       key: "Room",
                     }}
-                    style={{
-                      fontSize: "1rem",
-                      textDecoration: "none",
-                      color: "white",
-                      backgroundColor: "#1E90FF",
-                      padding: "0.75rem",
-                      borderRadius: "0.5rem",
-                    }}
+                    className="link-style"
+                    id="booknow"
                   >
                     Book Now
                   </Link>
                 </p>
               </div>
-
             </>
 
           ) : (
 
-            <div
-              style={{
-                color: "red",
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                textAlign: "center",
-              }}
-            >
+            <div className="sold-out">
               Sold Out
             </div>
           )}

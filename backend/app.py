@@ -20,7 +20,7 @@ app.register_blueprint(addons_route)
 app.register_blueprint(booking_route)
 app.register_blueprint(booking_hall_route)
 app.register_blueprint(reviews_route)
-app.register_blueprint(cancel_route)
+# app.register_blueprint(cancel_route)
 
 
 @app.route('/')

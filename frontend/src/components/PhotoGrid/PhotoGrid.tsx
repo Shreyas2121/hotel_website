@@ -11,13 +11,8 @@ import {
 
 const PhotoGrid = () => {
   return (
-    <MDBContainer style={{ width: "80%", margin: "auto", padding: "8%" }}>
-      <div
-        style={{
-          textAlign: "center",
-          padding: "40px",
-        }}
-      >
+    <MDBContainer className="grid-container">
+      <div className="container-div">
         <MDBTypography tag="h1" className="mb-0">
           Accomadation
         </MDBTypography>
@@ -26,15 +21,10 @@ const PhotoGrid = () => {
           becoming extremely fast.
         </MDBTypography>
       </div>
-      <MDBRow
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-        }}
-        className="mb-3"
-      >
-        <MDBCol size="4">
+
+      <MDBRow className="mb-3">
+
+        <MDBCol size="3">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -55,11 +45,12 @@ const PhotoGrid = () => {
               </a>
             </MDBRipple>
             <MDBCardBody>
-              <MDBCardTitle>Basic</MDBCardTitle>
+              <MDBCardTitle><h4>Basic</h4></MDBCardTitle>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="4">
+
+        <MDBCol size="3">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -80,11 +71,12 @@ const PhotoGrid = () => {
               </a>
             </MDBRipple>
             <MDBCardBody>
-              <MDBCardTitle>Suite</MDBCardTitle>
+              <MDBCardTitle><h4>Suite</h4></MDBCardTitle>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="4">
+
+        <MDBCol size="3">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -105,21 +97,18 @@ const PhotoGrid = () => {
               </a>
             </MDBRipple>
             <MDBCardBody>
-              <MDBCardTitle>Delux</MDBCardTitle>
+              <MDBCardTitle><h4>Delux</h4></MDBCardTitle>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
+
       </MDBRow>
+
       <br />
 
-      <MDBRow
-        className="mb-3"
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-        }}
-      >
-        <MDBCol size="4">
+      <MDBRow className="mb-3">
+
+        <MDBCol size="3">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -140,11 +129,12 @@ const PhotoGrid = () => {
               </a>
             </MDBRipple>
             <MDBCardBody>
-              <MDBCardTitle>Wedding Hall</MDBCardTitle>
+              <MDBCardTitle><h4>Wedding Hall</h4></MDBCardTitle>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="4">
+
+        <MDBCol size="3">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -165,11 +155,12 @@ const PhotoGrid = () => {
               </a>
             </MDBRipple>
             <MDBCardBody>
-              <MDBCardTitle>Conference Hall</MDBCardTitle>
+              <MDBCardTitle><h4>Conference Hall</h4></MDBCardTitle>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="4">
+
+        <MDBCol size="3">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -190,10 +181,11 @@ const PhotoGrid = () => {
               </a>
             </MDBRipple>
             <MDBCardBody>
-              <MDBCardTitle>Birthday Party</MDBCardTitle>
+              <MDBCardTitle><h4>Birthday Party</h4></MDBCardTitle>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
+
       </MDBRow>
     </MDBContainer>
   );
