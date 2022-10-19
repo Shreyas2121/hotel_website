@@ -51,7 +51,6 @@ const Rooms = () => {
     e.preventDefault();
     const formatedCheckIn = checkin.toISOString();
     const formatedCheckOut = checkout.toISOString();
-    console.log(formatedCheckIn, formatedCheckOut);
 
     const { data }: ResStatus = await axios.post(
       "http://127.0.0.1:5000/booking/room/check",
