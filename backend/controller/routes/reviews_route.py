@@ -11,7 +11,7 @@ def get():
 
 
 
-@reviews_route.route('/reviews',methods=['POST'])
+@reviews_route.route('/reviews/',methods=['POST'])
 def add():
     return add_reviews()
 
