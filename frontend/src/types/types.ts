@@ -11,6 +11,7 @@ export interface Room {
   };
   total_rooms: number;
   room_max_occ: number;
+  room_area: string;
 }
 
 export interface Hall {

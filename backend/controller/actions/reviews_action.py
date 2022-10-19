@@ -16,3 +16,7 @@ def add_reviews():
         rating = data['rating'],
     ).save()
     return jsonify({"message":"Review Added"})
+
+def get_top_reviews():
+    review_data = Reviews.objects(rating__gte=5)  # type: ignore
+    return jsonify({'Reviews': [review.to_json() for review in review_data ]})

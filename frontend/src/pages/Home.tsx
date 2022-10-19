@@ -9,12 +9,16 @@ import Reviewcards from "../components/Roomcards/Reviewcards";
 import bannerImage from "../assets/images/banner_bg.jpg";
 
 const Home = () => {
+  let isHomepage = "featured";
+
   return (
     <header>
       <div
         className="p-5 text-center bg-image parallax"
-        style={{ 
-          backgroundImage: `url(${bannerImage})`, height: "45rem" }}
+        style={{
+          backgroundImage: `url(${bannerImage})`,
+          height: "45rem",
+        }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
@@ -28,9 +32,13 @@ const Home = () => {
                 A Best Place To Stay
               </h1>
               <h6 className="mb-3">MAKE YOUR VACATION HAPPY</h6>
-              {/* <a className='btn btn-outline-light btn-lg' href='#!' role='button'>
-                Call to action
-              </a> */}
+              <a
+                className="btn btn-outline-light btn-lg"
+                href="#"
+                role="button"
+              >
+                Book Now
+              </a>
             </div>
           </div>
         </div>
@@ -54,7 +62,7 @@ const Home = () => {
       <PhotoGrid />
       <Service />
       <br />
-      <Reviewcards />
+      <Reviewcards featured={isHomepage} />
     </header>
   );
 };

@@ -12,6 +12,7 @@ class Room(db.Document):
     room_images = db.DictField(field=db.StringField())
     room_discount = db.IntField(default=0)
     total_rooms = db.IntField(requird=True)
+    room_area = db.StringField(requird=True)
 
 
     def to_json(self):
@@ -23,6 +24,7 @@ class Room(db.Document):
             "room_desc": self.room_desc,
             "room_images": self.room_images,
             "total_rooms": self.total_rooms,
-            "room_amenties": self.room_amenities
+            "room_amenties": self.room_amenities,
+            "room_area": self.room_area
         }
 

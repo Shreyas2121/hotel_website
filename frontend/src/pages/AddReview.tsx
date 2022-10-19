@@ -62,6 +62,8 @@ const AddReview = () => {
       <div className="review-form"  >
         
         <Form onSubmit={handleSubmit}>
+        <h2 className="Form-Title">How Was Your Experience?</h2>
+        <br/>
           <Form.Group id="name">
             <Form.Label>Name : </Form.Label>
             <Form.Control type="text" ref={nameRef} required />

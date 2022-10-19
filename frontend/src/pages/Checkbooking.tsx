@@ -113,7 +113,6 @@ export const Checkbooking = () => {
               }}
             >
               <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} />
-
             </div>
           )}
         </div>
