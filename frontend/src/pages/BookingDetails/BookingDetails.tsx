@@ -31,7 +31,7 @@ export const BookingDetails = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
-  // const couponRef = useRef<HTMLInputElement>(null);
+  const couponRef = useRef<HTMLInputElement>(null);
 
   const [coupon, setCoupon] = useState("");
 
@@ -99,6 +99,7 @@ export const BookingDetails = () => {
     } else {
       setDiscount(res.data);
       toast.success("Coupon Applied Successfully");
+      couponRef.current.disabled = true
       let price = total * (res.data / 100);
       setTotal(total - price);
       buttonRef.current.disabled = true;
@@ -274,7 +275,7 @@ export const BookingDetails = () => {
             </Form.Label>
             <div id="coupon-section">
               {" "}
-              <Form.Control id="coupon-box" type="text" onChange={(e) => setCoupon(e.target.value)} />
+              <Form.Control id="coupon-box" type="text" ref={couponRef} onChange={(e) => setCoupon(e.target.value)} />
               <Button
                 id="coupon-btn"
                 ref={buttonRef}
