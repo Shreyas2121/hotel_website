@@ -51,7 +51,6 @@ const Rooms = () => {
     e.preventDefault();
     const formatedCheckIn = checkin.toISOString();
     const formatedCheckOut = checkout.toISOString();
-    console.log(formatedCheckIn, formatedCheckOut);
 
     const { data }: ResStatus = await axios.post(
       "http://127.0.0.1:5000/booking/room/check",
@@ -100,6 +99,7 @@ const Rooms = () => {
                 >
                   Check-in:{" "}
                   <input
+                    id="check-in"
                     className="dates"
                     min={new Date().toISOString().split("T")[0]}
                     type="date"
@@ -107,6 +107,7 @@ const Rooms = () => {
                   />
                   Check-out:{" "}
                   <input
+                    id="check-out"
                     className="dates"
                     min={conv(checkin)}
                     type="date"
@@ -114,7 +115,7 @@ const Rooms = () => {
                     onChange={(e) => setCheckOut(e.target.value)}
                   />
                 </div>
-                <Button variant="primary" size="sm" onClick={handleSearch}>
+                <Button id="check-availability" variant="primary" size="sm" onClick={handleSearch}>
                   Check Availability
                 </Button>{" "}
               </div>

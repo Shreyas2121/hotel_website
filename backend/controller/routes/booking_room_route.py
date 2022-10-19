@@ -9,7 +9,7 @@ def book():
     return book_room()
 
 
-@booking_route.route('/booking/room', methods=['GET'])
+@booking_route.route('/booking/room/get', methods=['GET'])
 def get():
     return get_bookings()
 

@@ -1,3 +1,6 @@
 {
-  "dotenv.enableAutocloaking": false
+  "dotenv.enableAutocloaking": false,
+  "python.testing.pytestArgs": ["backend"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }
