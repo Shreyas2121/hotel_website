@@ -9,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 import Rooms from "./pages/Rooms";
 import Halls from "./pages/Halls";
 import { BookingDetails } from "./pages/BookingDetails/BookingDetails";
-import AddReview from "./pages/AddReview";
+import AddReview from "./pages/Reviews/AddReview";
 import { Checkbooking } from "./pages/Checkbooking";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";

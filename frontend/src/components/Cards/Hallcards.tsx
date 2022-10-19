@@ -26,25 +26,16 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
   };
 
   return (
-  <MDBContainer
-      className="shadow-4-strong"
-      style={{
-        margin: "1rem auto",
-        padding: "1rem",
-      }}
-    >
+  <MDBContainer className="shadow-4-strong room-container">
       <MDBRow>
-        <MDBCol size="md" style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
 
-        }}>
+        <MDBCol size="md" className="card-column-one">
           <PhotoSlider images={Object.values(hallData.hall_image)} />
         </MDBCol>
 
         <MDBCol md="6">
           <h3>{hallData.hall_type}</h3>
+
           <p>
             <span
               style={{
@@ -55,47 +46,34 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
             </span>{" "}
             {hallData.hall_max_occ}
           </p>
+
           <p>{hallData.hall_desc}</p>
+
           <div style={{ display: "flex" }}>
             <span style={{
                 fontWeight: "bold",
               }}>Amenities: </span>
+
             {hallData?.hall_amenties.map((room) => (
               <p style={{ marginRight: "5px", marginLeft:"5px" }}>✓ {room}</p>
             ))}
+
           </div>
 
         </MDBCol>
 
-        <MDBCol
-          size="md"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            marginLeft:"8rem"
-          }}
-        >
+        <MDBCol size="md" className="card-column-three">
           <div>
             <p style={{fontSize: "0.8rem", marginBottom:0}}>Per day for a hall</p>
             <p style={{fontSize: "1.5rem", fontWeight:"bold"}}>₹ {hallPrice}/-</p>
           </div>
 
-          <p
-            id="booknow">
+          <p>
             {check(hallType) ? (
-              <p
-                style={{
-                  color: "red",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  backgroundColor: "grey",
-                  borderRadius: "0.5rem",
-                }}
-              >
-                Sold Out
-              </p>
+              <p className="sold-out">Sold Out</p>
+
             ) : (
+
               <Link
                 ref={linkRef}
                 to="/booking"
@@ -107,19 +85,14 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
                   roomPrice: hallPrice,
                   key: "Hall",
                 }}
-                style={{
-                  fontSize: "1rem",
-                  textDecoration: "none",
-                  color: "white",
-                  backgroundColor: "#1E90FF",
-                  padding: "0.75rem",
-                  borderRadius: "0.5rem",
-                }}
+                className="link-style"
+                id="booknow"
               >
                 Book Now
               </Link>
             )}
           </p>
+
         </MDBCol>
       </MDBRow>
     </MDBContainer>

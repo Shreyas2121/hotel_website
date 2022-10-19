@@ -86,6 +86,7 @@ const Aboutus = () => {
 
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button
+            id="add-reviews"
             onClick={NavigateToAddReview}
             style={{ width: 800, padding: 8 }}
           >

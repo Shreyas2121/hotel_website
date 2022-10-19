@@ -1,25 +1,3 @@
-.tm-rooms {
-  flex-wrap: wrap;
-  margin: 1% auto;
-  max-width: 33.3333333333%;
-  padding: 1%;
-  justify-content: space-evenly;
-}
-
-.tm-rooms img {
-  width: 100%;
-  height: 250px;
-}
-
-.tm-rooms p {
-  font-size: 1vw;
-  color: #fff;
-  text-align: left;
-  padding: 1%;
-  margin: auto;
-  max-width: 90%;
-}
-
 #status {
   font-size: 1vw;
   color: rgb(255, 0, 0);
@@ -29,64 +7,7 @@
   margin: 2% auto;
 }
 
-#no_of_rooms{
-  width: 100%;
-  font-size: 1.5vw;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  height: auto;
-  padding: 5%;
-}
-
-.no_of_rooms_btn{
-  font-size: 1.5vw;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  padding: 0 5%;
-  margin: auto 5%;
-}
-
-.no_of_rooms_btn:hover{
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-}
-
-.tm-rooms__details {
-  min-height: 40vh;
-}
-
-.roomamenities {
-  display: flex;
-}
-
-/* #booknow {
-  background-color: #aab2b6;
-  padding: 2%;
-  text-align: center;
-  font-size: 2vw;
-} */
-
-
-.tm-reviews_details {
-  width: 100%;
-  height: 100%;
-  padding: 1%;
-  margin: 1%;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  text-align: center;
-  font-size: 1.5vw;
-  color: #000;
-}
-
-.tm-review{
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background:rgba(0, 0, 0, 0.5);
-
-}
+/* reviewcard */
 
 .Review-rating-card{
   width: 98%;
@@ -103,22 +24,17 @@
   }
 
 #review-background-image{
- 
   display: block;
   text-decoration-color: rgba(255, 255 255, 1);
   font-size: 1.2vw;
   border-radius: 1.5em;
   box-sizing: border-box;
-  
 }
 
 .review-text{
   font-size: 1.2vw;
   color: rgb(0, 0, 0);
   text-align: center;
-
-
-
 }
 .Review-name{
   font-size: 1.5vw;
@@ -127,7 +43,6 @@
 }
 
 #review-cards{
-
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 1% auto;
@@ -136,6 +51,13 @@
   min-height: 22rem;
   max-height: 22rem;
   border-radius: 1rem;
+}
+
+/* roomcards & hallcards*/
+
+.room-container{
+  margin: 1rem auto;
+  padding: 1rem
 }
 
 .add_subtract{
@@ -148,4 +70,44 @@
   font-size: x-small;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.card-column-one{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-column-three{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 8rem;
+}
+
+.col-3-div-2{
+  display: flex;
+  align-items:'center'
+}
+
+.link-style{
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+  background-color: #1E90FF;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.sold-out{
+  color: red;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.total-price{
+    font-size: 1rem;
+    margin-top:5px
 }
