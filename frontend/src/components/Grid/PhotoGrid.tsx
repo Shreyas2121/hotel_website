@@ -1,4 +1,3 @@
-import React from "react";
 import "./grid.css";
 
 import { MDBContainer, MDBRow, MDBCol, MDBTypography } from "mdb-react-ui-kit";
@@ -6,17 +5,9 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBCardText,
   MDBCardImage,
   MDBRipple,
 } from "mdb-react-ui-kit";
-
-import image1 from "../../assets/images/luxury.png";
-import image2 from "../../assets/images/delux.png";
-import image3 from "../../assets/images/premier.png";
-import image4 from "../../assets/images/luxury.png";
-import image5 from "../../assets/images/deluxroom.png";
-import image6 from "../../assets/images/premiumroom.png";
 
 const PhotoGrid = () => {
   return (
@@ -39,6 +30,7 @@ const PhotoGrid = () => {
         style={{
           display: "flex",
           justifyContent: "space-evenly",
+          alignItems: "center",
         }}
         className="mb-3"
       >
