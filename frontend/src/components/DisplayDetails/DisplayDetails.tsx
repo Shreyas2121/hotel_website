@@ -10,15 +10,12 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   bookingDetails: Booking[];
   setDel: React.Dispatch<React.SetStateAction<boolean>>;
-
 }
 
-const DisplayDetails = ({ bookingDetails,setDel }: Props) => {
-
+const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
   const [clicked, setClicked] = React.useState<boolean>(false);
 
   const navigate = useNavigate();
-
 
   const handleSubmit = async (id: string) => {
     console.log(id);
@@ -27,17 +24,15 @@ const DisplayDetails = ({ bookingDetails,setDel }: Props) => {
     if (res.status === 200) {
       setDel(true);
       toast.success("Reservation deleted successfully");
-    }
-    else {
+    } else {
       toast.error("Something went wrong");
     }
-    
   };
 
   return (
     <div>
       <Table striped bordered hover>
-          <thead>
+        <thead>
           <tr>
             <th>Name</th>
             <th>Check-in Date</th>
@@ -49,22 +44,29 @@ const DisplayDetails = ({ bookingDetails,setDel }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {bookingDetails.map((booking)=>(
-             <tr>
-             <td>{booking.booking_username}</td>
-             <td>{booking.booking_check_in}</td>
-             <td>{booking.booking_check_out}</td>
-             <td>{booking.booking_room_type}</td>
-             <td>{booking.booking_no_of_rooms}</td>
-             <td>{booking.booking_total}</td>
-             <td>
-               <Button onClick={(e) => handleSubmit(booking._id)}>
-                 Cancel Booking
-               </Button>
-             </td>
-           </tr>
+          {bookingDetails.map((booking) => (
+            <>
+              {booking._id ? (
+                <tr>
+                  <td>{booking.booking_username}</td>
+                  <td>{booking.booking_check_in}</td>
+                  <td>{booking.booking_check_out}</td>
+                  <td>{booking.booking_room_type}</td>
+                  <td>{booking.booking_no_of_rooms}</td>
+                  <td>{booking.booking_total}</td>
+                  <td>
+                    <Button onClick={(e) => handleSubmit(booking._id)}>
+                      Cancel Booking
+                    </Button>
+                  </td>
+                </tr>
+              ) : (
+                <tr>
+                  <td>No Booking</td>
+                </tr>
+              )}
+            </>
           ))}
-         
         </tbody>
       </Table>
     </div>

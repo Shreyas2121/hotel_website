@@ -51,8 +51,8 @@ export const Checkbooking = () => {
     console.log(data);
     setLoading(false);
       }
-      a(); 
-  },[del,setDel]) 
+      a();
+  },[del,setDel])
 
   return (
     <header>
@@ -79,7 +79,7 @@ export const Checkbooking = () => {
         width: "100%",
         maxWidth: "600px",
         padding: "2rem",
-        
+
       }}>
         <Form.Control
           ref={emailRef}
@@ -112,8 +112,8 @@ export const Checkbooking = () => {
                 gap: "1rem",
               }}
             >
-              {/* <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} /> */}
-            
+              <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} />
+
             </div>
           )}
         </div>
