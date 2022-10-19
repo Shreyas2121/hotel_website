@@ -121,8 +121,6 @@
 #coupon-section{
     display: flex;
     justify-content: left;
-    align-items:  stretch;
-    align-items: ;
 }
 #coupon-btn{
     background-color: #FFB923;
