@@ -11,6 +11,9 @@ export const PhotoSlider = ({images}) => {
           src={image}
           alt="First slide"
           height={200}
+          style={{
+            minWidth:"250px"
+          }}
         />
         </Carousel.Item>
         ))}
