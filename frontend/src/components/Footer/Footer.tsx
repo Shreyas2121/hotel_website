@@ -43,7 +43,6 @@ const Footer = () => {
           <img src={image4} />{" "}
         </a>
       </div>
-      {/*    <a  href="#top">  <img class="tm-up" src="images/up.png"> </a>*/}
     </footer>
   );
 };

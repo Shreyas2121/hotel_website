@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import Roomcards from "../components/Roomcards/Roomcards";
+import Roomcards from "../components/Cards/Roomcards";
 import "../components/search.css";
-import Slider from "../components/Slider/Slider";
 
 import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
 import axios from "axios";
 
 import "../components/parallaxImage.css";
-
 
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";

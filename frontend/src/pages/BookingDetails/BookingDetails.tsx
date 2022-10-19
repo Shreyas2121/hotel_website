@@ -3,10 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import ScrollToTop from "../../customHook/ScrollToTop";
 import { UseFetch } from "../../customHook/UseFetch";
 import { Addon } from "../../types/types";
-// import { Addon } from "../Addons/Addon";
 import "./bookingdetails.css";
 
 interface ResAddon {
@@ -56,11 +54,9 @@ export const BookingDetails = () => {
       total_price += each;
     });
     setTotal(total_price);
-    // setTotal();
   }, [selectCheck]);
 
   const type = data?.addOn_type;
-  // const ent = Object.entries(type);
 
   const handleAddon = (e) => {
     if (e.target.checked) {
@@ -112,7 +108,6 @@ export const BookingDetails = () => {
       toast.error("Please fill all the fields");
       return;
     }
-
 
     const selectedAddons = filtAddOn();
     const data = {

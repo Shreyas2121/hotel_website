@@ -1,13 +1,9 @@
-import uuid
-
-import bson
 from db_connect import connection_db
 from models.room import Room
 
 db = connection_db()
 
 class BookingRoom(db.Document):
-    # _id = db.SequenceField(primary_key=True, default=bson.ObjectId)
     booking_username = db.StringField()
     booking_useremail = db.EmailField()
     booking_date = db.StringField()

@@ -1,12 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Booking } from "../../types/types";
 
 import "./success.css";
-
-// interface Res {
-//   state: Booking;
-// }
 
 const ConfirmDetails = () => {
   const { state } = useLocation();

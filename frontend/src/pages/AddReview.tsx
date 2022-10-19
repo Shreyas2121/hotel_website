@@ -8,14 +8,12 @@ import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Reviews.css";
-import image1 from "../assets/images/HotelReview.png";
-
 
 const AddReview = () => {
   const navigate = useNavigate();
 
   const NavigateToAboutUs = () => {
-     navigate("/AboutUs");
+    navigate("/AboutUs");
   };
 
   const nameRef = useRef<HTMLInputElement>(null);
@@ -30,7 +28,6 @@ const AddReview = () => {
     const email = emailRef.current?.value;
     const review = reviewRef.current?.value;
 
-
     const data = {
       name,
       email,
@@ -44,7 +41,6 @@ const AddReview = () => {
       },
     });
 
-
     if (res.data.message === "Review Added") {
       toast.success("Review Submitted Successfully");
       console.log(res.data.message);
@@ -52,32 +48,31 @@ const AddReview = () => {
     } else {
       toast.error("Review Submission Failed");
     }
-    
-
   };
 
   return (
-  
-    <Container className="d-flex align-items-center justify-content-center" >
-      <div className="review-form"  >
-        
+    <Container className="d-flex align-items-center justify-content-center">
+      <div className="review-form">
         <Form onSubmit={handleSubmit}>
-        <h2 className="Form-Title">How Was Your Experience?</h2>
-        <br/>
+          <h2 className="Form-Title">How Was Your Experience?</h2>
+          <br />
           <Form.Group id="name">
             <Form.Label>Name : </Form.Label>
             <Form.Control type="text" ref={nameRef} required />
           </Form.Group>
-          <br/>
+          <br />
           <Form.Group id="email">
             <Form.Label>Email : </Form.Label>
             <Form.Control type="email" ref={emailRef} required />
           </Form.Group>
-          <br/>
-          <Form.Group id="rating" style={{
-            display: "flex",
-          }}>
-            <Form.Label>Rating :   </Form.Label>
+          <br />
+          <Form.Group
+            id="rating"
+            style={{
+              display: "flex",
+            }}
+          >
+            <Form.Label>Rating : </Form.Label>
             <Rating
               name="simple-controlled"
               value={rating}
@@ -86,13 +81,13 @@ const AddReview = () => {
               }}
             />
           </Form.Group>
-          <br/>
+          <br />
           <Form.Group id="review">
             <Form.Label>Review : </Form.Label>
-              
+
             <Form.Control as="textarea" rows={3} ref={reviewRef} required />
           </Form.Group>
-          <br/>
+          <br />
           <Button className="w-100" type="submit" ref={buttonRef}>
             Submit
           </Button>
