@@ -4,7 +4,7 @@ from controller.routes.halls_route import halls_route
 from controller.routes.rooms_route import rooms_route
 from controller.routes.coupon_route import coupons_route
 from controller.routes.addons_route import addons_route
-from controller.routes.booking_route import booking_route
+from controller.routes.booking_room_route import booking_route
 from controller.routes.booking_hall_route import booking_hall_route
 from controller.routes.reviews_route import reviews_route
 from controller.routes.cancelling_route import cancel_route
