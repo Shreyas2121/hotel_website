@@ -7,6 +7,9 @@ import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
 import axios from "axios";
 
+import "../components/parallaxImage.css";
+
+
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
 
@@ -71,8 +74,8 @@ const Rooms = () => {
   return (
     <header>
       <div
-        className="p-5 text-center bg-image"
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "30rem" }}
+        className="p-5 text-center bg-image parallax"
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "45rem" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">

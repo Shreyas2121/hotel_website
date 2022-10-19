@@ -76,9 +76,15 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
       }}
     >
       <MDBRow>
-        <MDBCol size="md">
-          <PhotoSlider images={Object.values(roomData.room_images)} />
+        <MDBCol size="md" style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+
+        }}>
+          <PhotoSlider images={Object.values(roomData.room_images)}/>
         </MDBCol>
+        
         <MDBCol md="6">
           <h3>{roomData.room_type}</h3>
           <p>
@@ -91,78 +97,89 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
             </span>{" "}
             {roomData.room_max_occ}
           </p>
+          <p>{roomData.room_desc}</p>
           <div style={{ display: "flex" }}>
-            <span>Amenities: </span>
+            <span style={{
+                fontWeight: "bold",
+              }}>Amenities: </span>
             {roomData?.room_amenties.map((room) => (
-              <p style={{ marginRight: "5px" }}> {room}</p>
+              <p style={{ marginRight: "5px", marginLeft:"5px" }}>✓ {room}</p>
             ))}
           </div>
-          <p>{roomData.room_desc}</p>
+          
         </MDBCol>
+
         <MDBCol
           size="md"
           style={{
-            alignSelf: "center",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            marginLeft:"8rem"
           }}
         >
+          <div>
+            <p style={{fontSize: "0.8rem", marginBottom:0}}>Per night for one room</p>
+            <p style={{fontSize: "1.5rem", fontWeight:"bold"}}>₹ {roomPrice}/-</p>
+          </div>
+
           {check() ? (
-            <div
-              style={{
-                color: "green",
-                fontWeight: "bold",
-                fontSize: "1.5rem",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
+            <>
+
+              <div >
+                <div  style={{
                   display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <label></label>
-                <button onClick={handleClickMinus}>-</button>
-                <span>{no} </span>
-                <button onClick={handleClickPlus}>+</button>
-                {/* <p> Available rooms:</p>
-                <p>{avaiRooms}</p> */}
-                {/* <button onClick={() => check1()}>Check</button> */}
+                  alignItems:'center',
+                }}>
+                
+                <label>Rooms :</label>
+                <button className=" add_subtract" onClick={handleClickMinus}>-</button>
+                <span style={{fontSize: "0.8rem"}}>{no}</span>
+                <button className=" add_subtract" onClick={handleClickPlus}>+</button>
+                </div>
+              <div>
+                <p style={{
+                  fontSize: "1rem",
+                  marginTop:'5px'
+                }}>Total: ₹ {roomPrice * no}</p>
               </div>
-              <div>Per night for one room: {roomPrice}</div>
-              <div>Total: {roomPrice * no}</div>
-              <p
-                id="booknow"
-                style={{
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  margin: "0.5rem",
-                }}
-              >
-                <Link
-                  to="/booking"
-                  state={{
-                    no,
-                    checkin,
-                    checkout,
-                    roomType,
-                    roomPrice,
-                    key: "Room",
-                  }}
+              </div>
+
+              <div>
+                <p
+                  id="booknow"
                   style={{
-                    fontSize: "1.5rem",
-                    textDecoration: "none",
-                    color: "white",
-                    backgroundColor: "green",
-                    padding: "0.5rem",
-                    borderRadius: "0.5rem",
+                    fontWeight: "bold",
                   }}
                 >
-                  Book Now
-                </Link>
-              </p>
-            </div>
+                  <Link
+                    to="/booking"
+                    state={{
+                      no,
+                      checkin,
+                      checkout,
+                      roomType,
+                      roomPrice,
+                      key: "Room",
+                    }}
+                    style={{
+                      fontSize: "1rem",
+                      textDecoration: "none",
+                      color: "white",
+                      backgroundColor: "#1E90FF",
+                      padding: "0.75rem",
+                      borderRadius: "0.5rem",
+                    }}
+                  >
+                    Book Now
+                  </Link>
+                </p>
+              </div>
+
+            </>
+
           ) : (
+
             <div
               style={{
                 color: "red",
@@ -174,6 +191,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
               Sold Out
             </div>
           )}
+
         </MDBCol>
       </MDBRow>
     </MDBContainer>

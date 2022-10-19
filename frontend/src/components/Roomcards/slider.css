@@ -21,3 +21,16 @@
   left: 50%;
   color: #fff;
 }
+
+.col-lg-3{
+  padding: 2rem;
+  margin: 2rem;
+  height: 24rem;
+  background-color: white;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

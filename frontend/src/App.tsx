@@ -14,6 +14,7 @@ import AddReview from "./pages/AddReview";
 import { Checkbooking } from "./pages/Checkbooking";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import ConfirmDetails from "./pages/success/ConfirmDetails";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="booking/room" element={<Rooms />} />
         <Route path="booking/hall" element={<Halls />} />
         <Route path="booking" element={<BookingDetails />} />
+        <Route path="booking/success" element={<ConfirmDetails />} />
         <Route path="addreview" element={<AddReview />} />
         <Route path="checkbooking" element={<Checkbooking />} />
       </Routes>

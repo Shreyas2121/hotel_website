@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Container, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import ScrollToTop from "../../customHook/ScrollToTop";
 import { UseFetch } from "../../customHook/UseFetch";
 import { Addon } from "../../types/types";
 // import { Addon } from "../Addons/Addon";
@@ -112,6 +113,7 @@ export const BookingDetails = () => {
       return;
     }
 
+
     const selectedAddons = filtAddOn();
     const data = {
       name,
@@ -146,7 +148,9 @@ export const BookingDetails = () => {
 
     if (res.data.message == "Booking Successful") {
       toast.success("Booking Successful");
-      navigate("/");
+      navigate("/booking/success", {
+        state: data,
+      });
     } else {
       toast.error("Booking Failed");
     }

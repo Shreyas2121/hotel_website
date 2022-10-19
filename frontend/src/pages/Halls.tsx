@@ -5,10 +5,11 @@ import { Hall } from "../types/types";
 import Hallcards from "../components/Roomcards/Hallcards";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import Slider from "../components/Slider/Slider";
+
+import "../components/parallaxImage.css";
+
 
 import roomsBackground from "../assets/images/about_banner.jpg";
-import { Placeholder } from "react-bootstrap";
 
 
 interface Res {
@@ -58,8 +59,8 @@ const Halls = () => {
   return (
       <header>
       <div
-        className='p-5 text-center bg-image'
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "30rem" }}
+        className='p-5 text-center bg-image parallax'
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "45rem" }}
       >
         <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
           <div className='d-flex justify-content-center align-items-center h-100'>

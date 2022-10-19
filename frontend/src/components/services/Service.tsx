@@ -26,8 +26,6 @@ const Service = () => {
       backgroundImage: `url(${servicesBackground})`,
     }}>
       <br/>
-      <br/>
-      <br/>
       <div style={{
         textAlign: "center",
         padding: "40px",
@@ -39,8 +37,7 @@ const Service = () => {
           Who are in extremely love with eco friendly system
         </MDBTypography>
       </div>
-      <br/>
-      <br/>
+
 
       <MDBRow style={{
         display: "flex",
@@ -127,40 +124,6 @@ const Service = () => {
       </MDBRow>
 
     </MDBContainer>
-    // <>
-    //   <section className="tm-servicesection">
-    //     <div className="tm-service">
-    //       <img className="tm-serimage" src={image1} />
-    //       <div>
-    //         <p className="b">Room Service</p>
-    //         <p> Enjoy your stay with excellent and timely room service </p>{" "}
-    //       </div>
-    //     </div>
-    //     <div className="tm-service">
-    //       <img className="tm-serimage" src={image2} />
-    //       <div>
-    //         <p className="b">Free Breakfast</p>
-    //         <p> Enjoy Free breakfast every morning</p>{" "}
-    //       </div>
-    //     </div>
-    //   </section>
-    //   <section className="tm-servicesection">
-    //     <div className="tm-service">
-    //       <img className="tm-serimage" src={image3} />
-    //       <div>
-    //         <p className="b">Free Parking</p>
-    //         <p> No need to pay any extra charges to park your vehicle </p>{" "}
-    //       </div>
-    //     </div>
-    //     <div className="tm-service">
-    //       <img className="tm-serimage" src={image4} />
-    //       <div>
-    //         <p className="b">Free Spa</p>
-    //         <p> Relax at the inhouse Spa once every day of your stay </p>{" "}
-    //       </div>
-    //     </div>
-    //   </section>
-    // </>
     
   );
 };

@@ -40,3 +40,8 @@
 .flex {
   display: flex;
 }
+
+.photogridimages{
+  width: 15rem;
+  height: 10rem;
+}
