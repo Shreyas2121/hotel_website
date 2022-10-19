@@ -1,6 +1,8 @@
 node_modules
 menv
 nenv
-__pycache__
+__pycache__/
+.pytest_cache/
 .vscode
 .idea
+*.pyc

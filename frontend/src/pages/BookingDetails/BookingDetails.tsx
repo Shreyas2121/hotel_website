@@ -1,4 +1,5 @@
 import axios from "axios";
+import { truncate } from "fs/promises";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -30,7 +31,10 @@ export const BookingDetails = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
-  const couponRef = useRef<HTMLInputElement>(null);
+  // const couponRef = useRef<HTMLInputElement>(null);
+
+  const [coupon, setCoupon] = useState("");
+
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
@@ -56,9 +60,11 @@ export const BookingDetails = () => {
     setTotal(total_price);
   }, [selectCheck]);
 
+
   const type = data?.addOn_type;
 
   const handleAddon = (e) => {
+
     if (e.target.checked) {
       setSelectCheck({
         addon: [...selectCheck.addon, e.target.value],
@@ -83,7 +89,7 @@ export const BookingDetails = () => {
 
   const handleCoupon = async (e) => {
     e.preventDefault();
-    const coupon = couponRef.current?.value;
+    // const coupon = couponRef.current?.value;
     const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
       coupon,
     });
@@ -122,7 +128,7 @@ export const BookingDetails = () => {
       checkout,
       roomType,
       roomPrice,
-      couponId: couponRef.current?.value,
+      couponId: coupon,
       discount: discount.toString(),
       total,
     };
@@ -153,28 +159,19 @@ export const BookingDetails = () => {
   };
 
   return (
-    <Container
-      id="booking-details"
-    >
-      <div
-       id="container">
+    <Container id="booking-details">
+      <div id="container">
         <Form>
-        {key == "Hall" ? (
+          {key == "Hall" ? (
             <h2 id="title-of-form">BOOK A HALL WITH US</h2>
           ) : (
-           <h2 id="title-of-form">BOOK A ROOM WITH US</h2>
+            <h2 id="title-of-form">BOOK A ROOM WITH US</h2>
           )}
-          <br/>
+          <br />
           <div id="personal-details">
-            <Form.Group
-             id="name-group"
-              className="mb-3"
-            >
-              <Form.Label
-              id="name-label">
-                Name
-              </Form.Label>
-              <Form.Control type="text"  ref={nameRef}  required/>
+            <Form.Group id="name-group" className="mb-3">
+              <Form.Label id="name-label">Name</Form.Label>
+              <Form.Control type="text" ref={nameRef} required />
             </Form.Group>
 
             <Form.Group
@@ -182,11 +179,7 @@ export const BookingDetails = () => {
               className="mb-3"
               controlId="formBasicEmail"
             >
-              <Form.Label
-               id="email-label"
-                htmlFor="email"
-                required
-              >
+              <Form.Label id="email-label" htmlFor="email" required>
                 E-mail
               </Form.Label>
               <Form.Control
@@ -197,20 +190,23 @@ export const BookingDetails = () => {
                 required={true}
               />
             </Form.Group>
-
           </div>
           <hr />
           {key == "Hall" ? (
             <div></div>
           ) : (
             <Form.Group>
-              <Form.Label htmlFor="adult" id="room-qnty" >No of rooms : {no}</Form.Label>
+              <Form.Label htmlFor="adult" id="room-qnty">
+                No of rooms : {no}
+              </Form.Label>
             </Form.Group>
           )}
 
           {key == "Hall" ? (
             <Form.Group>
-              <Form.Label id="Hall-bk-date" >{checkin.toDateString()}</Form.Label>
+              <Form.Label id="Hall-bk-date">
+                {checkin.toDateString()}
+              </Form.Label>
             </Form.Group>
           ) : (
             <Form.Group>
@@ -225,7 +221,9 @@ export const BookingDetails = () => {
           )}
 
           <Form.Group>
-            <Form.Label htmlFor="adult" id="room-type" >Type : {roomType}</Form.Label>
+            <Form.Label htmlFor="adult" id="room-type">
+              Type : {roomType}
+            </Form.Label>
           </Form.Group>
           <hr />
           <Form.Group>
@@ -235,7 +233,6 @@ export const BookingDetails = () => {
               <h1>Loading...</h1>
             ) : (
               <div id="addon-list">
-              
                 {Object.entries(type).map(([key, value]) => (
                   <Form.Group>
                     <Form.Check
@@ -258,8 +255,10 @@ export const BookingDetails = () => {
           <hr />
 
           <Form.Group>
-            <Form.Label htmlFor="message" id="special-req">Special Request?</Form.Label>
-            <textarea  
+            <Form.Label htmlFor="message" id="special-req">
+              Special Request?
+            </Form.Label>
+            <textarea
               ref={specialReqRef}
               id="message"
               name="visitor_message"
@@ -269,31 +268,36 @@ export const BookingDetails = () => {
             <hr />
           </Form.Group>
 
-          <Form.Group >
-            <Form.Label htmlFor="coupon" id="coupon">Coupon Code: </Form.Label>
-           <div id="coupon-section"> <Form.Control id="coupon-box"
-              type="text"
-              ref={couponRef}
-            />
-            <Button
-              id="coupon-btn"
-              ref={buttonRef}
-              onClick={handleCoupon}
-            >
-              Apply
-            </Button>
+          <Form.Group>
+            <Form.Label htmlFor="coupon" id="coupon">
+              Coupon Code:{" "}
+            </Form.Label>
+            <div id="coupon-section">
+              {" "}
+              <Form.Control id="coupon-box" type="text" onChange={(e) => setCoupon(e.target.value)} />
+              <Button
+                id="coupon-btn"
+                ref={buttonRef}
+                disabled={coupon === ""}
+                onClick={handleCoupon}
+              >
+                Apply
+              </Button>
             </div>
           </Form.Group>
           <hr />
 
           <Form.Group>
-            <Form.Text id="total">
-              Total: {total}
-            </Form.Text>
+            <Form.Text id="total">Total: {total}</Form.Text>
           </Form.Group>
           <hr />
           <br />
-          <Button onClick={handleSubmit} variant="primary" type="button" id="submit-booking-btn">
+          <Button
+            onClick={handleSubmit}
+            variant="primary"
+            type="button"
+            id="submit-booking-btn"
+          >
             Submit
           </Button>
         </Form>
