@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from models.review_hotel import Reviews
+from models.reviews import Reviews
 
 
 def get_reviews():
