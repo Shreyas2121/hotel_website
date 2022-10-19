@@ -43,6 +43,7 @@
 
 #name-group{
     width: 50%;
+    display: block;
 }
 
 #name-label{
@@ -53,6 +54,7 @@
 
 #email-group{
     width: 50%;
+    display: block;
 }
 #email-label{
     font-weight: bolder;
