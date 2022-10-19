@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
-import { Booking } from "../../types/types";
-import Card from "react-bootstrap/Card";
+import { Booking } from "../types/types";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 interface Props {
   bookingDetails: Booking[];
@@ -13,10 +11,6 @@ interface Props {
 }
 
 const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
-  const [clicked, setClicked] = React.useState<boolean>(false);
-
-  const navigate = useNavigate();
-
   const handleSubmit = async (id: string) => {
     console.log(id);
     const res = await axios.delete(`http://127.0.0.1:5000/reservation/${id}`);

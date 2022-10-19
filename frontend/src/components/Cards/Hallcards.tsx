@@ -1,9 +1,9 @@
-import React, { LinkHTMLAttributes, useState } from "react";
+import React from "react";
 
 import { PhotoSlider } from "../PhotoSlider/PhotoSlider";
 
 import { Hall } from "../../types/types";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
@@ -22,7 +22,6 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
 
   const check = (type: string) => {
     const status = bookedHalls.includes(type) ? true : false;
-    // linkRef.current!.innerText = status ? "Booked" : "Available";
     return status;
   };
 
@@ -43,7 +42,7 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
         }}>
           <PhotoSlider images={Object.values(hallData.hall_image)} />
         </MDBCol>
-        
+
         <MDBCol md="6">
           <h3>{hallData.hall_type}</h3>
           <p>
@@ -65,7 +64,7 @@ const Hallcards = ({ hallData, checkin, bookedHalls }: Props) => {
               <p style={{ marginRight: "5px", marginLeft:"5px" }}>✓ {room}</p>
             ))}
           </div>
-          
+
         </MDBCol>
 
         <MDBCol

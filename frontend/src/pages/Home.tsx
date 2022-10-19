@@ -2,9 +2,9 @@ import React from "react";
 
 import "../components/parallaxImage.css";
 
-import PhotoGrid from "../components/Grid/PhotoGrid";
+import PhotoGrid from "../components/PhotoGrid/PhotoGrid";
 import Service from "../components/services/Service";
-import Reviewcards from "../components/Roomcards/Reviewcards";
+import Reviewcards from "../components/Cards/Reviewcards";
 
 import bannerImage from "../assets/images/banner_bg.jpg";
 

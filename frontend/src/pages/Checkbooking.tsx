@@ -1,12 +1,9 @@
-import React, { ReactEventHandler, useEffect } from "react";
+import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
-import DisplayDetails from "../components/DisplayDetails/DisplayDetails";
+import DisplayDetails from "../components/DisplayDetails";
 import { Booking } from "../types/types";
-// import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
-// import InputGroup from 'react-bootstrap/InputGroup';
 import Stack from "react-bootstrap/Stack";
 import axios from "axios";
 
@@ -106,7 +103,6 @@ export const Checkbooking = () => {
             ) : (
               <div
                 style={{
-                  // display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   gap: "1rem",

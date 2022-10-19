@@ -22,7 +22,7 @@ def book_hall():
     ).save()
     return jsonify({"message":"Booking Successful"})
 
-def get_bookings():
+def check_bookings():
     checkin = request.get_json()['checkin']
     parsed_check_in = parser.isoparse(checkin)
     bookings = BookingHall.objects(booking_check_in=parsed_check_in)

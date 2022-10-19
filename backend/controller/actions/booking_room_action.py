@@ -5,7 +5,7 @@ from datetime import datetime
 from dateutil import parser
 import requests
 
-from models.booking import BookingRoom
+from models.booking_room import BookingRoom
 
 
 def book_room():
@@ -29,9 +29,7 @@ def book_room():
     return jsonify({"message": "Booking Successful",})
 
 def get_bookings():
-
     bookings = BookingRoom.objects()
-    # return jsonify({'bookings': [ booking.to_json() for booking in bookings]})
     return list(map(lambda x: x.to_json(), bookings))
 
 

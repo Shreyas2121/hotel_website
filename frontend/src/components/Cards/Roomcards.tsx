@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-import Card from "react-bootstrap/Card";
 import { PhotoSlider } from "../PhotoSlider/PhotoSlider";
 
 import { Room } from "../../types/types";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
-import { border, padding } from "@mui/system";
 import { toast } from "react-toastify";
 
 interface Status {
@@ -84,7 +82,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
         }}>
           <PhotoSlider images={Object.values(roomData.room_images)}/>
         </MDBCol>
-        
+
         <MDBCol md="6">
           <h3>{roomData.room_type}</h3>
           <p>
@@ -106,7 +104,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
               <p style={{ marginRight: "5px", marginLeft:"5px" }}>✓ {room}</p>
             ))}
           </div>
-          
+
         </MDBCol>
 
         <MDBCol
@@ -131,7 +129,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                   display: "flex",
                   alignItems:'center',
                 }}>
-                
+
                 <label>Rooms :</label>
                 <button className=" add_subtract" onClick={handleClickMinus}>-</button>
                 <span style={{fontSize: "0.8rem"}}>{no}</span>
