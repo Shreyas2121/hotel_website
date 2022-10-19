@@ -1,8 +1,7 @@
-from datetime import date, datetime
+from datetime import datetime
 import json
 import pytest
 from app import app
-from bson import json_util
 
 
 def test_get_booking():
@@ -31,10 +30,10 @@ def test_book_room():
      print(res.data)
      assert json.loads(res.data)['message'] == "Booking Successful"
 
-# def test_check_booking():
-#     res = app.test_client().post('/booking/room/check',json={
-#         "checkIn": datetime.now(),
-#         "checkOut": datetime.now()
-#     })
-#     assert res.status_code == 200
-#     assert type(res.json) == dict
+def test_check_booking():
+    res = app.test_client().post('/booking/room/check',json={
+        "checkIn": str(datetime.now()),
+        "checkOut": str(datetime.now())
+    })
+    assert res.status_code == 200
+    assert type(res.json) == dict

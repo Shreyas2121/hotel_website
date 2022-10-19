@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from controller.actions.delete_action import cancel_booking,get_bookings_by_email
+from controller.actions.cancelling_room_action import cancel_booking,get_bookings_by_email
 
 cancel_route = Blueprint('cancel_route', __name__)
 
