@@ -14,5 +14,4 @@ def get_bookings_by_email(email):
 
     bookings = BookingRoom.objects().filter(booking_useremail=email)
     print(bookings)
-
     return list(map(lambda x: x.to_json(), bookings))

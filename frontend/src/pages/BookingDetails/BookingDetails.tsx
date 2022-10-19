@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { Button, Card, Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { UseFetch } from "../../customHook/UseFetch";
@@ -89,9 +89,10 @@ export const BookingDetails = () => {
     });
 
     if (res.data == "Invalid Coupon") {
-      alert(res.data);
+      toast.error(res.data);
     } else {
       setDiscount(res.data);
+      toast.success("Coupon Applied Successfully");
       let price = total * (res.data / 100);
       setTotal(total - price);
       buttonRef.current.disabled = true;
@@ -153,58 +154,38 @@ export const BookingDetails = () => {
 
   return (
     <Container
-      style={{
-        marginTop: "20px",
-        marginBottom: "20px",
-      }}
+      id="booking-details"
     >
       <div
-        style={{
-          boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.2)",
-          padding: "20px",
-          borderRadius: "10px",
-        }}
-      >
+       id="container">
         <Form>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "20px",
-              gap: "5px",
-            }}
-          >
+        {key == "Hall" ? (
+            <h2 id="title-of-form">BOOK A HALL WITH US</h2>
+          ) : (
+           <h2 id="title-of-form">BOOK A ROOM WITH US</h2>
+          )}
+          <br/>
+          <div id="personal-details">
             <Form.Group
-              style={{
-                width: "50%",
-              }}
+             id="name-group"
               className="mb-3"
             >
               <Form.Label
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
+              id="name-label">
                 Name
               </Form.Label>
-              <Form.Control type="text" required={true} ref={nameRef} />
+              <Form.Control type="text"  ref={nameRef}  required/>
             </Form.Group>
 
             <Form.Group
-              style={{
-                width: "50%",
-              }}
+              id="email-group"
               className="mb-3"
               controlId="formBasicEmail"
             >
               <Form.Label
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
+               id="email-label"
                 htmlFor="email"
+                required
               >
                 E-mail
               </Form.Label>
@@ -216,50 +197,45 @@ export const BookingDetails = () => {
                 required={true}
               />
             </Form.Group>
+
           </div>
           <hr />
           {key == "Hall" ? (
             <div></div>
           ) : (
             <Form.Group>
-              <Form.Label htmlFor="adult">No of rooms : {no}</Form.Label>
+              <Form.Label htmlFor="adult" id="room-qnty" >No of rooms : {no}</Form.Label>
             </Form.Group>
           )}
 
           {key == "Hall" ? (
             <Form.Group>
-              <Form.Label>{checkin.toDateString()}</Form.Label>
+              <Form.Label id="Hall-bk-date" >{checkin.toDateString()}</Form.Label>
             </Form.Group>
           ) : (
             <Form.Group>
-              <Form.Label htmlFor="adult">
+              <Form.Label htmlFor="adult" id="checkin">
                 Check In : {checkin.toDateString()}
               </Form.Label>
               <br />
-              <Form.Label htmlFor="adult">
+              <Form.Label htmlFor="adult" id="checkout">
                 Check Out : {checkout.toDateString()}
               </Form.Label>
             </Form.Group>
           )}
 
           <Form.Group>
-            <Form.Label htmlFor="adult">Type : {roomType}</Form.Label>
+            <Form.Label htmlFor="adult" id="room-type" >Type : {roomType}</Form.Label>
           </Form.Group>
           <hr />
           <Form.Group>
             <br />
-            <Form.Label> Select Addons: </Form.Label>
+            <Form.Label id="addons"> Select Addons: </Form.Label>
             {loading ? (
               <h1>Loading...</h1>
             ) : (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(4,1fr)",
-                  gap: "10px",
-                  marginBottom: "20px",
-                }}
-              >
+              <div id="addon-list">
+              
                 {Object.entries(type).map(([key, value]) => (
                   <Form.Group>
                     <Form.Check
@@ -271,8 +247,8 @@ export const BookingDetails = () => {
                       type="checkbox"
                       onChange={handleAddon}
                     />
-                    <Form.Label className="checkbox">
-                      {key} : {value}
+                    <Form.Label className="checkbox" id="check-box">
+                      {key} : ₹ {value}
                     </Form.Label>
                   </Form.Group>
                 ))}
@@ -282,18 +258,8 @@ export const BookingDetails = () => {
           <hr />
 
           <Form.Group>
-            <Form.Label htmlFor="message">Special Request?</Form.Label>
-            <textarea
-              style={{
-                width: "100%",
-                height: "100px",
-                padding: "12px 20px",
-                boxSizing: "border-box",
-                border: "2px solid #ccc",
-                borderRadius: "4px",
-                backgroundColor: "#f8f8f8",
-                resize: "none",
-              }}
+            <Form.Label htmlFor="message" id="special-req">Special Request?</Form.Label>
+            <textarea  
               ref={specialReqRef}
               id="message"
               name="visitor_message"
@@ -303,55 +269,31 @@ export const BookingDetails = () => {
             <hr />
           </Form.Group>
 
-          <Form.Group
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
-            <Form.Label htmlFor="coupon">Coupon Code: </Form.Label>
-            <Form.Control
-              style={{
-                width: "50%",
-              }}
+          <Form.Group >
+            <Form.Label htmlFor="coupon" id="coupon">Coupon Code: </Form.Label>
+           <div id="coupon-section"> <Form.Control id="coupon-box"
               type="text"
               ref={couponRef}
             />
             <Button
-              style={{
-                backgroundColor: "black",
-                color: "white",
-                border: "none",
-                borderRadius: "5px",
-                padding: "5px 10px",
-                cursor: "pointer",
-                marginTop: "10px",
-              }}
+              id="coupon-btn"
               ref={buttonRef}
               onClick={handleCoupon}
             >
               Apply
             </Button>
+            </div>
           </Form.Group>
           <hr />
 
           <Form.Group>
-            <Form.Text
-              style={{
-                color: "black",
-                fontSize: "20px",
-                fontWeight: "bold",
-                marginLeft: "50%",
-              }}
-            >
+            <Form.Text id="total">
               Total: {total}
             </Form.Text>
           </Form.Group>
           <hr />
           <br />
-          <Button onClick={handleSubmit} variant="primary" type="button">
+          <Button onClick={handleSubmit} variant="primary" type="button" id="submit-booking-btn">
             Submit
           </Button>
         </Form>

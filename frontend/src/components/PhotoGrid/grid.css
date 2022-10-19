@@ -1,47 +1,13 @@
-.tm-rooms:focus {
-  outline: none;
-}
-.tm-rooms a:focus {
-  outline: none;
-}
-
-.tm-rooms {
-  display: block;
-  background: #353535;
-  max-width: 33.33%;
-  width: 33.33%;
-}
-
-.tm-rooms img {
-  max-width: 100%;
-  width: 100%;
-  padding: 1rem;
-}
-
-.tm-rooms p {
-  font-size: 1.5vw;
-  color: #fff;
-  text-align: center;
-  padding: 5%;
-}
-
-.tm-rooms a {
-  text-decoration: none;
-}
-
-.tm-rooms a p:hover {
-  color: #ec3c6a;
-}
-
-.s {
-  padding-bottom: 1%;
-}
-
-.flex {
-  display: flex;
-}
-
 .photogridimages{
   width: 15rem;
   height: 10rem;
+}
+
+.grid-container{
+  padding: 5%;
+}
+
+.container-div{
+  text-align: center;
+  padding: 40px;
 }
