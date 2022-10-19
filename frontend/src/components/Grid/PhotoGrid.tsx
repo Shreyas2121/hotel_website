@@ -42,7 +42,7 @@ const PhotoGrid = () => {
         }}
         className="mb-3"
       >
-        <MDBCol size="3">
+        <MDBCol size="4">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -67,7 +67,7 @@ const PhotoGrid = () => {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="3">
+        <MDBCol size="4">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -92,7 +92,7 @@ const PhotoGrid = () => {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="3">
+        <MDBCol size="4">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -127,7 +127,7 @@ const PhotoGrid = () => {
           justifyContent: "space-evenly",
         }}
       >
-        <MDBCol size="3">
+        <MDBCol size="4">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -152,7 +152,7 @@ const PhotoGrid = () => {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="3">
+        <MDBCol size="4">
           <MDBCard>
             <MDBRipple
               rippleColor="light"
@@ -177,7 +177,7 @@ const PhotoGrid = () => {
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol size="3">
+        <MDBCol size="4">
           <MDBCard>
             <MDBRipple
               rippleColor="light"

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <Navbar bg="light" variant="light" expand="lg" sticky="top">
+    <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container
         style={{
           display: "flex",

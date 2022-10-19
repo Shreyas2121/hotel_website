@@ -1,4 +1,7 @@
 import React from "react";
+
+import "../components/parallaxImage.css";
+
 import PhotoGrid from "../components/Grid/PhotoGrid";
 import Service from "../components/services/Service";
 import Reviewcards from "../components/Roomcards/Reviewcards";
@@ -9,8 +12,9 @@ const Home = () => {
   return (
     <header>
       <div
-        className="p-5 text-center bg-image"
-        style={{ backgroundImage: `url(${bannerImage})`, height: "45rem" }}
+        className="p-5 text-center bg-image parallax"
+        style={{ 
+          backgroundImage: `url(${bannerImage})`, height: "45rem" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">

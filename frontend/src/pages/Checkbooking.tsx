@@ -10,6 +10,11 @@ import { Booking } from "../types/types";
 import Stack from "react-bootstrap/Stack";
 import axios from "axios";
 
+import roomsBackground from "../assets/images/about_banner.jpg";
+
+import "../components/parallaxImage.css";
+
+
 interface Res {
   data: Booking[];
   loading: boolean;
@@ -50,9 +55,32 @@ export const Checkbooking = () => {
   },[del,setDel]) 
 
   return (
-    <Container style={{ minHeight: "100vh" }}>
-      <br />
-      <Stack direction="horizontal" gap={3}>
+    <header>
+    <div
+      className='p-5 text-center bg-image parallax'
+      style={{ backgroundImage: `url(${roomsBackground})`, height: "20rem" }}
+    >
+      <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+        <div className='d-flex justify-content-center align-items-center h-100'>
+          <div className='text-white'>
+            <h1 className='mb-3'>YOUR BOOKINGS</h1>
+            <br />
+            <br />
+            <br />
+          </div>
+        </div>
+      </div>
+
+      <Stack direction="horizontal" gap={3} style={{
+        position: "absolute",
+        top: "80%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "100%",
+        maxWidth: "600px",
+        padding: "2rem",
+        
+      }}>
         <Form.Control
           ref={emailRef}
           type="email"
@@ -63,6 +91,13 @@ export const Checkbooking = () => {
           Check
         </Button>
       </Stack>
+
+    </div>
+    <br />
+
+    <Container style={{ minHeight: "50vh" }}>
+      <br />
+
       <br />
       {clicked && (
         <div>
@@ -77,13 +112,14 @@ export const Checkbooking = () => {
                 gap: "1rem",
               }}
             >
-              <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} />
+              {/* <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} /> */}
             
             </div>
           )}
         </div>
       )}
     </Container>
+  </header>
   );
 };
 
