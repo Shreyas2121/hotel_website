@@ -1,4 +1,5 @@
 import "./service.css";
+import "../parallaxImage.css"
 
 import {MDBContainer, MDBRow, MDBCol, MDBTypography } from 'mdb-react-ui-kit';
 import {
@@ -22,13 +23,12 @@ const Service = () => {
     <MDBContainer fluid style={{
       height: "50rem",
       backgroundImage: `url(${servicesBackground})`,
-    }}>
+    }}
+    className="parallax"
+    >
       <br/>
-      <div style={{
-        textAlign: "center",
-        padding: "40px",
-      }}>
-        <MDBTypography tag='h1' className='mb-0' style={{color:"white", fontWeight:"bold"}}>
+      <div className="container-top-div">
+        <MDBTypography tag='h1' className='mb-0' style={{color:"black", fontWeight:"bold"}}>
           Royal Facilities
         </MDBTypography>
         <MDBTypography tag='small' className='text-muted'>
@@ -37,13 +37,7 @@ const Service = () => {
       </div>
 
 
-      <MDBRow style={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        margin:"auto",
-        width: "90%",
-      }}
-      className='mb-3'>
+      <MDBRow className='mb-3'>
         <MDBCol md='3'>
         <MDBCard className="boxes">
           <MDBCardBody>
@@ -82,12 +76,7 @@ const Service = () => {
       </MDBRow>
       <br/>
 
-      <MDBRow style={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        margin:"auto",
-        width: "90%",
-      }}
+      <MDBRow
       className='mb-3'>
         <MDBCol md='3'>
         <MDBCard className="boxes">
