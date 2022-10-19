@@ -112,7 +112,7 @@ export const Checkbooking = () => {
                 gap: "1rem",
               }}
             >
-              {/* <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} /> */}
+              <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} />
             
             </div>
           )}
