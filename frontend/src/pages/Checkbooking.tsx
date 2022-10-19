@@ -14,7 +14,6 @@ import roomsBackground from "../assets/images/about_banner.jpg";
 
 import "../components/parallaxImage.css";
 
-
 interface Res {
   data: Booking[];
   loading: boolean;
@@ -41,84 +40,100 @@ export const Checkbooking = () => {
   };
 
   useEffect(() => {
-      const a = async() => {
-        const email = emailRef.current.value;
-    setLoading(true);
-    const { data }: Res = await axios.get(
-      `http://127.0.0.1:5000/reservation/get/${email}`
-    );
-    setBookingDetails(data);
-    console.log(data);
-    setLoading(false);
-      }
-      a();
-  },[del,setDel])
+    const a = async () => {
+      const email = emailRef.current.value;
+      setLoading(true);
+      const { data }: Res = await axios.get(
+        `http://127.0.0.1:5000/reservation/get/${email}`
+      );
+      setBookingDetails(data);
+      setLoading(false);
+    };
+    a();
+  }, [del, setDel]);
 
   return (
     <header>
-    <div
-      className='p-5 text-center bg-image parallax'
-      style={{ backgroundImage: `url(${roomsBackground})`, height: "20rem" }}
-    >
-      <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-        <div className='d-flex justify-content-center align-items-center h-100'>
-          <div className='text-white'>
-            <h1 className='mb-3'>YOUR BOOKINGS</h1>
-            <br />
-            <br />
-            <br />
+      <div
+        className="p-5 text-center bg-image parallax"
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "20rem" }}
+      >
+        <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
+          <div className="d-flex justify-content-center align-items-center h-100">
+            <div className="text-white">
+              <h1 className="mb-3">YOUR BOOKINGS</h1>
+              <br />
+              <br />
+              <br />
+            </div>
           </div>
         </div>
+
+        <Stack
+          direction="horizontal"
+          gap={3}
+          style={{
+            position: "absolute",
+            top: "80%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "100%",
+            maxWidth: "600px",
+            padding: "2rem",
+          }}
+        >
+          <Form.Control
+            ref={emailRef}
+            type="email"
+            className="me-auto"
+            placeholder="Enter Email"
+          />
+          <Button onClick={handleSubmit} type="button" variant="secondary">
+            Check
+          </Button>
+        </Stack>
       </div>
-
-      <Stack direction="horizontal" gap={3} style={{
-        position: "absolute",
-        top: "80%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: "100%",
-        maxWidth: "600px",
-        padding: "2rem",
-
-      }}>
-        <Form.Control
-          ref={emailRef}
-          type="email"
-          className="me-auto"
-          placeholder="Enter Email"
-        />
-        <Button onClick={handleSubmit} type="button" variant="secondary">
-          Check
-        </Button>
-      </Stack>
-
-    </div>
-    <br />
-
-    <Container style={{ minHeight: "50vh" }}>
       <br />
 
-      <br />
-      {clicked && (
-        <div>
-          {loading ? (
-            <div></div>
-          ) : (
-            <div
-              style={{
-                // display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "1rem",
-              }}
-            >
-              <DisplayDetails bookingDetails={bookingDetails} setDel={setDel} />
-            </div>
-          )}
-        </div>
-      )}
-    </Container>
-  </header>
+      <Container style={{ minHeight: "50vh" }}>
+        <br />
+
+        <br />
+        {clicked && (
+          <div>
+            {loading ? (
+              <div></div>
+            ) : (
+              <div
+                style={{
+                  // display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                {bookingDetails.length ? (
+                  <DisplayDetails
+                    bookingDetails={bookingDetails}
+                    setDel={setDel}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      fontSize: "1.5rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    No Bookings Found for this email: {emailRef.current.value}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </Container>
+    </header>
   );
 };
 
