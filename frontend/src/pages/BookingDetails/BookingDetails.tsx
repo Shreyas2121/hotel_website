@@ -149,7 +149,7 @@ export const BookingDetails = () => {
     if (res.data.message == "Booking Successful") {
       toast.success("Booking Successful");
       navigate("/booking/success", {
-        state: data,
+        state: {data,key},
       });
     } else {
       toast.error("Booking Failed");
@@ -169,7 +169,7 @@ export const BookingDetails = () => {
           <div id="personal-details">
             <Form.Group id="name-group" className="mb-3">
               <Form.Label id="name-label">Name</Form.Label>
-              <Form.Control type="text" ref={nameRef} required />
+              <Form.Control id="name-id" type="text" ref={nameRef} required />
             </Form.Group>
 
             <Form.Group

@@ -28,6 +28,7 @@ interface ResStatus {
 }
 
 const Rooms = () => {
+  // window.scrollTo(0, 0);
   const { data, loading }: Res = UseFetch(
     `http://127.0.0.1:5000/booking/room/getDetails`
   );
@@ -66,6 +67,9 @@ const Rooms = () => {
     );
     setStatus(data);
     setClicked(true);
+    window.scrollTo({
+      top: 800,
+    })
   };
 
   return (
@@ -115,7 +119,12 @@ const Rooms = () => {
                     onChange={(e) => setCheckOut(e.target.value)}
                   />
                 </div>
-                <Button id="check-availability" variant="primary" size="sm" onClick={handleSearch}>
+                <Button
+                  id="check-availability"
+                  variant="primary"
+                  size="sm"
+                  onClick={handleSearch}
+                >
                   Check Availability
                 </Button>{" "}
               </div>
