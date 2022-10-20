@@ -37,7 +37,7 @@ const Home = () => {
                 className="btn btn-outline-light btn-lg"
                 role="button"
               >
-                <Link to="booking/room">
+                <Link to="booking/room" style={{color:"white"}}>
                 Book Now
                 </Link>
               </a>
