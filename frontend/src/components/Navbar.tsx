@@ -27,12 +27,14 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/aboutus">
               About Us
             </Nav.Link>
-            <div>
-              <Nav.Link as={Link} to="/checkbooking">
-                Your Bookings
-              </Nav.Link>
-            </div>
           </Nav>
+          
+          <NavDropdown title="Account" id="basic-nav-dropdown">
+            <NavDropdown.Item as={Link} to="/checkbooking">
+             Bookings
+            </NavDropdown.Item>
+          </NavDropdown>
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
