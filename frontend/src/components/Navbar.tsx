@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -27,9 +27,11 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/aboutus">
               About Us
             </Nav.Link>
-            <Nav.Link as={Link} to="/checkbooking">
-              Your Bookings
-            </Nav.Link>
+            <div>
+              <Nav.Link as={Link} to="/checkbooking">
+                Your Bookings
+              </Nav.Link>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
