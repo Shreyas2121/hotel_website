@@ -5,11 +5,14 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
+import "./navbar.css";
+import hotelIcon from "../../public/hotel_icon1.png";
+
 const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
       <Container>
-        <Navbar.Brand href="#home">useHotel</Navbar.Brand>
+        <Navbar.Brand href="#home"><img src={hotelIcon} />useHotel</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -27,14 +30,18 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/aboutus">
               About Us
             </Nav.Link>
-            <div>
-              <Nav.Link as={Link} to="/checkbooking">
-                Your Bookings
-              </Nav.Link>
-            </div>
           </Nav>
+
+          <NavDropdown title="More" id="account1">
+            <NavDropdown.Item as={Link} to="/checkbooking">
+             Bookings
+            </NavDropdown.Item>
+          </NavDropdown>
+
         </Navbar.Collapse>
+        
       </Container>
+      
     </Navbar>
   );
 };
