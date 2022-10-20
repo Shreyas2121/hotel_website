@@ -82,22 +82,15 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
           <h3>{roomData.room_type}</h3>
 
           <div style={{display:"flex", justifyContent:"space-between"}}>
-          <p>
-              <img src={personicon} alt="personicon" style={{width:"1.5rem", height:"1.5rem"}}/>
-              {roomData.room_max_occ}
-          </p>
+            <p>
+                <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.5rem"}}/>
+                {roomData.room_max_occ}
+            </p>
 
-          <p>
-            <span
-              style={{
-                fontWeight: "bold",
-                display:"flex"
-              }}
-            >
-              <img src={area} style={{height:"2rem"}}/>
-              <p style={{fontSize:"0.8rem"}}>{roomData.room_area}</p>
-            </span>
-          </p>
+            <div style={{display:"flex"}}>
+              <p style={{fontSize:"0.6rem", marginTop:"15%", fontWeight:"bold"}}>{roomData.room_area}</p>
+              <img src={area} style={{height:"1.5rem"}}/>
+            </div>
 
           </div>
 

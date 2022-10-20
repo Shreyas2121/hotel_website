@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
-import personicon from "../../../public/icons8-person-64.png";
+import personicon from "../../../public/icons8-user-groups-50.png";
 import tick from "../../../public/icons8-tick-box-26.png";
 
 interface Status {
@@ -75,7 +75,7 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
           <h3>{hallData.hall_type}</h3>
 
           <p>
-            <img src={personicon} alt="personicon" style={{width:"1.5rem", height:"1.5rem"}}/>
+            <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.5rem"}}/>
             {hallData.hall_max_occ}
           </p>
 
