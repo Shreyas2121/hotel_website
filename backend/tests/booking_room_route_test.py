@@ -11,7 +11,7 @@ def test_get_booking():
 
 def test_book_room():
      data_to_post = {
-         "name": "test",
+        "name": "test",
         "email": "test@test.com",
         "date": datetime.now(),
         "checkin": datetime.now(),
