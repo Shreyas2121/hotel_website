@@ -39,6 +39,7 @@
     margin-bottom: 20px;
     gap: 10px;
     color: #000;
+    font-weight: bold;
 }
 
 #name-group{
@@ -64,16 +65,20 @@
 
 #room-qnty{
      color: #000;
+     font-weight: bold;
 }
 
 #checkin{
     color: #000;
+    font-weight: bold;
 }
 #checkout{
     color: #000;
+    font-weight: bold;
 }
 #room-type{
     color: #000;
+    font-weight: bold;
 }
 #addons{
     font-weight: bolder;

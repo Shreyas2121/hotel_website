@@ -1,5 +1,4 @@
 import axios from "axios";
-import { truncate } from "fs/promises";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -31,7 +30,7 @@ export const BookingDetails = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
-  // const couponRef = useRef<HTMLInputElement>(null);
+  const couponRef = useRef<HTMLInputElement>(null);
 
   const [coupon, setCoupon] = useState("");
 
@@ -60,11 +59,9 @@ export const BookingDetails = () => {
     setTotal(total_price);
   }, [selectCheck]);
 
-
   const type = data?.addOn_type;
 
   const handleAddon = (e) => {
-
     if (e.target.checked) {
       setSelectCheck({
         addon: [...selectCheck.addon, e.target.value],
@@ -99,6 +96,7 @@ export const BookingDetails = () => {
     } else {
       setDiscount(res.data);
       toast.success("Coupon Applied Successfully");
+      couponRef.current.disabled = true;
       let price = total * (res.data / 100);
       setTotal(total - price);
       buttonRef.current.disabled = true;
@@ -161,7 +159,7 @@ export const BookingDetails = () => {
   return (
     <Container id="booking-details">
       <div id="container">
-        <Form>
+        <Form onSubmit={handleSubmit}>
           {key == "Hall" ? (
             <h2 id="title-of-form">BOOK A HALL WITH US</h2>
           ) : (
@@ -234,7 +232,7 @@ export const BookingDetails = () => {
             ) : (
               <div id="addon-list">
                 {Object.entries(type).map(([key, value]) => (
-                  <Form.Group>
+                  <Form.Group style={{ display: "flex" }}>
                     <Form.Check
                       ref={checkRef}
                       className="checkbox-Form.Control"
@@ -245,7 +243,8 @@ export const BookingDetails = () => {
                       onChange={handleAddon}
                     />
                     <Form.Label className="checkbox" id="check-box">
-                      {key} : ₹ {value}
+                      {key} <br />{" "}
+                      <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
                     </Form.Label>
                   </Form.Group>
                 ))}
@@ -274,7 +273,12 @@ export const BookingDetails = () => {
             </Form.Label>
             <div id="coupon-section">
               {" "}
-              <Form.Control id="coupon-box" type="text" onChange={(e) => setCoupon(e.target.value)} />
+              <Form.Control
+                id="coupon-box"
+                type="text"
+                ref={couponRef}
+                onChange={(e) => setCoupon(e.target.value)}
+              />
               <Button
                 id="coupon-btn"
                 ref={buttonRef}
@@ -288,16 +292,11 @@ export const BookingDetails = () => {
           <hr />
 
           <Form.Group>
-            <Form.Text id="total">Total: {total}</Form.Text>
+            <Form.Text id="total">Total: ₹{total}</Form.Text>
           </Form.Group>
           <hr />
           <br />
-          <Button
-            onClick={handleSubmit}
-            variant="primary"
-            type="button"
-            id="submit-booking-btn"
-          >
+          <Button variant="primary" type="submit" id="submit-booking-btn">
             Submit
           </Button>
         </Form>

@@ -7,7 +7,7 @@ from controller.routes.addons_route import addons_route
 from controller.routes.booking_room_route import booking_route
 from controller.routes.booking_hall_route import booking_hall_route
 from controller.routes.reviews_route import reviews_route
-# from controller.routes.cancelling_room__route import cancel_route
+from controller.routes.cancelling_room__route import cancel_route
 
 
 app = Flask(__name__)
@@ -20,7 +20,7 @@ app.register_blueprint(addons_route)
 app.register_blueprint(booking_route)
 app.register_blueprint(booking_hall_route)
 app.register_blueprint(reviews_route)
-# app.register_blueprint(cancel_route)
+app.register_blueprint(cancel_route)
 
 
 @app.route('/')
