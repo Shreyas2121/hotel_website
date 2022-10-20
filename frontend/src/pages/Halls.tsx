@@ -17,8 +17,14 @@ interface Res {
   loading: boolean;
 }
 
-interface ResHallS {
-  data: Array<string>;
+interface Status {
+  Wedding: number;
+  Conference: number;
+  Birthday: number;
+}
+
+interface ResStatus {
+  data: Status;
 }
 
 const Halls = () => {
@@ -27,28 +33,40 @@ const Halls = () => {
   );
 
   const [checkIn, setCheckIn] = useState("");
-  const [hallData, setHallData] = useState([]);
+  const [checkOut, setCheckOut] = useState("");
+
+  const [status, setStatus] = useState<Status>();
+
+  // const [hallData, setHallData] = useState([]);
+
   const [clicked, setClicked] = useState(false);
 
   let checkin = new Date(checkIn);
+  let checkout = new Date(checkOut);
+
+  const conv = (date: Date) => {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  };
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const selectedDate = checkin.toISOString();
+    const formatedCheckIn = checkin.toISOString();
+    const formatedCheckOut = checkout.toISOString();
 
-    setCheckIn(selectedDate);
-    setClicked(true);
-
-    const { data }: ResHallS = await axios.post(
+    const { data }: ResStatus = await axios.post(
       "http://127.0.0.1:5000/booking/hall/check",
-      { checkin: selectedDate },
+      { checkIn: formatedCheckIn,
+        checkOut: formatedCheckOut, },
       {
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
-    setHallData(data);
+    setStatus(data);
+
+    // setHallData(data);
+    setClicked(true);
   };
 
   return (
@@ -70,23 +88,33 @@ const Halls = () => {
                 className="search"
                 style={{
                   display: "flex",
-                  width: "40rem",
-                }}
+                  width: "60rem",
+                  margin: "auto",                }}
               >
                 <div
                   style={{
-                    width: "50%",
+                    width: "60%",
                     display: "flex",
                     justifyContent: "space-evenly",
                   }}
                 >
-                  Date :{" "}
+                  From :{" "}
                   <input
                     id="check-in"
                     className="dates"
                     min={new Date().toISOString().split("T")[0]}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
+                  />
+
+                  To:{" "}
+                  <input
+                    id="check-out"
+                    className="dates"
+                    min={conv(checkin)}
+                    type="date"
+                    disabled={checkIn === ""}
+                    onChange={(e) => setCheckOut(e.target.value)}
                   />
                 </div>
                 <div>
@@ -112,7 +140,9 @@ const Halls = () => {
                 key={hall.hall_id}
                 hallData={hall}
                 checkin={checkin}
-                bookedHalls={hallData}
+                // bookedHalls={hallData}
+                checkout={checkout}
+                status={status}
               />
             ))
           )}

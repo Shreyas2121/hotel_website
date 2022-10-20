@@ -8,6 +8,7 @@ class BookingHall(db.Document):
     booking_useremail = db.EmailField()
     booking_date = db.StringField()
     booking_check_in = db.DateTimeField()
+    booking_check_out = db.DateTimeField()
     booking_hall_type = db.StringField()
     booking_hall_price = db.DecimalField()
     booking_addOns = db.DictField(field=db.IntField())

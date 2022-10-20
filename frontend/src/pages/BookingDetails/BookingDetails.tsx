@@ -25,6 +25,7 @@ interface State {
 
 export const BookingDetails = () => {
   const location = useLocation();
+  console.log(location.state);
   const { no, checkin, checkout, roomType, roomPrice, key }: State =
     location.state;
   const nameRef = useRef<HTMLInputElement>(null);
