@@ -37,8 +37,12 @@ def check_bookings():
     parsed_check_in = parser.isoparse(checkin)
     parsed_check_out = parser.isoparse(checkout)
 
-    booking_obj = BookingHall.objects(booking_check_in__lte=parsed_check_in, booking_check_out__gte=parsed_check_in,)
-    booking_data = list(map(lambda x: x.to_json(), booking_obj))
+    booking_obj1 = BookingHall.objects(booking_check_in__lte=parsed_check_in, booking_check_out__gte=parsed_check_in,)
+    booking_obj2 = BookingHall.objects(booking_check_in__lte=parsed_check_out, booking_check_out__gte=parsed_check_out,)
+    booking_data1 = list(map(lambda x: x.to_json(), booking_obj1))
+    booking_data2 = list(map(lambda x: x.to_json(), booking_obj2))
+
+    booking_data=booking_data1+booking_data2
 
     res = requests.get('http://127.0.0.1:5000/booking/hall/getDetails')
 

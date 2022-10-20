@@ -41,6 +41,8 @@ const Halls = () => {
 
   const [clicked, setClicked] = useState(false);
 
+  const selectRef = React.useRef<HTMLSelectElement>(null);
+
   let checkin = new Date(checkIn);
   let checkout = new Date(checkOut);
 
@@ -52,6 +54,7 @@ const Halls = () => {
     e.preventDefault();
     const formatedCheckIn = checkin.toISOString();
     const formatedCheckOut = checkout.toISOString();
+    const value =  selectRef.current.value
 
     const { data }: ResStatus = await axios.post(
       "http://127.0.0.1:5000/booking/hall/check",
@@ -98,6 +101,19 @@ const Halls = () => {
                     justifyContent: "space-evenly",
                   }}
                 >
+                  Type:
+                  <select
+                    className="form-select"
+                    aria-label="Default select example"
+                    ref={selectRef}
+                  >
+                    <option value="">-</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Wedding">Wedding</option>
+                  </select>
+
+
                   From :{" "}
                   <input
                     id="check-in"
