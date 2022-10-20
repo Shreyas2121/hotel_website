@@ -24,8 +24,6 @@ interface Props {
 }
 
 const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
-
-  console.log(hallData,status);
   
   const [no, setNo] = useState(1);
   const [avaiRooms, setAvaiRooms] = useState(0);
@@ -75,8 +73,8 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
           <h3>{hallData.hall_type}</h3>
 
           <p>
-            <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.5rem"}}/>
-            {hallData.hall_max_occ}
+            <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.3rem"}}/>
+            {hallData.hall_max_occ} (Max Occupancy)
           </p>
 
           <p>{hallData.hall_desc}</p>

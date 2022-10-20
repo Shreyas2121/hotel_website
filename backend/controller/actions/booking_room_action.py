@@ -48,10 +48,12 @@ def check_booking():
 
     booking_obj = BookingRoom.objects(booking_check_in__lte=parsed_check_in, booking_check_out__gt=parsed_check_in,)
     booking_obj2 = BookingRoom.objects(booking_check_in__lt=parsed_check_out, booking_check_out__gte=parsed_check_out,)
-    booking_data1 = list(map(lambda x: x.to_json(), booking_obj))
-    booking_data2 = list(map(lambda x: x.to_json(), booking_obj2))
-    booking_data = booking_data1 + booking_data2
-    print(booking_data)
+    booking_data = list(map(lambda x: x.to_json(), booking_obj))
+    booking_data1 = list(map(lambda x: x.to_json(), booking_obj2))
+
+    for i in booking_data1:
+        if not i in booking_data:
+            booking_data.append(i)
 
     res = requests.get('http://127.0.0.1:5000/booking/room/getDetails')
 

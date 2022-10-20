@@ -41,6 +41,8 @@ const Halls = () => {
 
   const [clicked, setClicked] = useState(false);
 
+  const [value, setValue] = useState("");
+
   const selectRef = React.useRef<HTMLSelectElement>(null);
 
   let checkin = new Date(checkIn);
@@ -54,7 +56,7 @@ const Halls = () => {
     e.preventDefault();
     const formatedCheckIn = checkin.toISOString();
     const formatedCheckOut = checkout.toISOString();
-    const value =  selectRef.current.value
+    const valueNew =  selectRef.current.value
 
     const { data }: ResStatus = await axios.post(
       "http://127.0.0.1:5000/booking/hall/check",
@@ -66,11 +68,11 @@ const Halls = () => {
         },
       }
     );
+    setValue(valueNew)
     setStatus(data);
-
-    // setHallData(data);
     setClicked(true);
   };
+
 
   return (
     <header>
@@ -91,14 +93,15 @@ const Halls = () => {
                 className="search"
                 style={{
                   display: "flex",
-                  width: "60rem",
+                  width: "80rem",
                   margin: "auto",                }}
               >
                 <div
                   style={{
-                    width: "60%",
+                    width: "70%",
                     display: "flex",
                     justifyContent: "space-evenly",
+                    height: "2rem",
                   }}
                 >
                   Type:
@@ -106,8 +109,9 @@ const Halls = () => {
                     className="form-select"
                     aria-label="Default select example"
                     ref={selectRef}
+                    style={{ width: "10rem", padding:"0.1rem 0.8rem 0" }}
                   >
-                    <option value="">-</option>
+                    <option>Select Type</option>
                     <option value="Conference">Conference</option>
                     <option value="Birthday">Birthday</option>
                     <option value="Wedding">Wedding</option>
@@ -151,7 +155,10 @@ const Halls = () => {
           {loading ? (
             <h1>Loading...</h1>
           ) : (
-            data?.halls.map((hall) => (
+            data?.halls.map((hall) => {
+
+              if (hall.hall_type===value){
+              return (
               <Hallcards
                 key={hall.hall_id}
                 hallData={hall}
@@ -160,8 +167,9 @@ const Halls = () => {
                 checkout={checkout}
                 status={status}
               />
-            ))
-          )}
+              )};
+            }
+          ))}
         </div>
       )}
     </header>

@@ -83,12 +83,12 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
 
           <div style={{display:"flex", justifyContent:"space-between"}}>
             <p>
-                <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.5rem"}}/>
-                {roomData.room_max_occ}
+                <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.3rem"}}/>
+                {roomData.room_max_occ} (Max Occupancy)
             </p>
 
             <div style={{display:"flex"}}>
-              <p style={{fontSize:"0.6rem", marginTop:"15%", fontWeight:"bold"}}>{roomData.room_area}</p>
+              <p style={{fontSize:"0.7rem", marginTop:"10%", fontWeight:"bold"}}>{roomData.room_area}</p>
               <img src={area} style={{height:"1.5rem"}}/>
             </div>
 
