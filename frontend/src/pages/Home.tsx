@@ -7,6 +7,7 @@ import Service from "../components/services/Service";
 import Reviewcards from "../components/Cards/Reviewcards";
 
 import bannerImage from "../assets/images/banner_bg.jpg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   let isHomepage = "featured";
@@ -34,10 +35,11 @@ const Home = () => {
               <h6 className="mb-3">MAKE YOUR VACATION HAPPY</h6>
               <a
                 className="btn btn-outline-light btn-lg"
-                href="#"
                 role="button"
               >
+                <Link to="booking/room">
                 Book Now
+                </Link>
               </a>
             </div>
           </div>

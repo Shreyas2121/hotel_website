@@ -11,4 +11,5 @@ def cancel(_id):
 
 @cancel_route.route('/reservation/get/<string:email>',methods=['GET'])
 def get(email):
+    print(email)
     return get_bookings_by_email(email)

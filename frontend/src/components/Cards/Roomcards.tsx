@@ -8,11 +8,16 @@ import { Link} from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
 
+import personicon from "../../../public/icons8-person-64.png";
+import tick from "../../../public/icons8-tick-box-26.png";
+import area from "../../../public/icons8-surface-48.png";
+
 interface Status {
   Basic: number;
   Suite: number;
   Deluxe: number;
 }
+
 interface Props {
   roomData: Room;
   checkin: Date;
@@ -75,16 +80,19 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
 
         <MDBCol md="6">
           <h3>{roomData.room_type}</h3>
-          <p>
-            <span
-              style={{
-                fontWeight: "bold",
-              }}
-            >
-              Max Occupancy:
-            </span>{" "}
-            {roomData.room_max_occ}
-          </p>
+
+          <div style={{display:"flex", justifyContent:"space-between"}}>
+            <p>
+                <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.3rem"}}/>
+                {roomData.room_max_occ} (Max Occupancy)
+            </p>
+
+            <div style={{display:"flex"}}>
+              <p style={{fontSize:"0.7rem", marginTop:"10%", fontWeight:"bold"}}>{roomData.room_area}</p>
+              <img src={area} style={{height:"1.5rem"}}/>
+            </div>
+
+          </div>
 
           <p>{roomData.room_desc}</p>
           
@@ -96,7 +104,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
             </span>
 
             {roomData?.room_amenties.map((room) => (
-              <p style={{ marginRight: "5px", marginLeft:"5px" }}>✓ {room}</p>
+              <p style={{ marginRight: "5px", marginLeft:"5px" }}><img src={tick} style={{height:"1rem",marginBottom:"0.3rem"}}/> {room}</p>
             ))}
 
           </div>

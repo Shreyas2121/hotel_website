@@ -31,7 +31,7 @@ const Service = () => {
         <MDBTypography tag='h1' className='mb-0' style={{color:"black", fontWeight:"bold"}}>
           Royal Facilities
         </MDBTypography>
-        <MDBTypography tag='small' className='text-muted'>
+        <MDBTypography tag='small'>
           Who are in extremely love with eco friendly system
         </MDBTypography>
       </div>
