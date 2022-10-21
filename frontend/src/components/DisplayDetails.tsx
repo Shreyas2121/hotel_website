@@ -23,6 +23,16 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
       toast.error("Something went wrong");
     }
   };
+  const check_ongoin = (checkin: string, checkout: string) => {
+    const checkin_date = new Date(checkin);
+    const checkout_date = new Date(checkout);
+    const today = new Date();
+    if (today >= checkin_date && today <= checkout_date) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const check = (date: string) => {
     const newDate = new Date(date);
@@ -41,6 +51,16 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
       return true;
     }
   };
+
+  // const check = (date: string) => {
+  //   const newDate = new Date(date);
+  //   const currentDate = new Date();
+  //   if (newDate >= currentDate) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // };
 
   return (
     <div>
@@ -69,28 +89,53 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                   <td>{booking.booking_no_of_rooms}</td>
                   <td>{booking.booking_total}</td>
                   <td>
-                    {check(booking.booking_check_out) ? (
-                      <span>Completed</span>
+                    {check(booking.booking_check_in) ? (
+                      <span>
+                        {check_ongoin(
+                          booking.booking_check_in,
+                          booking.booking_check_out
+                        ) ? (
+                          <span>On-going</span>
+                        ) : (
+                          <span>Completed</span>
+                        )}
+                      </span>
                     ) : (
-                      <span>Upcoming</span>
+                      <span>Incomplete</span>
                     )}
                   </td>
                   <td>
-                    {check(booking.booking_check_out) ? (
-                      <Link
-                        to="/addreview"
-                        state={{
-                          name: booking.booking_username,
-                          email: booking.booking_useremail,
-                        }}
-                      >
-                        Add Review
-                      </Link>
+                    {check(booking.booking_check_in) ? (
+
+                      <span>
+                        {check_ongoin(
+                          booking.booking_check_in,
+                          booking.booking_check_out
+                        ) ? (
+                                  <span>
+                                    ----------------
+                                  </span>
+                        ) : (
+                          <span>
+                              <Link
+                              to="/addreview"
+                              state={{
+                                name: booking.booking_username,
+                                email: booking.booking_useremail,
+                              }}
+                              >
+                              Add Review
+                              </Link>
+                          </span>
+                        )}
+                      </span>
                     ) : (
                       <Button onClick={(e) => handleSubmit(booking._id)}>
                         Cancel Booking
                       </Button>
+
                     )}
+
                   </td>
                 </tr>
               ) : (
