@@ -73,19 +73,17 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
           <h3>{hallData.hall_type}</h3>
 
           <p>
-            <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.3rem"}}/>
+            <img src={personicon} className="max-occupancy"/>
             {hallData.hall_max_occ} (Max Occupancy)
           </p>
 
           <p>{hallData.hall_desc}</p>
 
-          <div style={{ display: "flex" }}>
-            <span style={{
-                fontWeight: "bold",
-              }}>Amenities: </span>
+          <div className="display-flex">
+            <span className="amenities-span">Amenities: </span>
 
             {hallData?.hall_amenties.map((room) => (
-              <p style={{ marginRight: "5px", marginLeft:"5px" }}><img src={tick} style={{height:"1rem",marginBottom:"0.3rem"}}/> {room}</p>
+              <p className="room-para"><img src={tick} className="tick-img"/> {room}</p>
             ))}
 
           </div>
@@ -94,8 +92,8 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
 
         <MDBCol size="md" className="card-column-three">
           <div>
-            <p style={{fontSize: "0.8rem", marginBottom:0}}>Per day for a hall</p>
-            <p style={{fontSize: "1.5rem", fontWeight:"bold"}}>₹ {hallPrice}/-</p>
+            <p className="per-night">Per day for a hall</p>
+            <p className="room-price">₹ {hallPrice}/-</p>
           </div>
 
           {check() ? (
