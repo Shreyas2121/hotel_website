@@ -32,7 +32,7 @@ const Service = () => {
           Royal Facilities
         </MDBTypography>
         <MDBTypography tag='small'>
-          Who are in extremely love with eco friendly system
+          The true defination of luxury and comfort.
         </MDBTypography>
       </div>
 
@@ -44,7 +44,7 @@ const Service = () => {
             <h2><FaSwimmingPool/></h2>
             <MDBCardTitle>Swimming Pool</MDBCardTitle>
             <MDBCardText>
-              Enjoy your stay with excellent and timely room service
+              Enjoy your stay with excellent swimming pool facilities.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -56,7 +56,7 @@ const Service = () => {
             <h2><CgGym/></h2>
             <MDBCardTitle>Gymnesium</MDBCardTitle>
             <MDBCardText>
-              Enjoy your stay with excellent and timely room service
+              Enjoy your stay with excellent gymnesium facilities.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>        
@@ -68,7 +68,7 @@ const Service = () => {
             <h2><MdLocalBar/></h2>
             <MDBCardTitle>Bar</MDBCardTitle>
             <MDBCardText>
-              Enjoy your stay with excellent and timely room service
+              Enjoy your stay with excellent bar facilities.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -84,7 +84,7 @@ const Service = () => {
             <h2><IoIosRestaurant/></h2>
             <MDBCardTitle>Restaurant</MDBCardTitle>
             <MDBCardText>
-              Enjoy your stay with excellent and timely room service
+              Enjoy your stay with excellent restaurant facilities.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -95,7 +95,7 @@ const Service = () => {
             <h2><MdOutlineSportsTennis/></h2>
             <MDBCardTitle>Sports CLub</MDBCardTitle>
             <MDBCardText>
-              Enjoy your stay with excellent and timely room service
+              Enjoy your stay with excellent sports club facilities.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>        </MDBCol>
@@ -105,7 +105,7 @@ const Service = () => {
             <h2><TbMassage/></h2>
             <MDBCardTitle>Spa</MDBCardTitle>
             <MDBCardText>
-              Enjoy your stay with excellent and timely room service
+              Enjoy your stay with excellent spa facilities.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
