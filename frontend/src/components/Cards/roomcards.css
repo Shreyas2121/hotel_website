@@ -113,3 +113,49 @@
     font-size: 1rem;
     margin-top:5px
 }
+
+.max-occupancy-div{
+  display:flex;
+  justify-content:space-between;
+}
+
+.max-occupancy{
+  width:1.5rem;
+  height:1.2rem; 
+  margin-bottom:0.2rem;
+  margin-right:0.3rem;
+}
+
+.room-area{
+  font-size:0.7rem; 
+  margin-top:10%; 
+  font-weight:bold;
+}
+
+.per-night{
+  font-size: 0.8rem;
+  margin-bottom:0;
+}
+
+.display-flex{
+  display:flex;
+}
+
+.amenities-span{
+  font-weight: bold;
+}
+
+.room-para{ 
+  margin-right: 5px;
+  margin-left:5px;
+}
+
+.tick-img{
+  height:1rem;
+  margin-bottom:0.3rem;
+}
+
+.room-price{
+  font-size: 1.5rem;
+  font-weight:bold;
+}

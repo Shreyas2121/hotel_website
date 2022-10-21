@@ -81,14 +81,14 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
         <MDBCol md="6">
           <h3>{roomData.room_type}</h3>
 
-          <div style={{display:"flex", justifyContent:"space-between"}}>
+          <div className="max-occupancy-div">
             <p>
-                <img src={personicon} style={{width:"1.5rem", height:"1.2rem", marginBottom:"0.2rem",marginRight:"0.3rem"}}/>
+                <img src={personicon} className="max-occupancy"/>
                 {roomData.room_max_occ} (Max Occupancy)
             </p>
 
-            <div style={{display:"flex"}}>
-              <p style={{fontSize:"0.7rem", marginTop:"10%", fontWeight:"bold"}}>{roomData.room_area}</p>
+            <div className="display-flex">
+              <p className="room-area">{roomData.room_area}</p>
               <img src={area} style={{height:"1.5rem"}}/>
             </div>
 
@@ -96,15 +96,13 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
 
           <p>{roomData.room_desc}</p>
           
-          <div style={{ display: "flex" }}>
-            <span style={{
-              fontWeight: "bold",
-            }}>
+          <div className="display-flex">
+            <span className="amenities-span">
               Amenities:
             </span>
 
             {roomData?.room_amenties.map((room) => (
-              <p style={{ marginRight: "5px", marginLeft:"5px" }}><img src={tick} style={{height:"1rem",marginBottom:"0.3rem"}}/> {room}</p>
+              <p className="room-para"><img src={tick} className="tick-img"/> {room}</p>
             ))}
 
           </div>
@@ -114,8 +112,8 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
         <MDBCol className="card-column-three" size="md">
 
             <div>
-              <p style={{fontSize: "0.8rem", marginBottom:0}}>Per night for one room</p>
-              <p style={{fontSize: "1.5rem", fontWeight:"bold"}}>₹ {roomPrice}/-</p>
+              <p className="per-night">Per night for one room</p>
+              <p className="room-price">₹ {roomPrice}/-</p>
             </div>
 
           {check() ? (
