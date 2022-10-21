@@ -34,8 +34,6 @@ export const BookingDetails = () => {
 
   const [coupon, setCoupon] = useState("");
 
-  const navigate = useNavigate();
-
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
@@ -316,7 +314,7 @@ export const BookingDetails = () => {
       <div>
         <Container className="booking-details">
           <div className="price-details">
-            <table>
+            <table id="booking-details-tables">
               <tr>
                 <th>Details</th>
               </tr>
