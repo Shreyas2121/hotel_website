@@ -11,6 +11,8 @@ import { toast } from "react-toastify";
 import personicon from "../../../public/icons8-person-64.png";
 import tick from "../../../public/icons8-tick-box-26.png";
 import area from "../../../public/icons8-surface-48.png";
+import plus from "../../../public/icons8-plus-50.png";
+import minus from "../../../public/icons8-minus-50.png";
 
 interface Status {
   Basic: number;
@@ -152,7 +154,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                     className="link-style"
                     id="booknow"
                   >
-                    Book Now
+                    Select Room
                   </Link>
                 </p>
               </div>
