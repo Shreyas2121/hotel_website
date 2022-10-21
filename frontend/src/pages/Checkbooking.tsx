@@ -108,6 +108,7 @@ export const Checkbooking = () => {
                   gap: "1rem",
                 }}
               >
+                <h2>Bookings Found for E-mail: {emailRef.current.value}</h2>
                 {bookingDetails.length ? (
                   <DisplayDetails
                     bookingDetails={bookingDetails}
