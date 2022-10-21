@@ -1,8 +1,6 @@
 import Reviewcards from "../components/Cards/Reviewcards";
 import { useNavigate } from "react-router-dom";
 
-import { Button } from "react-bootstrap";
-
 import roomsBackground from "../assets/images/about_banner.jpg";
 import hotelPicture from "../assets/images/abouts_us.png";
 
@@ -83,16 +81,6 @@ const Aboutus = () => {
         </div>
 
         <Reviewcards featured={isHomepage} />
-
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            id="add-reviews"
-            onClick={NavigateToAddReview}
-            style={{ width: 800, padding: 8 }}
-          >
-            Add Review
-          </Button>
-        </div>
 
         <br />
         <br />

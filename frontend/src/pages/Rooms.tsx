@@ -50,7 +50,6 @@ const Rooms = () => {
   };
 
   const handleSearch = async (e) => {
-
     if (checkIn === "" || checkOut === "") {
       toast.error("Please select checkin and checkout dates");
     }
@@ -75,7 +74,7 @@ const Rooms = () => {
     setClicked(true);
     window.scrollTo({
       top: 800,
-    })
+    });
   };
 
   return (
