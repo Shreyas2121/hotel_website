@@ -5,12 +5,15 @@ import { useRef, useState } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Reviews.css";
 
 const AddReview = () => {
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const { name, email } = location.state;
 
   const NavigateToAboutUs = () => {
     navigate("/AboutUs");
@@ -58,12 +61,12 @@ const AddReview = () => {
           <br />
           <Form.Group id="name">
             <Form.Label>Name : </Form.Label>
-            <Form.Control type="text" ref={nameRef} required />
+            <Form.Control value={name} type="text" ref={nameRef} required />
           </Form.Group>
           <br />
           <Form.Group id="email">
             <Form.Label>Email : </Form.Label>
-            <Form.Control type="email" ref={emailRef} required />
+            <Form.Control value={email} type="email" ref={emailRef} required />
           </Form.Group>
           <br />
           <Form.Group
