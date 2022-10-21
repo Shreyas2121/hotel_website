@@ -119,7 +119,7 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
                     className="link-style"
                     id="booknow"
                   >
-                    Book Now
+                    Select Hall
                   </Link>
                 </p>
               </div>

@@ -14,7 +14,7 @@ const PhotoGrid = () => {
     <MDBContainer className="grid-container">
       <div className="container-div">
         <MDBTypography tag="h1" className="mb-0">
-          Accomadation
+          ACCOMADATION
         </MDBTypography>
         <MDBTypography tag="small" className="text-muted">
           We all live in an age that belongs to the young at heart. Life that is
@@ -105,6 +105,16 @@ const PhotoGrid = () => {
       </MDBRow>
 
       <br />
+
+      <div className="container-div">
+        <MDBTypography tag="h1" className="mb-0">
+          GET TOGETHER
+        </MDBTypography>
+        <MDBTypography tag="small" className="text-muted">
+          We all live in an age that belongs to the young at heart. Life that is
+          becoming extremely fast.
+        </MDBTypography>
+      </div>
 
       <MDBRow className="mb-3">
 

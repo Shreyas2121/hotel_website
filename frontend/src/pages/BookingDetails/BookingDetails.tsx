@@ -166,7 +166,8 @@ export const BookingDetails = () => {
   };
 
   return (
-    <Container id="booking-details">
+    <div id="c">
+    <Container className="booking-details">
       <div id="container">
         <Form onSubmit={handleSubmit}>
           {key == "Hall" ? (
@@ -199,39 +200,47 @@ export const BookingDetails = () => {
             </Form.Group>
           </div>
           <hr />
-          {key == "Hall" ? (
-            <div></div>
-          ) : (
-            <Form.Group>
-              <Form.Label htmlFor="adult" id="room-qnty">
-                No of rooms : {no}
-              </Form.Label>
-            </Form.Group>
-          )}
+          
+          <div id="details">
+            <div>
+              {key == "Hall" ? (
+                <Form.Group>
+                  <Form.Label id="Hall-bk-date">
+                    {checkin.toDateString()}
+                  </Form.Label>
+                </Form.Group>
+              ) : (
+                <Form.Group>
+                  <Form.Label htmlFor="adult" id="checkin">
+                    <p className="bold">Check In: </p>{checkin.toDateString()}
+                  </Form.Label>
+                  <Form.Label htmlFor="adult" id="checkout">
+                    <p className="bold">Check Out: </p>{checkout.toDateString()}
+                  </Form.Label>
+                </Form.Group>
+              )}
+            </div>
 
-          {key == "Hall" ? (
-            <Form.Group>
-              <Form.Label id="Hall-bk-date">
-                {checkin.toDateString()}
-              </Form.Label>
-            </Form.Group>
-          ) : (
-            <Form.Group>
-              <Form.Label htmlFor="adult" id="checkin">
-                Check In : {checkin.toDateString()}
-              </Form.Label>
-              <br />
-              <Form.Label htmlFor="adult" id="checkout">
-                Check Out : {checkout.toDateString()}
-              </Form.Label>
-            </Form.Group>
-          )}
+            <div>
+              {key == "Hall" ? (
+                <div></div>
+              ) : (
+                <Form.Group>
+                  <Form.Label htmlFor="adult" id="room-qnty">
+                  <p className="bold">No of rooms:</p> {no}
+                  </Form.Label>
+                </Form.Group>
+              )}
 
-          <Form.Group>
-            <Form.Label htmlFor="adult" id="room-type">
-              Type : {roomType}
-            </Form.Label>
-          </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="adult" id="room-type">
+                <p className="bold">Type: </p>{roomType}
+                </Form.Label>
+              </Form.Group>
+            </div>
+
+          </div>
+
           <hr />
           <Form.Group>
             <br />
@@ -297,11 +306,16 @@ export const BookingDetails = () => {
                 Apply
               </Button>
             </div>
-            <hr />
           </Form.Group>
-          <div className="priceCont">
+        </Form>
+      </div>
+      </Container>
+
+      {/* <Container className="booking-details">
+      <div className="price-details">
+        <Form>
             <Form.Group>
-              <Form.Text className="head">Price Break Up:</Form.Text>
+            <h3>Price details</h3>
               <Form.Text className="indiPrice">
                 <span>Room Price: </span> {roomPrice}
               </Form.Text>
@@ -315,15 +329,57 @@ export const BookingDetails = () => {
                 Total: ₹{total}
               </Form.Text>
             </Form.Group>
-            <hr />
-            <br />
             <Button variant="primary" type="submit" id="submit-booking-btn">
               Book Now
             </Button>
-          </div>
-        </Form>
+          </Form>
+        </div>
+    </Container> */}
+
+    <Container className="booking-details">
+      <div className="price-details">
+        <table>
+          <tr>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td><br /></td>
+          </tr>
+          <tr>
+            <td>Room:</td>
+            <td>{roomPrice}</td>
+          </tr>
+          <tr>
+            <td>Addons:</td>
+            <td>{addOnPrice()}</td>
+          </tr>
+          <tr>
+            <td><hr /></td>
+            <td><hr /></td>
+          </tr>
+          <tr>
+            <td>Discount:</td>
+            <td>{discount}%</td>
+          </tr>
+          <tr>
+            <td><hr /></td>
+            <td><hr /></td>
+          </tr>
+          <tr style={{fontSize:"1.3rem"}}>
+            <td>Total:</td>
+            <td>₹{total}</td>
+          </tr>
+          <tr>
+            <td><br /></td>
+          </tr>
+        </table>
+          <Button variant="primary" type="submit" id="submit-booking-btn">
+            Book Now
+          </Button>
       </div>
     </Container>
+
+    </div>
   );
 };
 

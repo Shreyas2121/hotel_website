@@ -143,6 +143,8 @@ const Rooms = () => {
         <div></div>
       ) : (
         <div style={{ margin: "2rem" }}>
+          <h6 style={{marginLeft:"5%"}}>Select Room Type</h6>
+          <hr/>
           {loading ? (
             <h1>Loading...</h1>
           ) : (

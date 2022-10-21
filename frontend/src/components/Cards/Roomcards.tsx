@@ -122,9 +122,11 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
 
                 <div className="col-3-div-2">
                   <label>Rooms :</label>
-                  <button className="add_subtract" id="addButton" onClick={handleClickMinus}>-</button>
-                  <span style={{fontSize: "0.8rem"}}>{no}</span>
-                  <button className="add_subtract" id="subtractButton" onClick={handleClickPlus}>+</button>
+                  <div className="plusminus">
+                    <button className="add_subtract" id="addButton" onClick={handleClickMinus}>-</button>
+                    <span style={{fontSize: "0.8rem", margin:"0.5rem"}}>{no}</span>
+                    <button className="add_subtract" id="subtractButton" onClick={handleClickPlus}>+</button>
+                  </div>
                 </div>
 
                 <div>
@@ -150,7 +152,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                     className="link-style"
                     id="booknow"
                   >
-                    Book Now
+                    Select Room
                   </Link>
                 </p>
               </div>
