@@ -10,6 +10,7 @@ import "../components/parallaxImage.css";
 
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
+import { toast } from "react-toastify";
 
 interface Res {
   data: {
@@ -49,6 +50,11 @@ const Rooms = () => {
   };
 
   const handleSearch = async (e) => {
+
+    if (checkIn === "" || checkOut === "") {
+      toast.error("Please select checkin and checkout dates");
+    }
+
     e.preventDefault();
     const formatedCheckIn = checkin.toISOString();
     const formatedCheckOut = checkout.toISOString();
@@ -106,6 +112,7 @@ const Rooms = () => {
                     id="check-in"
                     className="dates"
                     min={new Date().toISOString().split("T")[0]}
+                    max={conv(checkin)}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
                   />
