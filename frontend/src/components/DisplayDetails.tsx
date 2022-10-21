@@ -114,8 +114,8 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                           booking.booking_check_in,
                           booking.booking_check_out
                         ) ? (
-                                  <span>
-                                    ----------------
+                                  <span id="Ongoing">
+                                  --------------------------------
                                   </span>
                         ) : (
                           <span>
