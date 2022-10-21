@@ -200,7 +200,7 @@ export const BookingDetails = () => {
               </Form.Group>
             </div>
             <hr />
-            
+
             <div id="details">
               <div>
                 {key == "Hall" ? (
