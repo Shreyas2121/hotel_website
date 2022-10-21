@@ -17,8 +17,7 @@ const PhotoGrid = () => {
           ACCOMADATION
         </MDBTypography>
         <MDBTypography tag="small" className="text-muted">
-          We all live in an age that belongs to the young at heart. Life that is
-          becoming extremely fast.
+          We provide the best accomadation facilities. Enjoy your stay with us.
         </MDBTypography>
       </div>
 
@@ -111,8 +110,7 @@ const PhotoGrid = () => {
           GET TOGETHER
         </MDBTypography>
         <MDBTypography tag="small" className="text-muted">
-          We all live in an age that belongs to the young at heart. Life that is
-          becoming extremely fast.
+          We provide the best Halls for all the best moments for you and your loved onces. Enjoy your events with us.
         </MDBTypography>
       </div>
 

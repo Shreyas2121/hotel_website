@@ -43,7 +43,7 @@ const Reviewcards = ({ featured }) => {
           Testimonial from our customers
         </MDBTypography>
         <MDBTypography tag="small" className="text-muted">
-          Who are in extremely love with eco friendly system
+          Who are in extremely love with our best in class hospitality.
         </MDBTypography>
       </div>
 
