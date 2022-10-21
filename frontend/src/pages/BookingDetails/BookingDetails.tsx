@@ -34,6 +34,8 @@ export const BookingDetails = () => {
 
   const [coupon, setCoupon] = useState("");
 
+  const navigate = useNavigate();
+
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
@@ -166,177 +168,202 @@ export const BookingDetails = () => {
   };
 
   return (
-    <div id="c">
-    <Container className="booking-details">
-      <div id="container">
-        <Form onSubmit={handleSubmit}>
-          {key == "Hall" ? (
-            <h2 id="title-of-form">BOOK A HALL WITH US</h2>
-          ) : (
-            <h2 id="title-of-form">BOOK A ROOM WITH US</h2>
-          )}
-          <br />
-          <div id="personal-details">
-            <Form.Group id="name-group" className="mb-3">
-              <Form.Label id="name-label">Name</Form.Label>
-              <Form.Control id="name-id" type="text" ref={nameRef} required />
-            </Form.Group>
+    <Form id="c" onSubmit={handleSubmit}>
+      <div>
+        <Container className="booking-details">
+          <div id="container">
+            {key == "Hall" ? (
+              <h2 id="title-of-form">BOOK A HALL WITH US</h2>
+            ) : (
+              <h2 id="title-of-form">BOOK A ROOM WITH US</h2>
+            )}
+            <br />
+            <div id="personal-details">
+              <Form.Group id="name-group" className="mb-3">
+                <Form.Label id="name-label">Name</Form.Label>
+                <Form.Control id="name-id" type="text" ref={nameRef} required />
+              </Form.Group>
 
-            <Form.Group
-              id="email-group"
-              className="mb-3"
-              controlId="formBasicEmail"
-            >
-              <Form.Label id="email-label" htmlFor="email" required>
-                E-mail
-              </Form.Label>
-              <Form.Control
-                ref={emailRef}
-                type="email"
-                id="email"
-                name="visitor_email"
-                required={true}
-              />
-            </Form.Group>
-          </div>
-          <hr />
-          
-          <div id="details">
-            <div>
-              {key == "Hall" ? (
-                <Form.Group>
-                  <Form.Label id="Hall-bk-date">
-                    {checkin.toDateString()}
-                  </Form.Label>
-                </Form.Group>
-              ) : (
-                <Form.Group>
-                  <Form.Label htmlFor="adult" id="checkin">
-                    <p className="bold">Check In: </p>{checkin.toDateString()}
-                  </Form.Label>
-                  <Form.Label htmlFor="adult" id="checkout">
-                    <p className="bold">Check Out: </p>{checkout.toDateString()}
-                  </Form.Label>
-                </Form.Group>
-              )}
-            </div>
-
-            <div>
-              {key == "Hall" ? (
-                <div></div>
-              ) : (
-                <Form.Group>
-                  <Form.Label htmlFor="adult" id="room-qnty">
-                  <p className="bold">No of rooms:</p> {no}
-                  </Form.Label>
-                </Form.Group>
-              )}
-
-              <Form.Group>
-                <Form.Label htmlFor="adult" id="room-type">
-                <p className="bold">Type: </p>{roomType}
+              <Form.Group
+                id="email-group"
+                className="mb-3"
+                controlId="formBasicEmail"
+              >
+                <Form.Label id="email-label" htmlFor="email" required>
+                  E-mail
                 </Form.Label>
+                <Form.Control
+                  ref={emailRef}
+                  type="email"
+                  id="email"
+                  name="visitor_email"
+                  required={true}
+                />
               </Form.Group>
             </div>
-
-          </div>
-
-          <hr />
-          <Form.Group>
-            <br />
-            <Form.Label id="addons"> Select Addons: </Form.Label>
-            {loading ? (
-              <h1>Loading...</h1>
-            ) : (
-              <div id="addon-list">
-                {Object.entries(type).map(([key, value]) => (
-                  <Form.Group style={{ display: "flex" }}>
-                    <Form.Check
-                      ref={checkRef}
-                      className="checkbox-Form.Control"
-                      id={key}
-                      name={key}
-                      value={key}
-                      type="checkbox"
-                      onChange={handleAddon}
-                    />
-                    <Form.Label className="checkbox" id="check-box">
-                      {key} <br />{" "}
-                      <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
+            <hr />
+            
+            <div id="details">
+              <div>
+                {key == "Hall" ? (
+                  <Form.Group>
+                    <Form.Label id="Hall-bk-date">
+                      {checkin.toDateString()}
                     </Form.Label>
                   </Form.Group>
-                ))}
+                ) : (
+                  <Form.Group>
+                    <Form.Label htmlFor="adult" id="checkin">
+                      <p className="bold">Check In: </p>{checkin.toDateString()}
+                    </Form.Label>
+                    <Form.Label htmlFor="adult" id="checkout">
+                      <p className="bold">Check Out: </p>{checkout.toDateString()}
+                    </Form.Label>
+                  </Form.Group>
+                )}
               </div>
-            )}
-          </Form.Group>
-          <hr />
 
-          <Form.Group>
-            <Form.Label htmlFor="message" id="special-req">
-              Special Request?
-            </Form.Label>
-            <textarea
-              ref={specialReqRef}
-              id="message"
-              name="visitor_message"
-              placeholder="Tell us anything else that might be important."
-              defaultValue={""}
-            />
-            <hr />
-          </Form.Group>
+              <div>
+                {key == "Hall" ? (
+                  <div></div>
+                ) : (
+                  <Form.Group>
+                    <Form.Label htmlFor="adult" id="room-qnty">
+                    <p className="bold">No of rooms:</p> {no}
+                    </Form.Label>
+                  </Form.Group>
+                )}
 
-          <Form.Group>
-            <Form.Label htmlFor="coupon" id="coupon">
-              Coupon Code:{" "}
-            </Form.Label>
-            <div id="coupon-section">
-              {" "}
-              <Form.Control
-                id="coupon-box"
-                type="text"
-                ref={couponRef}
-                onChange={(e) => setCoupon(e.target.value)}
-              />
-              <Button
-                id="coupon-btn"
-                ref={buttonRef}
-                disabled={coupon === ""}
-                onClick={handleCoupon}
-              >
-                Apply
-              </Button>
+                <Form.Group>
+                  <Form.Label htmlFor="adult" id="room-type">
+                  <p className="bold">Type: </p>{roomType}
+                  </Form.Label>
+                </Form.Group>
+              </div>
+
             </div>
-          </Form.Group>
-        </Form>
-      </div>
-      </Container>
 
-      {/* <Container className="booking-details">
-      <div className="price-details">
-        <Form>
+            <hr />
             <Form.Group>
-            <h3>Price details</h3>
-              <Form.Text className="indiPrice">
-                <span>Room Price: </span> {roomPrice}
-              </Form.Text>
-              <Form.Text className="indiPrice">
-                <span>Addons: </span> ₹{addOnPrice()}
-              </Form.Text>
-              <Form.Text className="indiPrice">
-                <span>Discount: </span> {discount}%
-              </Form.Text>
-              <Form.Text className="indiPrice" id="total">
-                Total: ₹{total}
-              </Form.Text>
+              <br />
+              <Form.Label id="addons"> Select Addons: </Form.Label>
+              {loading ? (
+                <h1>Loading...</h1>
+              ) : (
+                <div id="addon-list">
+                  {Object.entries(type).map(([key, value]) => (
+                    <Form.Group style={{ display: "flex" }}>
+                      <Form.Check
+                        ref={checkRef}
+                        className="checkbox-Form.Control"
+                        id={key}
+                        name={key}
+                        value={key}
+                        type="checkbox"
+                        onChange={handleAddon}
+                      />
+                      <Form.Label className="checkbox" id="check-box">
+                        {key} <br />{" "}
+                        <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
+                      </Form.Label>
+                    </Form.Group>
+                  ))}
+                </div>
+              )}
             </Form.Group>
-            <Button variant="primary" type="submit" id="submit-booking-btn">
-              Book Now
-            </Button>
-          </Form>
-        </div>
-    </Container> */}
+            <hr />
 
-    <Container className="booking-details">
+            <Form.Group>
+              <Form.Label htmlFor="message" id="special-req">
+                Special Request?
+              </Form.Label>
+              <textarea
+                ref={specialReqRef}
+                id="message"
+                name="visitor_message"
+                placeholder="Tell us anything else that might be important."
+                defaultValue={""}
+              />
+              <hr />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label htmlFor="coupon" id="coupon">
+                Coupon Code:{" "}
+              </Form.Label>
+              <div id="coupon-section">
+                {" "}
+                <Form.Control
+                  id="coupon-box"
+                  type="text"
+                  ref={couponRef}
+                  onChange={(e) => setCoupon(e.target.value)}
+                />
+                <Button
+                  id="coupon-btn"
+                  ref={buttonRef}
+                  disabled={coupon === ""}
+                  onClick={handleCoupon}
+                >
+                  Apply
+                </Button>
+              </div>
+            </Form.Group>
+          </div>
+        </Container>
+      </div>
+
+      <div>
+        <Container className="booking-details">
+          <div className="price-details">
+            <table>
+              <tr>
+                <th>Details</th>
+              </tr>
+              <tr>
+                <td><br /></td>
+              </tr>
+              <tr>
+                <td>Room:</td>
+                <td>{no} x {roomPrice/no}</td>
+              </tr>
+              <tr>
+                <td>Addons:</td>
+                <td>{addOnPrice()}</td>
+              </tr>
+              <tr>
+                <td><hr /></td>
+                <td><hr /></td>
+              </tr>
+              <tr>
+                <td>Discount:</td>
+                <td>{discount}%</td>
+              </tr>
+              <tr>
+                <td><hr /></td>
+                <td><hr /></td>
+              </tr>
+              <tr style={{fontSize:"1.3rem"}}>
+                <td>Total:</td>
+                <td>₹{total}</td>
+              </tr>
+              <tr>
+                <td><br /></td>
+              </tr>
+            </table>
+              <Button variant="primary" type="submit" id="submit-booking-btn" >
+                Book Now
+              </Button>
+          </div>
+        </Container>
+      </div>
+    </Form>
+  );
+};
+
+export default BookingDetails;
+
+{/* <Container className="booking-details">
       <div className="price-details">
         <table>
           <tr>
@@ -373,14 +400,8 @@ export const BookingDetails = () => {
             <td><br /></td>
           </tr>
         </table>
-          <Button variant="primary" type="submit" id="submit-booking-btn">
+          <Button variant="primary" type="submit" id="submit-booking-btn" >
             Book Now
           </Button>
       </div>
-    </Container>
-
-    </div>
-  );
-};
-
-export default BookingDetails;
+    </Container> */}

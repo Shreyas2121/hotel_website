@@ -8,21 +8,24 @@
     align-items: center;
 }
 
-#checkAvailability{
+#check-availability{
     background-color: rgb(255, 196, 0);
-    color: white;
+    color: rgb(0, 0, 0);
     min-height: auto;
     justify-content: space-evenly;
     margin:0;
-    font-weight: bold;
-    padding:0.5rem;
-    border: white 0.1rem solid;
+    font-size: medium;
+    /* font-weight: bold; */
+    padding: 0.4rem 1rem;
+    /* border: white 0.1rem solid; */
     align-items: center;
+    border-radius: 0%;
 }
 
-#checkAvailability:hover{
-    background-color: rgb(160, 125, 12);
+#check-availability:hover{
+    /* background-color: rgb(127, 104, 29); */
     cursor: pointer;
+    color: white;
 }
 
 .search input :hover{
@@ -31,7 +34,8 @@
 
 .dates{
     color: grey;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     padding: 0 1%;
-    border: 3px solid grey;
+    border: 1px solid grey;
+    border-radius: 5px;
 }
