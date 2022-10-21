@@ -11,8 +11,6 @@ import { toast } from "react-toastify";
 import personicon from "../../../public/icons8-person-64.png";
 import tick from "../../../public/icons8-tick-box-26.png";
 import area from "../../../public/icons8-surface-48.png";
-import plus from "../../../public/icons8-plus-50.png";
-import minus from "../../../public/icons8-minus-50.png";
 
 interface Status {
   Basic: number;
@@ -124,9 +122,11 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
 
                 <div className="col-3-div-2">
                   <label>Rooms :</label>
-                  <button className="add_subtract" id="addButton" onClick={handleClickMinus}>-</button>
-                  <span style={{fontSize: "0.8rem"}}>{no}</span>
-                  <button className="add_subtract" id="subtractButton" onClick={handleClickPlus}>+</button>
+                  <div className="plusminus">
+                    <button className="add_subtract" id="addButton" onClick={handleClickMinus}>-</button>
+                    <span style={{fontSize: "0.8rem", margin:"0.5rem"}}>{no}</span>
+                    <button className="add_subtract" id="subtractButton" onClick={handleClickPlus}>+</button>
+                  </div>
                 </div>
 
                 <div>

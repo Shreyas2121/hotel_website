@@ -9,6 +9,13 @@ import {
   MDBCardText,
 } from 'mdb-react-ui-kit';
 
+import {CgGym} from 'react-icons/cg'
+import {FaSwimmingPool} from 'react-icons/fa'
+import {IoIosRestaurant} from 'react-icons/io'
+import {MdOutlineSportsTennis} from 'react-icons/md'
+import {MdLocalBar} from 'react-icons/md'
+import {TbMassage} from 'react-icons/tb'
+
 import servicesBackground from "../../assets/images/facilites_bg.jpg";
 
 import image1 from "../../assets/images/bell.png";
@@ -41,7 +48,7 @@ const Service = () => {
         <MDBCol md='3'>
         <MDBCard className="boxes">
           <MDBCardBody>
-            <img className="tm-serimage" src={image1} />
+            <FaSwimmingPool/>
             <MDBCardTitle>Swimming Pool</MDBCardTitle>
             <MDBCardText>
               Enjoy your stay with excellent and timely room service
@@ -53,7 +60,7 @@ const Service = () => {
         <MDBCol md='3'>
         <MDBCard className="boxes">
           <MDBCardBody>
-            <img className="tm-serimage" src={image2} />
+            <CgGym/>
             <MDBCardTitle>Gymnesium</MDBCardTitle>
             <MDBCardText>
               Enjoy your stay with excellent and timely room service
@@ -65,7 +72,7 @@ const Service = () => {
         <MDBCol md='3'>
         <MDBCard className="boxes">
           <MDBCardBody>
-            <img className="tm-serimage" src={image3} />
+            <MdLocalBar/>
             <MDBCardTitle>Bar</MDBCardTitle>
             <MDBCardText>
               Enjoy your stay with excellent and timely room service
@@ -81,7 +88,7 @@ const Service = () => {
         <MDBCol md='3'>
         <MDBCard className="boxes">
           <MDBCardBody>
-            <img className="tm-serimage" src={image4} />
+            <IoIosRestaurant/>
             <MDBCardTitle>Restaurant</MDBCardTitle>
             <MDBCardText>
               Enjoy your stay with excellent and timely room service
@@ -92,7 +99,7 @@ const Service = () => {
         <MDBCol md='3'>
         <MDBCard className="boxes">
           <MDBCardBody>
-            <img className="tm-serimage" src={image5} />
+            <MdOutlineSportsTennis/>
             <MDBCardTitle>Sports CLub</MDBCardTitle>
             <MDBCardText>
               Enjoy your stay with excellent and timely room service
@@ -102,7 +109,7 @@ const Service = () => {
         <MDBCol md='3'>
         <MDBCard className="boxes">
           <MDBCardBody>
-            <img className="tm-serimage" src={image6} />
+            <TbMassage/>
             <MDBCardTitle>Spa</MDBCardTitle>
             <MDBCardText>
               Enjoy your stay with excellent and timely room service
