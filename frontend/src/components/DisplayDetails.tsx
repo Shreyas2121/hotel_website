@@ -5,6 +5,7 @@ import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import "./DisplayDetails.css";
 
 interface Props {
   bookingDetails: Booking[];
@@ -117,20 +118,22 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                                   </span>
                         ) : (
                           <span>
-                              <Link
-                              to="/addreview"
-                              state={{
-                                name: booking.booking_username,
-                                email: booking.booking_useremail,
-                              }}
-                              >
-                              Add Review
-                              </Link>
+                             <Button  id="AddReview">
+                                <Link
+                                to="/addreview"
+                                state={{
+                                  name: booking.booking_username,
+                                  email: booking.booking_useremail,
+                                }}
+                                >
+                                Add Review
+                                </Link>
+                            </Button>                              
                           </span>
                         )}
                       </span>
                     ) : (
-                      <Button onClick={(e) => handleSubmit(booking._id)}>
+                      <Button onClick={(e) => handleSubmit(booking._id) } id="Cancel_Booking">
                         Cancel Booking
                       </Button>
 
