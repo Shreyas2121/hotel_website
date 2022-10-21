@@ -39,6 +39,8 @@ export const BookingDetails = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
+  const navigate = useNavigate();
+
   let total_price = roomPrice * no;
 
   const { data, loading }: ResAddon = UseFetch(
