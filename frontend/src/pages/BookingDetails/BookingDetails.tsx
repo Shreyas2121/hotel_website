@@ -34,8 +34,6 @@ export const BookingDetails = () => {
 
   const [coupon, setCoupon] = useState("");
 
-  const navigate = useNavigate();
-
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
@@ -202,7 +200,7 @@ export const BookingDetails = () => {
               </Form.Group>
             </div>
             <hr />
-            
+
             <div id="details">
               <div>
                 {key == "Hall" ? (
