@@ -6,6 +6,7 @@ import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "./DisplayDetails.css";
+import { Checkmark } from 'react-checkmark';
 
 interface Props {
   bookingDetails: Booking[];
@@ -98,7 +99,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                         ) ? (
                           <span>On-going</span>
                         ) : (
-                          <span>Completed</span>
+                          <span><Checkmark size='40px'/></span>
                         )}
                       </span>
                     ) : (
