@@ -33,7 +33,7 @@ const NavBar = () => {
           </Nav>
 
           <NavDropdown title="More" id="account1">
-            <NavDropdown.Item as={Link} to="/checkbooking">
+            <NavDropdown.Item as={Link} to="/checkbooking" id="dropdownbox">
              Bookings
             </NavDropdown.Item>
           </NavDropdown>
