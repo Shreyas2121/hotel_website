@@ -299,22 +299,24 @@ export const BookingDetails = () => {
           </Form.Group>
           <div className="priceCont">
             <Form.Group>
-              <Form.Text className="head" >Price Break Up:</Form.Text>
-              <Form.Text>
+              <Form.Text className="head">Price Break Up:</Form.Text>
+              <Form.Text className="indiPrice">
                 <span>Room Price: </span> {roomPrice}
               </Form.Text>
-              <Form.Text>
-                <span>Addons: </span> {addOnPrice()}
+              <Form.Text className="indiPrice">
+                <span>Addons: </span> ₹{addOnPrice()}
               </Form.Text>
-              <Form.Text>
+              <Form.Text className="indiPrice">
                 <span>Discount: </span> {discount}%
               </Form.Text>
-              <Form.Text id="total">Total: ₹{total}</Form.Text>
+              <Form.Text className="indiPrice" id="total">
+                Total: ₹{total}
+              </Form.Text>
             </Form.Group>
             <hr />
             <br />
             <Button variant="primary" type="submit" id="submit-booking-btn">
-              Submit
+              Book Now
             </Button>
           </div>
         </Form>
