@@ -37,8 +37,6 @@ export const BookingDetails = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
-  const navigate = useNavigate();
-
   let total_price = roomPrice * no;
 
   const { data, loading }: ResAddon = UseFetch(
@@ -103,6 +101,14 @@ export const BookingDetails = () => {
     }
   };
 
+  const addOnPrice = () => {
+    let price = 0;
+    Object.values(filtAddOn()).forEach((each: any) => {
+      price += each;
+    });
+    return price;
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const name = nameRef.current?.value;
@@ -115,6 +121,7 @@ export const BookingDetails = () => {
     }
 
     const selectedAddons = filtAddOn();
+    console.log(selectedAddons);
     const data = {
       name,
       email,
@@ -132,28 +139,28 @@ export const BookingDetails = () => {
     };
     let res: any;
 
-    if (key == "Hall") {
-      res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } else {
-      res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    }
+    // if (key == "Hall") {
+    //   res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    // } else {
+    //   res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    // }
 
-    if (res.data.message == "Booking Successful") {
-      toast.success("Booking Successful");
-      navigate("/booking/success", {
-        state: {data,key},
-      });
-    } else {
-      toast.error("Booking Failed");
-    }
+    // if (res.data.message == "Booking Successful") {
+    //   toast.success("Booking Successful");
+    //   navigate("/booking/success", {
+    //     state: { data, key },
+    //   });
+    // } else {
+    //   toast.error("Booking Failed");
+    // }
   };
 
   return (
@@ -288,17 +295,28 @@ export const BookingDetails = () => {
                 Apply
               </Button>
             </div>
+            <hr />
           </Form.Group>
-          <hr />
-
-          <Form.Group>
-            <Form.Text id="total">Total: ₹{total}</Form.Text>
-          </Form.Group>
-          <hr />
-          <br />
-          <Button variant="primary" type="submit" id="submit-booking-btn">
-            Submit
-          </Button>
+          <div className="priceCont">
+            <Form.Group>
+              <Form.Text className="head" >Price Break Up:</Form.Text>
+              <Form.Text>
+                <span>Room Price: </span> {roomPrice}
+              </Form.Text>
+              <Form.Text>
+                <span>Addons: </span> {addOnPrice()}
+              </Form.Text>
+              <Form.Text>
+                <span>Discount: </span> {discount}%
+              </Form.Text>
+              <Form.Text id="total">Total: ₹{total}</Form.Text>
+            </Form.Group>
+            <hr />
+            <br />
+            <Button variant="primary" type="submit" id="submit-booking-btn">
+              Submit
+            </Button>
+          </div>
         </Form>
       </div>
     </Container>
