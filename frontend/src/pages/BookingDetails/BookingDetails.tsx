@@ -37,6 +37,8 @@ export const BookingDetails = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
+  const navigate = useNavigate();
+
   let total_price = roomPrice * no;
 
   const { data, loading }: ResAddon = UseFetch(
@@ -139,28 +141,28 @@ export const BookingDetails = () => {
     };
     let res: any;
 
-    // if (key == "Hall") {
-    //   res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    // } else {
-    //   res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    // }
+    if (key == "Hall") {
+      res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } else {
+      res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
 
-    // if (res.data.message == "Booking Successful") {
-    //   toast.success("Booking Successful");
-    //   navigate("/booking/success", {
-    //     state: { data, key },
-    //   });
-    // } else {
-    //   toast.error("Booking Failed");
-    // }
+    if (res.data.message == "Booking Successful") {
+      toast.success("Booking Successful");
+      navigate("/booking/success", {
+        state: { data, key },
+      });
+    } else {
+      toast.error("Booking Failed");
+    }
   };
 
   return (
