@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import roomsBackground from "../assets/images/about_banner.jpg";
 import hotelPicture from "../assets/images/abouts_us.png";
+import map from "../assets/images/map.jpg";
 
 const Aboutus = () => {
   const navigate = useNavigate();
@@ -77,6 +78,37 @@ const Aboutus = () => {
             <div className="col">
               <img src={hotelPicture} alt="useMango Photo" />
             </div>
+          </div>
+        </div>
+
+        <div
+          className="container"
+          style={{
+            height: "40rem",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <div className="row">
+            <div className="col">
+              <img src={map} alt="map" height={500} width={900}/>
+            </div>
+
+            <div className="col">
+              <div style={{fontSize:"1.5rem"}}>
+                <h1>Visit Us</h1>
+                <p>
+                <br/>415, 
+                <br/>UseHotel,
+                <br/>Jaipur.
+                <br/>Rajasthan, India.
+                <br/>Pincode: 302001 
+                <br/>Phone: 9275693451
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 

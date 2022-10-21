@@ -108,7 +108,7 @@ const Halls = () => {
                 >
                   Type:
                   <select
-                    className="form-select"
+                    className="dates"
                     aria-label="Default select example"
                     ref={selectRef}
                     style={{ width: "10rem", padding:"0.1rem 0.8rem 0" }}

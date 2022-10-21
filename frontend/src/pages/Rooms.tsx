@@ -111,7 +111,7 @@ const Rooms = () => {
                     id="check-in"
                     className="dates"
                     min={new Date().toISOString().split("T")[0]}
-                    max={conv(checkin)}
+                    max={conv(checkout)}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
                   />
