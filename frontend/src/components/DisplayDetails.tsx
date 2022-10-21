@@ -4,6 +4,7 @@ import { Booking } from "../types/types";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 interface Props {
   bookingDetails: Booking[];
@@ -23,6 +24,24 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
     }
   };
 
+  const check = (date: string) => {
+    const newDate = new Date(date);
+    const currentDate = new Date();
+    if (newDate.getFullYear() === currentDate.getFullYear()) {
+      if (newDate.getMonth() <= currentDate.getMonth()) {
+        if (newDate.getDate() <= currentDate.getDate()) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if (newDate.getFullYear() < currentDate.getFullYear()) {
+      return true;
+    }
+  };
+
   return (
     <div>
       <Table striped bordered hover>
@@ -34,6 +53,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
             <th>Room Type</th>
             <th>No. of rooms</th>
             <th>Price</th>
+            <td>Status</td>
             <th>Action</th>
           </tr>
         </thead>
@@ -43,15 +63,34 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
               {booking._id ? (
                 <tr>
                   <td>{booking.booking_username}</td>
-                  <td>{booking.booking_check_in}</td>
-                  <td>{booking.booking_check_out}</td>
+                  <td>{new Date(booking.booking_check_in).toDateString()}</td>
+                  <td>{new Date(booking.booking_check_out).toDateString()}</td>
                   <td>{booking.booking_room_type}</td>
                   <td>{booking.booking_no_of_rooms}</td>
                   <td>{booking.booking_total}</td>
                   <td>
-                    <Button onClick={(e) => handleSubmit(booking._id)}>
-                      Cancel Booking
-                    </Button>
+                    {check(booking.booking_check_out) ? (
+                      <span>Completed</span>
+                    ) : (
+                      <span>Upcoming</span>
+                    )}
+                  </td>
+                  <td>
+                    {check(booking.booking_check_out) ? (
+                      <Link
+                        to="/addreview"
+                        state={{
+                          name: booking.booking_username,
+                          email: booking.booking_useremail,
+                        }}
+                      >
+                        Add Review
+                      </Link>
+                    ) : (
+                      <Button onClick={(e) => handleSubmit(booking._id)}>
+                        Cancel Booking
+                      </Button>
+                    )}
                   </td>
                 </tr>
               ) : (

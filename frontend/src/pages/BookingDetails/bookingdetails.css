@@ -1,171 +1,268 @@
-
-#booking-details{
-    margin-top: 20px;
-    margin-bottom: 20px;
+.booking-details {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-#container{
-    margin: 0 auto;
-    width: 900px;
-    border: 1px solid gray;
-    border-radius: 10px;
-  
-    background-color: rgba(255,255,255,0.4);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    padding: 76px;
-}
-#title-of-form{
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #000;
-    
+#c{
+  display: flex;
+  padding: 0 10%;
 }
 
-#personal-details{
- 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 10px;
+#container {
+  /* margin: 0 auto; */
+  width: 900px;
+  border: 1px solid gray;
+  border-radius: 10px;
+
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 76px;
 }
 
-#Hall-bk-date{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 10px;
-    color: #000;
-    font-weight: bold;
+#title-of-form {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000;
 }
 
-#name-group{
-    width: 50%;
-    display: block;
+#personal-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
 }
 
-#name-label{
-    font-weight: bolder;
-    font-size: 20px;
-    color: #000;
+#Hall-bk-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  color: #000;
+  font-weight: bold;
 }
 
-#email-group{
-    width: 50%;
-    display: block;
-}
-#email-label{
-    font-weight: bolder;
-    font-size: 20px;
-    color: #000;
+#name-group {
+  width: 50%;
+  display: block;
 }
 
-#room-qnty{
-     color: #000;
-     font-weight: bold;
+#name-label {
+  font-weight: bolder;
+  font-size: 16px;
+  color: #000;
 }
 
-#checkin{
-    color: #000;
-    font-weight: bold;
+#email-group {
+  width: 50%;
+  display: block;
 }
-#checkout{
-    color: #000;
-    font-weight: bold;
-}
-#room-type{
-    color: #000;
-    font-weight: bold;
-}
-#addons{
-    font-weight: bolder;
-    color: #000;
-}
-#check-box{
-
-    color: #000;
-}
-#addon-list{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-   
-}
-#special-req{
-    color: #000;
-    font-weight: bolder;
+#email-label {
+  font-weight: bolder;
+  font-size: 16px;
+  color: #000;
 }
 
-#message{
-    width: 100%;
-    height: 100px;
-    border-radius: 4px;
-    border: 2px solid #ccc;
-    padding: 12px 20px;
-    font-size: 20px;
-    color: #000;
-    box-sizing: border-box;
-    background-color: #f8f8f8 ;
-    resize: none;
-}
-#coupon{
-    display: block;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 10px;
-    margin-top: 20px;
-    color: #000;
-    font-weight: bolder;
-}
-#coupon-box{
-    width: 50%;
-}
-#coupon-section{
-    display: flex;
-    justify-content: left;
-}
-#coupon-btn{
-    background-color: #FFB923;
-    color:white;
-    border-radius: 5px;
-    padding: 10px;   
-    border: none;
-    cursor: pointer;
-    margin-left: 20px;
-     
-}
-#coupon-btn:hover{
-    background-color: #000; 
-    color: #FFB923;
-    transition: 0.5s;
+#room-qnty {
+  display: flex;
+  color: #000;
 }
 
-#total{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 10px;
-    color: #000;
-    font-weight: bolder;
-    font-size: 20px;
+#checkin {
+  color: #000;
+  display: flex;
 }
 
-#submit-booking-btn{
-    color:white;
-    border-radius: 5px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 30rem;
-    height: 2.5rem;
-    font-size: larger;
+#checkout {
+  display: flex;
+  color: #000;
+}
+
+#room-type {
+  display: flex;
+  color: #000;
+}
+
+.bold{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#addons {
+  font-weight: bolder;
+  color: #000;
+}
+
+#check-box {
+  color: #000;
+}
+
+#addon-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#special-req {
+  color: #000;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+#message {
+  width: 100%;
+  height: 100px;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #000;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+#coupon {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  margin-top: 20px;
+  color: #000;
+  font-weight: bolder;
+}
+
+#coupon-box {
+  width: 50%;
+}
+
+#coupon-section {
+  display: flex;
+  justify-content: left;
+}
+
+#coupon-btn {
+  background-color: #ffb923;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+#coupon-btn:hover {
+  background-color: #000;
+  color: #ffb923;
+  transition: 0.5s;
+}
+
+#total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 20px; */
+  gap: 10px;
+  color: #000;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+#submit-booking-btn {
+  /* flex: 1; */
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  /* margin-top: 10px; */
+  /* margin-left: 50%; */
+  /* transform: translateX(-50%); */
+  width: 10rem;
+  height: 2.5rem;
+  font-size: larger;
+  /* margin: 0 25%; */
+}
+
+.priceCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+  color: #000;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.priceCont small {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.priceCont span {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+}
+
+.head {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000;
+}
+
+.indiPrice {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000;
+}
+
+.price-details {
+  /* flex: 1; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  /* gap: 1px; */
+  color: #000;
+  font-weight: bolder;
+  font-size: 20px;
+  border: 1px solid grey;
+  width: 20rem;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+#details{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 33.5%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  color: #000;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+th {
+  font-size: 2rem;
+}
+
+td:last-child {
+  text-align: right;
 }

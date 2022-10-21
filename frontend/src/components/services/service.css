@@ -32,7 +32,7 @@
 }
 
 .boxes{
-  height: 13rem;
+  height: 13.5rem;
   padding: 0;
   margin: 0;
 }
@@ -46,4 +46,8 @@
 .container-top-div{
   text-align: center;
   padding: 40px;
+}
+
+.icons{
+  height: 10rem;
 }

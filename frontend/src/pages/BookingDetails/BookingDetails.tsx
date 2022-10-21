@@ -37,8 +37,6 @@ export const BookingDetails = () => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
 
-  const navigate = useNavigate();
-
   let total_price = roomPrice * no;
 
   const { data, loading }: ResAddon = UseFetch(
@@ -103,6 +101,14 @@ export const BookingDetails = () => {
     }
   };
 
+  const addOnPrice = () => {
+    let price = 0;
+    Object.values(filtAddOn()).forEach((each: any) => {
+      price += each;
+    });
+    return price;
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const name = nameRef.current?.value;
@@ -115,6 +121,7 @@ export const BookingDetails = () => {
     }
 
     const selectedAddons = filtAddOn();
+    console.log(selectedAddons);
     const data = {
       name,
       email,
@@ -132,32 +139,33 @@ export const BookingDetails = () => {
     };
     let res: any;
 
-    if (key == "Hall") {
-      res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } else {
-      res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    }
+    // if (key == "Hall") {
+    //   res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    // } else {
+    //   res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    // }
 
-    if (res.data.message == "Booking Successful") {
-      toast.success("Booking Successful");
-      navigate("/booking/success", {
-        state: {data,key},
-      });
-    } else {
-      toast.error("Booking Failed");
-    }
+    // if (res.data.message == "Booking Successful") {
+    //   toast.success("Booking Successful");
+    //   navigate("/booking/success", {
+    //     state: { data, key },
+    //   });
+    // } else {
+    //   toast.error("Booking Failed");
+    // }
   };
 
   return (
-    <Container id="booking-details">
+    <div id="c">
+    <Container className="booking-details">
       <div id="container">
         <Form onSubmit={handleSubmit}>
           {key == "Hall" ? (
@@ -190,39 +198,47 @@ export const BookingDetails = () => {
             </Form.Group>
           </div>
           <hr />
-          {key == "Hall" ? (
-            <div></div>
-          ) : (
-            <Form.Group>
-              <Form.Label htmlFor="adult" id="room-qnty">
-                No of rooms : {no}
-              </Form.Label>
-            </Form.Group>
-          )}
+          
+          <div id="details">
+            <div>
+              {key == "Hall" ? (
+                <Form.Group>
+                  <Form.Label id="Hall-bk-date">
+                    {checkin.toDateString()}
+                  </Form.Label>
+                </Form.Group>
+              ) : (
+                <Form.Group>
+                  <Form.Label htmlFor="adult" id="checkin">
+                    <p className="bold">Check In: </p>{checkin.toDateString()}
+                  </Form.Label>
+                  <Form.Label htmlFor="adult" id="checkout">
+                    <p className="bold">Check Out: </p>{checkout.toDateString()}
+                  </Form.Label>
+                </Form.Group>
+              )}
+            </div>
 
-          {key == "Hall" ? (
-            <Form.Group>
-              <Form.Label id="Hall-bk-date">
-                {checkin.toDateString()}
-              </Form.Label>
-            </Form.Group>
-          ) : (
-            <Form.Group>
-              <Form.Label htmlFor="adult" id="checkin">
-                Check In : {checkin.toDateString()}
-              </Form.Label>
-              <br />
-              <Form.Label htmlFor="adult" id="checkout">
-                Check Out : {checkout.toDateString()}
-              </Form.Label>
-            </Form.Group>
-          )}
+            <div>
+              {key == "Hall" ? (
+                <div></div>
+              ) : (
+                <Form.Group>
+                  <Form.Label htmlFor="adult" id="room-qnty">
+                  <p className="bold">No of rooms:</p> {no}
+                  </Form.Label>
+                </Form.Group>
+              )}
 
-          <Form.Group>
-            <Form.Label htmlFor="adult" id="room-type">
-              Type : {roomType}
-            </Form.Label>
-          </Form.Group>
+              <Form.Group>
+                <Form.Label htmlFor="adult" id="room-type">
+                <p className="bold">Type: </p>{roomType}
+                </Form.Label>
+              </Form.Group>
+            </div>
+
+          </div>
+
           <hr />
           <Form.Group>
             <br />
@@ -289,19 +305,79 @@ export const BookingDetails = () => {
               </Button>
             </div>
           </Form.Group>
-          <hr />
-
-          <Form.Group>
-            <Form.Text id="total">Total: ₹{total}</Form.Text>
-          </Form.Group>
-          <hr />
-          <br />
-          <Button variant="primary" type="submit" id="submit-booking-btn">
-            Submit
-          </Button>
         </Form>
       </div>
+      </Container>
+
+      {/* <Container className="booking-details">
+      <div className="price-details">
+        <Form>
+            <Form.Group>
+            <h3>Price details</h3>
+              <Form.Text className="indiPrice">
+                <span>Room Price: </span> {roomPrice}
+              </Form.Text>
+              <Form.Text className="indiPrice">
+                <span>Addons: </span> ₹{addOnPrice()}
+              </Form.Text>
+              <Form.Text className="indiPrice">
+                <span>Discount: </span> {discount}%
+              </Form.Text>
+              <Form.Text className="indiPrice" id="total">
+                Total: ₹{total}
+              </Form.Text>
+            </Form.Group>
+            <Button variant="primary" type="submit" id="submit-booking-btn">
+              Book Now
+            </Button>
+          </Form>
+        </div>
+    </Container> */}
+
+    <Container className="booking-details">
+      <div className="price-details">
+        <table>
+          <tr>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td><br /></td>
+          </tr>
+          <tr>
+            <td>Room:</td>
+            <td>{roomPrice}</td>
+          </tr>
+          <tr>
+            <td>Addons:</td>
+            <td>{addOnPrice()}</td>
+          </tr>
+          <tr>
+            <td><hr /></td>
+            <td><hr /></td>
+          </tr>
+          <tr>
+            <td>Discount:</td>
+            <td>{discount}%</td>
+          </tr>
+          <tr>
+            <td><hr /></td>
+            <td><hr /></td>
+          </tr>
+          <tr style={{fontSize:"1.3rem"}}>
+            <td>Total:</td>
+            <td>₹{total}</td>
+          </tr>
+          <tr>
+            <td><br /></td>
+          </tr>
+        </table>
+          <Button variant="primary" type="submit" id="submit-booking-btn">
+            Book Now
+          </Button>
+      </div>
     </Container>
+
+    </div>
   );
 };
 
