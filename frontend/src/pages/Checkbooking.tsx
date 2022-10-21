@@ -53,15 +53,12 @@ export const Checkbooking = () => {
     <header>
       <div
         className="p-5 text-center bg-image parallax"
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "20rem" }}
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "45rem" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="text-white">
               <h1 className="mb-3">YOUR BOOKINGS</h1>
-              <br />
-              <br />
-              <br />
             </div>
           </div>
         </div>
@@ -71,7 +68,7 @@ export const Checkbooking = () => {
           gap={3}
           style={{
             position: "absolute",
-            top: "80%",
+            top: "60%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: "100%",

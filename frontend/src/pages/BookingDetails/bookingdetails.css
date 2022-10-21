@@ -252,7 +252,7 @@
   padding-right: 33.5%;
 }
 
-table {
+#booking-details-tables {
   border-collapse: collapse;
   width: 80%;
   color: #000;
@@ -261,11 +261,11 @@ table {
   margin-top: 2rem;
 }
 
-th {
+#booking-details-tables th {
   font-size: 2rem;
 }
 
-td:last-child {
+#booking-details-tables td:last-child {
   text-align: right;
   font-weight: normal;
 }
