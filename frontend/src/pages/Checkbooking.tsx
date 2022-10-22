@@ -53,7 +53,7 @@ export const Checkbooking = () => {
     <header>
       <div
         className="p-5 text-center bg-image parallax"
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "45rem" }}
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "50rem" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">

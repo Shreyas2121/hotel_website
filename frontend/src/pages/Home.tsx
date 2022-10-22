@@ -18,7 +18,7 @@ const Home = () => {
         className="p-5 text-center bg-image parallax"
         style={{
           backgroundImage: `url(${bannerImage})`,
-          height: "45rem",
+          height: "50rem",
         }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>

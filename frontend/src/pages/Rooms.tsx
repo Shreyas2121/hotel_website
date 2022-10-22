@@ -81,7 +81,7 @@ const Rooms = () => {
     <header>
       <div
         className="p-5 text-center bg-image parallax"
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "45rem" }}
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "50rem" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
@@ -114,6 +114,7 @@ const Rooms = () => {
                     max={conv(checkout)}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
+                    onKeyDown={(e) => e.preventDefault()}
                   />
                   Check-out:{" "}
                   <input
@@ -123,6 +124,7 @@ const Rooms = () => {
                     type="date"
                     disabled={checkIn === ""}
                     onChange={(e) => setCheckOut(e.target.value)}
+                    onKeyDown={(e) => e.preventDefault()}
                   />
                 </div>
                 <Button
