@@ -33,9 +33,9 @@
 }
 
 .dates{
-    color: grey;
-    background-color: rgb(0, 0, 0);
+    color: black;
+    background-color: grey;
     padding: 0 1%;
     border: 1px solid grey;
-    border-radius: 5px;
+    border-radius: px;
 }

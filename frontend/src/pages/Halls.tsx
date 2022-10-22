@@ -80,7 +80,7 @@ const Halls = () => {
     <header>
       <div
         className="p-5 text-center bg-image parallax"
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "45rem" }}
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "50rem" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
@@ -127,6 +127,7 @@ const Halls = () => {
                     min={new Date().toISOString().split("T")[0]}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
+                    onKeyDown={(e) => e.preventDefault()}
                   />
 
                   To:{" "}
@@ -137,6 +138,7 @@ const Halls = () => {
                     type="date"
                     disabled={checkIn === ""}
                     onChange={(e) => setCheckOut(e.target.value)}
+                    onKeyDown={(e) => e.preventDefault()}
                   />
                 </div>
                 <div>

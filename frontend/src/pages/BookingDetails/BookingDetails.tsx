@@ -317,7 +317,7 @@ export const BookingDetails = () => {
       <div>
         <Container className="booking-details">
           <div className="price-details">
-            <table>
+            <table id="booking-details-tables">
               <tr>
                 <th>Details</th>
               </tr>

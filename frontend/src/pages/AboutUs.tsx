@@ -92,19 +92,22 @@ const Aboutus = () => {
         >
           <div className="row">
             <div className="col">
-              <img src={map} alt="map" height={500} width={900}/>
+              <img src={map} alt="map" height={400} width={1000}/>
             </div>
 
             <div className="col">
               <div style={{fontSize:"1.5rem"}}>
                 <h1>Visit Us</h1>
                 <p>
-                <br/>415, 
-                <br/>UseHotel,
-                <br/>Jaipur.
-                <br/>Rajasthan, India.
-                <br/>Pincode: 302001 
-                <br/>Phone: 9275693451
+                  <br/>415, UseHotel, Jaipur
+                  <br/>Rajasthan, India.
+                  <br/>
+                  <br/>+91-9275693451
+                  <br/><h6>(Mon to Fri 9am to 6 pm)</h6>
+                </p>
+                <p>
+                  <br/>support@usehotel.com
+                  <br/><h6>(Send us your query anytime!)</h6>
                 </p>
               </div>
             </div>
