@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { PhotoSlider } from "../PhotoSlider/PhotoSlider";
 
 import { Room } from "../../types/types";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
@@ -75,9 +75,8 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
   return (
     <MDBContainer className="shadow-4-strong room-container">
       <MDBRow>
-
         <MDBCol className="card-column-one" size="md">
-            <PhotoSlider images={Object.values(roomData.room_images)}/>
+          <PhotoSlider images={Object.values(roomData.room_images)} />
         </MDBCol>
 
         <MDBCol md="6">
@@ -85,58 +84,71 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
 
           <div className="max-occupancy-div">
             <p>
-                <img src={personicon} className="max-occupancy"/>
-                {roomData.room_max_occ} (Max Occupancy)
+              <img src={personicon} className="max-occupancy" />
+              {roomData.room_max_occ} (Max Occupancy)
             </p>
 
             <div className="display-flex">
               <p className="room-area">{roomData.room_area}</p>
-              <img src={area} style={{height:"1.5rem"}}/>
+              <img src={area} style={{ height: "1.5rem" }} />
             </div>
-
           </div>
 
           <p>{roomData.room_desc}</p>
-          
+
           <div className="display-flex">
-            <span className="amenities-span">
-              Amenities:
-            </span>
+            <span className="amenities-span">Amenities:</span>
 
             {roomData?.room_amenties.map((room) => (
-              <p className="room-para"><img src={tick} className="tick-img"/> {room}</p>
+              <p className="room-para">
+                <img src={tick} className="tick-img" /> {room}
+              </p>
             ))}
-
           </div>
-
         </MDBCol>
 
         <MDBCol className="card-column-three" size="md">
-
-            <div>
-              <p className="per-night">Per night for one room</p>
-              <p className="room-price">₹ {roomPrice}/-</p>
-            </div>
+          <div>
+            <p className="per-night">Per night for one room</p>
+            <p className="room-price">₹ {roomPrice}/-</p>
+          </div>
 
           {check() ? (
             <>
               <div>
-
                 <div className="col-3-div-2">
                   <label>Rooms :</label>
                   <div className="plusminus">
-                    <button className="add_subtract" id="addButton" onClick={handleClickMinus}>-</button>
-                    <span style={{fontSize: "0.8rem", margin:"0.5rem"}}>{no}</span>
-                    <button className="add_subtract" id="subtractButton" onClick={handleClickPlus}>+</button>
+                    <button
+                      className="add_subtract"
+                      id="addButton"
+                      onClick={handleClickMinus}
+                    >
+                      -
+                    </button>
+                    <span style={{ fontSize: "0.8rem", margin: "0.5rem" }}>
+                      {no}
+                    </span>
+                    <button
+                      className="add_subtract"
+                      id="subtractButton"
+                      onClick={handleClickPlus}
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
 
                 <div>
                   <p className="total-price">
-                    Total: ₹ {roomPrice * no}
+                    Total: ₹{" "}
+                    {roomPrice *
+                      no *
+                      (Math.abs(checkout.getTime() - checkin.getTime()) /
+                        (1000 * 3600 * 24))}
+                    /-
                   </p>
                 </div>
-
               </div>
 
               <div>
@@ -149,6 +161,11 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                       checkout,
                       roomType,
                       roomPrice,
+                      totalPrice:
+                        roomPrice *
+                        no *
+                        (Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24)),
                       key: "Room",
                     }}
                     className="link-style"
@@ -159,14 +176,9 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
                 </p>
               </div>
             </>
-
           ) : (
-
-            <div className="sold-out">
-              Sold Out
-            </div>
+            <div className="sold-out">Sold Out</div>
           )}
-
         </MDBCol>
       </MDBRow>
     </MDBContainer>

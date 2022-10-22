@@ -20,12 +20,13 @@ interface State {
   checkout: Date;
   roomType: string;
   roomPrice: number;
+  totalPrice: number;
   key: string;
 }
 
 export const BookingDetails = () => {
   const location = useLocation();
-  const { no, checkin, checkout, roomType, roomPrice, key }: State =
+  const { no, checkin, checkout, roomType, roomPrice, totalPrice, key }: State =
     location.state;
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -39,7 +40,7 @@ export const BookingDetails = () => {
 
   const navigate = useNavigate();
 
-  let total_price = roomPrice * no;
+  let total_price = totalPrice;
 
   const { data, loading }: ResAddon = UseFetch(
     `http://127.0.0.1:5000/booking/addon/`
@@ -56,7 +57,7 @@ export const BookingDetails = () => {
     Object.values(filtAddOn()).forEach((each: any) => {
       total_price += each;
     });
-    setTotal(total_price);
+    setTotal(totalPrice);
   }, [selectCheck]);
 
   const type = data?.addOn_type;
@@ -212,10 +213,12 @@ export const BookingDetails = () => {
                 ) : (
                   <Form.Group>
                     <Form.Label htmlFor="adult" id="checkin">
-                      <p className="bold">Check In: </p>{checkin.toDateString()}
+                      <p className="bold">Check In: </p>
+                      {checkin.toDateString()}
                     </Form.Label>
                     <Form.Label htmlFor="adult" id="checkout">
-                      <p className="bold">Check Out: </p>{checkout.toDateString()}
+                      <p className="bold">Check Out: </p>
+                      {checkout.toDateString()}
                     </Form.Label>
                   </Form.Group>
                 )}
@@ -227,18 +230,18 @@ export const BookingDetails = () => {
                 ) : (
                   <Form.Group>
                     <Form.Label htmlFor="adult" id="room-qnty">
-                    <p className="bold">No of rooms:</p> {no}
+                      <p className="bold">No of rooms:</p> {no}
                     </Form.Label>
                   </Form.Group>
                 )}
 
                 <Form.Group>
                   <Form.Label htmlFor="adult" id="room-type">
-                  <p className="bold">Type: </p>{roomType}
+                    <p className="bold">Type: </p>
+                    {roomType}
                   </Form.Label>
                 </Form.Group>
               </div>
-
             </div>
 
             <hr />
@@ -319,39 +322,53 @@ export const BookingDetails = () => {
                 <th>Details</th>
               </tr>
               <tr>
-                <td><br /></td>
+                <td>
+                  <br />
+                </td>
               </tr>
               <tr>
                 <td>Room:</td>
-                <td>{no} x {roomPrice/no}</td>
+                <td>
+                  {no} x {roomPrice / no}
+                </td>
               </tr>
               <tr>
                 <td>Addons:</td>
                 <td>{addOnPrice()}</td>
               </tr>
               <tr>
-                <td><hr /></td>
-                <td><hr /></td>
+                <td>
+                  <hr />
+                </td>
+                <td>
+                  <hr />
+                </td>
               </tr>
               <tr>
                 <td>Discount:</td>
                 <td>{discount}%</td>
               </tr>
               <tr>
-                <td><hr /></td>
-                <td><hr /></td>
+                <td>
+                  <hr />
+                </td>
+                <td>
+                  <hr />
+                </td>
               </tr>
-              <tr style={{fontSize:"1.3rem"}}>
+              <tr style={{ fontSize: "1.3rem" }}>
                 <td>Total:</td>
                 <td>₹{total}</td>
               </tr>
               <tr>
-                <td><br /></td>
+                <td>
+                  <br />
+                </td>
               </tr>
             </table>
-              <Button variant="primary" type="submit" id="submit-booking-btn" >
-                Book Now
-              </Button>
+            <Button variant="primary" type="submit" id="submit-booking-btn">
+              Book Now
+            </Button>
           </div>
         </Container>
       </div>
@@ -361,7 +378,8 @@ export const BookingDetails = () => {
 
 export default BookingDetails;
 
-{/* <Container className="booking-details">
+{
+  /* <Container className="booking-details">
       <div className="price-details">
         <table>
           <tr>
@@ -402,4 +420,5 @@ export default BookingDetails;
             Book Now
           </Button>
       </div>
-    </Container> */}
+    </Container> */
+}
