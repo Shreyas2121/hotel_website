@@ -31,7 +31,7 @@ interface ResStatus {
 const Rooms = () => {
   // window.scrollTo(0, 0);
   const { data, loading }: Res = UseFetch(
-    `http://127.0.0.1:5000/booking/room/getDetails`
+    `/booking/room/getDetails`
   );
 
   const [checkIn, setCheckIn] = useState("");
@@ -59,7 +59,7 @@ const Rooms = () => {
     const formatedCheckOut = checkout.toISOString();
 
     const { data }: ResStatus = await axios.post(
-      "http://127.0.0.1:5000/booking/room/check",
+      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room/check",
       {
         checkIn: formatedCheckIn,
         checkOut: formatedCheckOut,
