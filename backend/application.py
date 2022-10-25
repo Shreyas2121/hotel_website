@@ -10,23 +10,25 @@ from controller.routes.reviews_route import reviews_route
 from controller.routes.cancelling_room__route import cancel_route
 
 
-app = Flask(__name__)
-CORS(app)
 
-app.register_blueprint(rooms_route)
-app.register_blueprint(halls_route)
-app.register_blueprint(coupons_route)
-app.register_blueprint(addons_route)
-app.register_blueprint(booking_route)
-app.register_blueprint(booking_hall_route)
-app.register_blueprint(reviews_route)
-app.register_blueprint(cancel_route)
+application = Flask(__name__)
+CORS(application)
+
+application.register_blueprint(rooms_route)
+application.register_blueprint(halls_route)
+application.register_blueprint(coupons_route)
+application.register_blueprint(addons_route)
+application.register_blueprint(booking_route)
+application.register_blueprint(booking_hall_route)
+application.register_blueprint(reviews_route)
+application.register_blueprint(cancel_route)
 
 
-@app.route('/')
+
+@application.route('/')
 def index():
 
     return "Hello World"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)

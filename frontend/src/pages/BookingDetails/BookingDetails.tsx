@@ -1,3 +1,4 @@
+import { margin } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
@@ -36,14 +37,17 @@ export const BookingDetails = () => {
   const [coupon, setCoupon] = useState("");
 
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRemRef = useRef<HTMLButtonElement>(null);
   const checkRef = useRef<HTMLInputElement>(null);
+
+  const [apply, setApply] = useState(false);
 
   const navigate = useNavigate();
 
   let total_price = totalPrice;
 
   const { data, loading }: ResAddon = UseFetch(
-    `http://127.0.0.1:5000/booking/addon/`
+    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/addon/`
   );
 
   const [selectCheck, setSelectCheck] = useState({
@@ -57,7 +61,11 @@ export const BookingDetails = () => {
     Object.values(filtAddOn()).forEach((each: any) => {
       total_price += each;
     });
-    setTotal(totalPrice);
+    setTotal(
+      total_price +
+        addOnPrice() -
+        (total_price + addOnPrice()) * (discount / 100)
+    );
   }, [selectCheck]);
 
   const type = data?.addOn_type;
@@ -88,20 +96,39 @@ export const BookingDetails = () => {
   const handleCoupon = async (e) => {
     e.preventDefault();
     // const coupon = couponRef.current?.value;
-    const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
-      coupon,
-    });
+    const res = await axios.post(
+      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/coupon",
+      {
+        coupon,
+      }
+    );
 
     if (res.data == "Invalid Coupon") {
       toast.error(res.data);
     } else {
       setDiscount(res.data);
       toast.success("Coupon Applied Successfully");
+      setApply(true);
       couponRef.current.disabled = true;
       let price = total * (res.data / 100);
       setTotal(total - price);
       buttonRef.current.disabled = true;
     }
+  };
+
+  const handleRemoveCoupon = async (e) => {
+    e.preventDefault();
+    const res = await axios.post(
+      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/coupon",
+      {
+        coupon,
+      }
+    );
+    setDiscount(0);
+    toast.success("Coupon Removed Successfully");
+    couponRef.current.disabled = false;
+    setTotal(totalPrice);
+    buttonRemRef.current.disabled = true;
   };
 
   const addOnPrice = () => {
@@ -138,22 +165,33 @@ export const BookingDetails = () => {
       roomPrice,
       couponId: coupon,
       discount: discount.toString(),
-      total,
+      total:
+        total_price +
+        addOnPrice() -
+        (total_price + addOnPrice()) * (discount / 100),
     };
     let res: any;
 
     if (key == "Hall") {
-      res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      res = await axios.post(
+        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     } else {
-      res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      res = await axios.post(
+        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     }
 
     if (res.data.message == "Booking Successful") {
@@ -300,6 +338,14 @@ export const BookingDetails = () => {
                 >
                   Apply
                 </Button>
+                <Button
+                  id="coupon-btn"
+                  ref={buttonRemRef}
+                  disabled={!apply}
+                  onClick={handleRemoveCoupon}
+                >
+                  Remove
+                </Button>
               </div>
             </Form.Group>
           </div>
@@ -319,19 +365,61 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                {key == "Hall" ? (
-                  <td>Hall:</td>
-                ) : (
-                  <td>Room:</td>
-                )}
-                <td>
-                {(Math.abs(checkout.getTime() - checkin.getTime()) /
-                        (1000 * 3600 * 24))} x {no} x {roomPrice / no}
-                </td>
+                
+                <td> Base Price: </td>
+                <td> ₹ {roomPrice/no}</td>
               </tr>
               <tr>
+                <td>Room(s):</td>
+                <td> {no}</td>
+              </tr>
+
+              <tr>
+                <td>Duration:</td>
+                <td> 
+                  {(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))} nights
+                </td>
+              </tr>
+          
+              <td>
+              <hr/> 
+              </td>
+              <td>
+              <hr/> 
+              </td>
+
+              <tr>
+                <td  
+                 style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "bold",
+                  color: "black",
+                  justifyContent: "left",
+                  
+                  }}
+                >
+                (₹{roomPrice / no}) x ({no})Rooms(s) x ({(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))})Night(s):
+                  </td>    
+
+                 <td>
+                 ₹{totalPrice}
+                  </td>          
+               </tr>
+
+               <td>
+              <hr/> 
+              </td>
+              <td>
+              <hr/> 
+              </td>
+
+             
+  
+              <tr>
                 <td>Addons:</td>
-                <td>{addOnPrice()}</td>
+                <td>₹{addOnPrice()}</td>
               </tr>
               <tr>
                 <td>
@@ -346,6 +434,10 @@ export const BookingDetails = () => {
                 <td>{discount}%</td>
               </tr>
               <tr>
+                <td>Discount Amount:</td>
+                <td>₹{(total_price + addOnPrice()) * (discount / 100)}</td>
+              </tr>
+              <tr>
                 <td>
                   <hr />
                 </td>
@@ -354,8 +446,13 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr style={{ fontSize: "1.3rem" }}>
-                <td>Total:</td>
-                <td>₹{total}</td>
+                <td>Total :   </td>
+                <td>
+                ₹
+                  {total_price +
+                    addOnPrice() -
+                    (total_price + addOnPrice()) * (discount / 100)}
+                </td>
               </tr>
               <tr>
                 <td>
