@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import "./DisplayDetails.css";
 import { Checkmark } from "react-checkmark";
 
+
 interface Props {
   bookingDetails: Booking[];
   setDel: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,9 +16,13 @@ interface Props {
 
 const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
   const handleSubmit = async (id: string) => {
+<<<<<<< HEAD
     const res = await axios.delete(
       `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/${id}`
     );
+=======
+    const res = await axios.delete(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/room/${id}`);
+>>>>>>> 923321145d9c17ac1274ab7a728fbd3598f95db8
     console.log(res);
     if (res.status === 200) {
       setDel(true);
@@ -96,7 +101,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                         )}
                       </span>
                     ) : (
-                      <span>Incomplete</span>
+                      <span>Upcoming </span>
                     )}
                   </td>
                   <td>

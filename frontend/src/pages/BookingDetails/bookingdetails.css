@@ -90,6 +90,7 @@
 .bold{
   font-weight: bold;
   font-size: 16px;
+  margin-right: 0.5rem;
 }
 
 #addons {
@@ -181,14 +182,9 @@
   padding: 2px 10px;
   border: none;
   font-weight: bold;
-  cursor: pointer;
-  /* margin-top: 10px; */
-  /* margin-left: 50%; */
-  /* transform: translateX(-50%); */
   width: 10rem;
   height: 2.5rem;
-  font-size: larger;
-  /* margin: 0 25%; */
+  font-size: large;
 }
 
 .priceCont {
@@ -241,9 +237,11 @@
   font-weight: bolder;
   font-size: 20px;
   border: 1px solid grey;
-  width: 20rem;
+  width: 25rem;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 #details{
