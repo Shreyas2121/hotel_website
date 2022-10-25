@@ -16,8 +16,7 @@ interface Props {
 
 const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
   const handleSubmit = async (id: string) => {
-    console.log(id);
-    const res = await axios.delete(`http://127.0.0.1:5000/reservation/${id}`);
+    const res = await axios.delete(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/${id}`);
     console.log(res);
     if (res.status === 200) {
       setDel(true);
@@ -55,15 +54,6 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
     }
   };
 
-  // const check = (date: string) => {
-  //   const newDate = new Date(date);
-  //   const currentDate = new Date();
-  //   if (newDate >= currentDate) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // };
 
   return (
     <div>
@@ -130,7 +120,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                                 >
                                 Add Review
                                 </Link>
-                            </Button>                              
+                            </Button>
                           </span>
                         )}
                       </span>

@@ -28,12 +28,16 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://127.0.0.1:5000/reservation/get/${email}`
+      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/room/${email}`
     );
     setBookingDetails(data);
     console.log(data);
     setLoading(false);
     setClicked(true);
+    window.scrollTo({
+      top: 500,
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -41,7 +45,7 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `http://127.0.0.1:5000/reservation/get/${email}`
+        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/room/${email}`
       );
       setBookingDetails(data);
       setLoading(false);
@@ -53,7 +57,7 @@ export const Checkbooking = () => {
     <header>
       <div
         className="p-5 text-center bg-image parallax"
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "50rem" }}
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "100vh" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
@@ -87,14 +91,12 @@ export const Checkbooking = () => {
           </Button>
         </Stack>
       </div>
-      <br />
 
-      <Container style={{ minHeight: "50vh" }}>
-        <br />
-
-        <br />
+      <div>
         {clicked && (
-          <div>
+          <Container>
+            <br />
+            <br />
             {loading ? (
               <div></div>
             ) : (
@@ -105,7 +107,9 @@ export const Checkbooking = () => {
                   gap: "1rem",
                 }}
               >
-                     <h2>Bookings Found for E-mail: {emailRef.current.value}</h2>
+                <h2>
+                  Room bookings Found for E-mail: {emailRef.current.value}
+                </h2>
                 {bookingDetails.length ? (
                   <DisplayDetails
                     bookingDetails={bookingDetails}
@@ -124,9 +128,9 @@ export const Checkbooking = () => {
                 )}
               </div>
             )}
-          </div>
+          </Container>
         )}
-      </Container>
+      </div>
     </header>
   );
 };
