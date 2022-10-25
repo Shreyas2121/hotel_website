@@ -1599,7 +1599,11 @@ react-calendar@^3.9.0:
 
 react-checkmark@^1.4.0:
   version "1.4.0"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/react-checkmark/-/react-checkmark-1.4.0.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/react-checkmark/-/react-checkmark-1.4.0.tgz#9b086f168024b90094ffddb77b3fa2d5f77a1dce"
+>>>>>>> a4026a5cb4d866a981757c54725c7fd193436440
   integrity sha512-9ESId716ltic7qnvFrB2YicM1smryCfgvqSsYbCJuaWAYnuKMz22v+iubyx009UMxTjzGqVH7Zrf1DevoTVcPw==
 
 react-dom@^18.2.0:

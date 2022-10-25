@@ -31,7 +31,7 @@ interface ResStatus {
 const Rooms = () => {
   // window.scrollTo(0, 0);
   const { data, loading }: Res = UseFetch(
-    `http://127.0.0.1:5000/booking/room/getDetails`
+    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room/getDetails`
   );
 
   const [checkIn, setCheckIn] = useState("");
@@ -59,7 +59,7 @@ const Rooms = () => {
     const formatedCheckOut = checkout.toISOString();
 
     const { data }: ResStatus = await axios.post(
-      "http://127.0.0.1:5000/booking/room/check",
+      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room/check",
       {
         checkIn: formatedCheckIn,
         checkOut: formatedCheckOut,
@@ -70,6 +70,7 @@ const Rooms = () => {
         },
       }
     );
+    console.log(data);
     setStatus(data);
     setClicked(true);
     window.scrollTo({
@@ -121,6 +122,15 @@ const Rooms = () => {
                     id="check-out"
                     className="dates"
                     min={conv(checkin)}
+                    max={
+                      checkin.getMonth() === 11
+                        ? `${checkin.getFullYear() + 1}-01-${
+                            checkin.getDate() + 1
+                          }`
+                        : `${checkin.getFullYear()}-${checkin.getMonth() + 2}-${
+                            checkin.getDate() + 1
+                          }`
+                    }
                     type="date"
                     disabled={checkIn === ""}
                     onChange={(e) => setCheckOut(e.target.value)}
@@ -145,8 +155,8 @@ const Rooms = () => {
         <div></div>
       ) : (
         <div style={{ margin: "2rem" }}>
-          <h6 style={{marginLeft:"5%"}}>Select Room Type</h6>
-          <hr/>
+          <h6 style={{ marginLeft: "5%" }}>Select Room Type</h6>
+          <hr />
           {loading ? (
             <h1>Loading...</h1>
           ) : (

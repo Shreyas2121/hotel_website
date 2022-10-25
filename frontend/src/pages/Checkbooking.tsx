@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
-import DisplayDetails from "../components/DisplayDetails";
+import DisplayDetails from "../components/DisplayDetails/DisplayDetails";
 import { Booking, BookingHall } from "../types/types";
 import Stack from "react-bootstrap/Stack";
 import axios from "axios";
@@ -34,7 +34,7 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://127.0.0.1:5000/reservation/get/room/${email}`
+      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/room/${email}`
     );
     setBookingDetails(data);
     const {data_hall} : Hall = await axios.get(
@@ -44,6 +44,10 @@ export const Checkbooking = () => {
     console.log(data);
     setLoading(false);
     setClicked(true);
+    window.scrollTo({
+      top: 500,
+      behavior: "smooth",
+    });
   };
 
   useEffect(() => {
@@ -51,7 +55,7 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `http://127.0.0.1:5000/reservation/get/room/${email}`
+        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/room/${email}`
       );
       setBookingDetails(data);
       const { data_hall }: Hall = await axios.get(
@@ -67,7 +71,7 @@ export const Checkbooking = () => {
     <header>
       <div
         className="p-5 text-center bg-image parallax"
-        style={{ backgroundImage: `url(${roomsBackground})`, height: "50rem" }}
+        style={{ backgroundImage: `url(${roomsBackground})`, height: "100vh" }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
@@ -101,14 +105,12 @@ export const Checkbooking = () => {
           </Button>
         </Stack>
       </div>
-      <br />
 
-      <Container style={{ minHeight: "50vh" }}>
-        <br />
-
-        <br />
+      <div>
         {clicked && (
-          <div>
+          <Container>
+            <br />
+            <br />
             {loading ? (
               <div></div>
             ) : (
@@ -119,51 +121,9 @@ export const Checkbooking = () => {
                   gap: "1rem",
                 }}
               >
-                {bookingDetails.length ? (
-                  <>
-                  <p style={{
-                      textAlign: "center",
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
-                    }}>Room Bookings Found for this email: {emailRef.current.value} </p>
-                  <DisplayDetails
-                  bookingDetails={bookingDetails}
-                  setDel={setDel}
-                  />
-                  </>
-                ) : (
-                  <div
-                    style={{
-                      textAlign: "center",
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    No Room Bookings Found for this email: {emailRef.current.value}
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-      </Container>
-
-      <Container style={{ minHeight: "50vh" }}>
-        <br />
-
-        <br />
-        {clicked && (
-          <div>
-            {loading ? (
-              <div></div>
-            ) : (
-              <div
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "1rem",
-                }}
-              >
+                <h2>
+                  Room bookings Found for E-mail: {emailRef.current.value}
+                </h2>
                 {bookingDetails.length ? (
                   <>
                   <p style={{
@@ -184,14 +144,14 @@ export const Checkbooking = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    No Hall Bookings Found for this email: {emailRef.current.value}
+                    No Bookings Found for this email: {emailRef.current.value}
                   </div>
                 )}
               </div>
             )}
-          </div>
+          </Container>
         )}
-      </Container>
+      </div>
     </header>
   );
 };

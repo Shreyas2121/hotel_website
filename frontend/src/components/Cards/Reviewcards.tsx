@@ -18,7 +18,7 @@ interface Res {
 
 const Reviewcards = ({ featured }) => {
   const { data, loading }: Res = UseFetch(
-    `http://127.0.0.1:5000/reviews/${featured}`
+    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reviews/${featured}`
   );
 
   return (

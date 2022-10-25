@@ -29,7 +29,7 @@ interface ResStatus {
 
 const Halls = () => {
   const { data, loading }: Res = UseFetch(
-    "http://127.0.0.1:5000/booking/hall/getDetails"
+    "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall/getDetails"
   );
 
   const [checkIn, setCheckIn] = useState("");
@@ -56,25 +56,24 @@ const Halls = () => {
     e.preventDefault();
     const formatedCheckIn = checkin.toISOString();
     const formatedCheckOut = checkout.toISOString();
-    const valueNew =  selectRef.current.value
+    const valueNew = selectRef.current.value;
 
     const { data }: ResStatus = await axios.post(
-      "http://127.0.0.1:5000/booking/hall/check",
-      { checkIn: formatedCheckIn,
-        checkOut: formatedCheckOut, },
+      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall/check",
+      { checkIn: formatedCheckIn, checkOut: formatedCheckOut },
       {
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
-    setValue(valueNew)
+    setValue(valueNew);
     setStatus(data);
     setClicked(true);
     window.scrollTo({
-      top: 800});
+      top: 800,
+    });
   };
-
 
   return (
     <header>
@@ -96,7 +95,8 @@ const Halls = () => {
                 style={{
                   display: "flex",
                   width: "80rem",
-                  margin: "auto",                }}
+                  margin: "auto",
+                }}
               >
                 <div
                   style={{
@@ -111,15 +111,13 @@ const Halls = () => {
                     className="dates"
                     aria-label="Default select example"
                     ref={selectRef}
-                    style={{ width: "10rem", padding:"0.1rem 0.8rem 0" }}
+                    style={{ width: "10rem", padding: "0.1rem 0.8rem 0" }}
                   >
                     <option>Select Type</option>
                     <option value="Conference">Conference</option>
                     <option value="Birthday">Birthday</option>
                     <option value="Wedding">Wedding</option>
                   </select>
-
-
                   From :{" "}
                   <input
                     id="check-in"
@@ -129,12 +127,14 @@ const Halls = () => {
                     onChange={(e) => setCheckIn(e.target.value)}
                     onKeyDown={(e) => e.preventDefault()}
                   />
-
                   To:{" "}
                   <input
                     id="check-out"
                     className="dates"
                     min={conv(checkin)}
+                    max={conv(
+                      new Date(checkin.setMonth(checkin.getMonth() + 1))
+                    )}
                     type="date"
                     disabled={checkIn === ""}
                     onChange={(e) => setCheckOut(e.target.value)}
@@ -142,7 +142,12 @@ const Halls = () => {
                   />
                 </div>
                 <div>
-                  <Button id="check-availability" variant="primary" size="sm" onClick={handleSearch}>
+                  <Button
+                    id="check-availability"
+                    variant="primary"
+                    size="sm"
+                    onClick={handleSearch}
+                  >
                     Check Availability
                   </Button>{" "}
                 </div>
@@ -156,26 +161,26 @@ const Halls = () => {
         <div></div>
       ) : (
         <div style={{ margin: "2rem" }}>
-          <h6 style={{marginLeft:"5%"}}>Select Hall</h6>
-          <hr/>
+          <h6 style={{ marginLeft: "5%" }}>Select Hall</h6>
+          <hr />
           {loading ? (
             <h1>Loading...</h1>
           ) : (
             data?.halls.map((hall) => {
-
-              if (hall.hall_type===value){
-              return (
-              <Hallcards
-                key={hall.hall_id}
-                hallData={hall}
-                checkin={checkin}
-                // bookedHalls={hallData}
-                checkout={checkout}
-                status={status}
-              />
-              )};
-            }
-          ))}
+              if (hall.hall_type === value) {
+                return (
+                  <Hallcards
+                    key={hall.hall_id}
+                    hallData={hall}
+                    checkin={checkin}
+                    // bookedHalls={hallData}
+                    checkout={checkout}
+                    status={status}
+                  />
+                );
+              }
+            })
+          )}
         </div>
       )}
     </header>
