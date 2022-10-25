@@ -94,7 +94,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                         )}
                       </span>
                     ) : (
-                      <span>Incomplete</span>
+                      <span>Upcoming </span>
                     )}
                   </td>
                   <td>
