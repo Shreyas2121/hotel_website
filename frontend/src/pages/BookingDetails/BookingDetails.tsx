@@ -375,10 +375,10 @@ export const BookingDetails = () => {
               </tr>
 
               <tr>
-                <td>Duration:</td>
+                <td>No. of Night(s):</td>
                 <td> 
                   {(Math.abs(checkout.getTime() - checkin.getTime()) /
-                          (1000 * 3600 * 24))} nights
+                          (1000 * 3600 * 24))}
                 </td>
               </tr>
           
@@ -399,8 +399,8 @@ export const BookingDetails = () => {
                   
                   }}
                 >
-                (₹{roomPrice / no}) x ({no})Rooms(s) x ({(Math.abs(checkout.getTime() - checkin.getTime()) /
-                          (1000 * 3600 * 24))})Night(s):
+                {no} Room(s) x {(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))} Night(s):
                   </td>    
 
                  <td>
@@ -441,7 +441,7 @@ export const BookingDetails = () => {
               </tr>
               <tr>
                 <td>Discount Amount:</td>
-                <td>- ₹{(total_price + addOnPrice()) * (discount / 100)}</td>
+                <td>₹{(total_price + addOnPrice()) * (discount / 100)}</td>
               </tr>
               <tr>
                 <td>

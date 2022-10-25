@@ -184,7 +184,7 @@
   font-weight: bold;
   width: 10rem;
   height: 2.5rem;
-  font-size: larger;
+  font-size: large;
 }
 
 .priceCont {
@@ -237,10 +237,11 @@
   font-weight: bolder;
   font-size: 20px;
   border: 1px solid grey;
-  width: 30rem;
+  width: 25rem;
   border-radius: 1rem;
-  padding: 2rem;
-  position: relative;
+  padding: 1.5rem;
+  margin: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 #details{
