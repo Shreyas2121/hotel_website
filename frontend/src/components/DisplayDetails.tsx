@@ -13,7 +13,8 @@ interface Props {
   setDel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
+const DisplayDetails = ({ bookingDetails, setDel }: Props) => { 
+  console.log(bookingDetails);
   const handleSubmit = async (id: string) => {
     console.log(id);
     const res = await axios.delete(`http://127.0.0.1:5000/reservation/${id}`);

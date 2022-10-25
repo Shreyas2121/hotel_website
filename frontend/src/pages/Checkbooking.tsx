@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import DisplayDetails from "../components/DisplayDetails";
-import { Booking } from "../types/types";
+import { Booking, BookingHall } from "../types/types";
 import Stack from "react-bootstrap/Stack";
 import axios from "axios";
 
@@ -16,9 +16,15 @@ interface Res {
   loading: boolean;
 }
 
+interface Hall{
+  data_hall: BookingHall[];
+  loading: boolean;
+}
+
 export const Checkbooking = () => {
   const emailRef = React.useRef<HTMLInputElement>(null);
   const [bookingDetails, setBookingDetails] = React.useState<Booking[]>(null);
+  const [bookingDetails1, setBookingDetails1] = React.useState<BookingHall[]>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [clicked, setClicked] = React.useState<boolean>(false);
   const [del, setDel] = React.useState<boolean>(false);
@@ -28,9 +34,13 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://127.0.0.1:5000/reservation/get/${email}`
+      `http://127.0.0.1:5000/reservation/get/room/${email}`
     );
     setBookingDetails(data);
+    const {data_hall} : Hall = await axios.get(
+      `http://127.0.0.1:5000/reservation/get/hall/${email}`
+    );
+    setBookingDetails1(data_hall);
     console.log(data);
     setLoading(false);
     setClicked(true);
@@ -41,9 +51,13 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `http://127.0.0.1:5000/reservation/get/${email}`
+        `http://127.0.0.1:5000/reservation/get/room/${email}`
       );
       setBookingDetails(data);
+      const { data_hall }: Hall = await axios.get(
+        `http://127.0.0.1:5000/reservation/get/hall/${email}`
+      );
+      setBookingDetails1(data_hall);
       setLoading(false);
     };
     a();
@@ -105,12 +119,18 @@ export const Checkbooking = () => {
                   gap: "1rem",
                 }}
               >
-                     <h2>Bookings Found for E-mail: {emailRef.current.value}</h2>
                 {bookingDetails.length ? (
+                  <>
+                  <p style={{
+                      textAlign: "center",
+                      fontSize: "1.5rem",
+                      fontWeight: "bold",
+                    }}>Room Bookings Found for this email: {emailRef.current.value} </p>
                   <DisplayDetails
-                    bookingDetails={bookingDetails}
-                    setDel={setDel}
+                  bookingDetails={bookingDetails}
+                  setDel={setDel}
                   />
+                  </>
                 ) : (
                   <div
                     style={{
@@ -119,7 +139,52 @@ export const Checkbooking = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    No Bookings Found for this email: {emailRef.current.value}
+                    No Room Bookings Found for this email: {emailRef.current.value}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </Container>
+
+      <Container style={{ minHeight: "50vh" }}>
+        <br />
+
+        <br />
+        {clicked && (
+          <div>
+            {loading ? (
+              <div></div>
+            ) : (
+              <div
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "1rem",
+                }}
+              >
+                {bookingDetails.length ? (
+                  <>
+                  <p style={{
+                      textAlign: "center",
+                      fontSize: "1.5rem",
+                      fontWeight: "bold",
+                    }}>Hall Bookings Found for this email: {emailRef.current.value} </p>
+                  <DisplayDetails
+                  bookingDetails={bookingDetails}
+                  setDel={setDel}
+                  />
+                  </>
+                ) : (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      fontSize: "1.5rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    No Hall Bookings Found for this email: {emailRef.current.value}
                   </div>
                 )}
               </div>

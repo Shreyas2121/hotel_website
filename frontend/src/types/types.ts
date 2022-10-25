@@ -60,3 +60,19 @@ export interface Booking {
   booking_useremail: string;
   booking_username: string;
 }
+
+export interface BookingHall {
+  _id: string;
+  booking_date: string;
+  booking_check_in: string;
+  booking_check_out: string;
+  booking_total: string;
+  booking_addOns: Addon;
+  booking_coupon_id: string;
+  booking_coupon_discount: string;
+  booking_hall_price: string;
+  booking_hall_type: string;
+  booking_special_request: string;
+  booking_useremail: string;
+  booking_username: string;
+}
