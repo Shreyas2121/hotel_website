@@ -43,7 +43,7 @@ export const BookingDetails = () => {
   let total_price = totalPrice;
 
   const { data, loading }: ResAddon = UseFetch(
-    `http://127.0.0.1:5000/booking/addon/`
+    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/addon/`
   );
 
   const [selectCheck, setSelectCheck] = useState({
@@ -88,7 +88,7 @@ export const BookingDetails = () => {
   const handleCoupon = async (e) => {
     e.preventDefault();
     // const coupon = couponRef.current?.value;
-    const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
+    const res = await axios.post("http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/coupon", {
       coupon,
     });
 
@@ -143,13 +143,13 @@ export const BookingDetails = () => {
     let res: any;
 
     if (key == "Hall") {
-      res = await axios.post(`http://127.0.0.1:5000/booking/hall`, data, {
+      res = await axios.post(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall`, data, {
         headers: {
           "Content-Type": "application/json",
         },
       });
     } else {
-      res = await axios.post(`http://127.0.0.1:5000/booking/room`, data, {
+      res = await axios.post(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room`, data, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -31,7 +31,7 @@ interface ResStatus {
 const Rooms = () => {
   // window.scrollTo(0, 0);
   const { data, loading }: Res = UseFetch(
-    `/booking/room/getDetails`
+    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room/getDetails`
   );
 
   const [checkIn, setCheckIn] = useState("");
@@ -70,6 +70,7 @@ const Rooms = () => {
         },
       }
     );
+    console.log(data);
     setStatus(data);
     setClicked(true);
     window.scrollTo({
