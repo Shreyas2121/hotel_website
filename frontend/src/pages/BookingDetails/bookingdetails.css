@@ -182,14 +182,9 @@
   padding: 2px 10px;
   border: none;
   font-weight: bold;
-  cursor: pointer;
-  /* margin-top: 10px; */
-  /* margin-left: 50%; */
-  /* transform: translateX(-50%); */
   width: 10rem;
   height: 2.5rem;
   font-size: larger;
-  /* margin: 0 25%; */
 }
 
 .priceCont {
