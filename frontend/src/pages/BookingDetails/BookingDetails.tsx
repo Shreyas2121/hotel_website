@@ -244,11 +244,11 @@ export const BookingDetails = () => {
               <div>
                   <Form.Group>
                     <Form.Label htmlFor="adult" id="checkin">
-                      <p className="bold">Check In: </p>
+                      <p className="bold">Check In : </p>
                       {checkin.toDateString()}
                     </Form.Label>
                     <Form.Label htmlFor="adult" id="checkout">
-                      <p className="bold">Check Out: </p>
+                      <p className="bold">Check Out : </p>
                       {checkout.toDateString()}
                     </Form.Label>
                   </Form.Group>
@@ -260,14 +260,14 @@ export const BookingDetails = () => {
                 ) : (
                   <Form.Group>
                     <Form.Label htmlFor="adult" id="room-qnty">
-                      <p className="bold">No of rooms:</p> {no}
+                      <p className="bold">Number of rooms :</p> {no}
                     </Form.Label>
                   </Form.Group>
                 )}
 
                 <Form.Group>
                   <Form.Label htmlFor="adult" id="room-type">
-                    <p className="bold">Type: </p>
+                    <p className="bold">Type : </p>
                     {roomType}
                   </Form.Label>
                 </Form.Group>
