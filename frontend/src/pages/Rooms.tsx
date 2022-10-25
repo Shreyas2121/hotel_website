@@ -121,6 +121,18 @@ const Rooms = () => {
                     id="check-out"
                     className="dates"
                     min={conv(checkin)}
+                    // max={conv(
+                    //   new Date(checkin.setMonth(checkin.getMonth() + 1))
+                    // )}
+                    max={
+                      checkin.getMonth() === 11
+                        ? `${checkin.getFullYear() + 1}-01-${
+                            checkin.getDate() + 1
+                          }`
+                        : `${checkin.getFullYear()}-${
+                            checkin.getMonth() + 2
+                          }-${checkin.getDate() + 1}`
+                    }
                     type="date"
                     disabled={checkIn === ""}
                     onChange={(e) => setCheckOut(e.target.value)}
@@ -145,8 +157,8 @@ const Rooms = () => {
         <div></div>
       ) : (
         <div style={{ margin: "2rem" }}>
-          <h6 style={{marginLeft:"5%"}}>Select Room Type</h6>
-          <hr/>
+          <h6 style={{ marginLeft: "5%" }}>Select Room Type</h6>
+          <hr />
           {loading ? (
             <h1>Loading...</h1>
           ) : (
