@@ -121,9 +121,6 @@ const Rooms = () => {
                     id="check-out"
                     className="dates"
                     min={conv(checkin)}
-                    // max={conv(
-                    //   new Date(checkin.setMonth(checkin.getMonth() + 1))
-                    // )}
                     max={
                       checkin.getMonth() === 11
                         ? `${checkin.getFullYear() + 1}-01-${

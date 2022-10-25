@@ -39,3 +39,8 @@
     border: 1px solid grey;
     border-radius: px;
 }
+
+.dates:hover{
+    cursor: pointer;
+    background-color: aliceblue;
+}

@@ -204,13 +204,6 @@ export const BookingDetails = () => {
 
             <div id="details">
               <div>
-                {key == "Hall" ? (
-                  <Form.Group>
-                    <Form.Label id="Hall-bk-date">
-                      {checkin.toDateString()}
-                    </Form.Label>
-                  </Form.Group>
-                ) : (
                   <Form.Group>
                     <Form.Label htmlFor="adult" id="checkin">
                       <p className="bold">Check In: </p>
@@ -221,7 +214,6 @@ export const BookingDetails = () => {
                       {checkout.toDateString()}
                     </Form.Label>
                   </Form.Group>
-                )}
               </div>
 
               <div>
@@ -327,9 +319,14 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                <td>Room:</td>
+                {key == "Hall" ? (
+                  <td>Hall:</td>
+                ) : (
+                  <td>Room:</td>
+                )}
                 <td>
-                  {no} x {roomPrice / no}
+                {(Math.abs(checkout.getTime() - checkin.getTime()) /
+                        (1000 * 3600 * 24))} x {no} x {roomPrice / no}
                 </td>
               </tr>
               <tr>
@@ -345,7 +342,7 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                <td>Discount:</td>
+                <td>Coupon Discount:</td>
                 <td>{discount}%</td>
               </tr>
               <tr>
