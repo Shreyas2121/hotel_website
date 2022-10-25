@@ -1,12 +1,13 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Booking } from "../types/types";
+import { Booking } from "../../types/types";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import "./DisplayDetails.css";
 import { Checkmark } from 'react-checkmark';
+
 
 interface Props {
   bookingDetails: Booking[];

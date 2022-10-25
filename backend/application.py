@@ -10,6 +10,7 @@ from controller.routes.reviews_route import reviews_route
 from controller.routes.cancelling_room__route import cancel_route
 
 
+
 application = Flask(__name__)
 CORS(application)
 
@@ -21,6 +22,7 @@ application.register_blueprint(booking_route)
 application.register_blueprint(booking_hall_route)
 application.register_blueprint(reviews_route)
 application.register_blueprint(cancel_route)
+
 
 
 @application.route('/')

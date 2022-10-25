@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
-import DisplayDetails from "../components/DisplayDetails";
+import DisplayDetails from "../components/DisplayDetails/DisplayDetails";
 import { Booking } from "../types/types";
 import Stack from "react-bootstrap/Stack";
 import axios from "axios";
