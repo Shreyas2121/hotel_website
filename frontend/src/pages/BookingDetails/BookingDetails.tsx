@@ -1,3 +1,4 @@
+import { margin } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
@@ -372,14 +373,61 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                <td>Room:</td>
-                <td>
-                  {no} x {roomPrice / no}
-                </td>
+                
+                <td> Base Price: </td>
+                <td> ₹ {roomPrice/no}</td>
               </tr>
               <tr>
+                <td>Room(s):</td>
+                <td> {no}</td>
+              </tr>
+
+              <tr>
+                <td>Duration:</td>
+                <td> 
+                  {(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))} nights
+                </td>
+              </tr>
+          
+              <td>
+              <hr/> 
+              </td>
+              <td>
+              <hr/> 
+              </td>
+
+              <tr>
+                <td  
+                 style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "bold",
+                  color: "black",
+                  justifyContent: "left",
+                  
+                  }}
+                >
+                (₹{roomPrice / no}) x ({no})Rooms(s) x ({(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))})Night(s):
+                  </td>    
+
+                 <td>
+                 ₹{totalPrice}
+                  </td>          
+               </tr>
+
+               <td>
+              <hr/> 
+              </td>
+              <td>
+              <hr/> 
+              </td>
+
+             
+  
+              <tr>
                 <td>Addons:</td>
-                <td>{addOnPrice()}</td>
+                <td>₹{addOnPrice()}</td>
               </tr>
               <tr>
                 <td>
@@ -395,7 +443,7 @@ export const BookingDetails = () => {
               </tr>
               <tr>
                 <td>Discount Amount:</td>
-                <td>{(total_price + addOnPrice()) * (discount / 100)}</td>
+                <td>₹{(total_price + addOnPrice()) * (discount / 100)}</td>
               </tr>
               <tr>
                 <td>
@@ -406,9 +454,9 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr style={{ fontSize: "1.3rem" }}>
-                <td>Total:</td>
+                <td>Total :   </td>
                 <td>
-                  ₹
+                ₹
                   {total_price +
                     addOnPrice() -
                     (total_price + addOnPrice()) * (discount / 100)}
