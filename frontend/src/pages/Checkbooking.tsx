@@ -3,22 +3,30 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import DisplayDetails from "../components/DisplayDetails/DisplayDetails";
-import { Booking } from "../types/types";
+import { Booking, BookingHall } from "../types/types";
 import Stack from "react-bootstrap/Stack";
 import axios from "axios";
 
 import roomsBackground from "../assets/images/about_banner.jpg";
 
 import "../components/parallaxImage.css";
+import DisplayDetailsHall from "../components/DisplayDetails/DisplayDetailsHall";
 
 interface Res {
   data: Booking[];
   loading: boolean;
 }
 
+interface Res1 {
+  data: BookingHall[];
+  loading: boolean;
+}
+
 export const Checkbooking = () => {
   const emailRef = React.useRef<HTMLInputElement>(null);
   const [bookingDetails, setBookingDetails] = React.useState<Booking[]>(null);
+  const [bookingDetails1, setBookingDetails1] =
+    React.useState<BookingHall[]>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [clicked, setClicked] = React.useState<boolean>(false);
   const [del, setDel] = React.useState<boolean>(false);
@@ -31,7 +39,10 @@ export const Checkbooking = () => {
       `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/room/${email}`
     );
     setBookingDetails(data);
-    console.log(data);
+    const res: Res1 = await axios.get(
+      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/hall/${email}`
+    );
+    setBookingDetails1(res.data);
     setLoading(false);
     setClicked(true);
     window.scrollTo({
@@ -100,32 +111,64 @@ export const Checkbooking = () => {
             {loading ? (
               <div></div>
             ) : (
-              <div
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "1rem",
-                }}
-              >
-                <h2>
-                  Room bookings Found for E-mail: {emailRef.current.value}
-                </h2>
-                {bookingDetails.length ? (
-                  <DisplayDetails
-                    bookingDetails={bookingDetails}
-                    setDel={setDel}
-                  />
-                ) : (
-                  <div
-                    style={{
-                      textAlign: "center",
-                      fontSize: "1.5rem",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    No Bookings Found for this email: {emailRef.current.value}
-                  </div>
-                )}
+              <div>
+                <div
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  <h2>
+                    Room bookings Found for E-mail: {emailRef.current.value}
+                  </h2>
+
+                  {bookingDetails.length ? (
+                    <DisplayDetails
+                      bookingDetails={bookingDetails}
+                      setDel={setDel}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        textAlign: "center",
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      No Bookings Found for this email: {emailRef.current.value}
+                    </div>
+                  )}
+                </div>
+
+                <div
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  <h2>
+                    Room bookings Found for E-mail: {emailRef.current.value}
+                  </h2>
+
+                  {bookingDetails.length ? (
+                    <DisplayDetailsHall
+                      bookingDetails1={bookingDetails1}
+                      setDel={setDel}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        textAlign: "center",
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      No Bookings Found for this email: {emailRef.current.value}
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </Container>

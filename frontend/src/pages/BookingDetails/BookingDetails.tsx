@@ -376,10 +376,10 @@ export const BookingDetails = () => {
               </tr>
 
               <tr>
-                <td>Duration:</td>
+                <td>No. of Night(s):</td>
                 <td> 
                   {(Math.abs(checkout.getTime() - checkin.getTime()) /
-                          (1000 * 3600 * 24))} nights
+                          (1000 * 3600 * 24))}
                 </td>
               </tr>
           
@@ -400,8 +400,8 @@ export const BookingDetails = () => {
                   
                   }}
                 >
-                (₹{roomPrice / no}) x ({no})Rooms(s) x ({(Math.abs(checkout.getTime() - checkin.getTime()) /
-                          (1000 * 3600 * 24))})Night(s):
+                {no} Room(s) x {(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))} Night(s):
                   </td>    
 
                  <td>
@@ -422,6 +422,12 @@ export const BookingDetails = () => {
                 <td>Addons:</td>
                 <td>₹{addOnPrice()}</td>
               </tr>
+
+              <tr>
+                <td>Sub Total:</td>
+                <td>₹{totalPrice + addOnPrice()}</td>
+              </tr>
+
               <tr>
                 <td>
                   <hr />
@@ -472,48 +478,3 @@ export const BookingDetails = () => {
 };
 
 export default BookingDetails;
-
-{
-  /* <Container className="booking-details">
-      <div className="price-details">
-        <table>
-          <tr>
-            <th>Details</th>
-          </tr>
-          <tr>
-            <td><br /></td>
-          </tr>
-          <tr>
-            <td>Room:</td>
-            <td>{roomPrice}</td>
-          </tr>
-          <tr>
-            <td>Addons:</td>
-            <td>{addOnPrice()}</td>
-          </tr>
-          <tr>
-            <td><hr /></td>
-            <td><hr /></td>
-          </tr>
-          <tr>
-            <td>Discount:</td>
-            <td>{discount}%</td>
-          </tr>
-          <tr>
-            <td><hr /></td>
-            <td><hr /></td>
-          </tr>
-          <tr style={{fontSize:"1.3rem"}}>
-            <td>Total:</td>
-            <td>₹{total}</td>
-          </tr>
-          <tr>
-            <td><br /></td>
-          </tr>
-        </table>
-          <Button variant="primary" type="submit" id="submit-booking-btn" >
-            Book Now
-          </Button>
-      </div>
-    </Container> */
-}
