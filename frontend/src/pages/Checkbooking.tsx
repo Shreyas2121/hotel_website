@@ -119,10 +119,6 @@ export const Checkbooking = () => {
                     gap: "1rem",
                   }}
                 >
-                  <h2>
-                    Room bookings Found for E-mail: {emailRef.current.value}
-                  </h2>
-
                   {bookingDetails.length ? (
                     <DisplayDetails
                       bookingDetails={bookingDetails}
@@ -131,12 +127,12 @@ export const Checkbooking = () => {
                   ) : (
                     <div
                       style={{
-                        textAlign: "center",
-                        fontSize: "1.5rem",
-                        fontWeight: "bold",
+                        marginTop: "2rem",
+                        color: "red",
+                        height: "5rem",
                       }}
                     >
-                      No Bookings Found for this email: {emailRef.current.value}
+                      <h5>No Room Bookings Found for this email: {emailRef.current.value}</h5>
                     </div>
                   )}
                 </div>
@@ -148,11 +144,7 @@ export const Checkbooking = () => {
                     gap: "1rem",
                   }}
                 >
-                  <h2>
-                    Room bookings Found for E-mail: {emailRef.current.value}
-                  </h2>
-
-                  {bookingDetails.length ? (
+                  {bookingDetails1.length ? (
                     <DisplayDetailsHall
                       bookingDetails1={bookingDetails1}
                       setDel={setDel}
@@ -160,12 +152,12 @@ export const Checkbooking = () => {
                   ) : (
                     <div
                       style={{
-                        textAlign: "center",
-                        fontSize: "1.5rem",
-                        fontWeight: "bold",
+                        marginTop: "2rem",
+                        color: "red",
+                        height: "5rem",
                       }}
                     >
-                      No Bookings Found for this email: {emailRef.current.value}
+                      <h5>No Hall Bookings Found for this email: {emailRef.current.value}</h5>
                     </div>
                   )}
                 </div>

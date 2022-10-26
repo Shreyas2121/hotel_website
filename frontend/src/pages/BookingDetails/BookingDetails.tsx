@@ -366,7 +366,6 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                
                 <td> Base Price: </td>
                 <td> ₹ {roomPrice/no}</td>
               </tr>
