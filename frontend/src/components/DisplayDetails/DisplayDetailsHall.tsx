@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Booking } from "../../types/types";
+import { Booking, BookingHall } from "../../types/types";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
@@ -8,16 +8,17 @@ import { Link } from "react-router-dom";
 import "./DisplayDetails.css";
 import { Checkmark } from "react-checkmark";
 
-
 interface Props {
-  bookingDetails: Booking[];
+  bookingDetails1: BookingHall[];
   setDel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DisplayDetails = ({ bookingDetails, setDel }: Props) => { 
-  console.log(bookingDetails);
+const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
+  console.log(bookingDetails1);
   const handleSubmit = async (id: string) => {
-    const res = await axios.delete(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/room/${id}`);
+    const res = await axios.delete(
+      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/hall/${id}`
+    );
     console.log(res);
     if (res.status === 200) {
       setDel(true);
@@ -58,31 +59,30 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
   return (
     <div id="table-div">
       <h5>
-        Room bookings Found for E-mail:
+        Hall bookings Found for E-mail:
       </h5>
       <Table striped bordered hover>
         <thead>
-          <tr id="table-headings">
+          <tr>
             <th>Name</th>
             <th>Check-in Date</th>
             <th>Check-out Date</th>
-            <th>Room Type</th>
-            <th>No. of rooms</th>
+            <th>Hall Type</th>
             <th>Total Amount</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {bookingDetails.map((booking) => (
+          {bookingDetails1.map((booking) => (
             <>
               {booking._id ? (
                 <tr>
                   <td>{booking.booking_username}</td>
                   <td>{new Date(booking.booking_check_in).toDateString()}</td>
                   <td>{new Date(booking.booking_check_out).toDateString()}</td>
-                  <td>{booking.booking_room_type}</td>
-                  <td>{booking.booking_no_of_rooms}</td>
+                  <td>{booking.booking_hall_type}</td>
+
                   <td>{booking.booking_total}</td>
                   <td>
                     {check(booking.booking_check_in) ? (
@@ -99,7 +99,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                         )}
                       </span>
                     ) : (
-                      <span>Upcoming </span>
+                      <span>Incomplete</span>
                     )}
                   </td>
                   <td>
@@ -110,7 +110,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                           booking.booking_check_out
                         ) ? (
                           <span id="Ongoing">
-                            ---
+                            --------------------------------
                           </span>
                         ) : (
                           <span>
@@ -151,4 +151,4 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
   );
 };
 
-export default DisplayDetails;
+export default DisplayDetailsHall;

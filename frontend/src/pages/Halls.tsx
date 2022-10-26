@@ -123,6 +123,7 @@ const Halls = () => {
                     id="check-in"
                     className="dates"
                     min={new Date().toISOString().split("T")[0]}
+                    max={conv(checkout)}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
                     onKeyDown={(e) => e.preventDefault()}
@@ -132,9 +133,15 @@ const Halls = () => {
                     id="check-out"
                     className="dates"
                     min={conv(checkin)}
-                    max={conv(
-                      new Date(checkin.setMonth(checkin.getMonth() + 1))
-                    )}
+                    max={
+                      checkin.getMonth() === 11
+                        ? `${checkin.getFullYear() + 1}-01-${
+                            checkin.getDate() + 1
+                          }`
+                        : `${checkin.getFullYear()}-${checkin.getMonth() + 2}-${
+                            checkin.getDate() + 1
+                          }`
+                    }
                     type="date"
                     disabled={checkIn === ""}
                     onChange={(e) => setCheckOut(e.target.value)}

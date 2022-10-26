@@ -100,7 +100,11 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
             <>
               <div>
                 <p className="total-price">
-                  Total: ₹ {hallPrice}
+                  Total: ₹
+                  {hallPrice *
+                      (Math.abs(checkout.getTime() - checkin.getTime()) /
+                        (1000 * 3600 * 24))}
+                  /-
                 </p>
               </div>
 
@@ -113,7 +117,11 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
                       checkin,
                       checkout,
                       roomType:hallType,
-                      roomPrice:hallPrice,
+                      roomPrice:hallPrice, 
+                      totalPrice:hallPrice*
+                      no *
+                      (Math.abs(checkout.getTime() - checkin.getTime()) /
+                        (1000 * 3600 * 24)),
                       key: "Hall",
                     }}
                     className="link-style"

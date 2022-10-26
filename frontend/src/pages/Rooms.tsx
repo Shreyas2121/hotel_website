@@ -46,6 +46,7 @@ const Rooms = () => {
   let checkout = new Date(checkOut);
 
   const conv = (date: Date) => {
+    date.setDate(date.getDate() + 1);
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   };
 

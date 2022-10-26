@@ -70,6 +70,7 @@ export interface BookingHall {
   booking_addOns: Addon;
   booking_coupon_id: string;
   booking_coupon_discount: string;
+  booking_no_of_rooms: number;
   booking_hall_price: string;
   booking_hall_type: string;
   booking_special_request: string;

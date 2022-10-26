@@ -9,7 +9,6 @@ export const PhotoSlider = ({images}) => {
         <img
           className="d-block w-100"
           src={image}
-          alt="First slide"
           height={200}
           style={{
             minWidth:"250px"

@@ -1,3 +1,4 @@
+import { margin } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
@@ -33,6 +34,7 @@ export const BookingDetails = () => {
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
   const couponRef = useRef<HTMLInputElement>(null);
 
+  console.log(location.state);
   const [coupon, setCoupon] = useState("");
 
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -241,24 +243,16 @@ export const BookingDetails = () => {
 
             <div id="details">
               <div>
-                {key == "Hall" ? (
-                  <Form.Group>
-                    <Form.Label id="Hall-bk-date">
-                      {checkin.toDateString()}
-                    </Form.Label>
-                  </Form.Group>
-                ) : (
                   <Form.Group>
                     <Form.Label htmlFor="adult" id="checkin">
-                      <p className="bold">Check In: </p>
+                      <p className="bold">Check In : </p>
                       {checkin.toDateString()}
                     </Form.Label>
                     <Form.Label htmlFor="adult" id="checkout">
-                      <p className="bold">Check Out: </p>
+                      <p className="bold">Check Out : </p>
                       {checkout.toDateString()}
                     </Form.Label>
                   </Form.Group>
-                )}
               </div>
 
               <div>
@@ -267,14 +261,14 @@ export const BookingDetails = () => {
                 ) : (
                   <Form.Group>
                     <Form.Label htmlFor="adult" id="room-qnty">
-                      <p className="bold">No of rooms:</p> {no}
+                      <p className="bold">Number of rooms :</p> {no}
                     </Form.Label>
                   </Form.Group>
                 )}
 
                 <Form.Group>
                   <Form.Label htmlFor="adult" id="room-type">
-                    <p className="bold">Type: </p>
+                    <p className="bold">Type : </p>
                     {roomType}
                   </Form.Label>
                 </Form.Group>
@@ -372,15 +366,67 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                <td>Room:</td>
-                <td>
-                  {no} x {roomPrice / no}
+                <td> Base Price: </td>
+                <td> ₹ {roomPrice/no}</td>
+              </tr>
+              <tr>
+                <td>Room(s):</td>
+                <td> {no}</td>
+              </tr>
+
+              <tr>
+                <td>No. of Night(s):</td>
+                <td> 
+                  {(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))}
                 </td>
               </tr>
+          
+              <td>
+              <hr/> 
+              </td>
+              <td>
+              <hr/> 
+              </td>
+
+              <tr>
+                <td  
+                 style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "bold",
+                  color: "black",
+                  justifyContent: "left",
+                  
+                  }}
+                >
+                {no} Room(s) x {(Math.abs(checkout.getTime() - checkin.getTime()) /
+                          (1000 * 3600 * 24))} Night(s):
+                  </td>    
+
+                 <td>
+                 ₹{totalPrice}
+                  </td>          
+               </tr>
+
+               <td>
+              <hr/> 
+              </td>
+              <td>
+              <hr/> 
+              </td>
+
+             
+  
               <tr>
                 <td>Addons:</td>
-                <td>{addOnPrice()}</td>
+                <td>₹{addOnPrice()}</td>
               </tr>
+
+              <tr>
+                <td>Sub Total:</td>
+                <td>₹{totalPrice + addOnPrice()}</td>
+              </tr>
+
               <tr>
                 <td>
                   <hr />
@@ -390,12 +436,12 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                <td>Discount:</td>
+                <td>Coupon Discount:</td>
                 <td>{discount}%</td>
               </tr>
               <tr>
                 <td>Discount Amount:</td>
-                <td>{(total_price + addOnPrice()) * (discount / 100)}</td>
+                <td>₹{(total_price + addOnPrice()) * (discount / 100)}</td>
               </tr>
               <tr>
                 <td>
@@ -406,9 +452,9 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr style={{ fontSize: "1.3rem" }}>
-                <td>Total:</td>
+                <td>Total :   </td>
                 <td>
-                  ₹
+                ₹
                   {total_price +
                     addOnPrice() -
                     (total_price + addOnPrice()) * (discount / 100)}
@@ -431,48 +477,3 @@ export const BookingDetails = () => {
 };
 
 export default BookingDetails;
-
-{
-  /* <Container className="booking-details">
-      <div className="price-details">
-        <table>
-          <tr>
-            <th>Details</th>
-          </tr>
-          <tr>
-            <td><br /></td>
-          </tr>
-          <tr>
-            <td>Room:</td>
-            <td>{roomPrice}</td>
-          </tr>
-          <tr>
-            <td>Addons:</td>
-            <td>{addOnPrice()}</td>
-          </tr>
-          <tr>
-            <td><hr /></td>
-            <td><hr /></td>
-          </tr>
-          <tr>
-            <td>Discount:</td>
-            <td>{discount}%</td>
-          </tr>
-          <tr>
-            <td><hr /></td>
-            <td><hr /></td>
-          </tr>
-          <tr style={{fontSize:"1.3rem"}}>
-            <td>Total:</td>
-            <td>₹{total}</td>
-          </tr>
-          <tr>
-            <td><br /></td>
-          </tr>
-        </table>
-          <Button variant="primary" type="submit" id="submit-booking-btn" >
-            Book Now
-          </Button>
-      </div>
-    </Container> */
-}
