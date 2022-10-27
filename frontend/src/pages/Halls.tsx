@@ -30,7 +30,7 @@ interface ResStatus {
 
 const Halls = () => {
   const { data, loading }: Res = UseFetch(
-    "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall/getDetails"
+    "http://127.0.0.1:5000/booking/hall/getDetails"
   );
 
   const [checkIn, setCheckIn] = useState("");
@@ -60,7 +60,7 @@ const Halls = () => {
     const valueNew = selectRef.current.value;
 
     const { data }: ResStatus = await axios.post(
-      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall/check",
+      "http://127.0.0.1:5000/booking/hall/check",
       { checkIn: formatedCheckIn, checkOut: formatedCheckOut },
       {
         headers: {

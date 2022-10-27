@@ -48,7 +48,7 @@ export const BookingDetails = () => {
   let total_price = totalPrice;
 
   const { data, loading }: ResAddon = UseFetch(
-    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/addon/`
+    `http://127.0.0.1:5000/booking/addon/`
   );
 
   const [selectCheck, setSelectCheck] = useState({
@@ -97,12 +97,9 @@ export const BookingDetails = () => {
   const handleCoupon = async (e) => {
     e.preventDefault();
     // const coupon = couponRef.current?.value;
-    const res = await axios.post(
-      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/coupon",
-      {
-        coupon,
-      }
-    );
+    const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
+      coupon,
+    });
 
     if (res.data == "Invalid Coupon") {
       toast.error(res.data);
@@ -119,12 +116,9 @@ export const BookingDetails = () => {
 
   const handleRemoveCoupon = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
-      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/coupon",
-      {
-        coupon,
-      }
-    );
+    const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
+      coupon,
+    });
     setDiscount(0);
     toast.success("Coupon Removed Successfully");
     couponRef.current.disabled = false;
@@ -243,16 +237,16 @@ export const BookingDetails = () => {
 
             <div id="details">
               <div>
-                  <Form.Group>
-                    <Form.Label htmlFor="adult" id="checkin">
-                      <p className="bold">Check In : </p>
-                      {checkin.toDateString()}
-                    </Form.Label>
-                    <Form.Label htmlFor="adult" id="checkout">
-                      <p className="bold">Check Out : </p>
-                      {checkout.toDateString()}
-                    </Form.Label>
-                  </Form.Group>
+                <Form.Group>
+                  <Form.Label htmlFor="adult" id="checkin">
+                    <p className="bold">Check In : </p>
+                    {checkin.toDateString()}
+                  </Form.Label>
+                  <Form.Label htmlFor="adult" id="checkout">
+                    <p className="bold">Check Out : </p>
+                    {checkout.toDateString()}
+                  </Form.Label>
+                </Form.Group>
               </div>
 
               <div>
@@ -367,7 +361,7 @@ export const BookingDetails = () => {
               </tr>
               <tr>
                 <td> Base Price: </td>
-                <td> ₹ {roomPrice/no}</td>
+                <td> ₹ {roomPrice / no}</td>
               </tr>
               <tr>
                 <td>Room(s):</td>
@@ -376,47 +370,44 @@ export const BookingDetails = () => {
 
               <tr>
                 <td>No. of Night(s):</td>
-                <td> 
-                  {(Math.abs(checkout.getTime() - checkin.getTime()) /
-                          (1000 * 3600 * 24))}
+                <td>
+                  {Math.abs(checkout.getTime() - checkin.getTime()) /
+                    (1000 * 3600 * 24)}
                 </td>
               </tr>
-          
+
               <td>
-              <hr/> 
+                <hr />
               </td>
               <td>
-              <hr/> 
+                <hr />
               </td>
 
               <tr>
-                <td  
-                 style={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                  color: "black",
-                  justifyContent: "left",
-                  
+                <td
+                  style={{
+                    fontSize: "0.8rem",
+                    fontWeight: "bold",
+                    color: "black",
+                    justifyContent: "left",
                   }}
                 >
-                {no} Room(s) x {(Math.abs(checkout.getTime() - checkin.getTime()) /
-                          (1000 * 3600 * 24))} Night(s):
-                  </td>    
+                  {no} Room(s) x{" "}
+                  {Math.abs(checkout.getTime() - checkin.getTime()) /
+                    (1000 * 3600 * 24)}{" "}
+                  Night(s):
+                </td>
 
-                 <td>
-                 ₹{totalPrice}
-                  </td>          
-               </tr>
+                <td>₹{totalPrice}</td>
+              </tr>
 
-               <td>
-              <hr/> 
+              <td>
+                <hr />
               </td>
               <td>
-              <hr/> 
+                <hr />
               </td>
 
-             
-  
               <tr>
                 <td>Addons:</td>
                 <td>₹{addOnPrice()}</td>
@@ -452,9 +443,9 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr style={{ fontSize: "1.3rem" }}>
-                <td>Total :   </td>
+                <td>Total : </td>
                 <td>
-                ₹
+                  ₹
                   {total_price +
                     addOnPrice() -
                     (total_price + addOnPrice()) * (discount / 100)}

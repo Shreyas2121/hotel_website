@@ -11,7 +11,7 @@ import "../components/parallaxImage.css";
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
-
+import { g } from "vitest/dist/index-40e0cb97";
 
 interface Res {
   data: {
@@ -32,8 +32,9 @@ interface ResStatus {
 const Rooms = () => {
   // window.scrollTo(0, 0);
   const { data, loading }: Res = UseFetch(
-    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room/getDetails`
+    `http://127.0.0.1:5000/api/room/getDetails`
   );
+  console.log(data);
 
   const [checkIn, setCheckIn] = useState<any>("");
 
@@ -61,7 +62,7 @@ const Rooms = () => {
     const formatedCheckOut = checkout.toISOString();
 
     const { data }: ResStatus = await axios.post(
-      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room/check",
+      "http://127.0.0.1:5000/api/booking/room/availability",
       {
         checkIn: formatedCheckIn,
         checkOut: formatedCheckOut,
