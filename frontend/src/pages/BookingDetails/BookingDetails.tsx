@@ -34,6 +34,7 @@ export const BookingDetails = () => {
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
   const couponRef = useRef<HTMLInputElement>(null);
 
+  console.log(location.state);
   const [coupon, setCoupon] = useState("");
 
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -365,7 +366,6 @@ export const BookingDetails = () => {
                 </td>
               </tr>
               <tr>
-                
                 <td> Base Price: </td>
                 <td> ₹ {roomPrice/no}</td>
               </tr>

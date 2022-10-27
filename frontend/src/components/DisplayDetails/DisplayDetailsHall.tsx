@@ -57,16 +57,19 @@ const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
   };
 
   return (
-    <div>
+    <div id="table-div">
+      <h5>
+        Hall bookings Found for E-mail:
+      </h5>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Name</th>
             <th>Check-in Date</th>
             <th>Check-out Date</th>
-            <th>Room Type</th>
-            <th>Price</th>
-            <td>Status</td>
+            <th>Hall Type</th>
+            <th>Total Amount</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>

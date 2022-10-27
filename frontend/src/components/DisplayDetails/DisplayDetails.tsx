@@ -16,9 +16,7 @@ interface Props {
 
 const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
   const handleSubmit = async (id: string) => {
-    const res = await axios.delete(
-      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/${id}`
-    );
+    const res = await axios.delete(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/room/${id}`);
     console.log(res);
     if (res.status === 200) {
       setDel(true);
@@ -57,17 +55,20 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
   };
 
   return (
-    <div>
+    <div id="table-div">
+      <h5>
+        Room bookings Found for E-mail:
+      </h5>
       <Table striped bordered hover>
         <thead>
-          <tr>
+          <tr id="table-headings">
             <th>Name</th>
             <th>Check-in Date</th>
             <th>Check-out Date</th>
             <th>Room Type</th>
             <th>No. of rooms</th>
-            <th>Price</th>
-            <td>Status</td>
+            <th>Total Amount</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -108,7 +109,7 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                           booking.booking_check_out
                         ) ? (
                           <span id="Ongoing">
-                            --------------------------------
+                            ---
                           </span>
                         ) : (
                           <span>

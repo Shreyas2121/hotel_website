@@ -123,6 +123,7 @@ const Halls = () => {
                     id="check-in"
                     className="input-date"
                     min={new Date().toISOString().split("T")[0]}
+                    max={conv(checkout)}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
                     onKeyDown={(e) => e.preventDefault()}

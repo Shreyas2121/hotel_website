@@ -18,8 +18,8 @@
 
 #Cancel_Booking{
 
-    margin-top: 10px;
-    margin-bottom: 10px;
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
     margin-left: 10px;
     margin-right: 10px;
     padding: 10px;
@@ -30,7 +30,7 @@
     min-width: 150px;
     max-width: 150px;
     max-height: 40px;
-    min-height: 40px;
+    /* min-height: 40px; */
     font-size: 12px;
     font-weight: bold;
 
@@ -51,30 +51,13 @@
     cursor: pointer;
 }
 
-#Ongoing{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
-    box-shadow: 1px 1px 1px 1px #ccc;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f8f8;
+#table-headings{
+    background-color: #afafaf;
     color: black;
-    min-width: 150px;
-    max-width: 150px;
-    max-height: 40px;
-    min-height: 40px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 1rem;
+    font-weight: bolder;
 }
 
-#Ongoing:hover{
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
+#table-div{
+    margin-bottom: 5%;
 }
