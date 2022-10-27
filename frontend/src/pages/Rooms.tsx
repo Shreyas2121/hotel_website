@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Roomcards from "../components/Cards/Roomcards";
 import "../components/search.css";
-
+import "./rooms.css";
 import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
 import axios from "axios";
@@ -11,6 +11,8 @@ import "../components/parallaxImage.css";
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
+
+import { DateRangePicker, Calendar } from "react-date-range";
 
 interface Res {
   data: {
@@ -34,9 +36,9 @@ const Rooms = () => {
     `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room/getDetails`
   );
 
-  const [checkIn, setCheckIn] = useState("");
+  const [checkIn, setCheckIn] = useState<any>("");
 
-  const [checkOut, setCheckOut] = useState("");
+  const [checkOut, setCheckOut] = useState<any>("");
 
   const [status, setStatus] = useState<Status>();
 
@@ -110,7 +112,7 @@ const Rooms = () => {
                   Check-in:{" "}
                   <input
                     id="check-in"
-                    className="dates"
+                    className="input-date"
                     min={new Date().toISOString().split("T")[0]}
                     max={conv(checkout)}
                     type="date"
@@ -120,7 +122,7 @@ const Rooms = () => {
                   Check-out:{" "}
                   <input
                     id="check-out"
-                    className="dates"
+                    className="input-date"
                     min={conv(checkin)}
                     max={
                       checkin.getMonth() === 11

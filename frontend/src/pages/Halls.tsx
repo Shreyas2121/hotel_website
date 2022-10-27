@@ -5,6 +5,7 @@ import { Hall } from "../types/types";
 import Hallcards from "../components/Cards/Hallcards";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import "./rooms.css";
 
 import "../components/parallaxImage.css";
 
@@ -108,10 +109,9 @@ const Halls = () => {
                 >
                   Type:
                   <select
-                    className="dates"
+                    className="input-select"
                     aria-label="Default select example"
                     ref={selectRef}
-                    style={{ width: "10rem", padding: "0.1rem 0.8rem 0" }}
                   >
                     <option>Select Type</option>
                     <option value="Conference">Conference</option>
@@ -121,7 +121,7 @@ const Halls = () => {
                   From :{" "}
                   <input
                     id="check-in"
-                    className="dates"
+                    className="input-date"
                     min={new Date().toISOString().split("T")[0]}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
@@ -130,16 +130,16 @@ const Halls = () => {
                   To:{" "}
                   <input
                     id="check-out"
-                    className="dates"
+                    className="input-date"
                     min={conv(checkin)}
                     max={
                       checkin.getMonth() === 11
                         ? `${checkin.getFullYear() + 1}-01-${
                             checkin.getDate() + 1
                           }`
-                        : `${checkin.getFullYear()}-${
-                            checkin.getMonth() + 2
-                          }-${checkin.getDate() + 1}`
+                        : `${checkin.getFullYear()}-${checkin.getMonth() + 2}-${
+                            checkin.getDate() + 1
+                          }`
                     }
                     type="date"
                     disabled={checkIn === ""}
