@@ -68,7 +68,6 @@ const Halls = () => {
         },
       }
     );
-    console.log(data)
     setValue(valueNew);
     setStatus(data);
     setClicked(true);

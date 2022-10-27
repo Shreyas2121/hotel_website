@@ -11,15 +11,17 @@ import "./roomcards.css";
 
 interface Res {
   data: {
-    Reviews: Review[];
+    Review: Review[];
   };
   loading: boolean;
 }
 
 const Reviewcards = ({ featured }) => {
   const { data, loading }: Res = UseFetch(
-    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reviews/${featured}`
+    `http://127.0.0.1:5000/api/reviews${featured}`
   );
+
+  console.log(data)
 
   return (
     <MDBContainer
@@ -57,7 +59,7 @@ const Reviewcards = ({ featured }) => {
             {loading ? (
               <h1>Loading...</h1>
             ) : (
-              data?.Reviews?.map((review) => (
+              data?.Review?.map((review) => (
                 <Carousel.Item>
                   <div className="carousel-inner py-4">
                     <div className="carousel-item active" style={{}}>
@@ -88,7 +90,7 @@ const Reviewcards = ({ featured }) => {
                             </p>
                             <p className="review-text">
                               <i className="fas fa50%-quote-left pe-2"></i>
-                              {review.reviews}
+                              {review.review}
                             </p>
                           </div>
                         </div>
