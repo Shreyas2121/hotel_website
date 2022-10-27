@@ -12,7 +12,6 @@ import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
 
-import { DateRangePicker, Calendar } from "react-date-range";
 
 interface Res {
   data: {
