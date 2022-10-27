@@ -9,9 +9,7 @@ import { Addon } from "../../types/types";
 import "./bookingdetails.css";
 
 interface ResAddon {
-  data: {
-    addOn_type: Addon;
-  };
+  data: Addon[];
   loading: boolean;
 }
 
@@ -34,7 +32,6 @@ export const BookingDetails = () => {
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
   const couponRef = useRef<HTMLInputElement>(null);
 
-  console.log(location.state);
   const [coupon, setCoupon] = useState("");
 
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -48,8 +45,14 @@ export const BookingDetails = () => {
   let total_price = totalPrice;
 
   const { data, loading }: ResAddon = UseFetch(
-    `http://127.0.0.1:5000/booking/addon/`
+    `http://127.0.0.1:5000/api/addon`
   );
+  let addOns = {};
+  if (!loading) {
+    data.forEach((item) => {
+      addOns[item.name] = Number(item.price);
+    });
+  }
 
   const [selectCheck, setSelectCheck] = useState({
     addon: [],
@@ -69,8 +72,6 @@ export const BookingDetails = () => {
     );
   }, [selectCheck]);
 
-  const type = data?.addOn_type;
-
   const handleAddon = (e) => {
     if (e.target.checked) {
       setSelectCheck({
@@ -87,8 +88,8 @@ export const BookingDetails = () => {
   const filtAddOn = () => {
     let a = {};
     selectCheck.addon.forEach((each) => {
-      if (Object.keys(type).includes(each)) {
-        a[each] = type[each];
+      if (Object.keys(addOns).includes(each)) {
+        a[each] = addOns[each];
       }
     });
     return a;
@@ -146,7 +147,6 @@ export const BookingDetails = () => {
     }
 
     const selectedAddons = filtAddOn();
-    console.log(selectedAddons);
     const data = {
       name,
       email,
@@ -158,8 +158,10 @@ export const BookingDetails = () => {
       checkout,
       roomType,
       roomPrice,
-      couponId: coupon,
-      discount: discount.toString(),
+      coupon: {
+        coupon,
+        discount: discount.toString(),
+      },
       total:
         total_price +
         addOnPrice() -
@@ -168,25 +170,17 @@ export const BookingDetails = () => {
     let res: any;
 
     if (key == "Hall") {
-      res = await axios.post(
-        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall`,
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      res = await axios.post(`http://127.0.0.1:5000/api/booking/hall`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } else {
-      res = await axios.post(
-        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/room`,
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      res = await axios.post(`http://127.0.0.1:5000/api/booking/room`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     }
 
     if (res.data.message == "Booking Successful") {
@@ -277,7 +271,7 @@ export const BookingDetails = () => {
                 <h1>Loading...</h1>
               ) : (
                 <div id="addon-list">
-                  {Object.entries(type).map(([key, value]) => (
+                  {Object.entries(addOns).map(([key, value]) => (
                     <Form.Group style={{ display: "flex" }}>
                       <Form.Check
                         ref={checkRef}
