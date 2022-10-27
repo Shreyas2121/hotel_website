@@ -30,8 +30,8 @@ interface Props {
 const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
   const [no, setNo] = useState(1);
   const [avaiRooms, setAvaiRooms] = useState(0);
-  const roomType = roomData.room_type;
-  const roomPrice = Number(roomData.room_price);
+  const roomType = roomData.category;
+  const roomPrice = Number(roomData.price);
 
   const check = () => {
     let keys = Object.keys(status);
@@ -76,30 +76,30 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
     <MDBContainer className="shadow-4-strong room-container">
       <MDBRow>
         <MDBCol className="card-column-one" size="md">
-          <PhotoSlider images={Object.values(roomData.room_images)} />
+          <PhotoSlider images={Object.values(roomData.images)} />
         </MDBCol>
 
         <MDBCol md="6">
-          <h3>{roomData.room_type}</h3>
+          <h3>{roomData.category}</h3>
 
           <div className="max-occupancy-div">
             <p>
               <img src={personicon} className="max-occupancy" />
-              {roomData.room_max_occ} (Max Occupancy)
+              {roomData.occupancy} (Max Occupancy)
             </p>
 
             <div className="display-flex">
-              <p className="room-area">{roomData.room_area}</p>
+              <p className="room-area">{roomData.area_sq_ft}</p>
               <img src={area} style={{ height: "1.5rem" }} />
             </div>
           </div>
 
-          <p>{roomData.room_desc}</p>
+          <p>{roomData.desc}</p>
 
           <div className="display-flex">
             <span className="amenities-span">Amenities:</span>
 
-            {roomData?.room_amenties.map((room) => (
+            {roomData?.amenities.map((room) => (
               <p className="room-para">
                 <img src={tick} className="tick-img" /> {room}
               </p>

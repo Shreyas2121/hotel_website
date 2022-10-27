@@ -164,7 +164,7 @@ const Rooms = () => {
           ) : (
             data?.rooms.map((room) => (
               <Roomcards
-                key={room.room_id}
+                key={room._id}
                 roomData={room}
                 checkin={checkin}
                 checkout={checkout}

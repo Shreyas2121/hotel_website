@@ -14,14 +14,14 @@ from controller.routes.cancelling_room__route import cancel_route
 application = Flask(__name__)
 CORS(application)
 
-application.register_blueprint(rooms_route)
-application.register_blueprint(halls_route)
-application.register_blueprint(coupons_route)
-application.register_blueprint(addons_route)
-application.register_blueprint(booking_route)
-application.register_blueprint(booking_hall_route)
-application.register_blueprint(reviews_route)
-application.register_blueprint(cancel_route)
+application.register_blueprint(rooms_route, url_prefix='/api')
+application.register_blueprint(halls_route,url_prefix='/api')
+application.register_blueprint(coupons_route,url_prefix='/api')
+application.register_blueprint(addons_route,url_prefix='/api')
+application.register_blueprint(booking_route,url_prefix='/api')
+application.register_blueprint(booking_hall_route,url_prefix='/api')
+application.register_blueprint(reviews_route,url_prefix='/api')
+application.register_blueprint(cancel_route,url_prefix='/api')
 
 
 
