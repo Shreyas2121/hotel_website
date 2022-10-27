@@ -30,8 +30,10 @@ interface ResStatus {
 
 const Halls = () => {
   const { data, loading }: Res = UseFetch(
-    "http://127.0.0.1:5000/booking/hall/getDetails"
+    "http://127.0.0.1:5000/api/hall"
   );
+
+  console.log(data)
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -60,7 +62,7 @@ const Halls = () => {
     const valueNew = selectRef.current.value;
 
     const { data }: ResStatus = await axios.post(
-      "http://127.0.0.1:5000/booking/hall/check",
+      "http://127.0.0.1:5000/api/booking/hall/availability",
       { checkIn: formatedCheckIn, checkOut: formatedCheckOut },
       {
         headers: {
@@ -174,10 +176,10 @@ const Halls = () => {
             <h1>Loading...</h1>
           ) : (
             data?.halls.map((hall) => {
-              if (hall.hall_type === value) {
+              if (hall.category === value) {
                 return (
                   <Hallcards
-                    key={hall.hall_id}
+                    key={hall._id}
                     hallData={hall}
                     checkin={checkin}
                     // bookedHalls={hallData}

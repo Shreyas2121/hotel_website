@@ -28,8 +28,8 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
   const [no, setNo] = useState(1);
   const [avaiRooms, setAvaiRooms] = useState(0);
   
-  const hallType = hallData.hall_type;
-  const hallPrice = Number(hallData.hall_price);
+  const hallType = hallData.category;
+  const hallPrice = Number(hallData.price);
 
   // const linkRef = React.useRef<any>(null);
 
@@ -66,23 +66,23 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
       <MDBRow>
 
         <MDBCol size="md" className="card-column-one">
-          <PhotoSlider images={Object.values(hallData.hall_image)} />
+          <PhotoSlider images={Object.values(hallData.images)} />
         </MDBCol>
 
         <MDBCol md="6">
-          <h3>{hallData.hall_type}</h3>
+          <h3>{hallData.category}</h3>
 
           <p>
             <img src={personicon} className="max-occupancy"/>
-            {hallData.hall_max_occ} (Max Occupancy)
+            {hallData.max_guests} (Max Occupancy)
           </p>
 
-          <p>{hallData.hall_desc}</p>
+          <p>{hallData.desc}</p>
 
           <div className="display-flex">
             <span className="amenities-span">Amenities: </span>
 
-            {hallData?.hall_amenties.map((room) => (
+            {hallData?.amenities.map((room) => (
               <p className="room-para"><img src={tick} className="tick-img"/> {room}</p>
             ))}
 
