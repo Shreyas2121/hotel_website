@@ -38,7 +38,7 @@ export interface Hall {
 // }
 
 export interface Addon {
-  _id: number;
+  _id: string;
   name: string;
   price: number;
 }
