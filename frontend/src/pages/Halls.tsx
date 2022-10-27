@@ -30,8 +30,10 @@ interface ResStatus {
 
 const Halls = () => {
   const { data, loading }: Res = UseFetch(
-    "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall/getDetails"
+    "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/api/hall"
   );
+
+  console.log(data)
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -60,7 +62,7 @@ const Halls = () => {
     const valueNew = selectRef.current.value;
 
     const { data }: ResStatus = await axios.post(
-      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/hall/check",
+      "http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/api/booking/hall/availability",
       { checkIn: formatedCheckIn, checkOut: formatedCheckOut },
       {
         headers: {
@@ -174,10 +176,10 @@ const Halls = () => {
             <h1>Loading...</h1>
           ) : (
             data?.halls.map((hall) => {
-              if (hall.hall_type === value) {
+              if (hall.category === value) {
                 return (
                   <Hallcards
-                    key={hall.hall_id}
+                    key={hall._id}
                     hallData={hall}
                     checkin={checkin}
                     // bookedHalls={hallData}

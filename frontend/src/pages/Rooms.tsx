@@ -47,7 +47,6 @@ const Rooms = () => {
   let checkout = new Date(checkOut);
 
   const conv = (date: Date) => {
-    date.setDate(date.getDate() + 1);
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   };
 
@@ -164,7 +163,7 @@ const Rooms = () => {
           ) : (
             data?.rooms.map((room) => (
               <Roomcards
-                key={room.room_id}
+                key={room._id}
                 roomData={room}
                 checkin={checkin}
                 checkout={checkout}
