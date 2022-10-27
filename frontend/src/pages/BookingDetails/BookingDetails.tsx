@@ -284,7 +284,7 @@ export const BookingDetails = () => {
                       />
                       <Form.Label className="checkbox" id="check-box">
                         {key} <br />{" "}
-                        <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
+                        {/* <p style={{ fontSize: "0.8rem" }}>₹ {value}</p> */}
                       </Form.Label>
                     </Form.Group>
                   ))}

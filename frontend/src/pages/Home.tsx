@@ -10,7 +10,7 @@ import bannerImage from "../assets/images/banner_bg.jpg";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  let isHomepage = "featured";
+  let isHomepage = "/featured";
 
   return (
     <header>

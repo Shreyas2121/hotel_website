@@ -4,22 +4,27 @@ import { Review } from "../../types/types";
 import { Rating } from "@mui/material";
 import { MDBContainer, MDBTypography } from "mdb-react-ui-kit";
 import { Carousel } from "react-bootstrap";
-
+import {useEffect} from "react";
 import Person from "../../assets/images/person.png";
 import "./slider.css";
 import "./roomcards.css";
 
 interface Res {
   data: {
-    Reviews: Review[];
+    Review: Review[];
   };
   loading: boolean;
 }
 
 const Reviewcards = ({ featured }) => {
   const { data, loading }: Res = UseFetch(
-    `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reviews/${featured}`
+    `http://127.0.0.1:5000/api/reviews${featured}`
+  
   );
+
+useEffect(() => {
+}, [data])
+
 
   return (
     <MDBContainer
@@ -57,7 +62,7 @@ const Reviewcards = ({ featured }) => {
             {loading ? (
               <h1>Loading...</h1>
             ) : (
-              data?.Reviews?.map((review) => (
+              data?.Review?.map((review_data) => (
                 <Carousel.Item>
                   <div className="carousel-inner py-4">
                     <div className="carousel-item active" style={{}}>
@@ -78,17 +83,17 @@ const Reviewcards = ({ featured }) => {
                               alt="avatar"
                               style={{ width: "10%" }}
                             />
-                            <h5 className="Review-name">{review.name}</h5>
+                            <h5 className="Review-name">{review_data.name}</h5>
                             <p>
                               <Rating
                                 name="read-only"
-                                value={review.rating}
+                                value={review_data.rating}
                                 readOnly
                               />{" "}
                             </p>
                             <p className="review-text">
                               <i className="fas fa50%-quote-left pe-2"></i>
-                              {review.reviews}
+                              {review_data.review}
                             </p>
                           </div>
                         </div>
