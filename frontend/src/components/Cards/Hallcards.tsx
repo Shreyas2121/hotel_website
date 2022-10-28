@@ -31,13 +31,6 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
   const hallType = hallData.category;
   const hallPrice = Number(hallData.price);
 
-  // const linkRef = React.useRef<any>(null);
-
-  // const check = (type: string) => {
-  //   const status = bookedHalls.includes(type) ? true : false;
-  //   return status;
-  // };
-
   const check = () => {
     let keys = Object.keys(status);
     if (keys.includes(hallType)) {
@@ -103,7 +96,7 @@ const Hallcards = ({ hallData, checkin, checkout, status }: Props) => {
                   Total: ₹
                   {hallPrice *
                       (Math.abs(checkout.getTime() - checkin.getTime()) /
-                        (1000 * 3600 * 24))}
+                        (1000 * 3600 * 24)+1)}
                   /-
                 </p>
               </div>

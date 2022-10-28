@@ -20,7 +20,9 @@ const Reviewcards = ({ featured }) => {
   const { data, loading }: Res = UseFetch(
     `http://127.0.0.1:5000/api/reviews${featured}`
 
+
   );
+  console.log(data); // this is the data that is being fetched from the backend
 
   return (
     <MDBContainer
@@ -59,6 +61,8 @@ const Reviewcards = ({ featured }) => {
               <h1>Loading...</h1>
             ) : (
               data?.Review?.map((review_data) => (
+                console.log(review_data), // this is the data that is being fetched from the backend
+                console.log(review_data),
                 <Carousel.Item>
                   <div className="carousel-inner py-4">
                     <div className="carousel-item active" style={{}}>
