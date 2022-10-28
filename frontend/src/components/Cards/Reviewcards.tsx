@@ -19,12 +19,8 @@ interface Res {
 const Reviewcards = ({ featured }) => {
   const { data, loading }: Res = UseFetch(
     `http://127.0.0.1:5000/api/reviews${featured}`
-  
+
   );
-
-useEffect(() => {
-}, [data])
-
 
   return (
     <MDBContainer

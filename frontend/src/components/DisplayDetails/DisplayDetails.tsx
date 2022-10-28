@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Booking } from "../../types/types";
+import { BookingRoom } from "../../types/types";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
@@ -10,13 +10,14 @@ import { Checkmark } from "react-checkmark";
 
 
 interface Props {
-  bookingDetails: Booking[];
+  bookingDetails: BookingRoom[];
   setDel: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
+const DisplayDetails = ({ bookingDetails, setDel }: Props) => { 
+  console.log(bookingDetails);
   const handleSubmit = async (id: string) => {
-    const res = await axios.delete(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/room/${id}`);
+    const res = await axios.delete(`http://127.0.0.1:5000/api/booking/room/${id}`);
     console.log(res);
     if (res.status === 200) {
       setDel(true);
@@ -77,18 +78,18 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
             <>
               {booking._id ? (
                 <tr>
-                  <td>{booking.booking_username}</td>
-                  <td>{new Date(booking.booking_check_in).toDateString()}</td>
-                  <td>{new Date(booking.booking_check_out).toDateString()}</td>
-                  <td>{booking.booking_room_type}</td>
-                  <td>{booking.booking_no_of_rooms}</td>
-                  <td>{booking.booking_total}</td>
+                  <td>{booking.name}</td>
+                  <td>{new Date(booking.check_in_date).toDateString()}</td>
+                  <td>{new Date(booking.check_out_date).toDateString()}</td>
+                  <td>{booking.category}</td>
+                  <td>{booking.num_of_rooms}</td>
+                  <td>{booking.price}</td>
                   <td>
-                    {check(booking.booking_check_in) ? (
+                    {check(booking.check_in_date) ? (
                       <span>
                         {check_ongoin(
-                          booking.booking_check_in,
-                          booking.booking_check_out
+                          booking.check_in_date,
+                          booking.check_out_date
                         ) ? (
                           <span>On-going</span>
                         ) : (
@@ -102,11 +103,11 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                     )}
                   </td>
                   <td>
-                    {check(booking.booking_check_in) ? (
+                    {check(booking.check_in_date) ? (
                       <span>
                         {check_ongoin(
-                          booking.booking_check_in,
-                          booking.booking_check_out
+                          booking.check_in_date,
+                          booking.check_out_date
                         ) ? (
                           <span id="Ongoing">
                             ---
@@ -117,8 +118,8 @@ const DisplayDetails = ({ bookingDetails, setDel }: Props) => {
                               <Link
                                 to="/addreview"
                                 state={{
-                                  name: booking.booking_username,
-                                  email: booking.booking_useremail,
+                                  name: booking.name,
+                                  email: booking.email,
                                 }}
                               >
                                 Add Review

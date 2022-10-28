@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import DisplayDetails from "../components/DisplayDetails/DisplayDetails";
-import { Booking, BookingHall } from "../types/types";
+import { BookingRoom, BookingHall } from "../types/types";
 import Stack from "react-bootstrap/Stack";
 import axios from "axios";
 
@@ -13,18 +13,18 @@ import "../components/parallaxImage.css";
 import DisplayDetailsHall from "../components/DisplayDetails/DisplayDetailsHall";
 
 interface Res {
-  data: Booking[];
+  data: BookingRoom[];
   loading: boolean;
 }
 
 interface Res1 {
-  data: BookingHall[];
+  data_hall: BookingHall[];
   loading: boolean;
 }
 
 export const Checkbooking = () => {
   const emailRef = React.useRef<HTMLInputElement>(null);
-  const [bookingDetails, setBookingDetails] = React.useState<Booking[]>(null);
+  const [bookingDetails, setBookingDetails] = React.useState<BookingRoom[]>(null);
   const [bookingDetails1, setBookingDetails1] =
     React.useState<BookingHall[]>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -36,13 +36,13 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/room/${email}`
+      `http://127.0.0.1:5000/api/booking/get/room/${email}`
     );
     setBookingDetails(data);
     const res: Res1 = await axios.get(
-      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/hall/${email}`
+      `http://127.0.0.1:5000/api/booking/get/hall/${email}`
     );
-    setBookingDetails1(res.data);
+    setBookingDetails1(res.data_hall);
     setLoading(false);
     setClicked(true);
     window.scrollTo({
@@ -56,9 +56,13 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/get/room/${email}`
+        `http://127.0.0.1:5000/api/booking/get/room/${email}`
       );
       setBookingDetails(data);
+      const { data_hall }: Res1 = await axios.get(
+        `http://127.0.0.1:5000/api/booking/get/hall/${email}`
+      );
+      setBookingDetails1(data_hall);
       setLoading(false);
     };
     a();
@@ -119,7 +123,7 @@ export const Checkbooking = () => {
                     gap: "1rem",
                   }}
                 >
-                  {bookingDetails.length ? (
+                  {bookingDetails?.length ? (
                     <DisplayDetails
                       bookingDetails={bookingDetails}
                       setDel={setDel}
@@ -144,7 +148,7 @@ export const Checkbooking = () => {
                     gap: "1rem",
                   }}
                 >
-                  {bookingDetails1.length ? (
+                  {bookingDetails1?.length ? (
                     <DisplayDetailsHall
                       bookingDetails1={bookingDetails1}
                       setDel={setDel}
