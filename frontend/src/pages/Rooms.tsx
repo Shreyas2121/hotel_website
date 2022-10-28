@@ -30,18 +30,13 @@ interface ResStatus {
 
 const Rooms = () => {
   // window.scrollTo(0, 0);
-  const { data, loading }: Res = UseFetch(
-    `room/getDetails`
-  );
+  const { data, loading }: Res = UseFetch(`room/getDetails`);
   console.log(data);
 
+  const [check, setCheck] = useState<any>();
   const [checkIn, setCheckIn] = useState<any>("");
 
-  const [checkOut, setCheckOut] = useState<any>(
-    `${new Date().getFullYear() + 1}-${
-      new Date().getMonth() + 1
-    }-${new Date().getDate()}`
-  );
+  const [checkOut, setCheckOut] = useState<any>();
 
   console.log(checkOut);
 
@@ -102,6 +97,10 @@ const Rooms = () => {
     });
   };
 
+  useEffect(() => {
+    setCheck(conv(checkout));
+  }, [checkIn]);
+
   return (
     <header>
       <div
@@ -136,7 +135,7 @@ const Rooms = () => {
                     id="check-in"
                     className="input-date"
                     min={new Date().toISOString().split("T")[0]}
-                    max={conv(checkout)}
+                    max={check}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
                     onKeyDown={(e) => e.preventDefault()}
