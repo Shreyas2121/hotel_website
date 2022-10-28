@@ -14,10 +14,9 @@ interface Props {
 }
 
 const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
-  console.log(bookingDetails1);
   const handleSubmit = async (id: string) => {
     const res = await axios.delete(
-      'http://127.0.0.1:5000/api/booking/hall/${id}'
+      `booking/hall/${id}`
     );
     console.log(res);
     if (res.status === 200) {
@@ -83,7 +82,7 @@ const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
                   <td>{new Date(booking.check_out_date).toDateString()}</td>
                   <td>{booking.category}</td>
 
-                  <td>{booking.price}</td>
+                  <td>{booking.total}</td>
                   <td>
                     {check(booking.check_in_date) ? (
                       <span>

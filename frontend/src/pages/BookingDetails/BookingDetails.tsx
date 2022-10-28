@@ -1,4 +1,3 @@
-import { margin } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
@@ -45,9 +44,7 @@ export const BookingDetails = () => {
 
   let total_price = totalPrice;
 
-  const { data, loading }: ResAddon = UseFetch(
-    `http://127.0.0.1:5000/api/addon`
-  );
+  const { data, loading }: ResAddon = UseFetch(`addon`);
   let addOns = {};
   if (!loading) {
     data.forEach((item) => {
@@ -99,7 +96,7 @@ export const BookingDetails = () => {
   const handleCoupon = async (e) => {
     e.preventDefault();
     // const coupon = couponRef.current?.value;
-    const res = await axios.post("http://127.0.0.1:5000/api/coupon/validate", {
+    const res = await axios.post("coupon/validate", {
       coupon,
     });
 
@@ -118,7 +115,7 @@ export const BookingDetails = () => {
 
   const handleRemoveCoupon = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://127.0.0.1:5000/api/coupon/validate", {
+    const res = await axios.post("coupon/validate", {
       coupon,
     });
     setDiscount(0);
@@ -171,13 +168,13 @@ export const BookingDetails = () => {
     let res: any;
 
     if (key == "Hall") {
-      res = await axios.post(`http://127.0.0.1:5000/api/booking/hall`, data, {
+      res = await axios.post(`booking/hall`, data, {
         headers: {
           "Content-Type": "application/json",
         },
       });
     } else {
-      res = await axios.post(`http://127.0.0.1:5000/api/booking/room`, data, {
+      res = await axios.post(`booking/room`, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -286,8 +283,8 @@ export const BookingDetails = () => {
                       />
                       <Form.Label className="checkbox" id="check-box">
                         {key} <br />{" "}
-                        <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
                       </Form.Label>
+                      <p style={{ fontSize: "0.8rem" }}>₹ {String(value)}</p>
                     </Form.Group>
                   ))}
                 </div>

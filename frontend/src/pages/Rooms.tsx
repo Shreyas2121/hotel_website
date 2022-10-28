@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Roomcards from "../components/Cards/Roomcards";
 import "../components/search.css";
 import "./rooms.css";
@@ -11,7 +11,6 @@ import "../components/parallaxImage.css";
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
-import { g } from "vitest/dist/index-40e0cb97";
 
 interface Res {
   data: {
@@ -31,14 +30,15 @@ interface ResStatus {
 
 const Rooms = () => {
   // window.scrollTo(0, 0);
-  const { data, loading }: Res = UseFetch(
-    `http://127.0.0.1:5000/api/room/getDetails`
-  );
+  const { data, loading }: Res = UseFetch(`room/getDetails`);
   console.log(data);
 
+  const [check, setCheck] = useState<any>();
   const [checkIn, setCheckIn] = useState<any>("");
 
-  const [checkOut, setCheckOut] = useState<any>("");
+  const [checkOut, setCheckOut] = useState<any>();
+
+  console.log(checkOut);
 
   const [status, setStatus] = useState<Status>();
 
@@ -48,11 +48,19 @@ const Rooms = () => {
   let checkout = new Date(checkOut);
 
   const conv = (date: Date) => {
-    if (date.getDate() < 10) {
-      return `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`;
-    } else {
-      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    }
+    if (date.getMonth() === 12) {
+      return `${date.getFullYear() + 1}-01-${date.getDate()}`;
+    } else if (date.getMonth() < 12) {
+      if (date.getDate() < 10) {
+        return `${date.getFullYear()}-${
+          date.getMonth() + 1
+        }-0${date.getDate()}`;
+      } else
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    } else
+      return `${new Date().getFullYear() + 1}-${
+        new Date().getMonth() + 1
+      }-${new Date().getDate()}`;
   };
 
   console.log(conv(checkin));
@@ -78,7 +86,7 @@ const Rooms = () => {
     const formatedCheckOut = checkout.toISOString();
 
     const { data }: ResStatus = await axios.post(
-      "http://127.0.0.1:5000/api/booking/room/availability",
+      "booking/room/availability",
       {
         checkIn: formatedCheckIn,
         checkOut: formatedCheckOut,
@@ -96,6 +104,10 @@ const Rooms = () => {
       top: 800,
     });
   };
+
+  useEffect(() => {
+    setCheck(conv(checkout));
+  }, [checkIn]);
 
   return (
     <header>
@@ -131,7 +143,7 @@ const Rooms = () => {
                     id="check-in"
                     className="input-date"
                     min={new Date().toISOString().split("T")[0]}
-                    max={conv(checkout)}
+                    max={check}
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
                     onKeyDown={(e) => e.preventDefault()}

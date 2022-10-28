@@ -30,7 +30,7 @@ interface ResStatus {
 
 const Halls = () => {
   const { data, loading }: Res = UseFetch(
-    "http://127.0.0.1:5000/api/hall"
+    "hall"
   );
 
   const [checkIn, setCheckIn] = useState("");
@@ -50,7 +50,19 @@ const Halls = () => {
   let checkout = new Date(checkOut);
 
   const conv = (date: Date) => {
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+    if (date.getMonth() === 12) {
+      return `${date.getFullYear() + 1}-01-${date.getDate()}`;
+    } 
+    else if (date.getMonth() < 12) {
+      if (date.getDate() < 10) {
+        return `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`;
+      }
+      else
+          return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+      }
+    else return `${new Date().getFullYear() + 1}-${new Date().getMonth() + 1}-${new Date().getDate()}`; 
+
   };
 
   const handleSearch = async (e) => {
@@ -59,7 +71,7 @@ const Halls = () => {
     const formatedCheckOut = checkout.toISOString();
     const valueNew = selectRef.current.value;
 
-    const { data }: ResStatus = await axios.get(`http://127.0.0.1:5000/api/booking/hall/availability?checkIn=${formatedCheckIn}&checkOut=${formatedCheckOut}`);
+    const { data }: ResStatus = await axios.get(`booking/hall/availability?checkIn=${formatedCheckIn}&checkOut=${formatedCheckOut}`);
 
     setValue(valueNew);
     setStatus(data);
@@ -105,6 +117,7 @@ const Halls = () => {
                     className="input-select"
                     aria-label="Default select example"
                     ref={selectRef}
+                    required
                   >
                     <option>Select Type</option>
                     <option value="Conference">Conference</option>
@@ -120,6 +133,7 @@ const Halls = () => {
                     type="date"
                     onChange={(e) => setCheckIn(e.target.value)}
                     onKeyDown={(e) => e.preventDefault()}
+                    required
                   />
                   To:{" "}
                   <input
@@ -139,6 +153,7 @@ const Halls = () => {
                     disabled={checkIn === ""}
                     onChange={(e) => setCheckOut(e.target.value)}
                     onKeyDown={(e) => e.preventDefault()}
+                    required
                   />
                 </div>
                 <div>
