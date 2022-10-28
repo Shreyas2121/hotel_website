@@ -5,7 +5,7 @@ import { Hall } from "../types/types";
 import Hallcards from "../components/Cards/Hallcards";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import "./rooms.css";
+import "../components/search.css";
 
 import "../components/parallaxImage.css";
 
@@ -59,15 +59,8 @@ const Halls = () => {
     const formatedCheckOut = checkout.toISOString();
     const valueNew = selectRef.current.value;
 
-    const { data }: ResStatus = await axios.post(
-      "http://127.0.0.1:5000/api/booking/hall/availability",
-      { checkIn: formatedCheckIn, checkOut: formatedCheckOut },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const { data }: ResStatus = await axios.get(`http://127.0.0.1:5000/api/booking/hall/availability?checkIn=${formatedCheckIn}&checkOut=${formatedCheckOut}`);
+
     setValue(valueNew);
     setStatus(data);
     setClicked(true);

@@ -22,25 +22,35 @@
     border-radius: 0%;
 }
 
-#check-availability:hover{
-    /* background-color: rgb(127, 104, 29); */
-    cursor: pointer;
-    color: white;
+.input-date {
+    width: 10rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    padding: 1rem;
+    background-color: white;
 }
 
-.search input :hover{
-    cursor: pointer;
+.input-date:focus {
+    outline: none;
 }
 
-.dates{
+#check-availability:hover {
+    background-color: black;
+    color: rgb(255, 196, 0);
+}
+
+.input-select {
+    color: black;
+    width: 10rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    padding: 1rem;
+    background-color: white;
+}
+
+.input-select option {
     color: black;
     background-color: grey;
-    padding: 0 1%;
-    border: 1px solid grey;
-    border-radius: px;
-}
-
-.dates:hover{
-    cursor: pointer;
-    background-color: aliceblue;
 }
