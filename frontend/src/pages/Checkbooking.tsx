@@ -36,11 +36,11 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/get/room/${email}`
+      `http://127.0.0.1:5000/api/booking/get/room/${email}`
     );
     setBookingDetails(data);
     const res: Res1 = await axios.get(
-      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/get/hall/${email}`
+      `http://127.0.0.1:5000/api/booking/get/hall/${email}`
     );
     setBookingDetails1(res.data_hall);
     setLoading(false);
@@ -56,11 +56,11 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/booking/get/room/${email}`
+        `http://127.0.0.1:5000/api/booking/get/room/${email}`
       );
       setBookingDetails(data);
       const { data_hall }: Res1 = await axios.get(
-        `http://127.0.0.1:5000/booking/get/hall/${email}`
+        `http://127.0.0.1:5000/api/booking/get/hall/${email}`
       );
       setBookingDetails1(data_hall);
       setLoading(false);
@@ -123,7 +123,7 @@ export const Checkbooking = () => {
                     gap: "1rem",
                   }}
                 >
-                  {bookingDetails.length ? (
+                  {bookingDetails?.length ? (
                     <DisplayDetails
                       bookingDetails={bookingDetails}
                       setDel={setDel}
@@ -148,7 +148,7 @@ export const Checkbooking = () => {
                     gap: "1rem",
                   }}
                 >
-                  {bookingDetails1.length ? (
+                  {bookingDetails1?.length ? (
                     <DisplayDetailsHall
                       bookingDetails1={bookingDetails1}
                       setDel={setDel}

@@ -17,7 +17,7 @@ interface Props {
 const DisplayDetails = ({ bookingDetails, setDel }: Props) => { 
   console.log(bookingDetails);
   const handleSubmit = async (id: string) => {
-    const res = await axios.delete(`http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/room/${id}`);
+    const res = await axios.delete(`http://127.0.0.1:5000/api/booking/room/${id}`);
     console.log(res);
     if (res.status === 200) {
       setDel(true);
