@@ -38,7 +38,13 @@ const Rooms = () => {
 
   const [checkIn, setCheckIn] = useState<any>("");
 
-  const [checkOut, setCheckOut] = useState<any>("");
+  const [checkOut, setCheckOut] = useState<any>(
+    `${new Date().getFullYear() + 1}-${
+      new Date().getMonth() + 1
+    }-${new Date().getDate()}`
+  );
+
+  console.log(checkOut);
 
   const [status, setStatus] = useState<Status>();
 
