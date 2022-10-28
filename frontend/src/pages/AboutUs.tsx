@@ -103,11 +103,13 @@ const Aboutus = () => {
                   <br/>Rajasthan, India.
                   <br/>
                   <br/>+91-9275693451
-                  <br/><h6>(Mon to Fri 9am to 6 pm)</h6>
+                  {/* <br/><h6>(Mon to Fri 9am to 6 pm)</h6> */}
+                  <br/>(Mon to Fri 9am to 6 pm)
                 </p>
                 <p>
                   <br/>support@usehotel.com
-                  <br/><h6>(Send us your query anytime!)</h6>
+                  <br/>(Send us your query anytime!)
+                  {/* <br/><h6>(Send us your query anytime!)</h6> */}
                 </p>
               </div>
             </div>

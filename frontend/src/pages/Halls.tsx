@@ -19,9 +19,9 @@ interface Res {
 }
 
 interface Status {
-  Wedding: number;
-  Conference: number;
   Birthday: number;
+  Conference: number;
+  Wedding: number;
 }
 
 interface ResStatus {
@@ -32,8 +32,6 @@ const Halls = () => {
   const { data, loading }: Res = UseFetch(
     "http://127.0.0.1:5000/api/hall"
   );
-
-  console.log(data)
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");

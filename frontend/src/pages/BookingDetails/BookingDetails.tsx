@@ -98,7 +98,7 @@ export const BookingDetails = () => {
   const handleCoupon = async (e) => {
     e.preventDefault();
     // const coupon = couponRef.current?.value;
-    const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
+    const res = await axios.post("http://127.0.0.1:5000/api/coupon/validate", {
       coupon,
     });
 
@@ -117,7 +117,7 @@ export const BookingDetails = () => {
 
   const handleRemoveCoupon = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://127.0.0.1:5000/booking/coupon", {
+    const res = await axios.post("http://127.0.0.1:5000/api/coupon/validate", {
       coupon,
     });
     setDiscount(0);
@@ -284,7 +284,7 @@ export const BookingDetails = () => {
                       />
                       <Form.Label className="checkbox" id="check-box">
                         {key} <br />{" "}
-                        <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
+                        {/* <p style={{ fontSize: "0.8rem" }}>₹ {value}</p> */}
                       </Form.Label>
                     </Form.Group>
                   ))}
