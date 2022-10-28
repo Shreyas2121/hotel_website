@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Roomcards from "../components/Cards/Roomcards";
 import "../components/search.css";
 import "./rooms.css";
@@ -11,7 +11,6 @@ import "../components/parallaxImage.css";
 import roomsBackground from "../assets/images/about_banner.jpg";
 import Button from "react-bootstrap/Button";
 import { toast } from "react-toastify";
-import { g } from "vitest/dist/index-40e0cb97";
 
 interface Res {
   data: {
@@ -32,7 +31,7 @@ interface ResStatus {
 const Rooms = () => {
   // window.scrollTo(0, 0);
   const { data, loading }: Res = UseFetch(
-    `http://127.0.0.1:5000/api/room/getDetails`
+    `room/getDetails`
   );
   console.log(data);
 
@@ -84,7 +83,7 @@ const Rooms = () => {
     const formatedCheckOut = checkout.toISOString();
 
     const { data }: ResStatus = await axios.post(
-      "http://127.0.0.1:5000/api/booking/room/availability",
+      "booking/room/availability",
       {
         checkIn: formatedCheckIn,
         checkOut: formatedCheckOut,

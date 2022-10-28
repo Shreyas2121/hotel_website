@@ -30,7 +30,7 @@ interface ResStatus {
 
 const Halls = () => {
   const { data, loading }: Res = UseFetch(
-    "http://127.0.0.1:5000/api/hall"
+    "hall"
   );
 
   const [checkIn, setCheckIn] = useState("");
@@ -59,7 +59,7 @@ const Halls = () => {
     const formatedCheckOut = checkout.toISOString();
     const valueNew = selectRef.current.value;
 
-    const { data }: ResStatus = await axios.get(`http://127.0.0.1:5000/api/booking/hall/availability?checkIn=${formatedCheckIn}&checkOut=${formatedCheckOut}`);
+    const { data }: ResStatus = await axios.get(`booking/hall/availability?checkIn=${formatedCheckIn}&checkOut=${formatedCheckOut}`);
 
     setValue(valueNew);
     setStatus(data);
