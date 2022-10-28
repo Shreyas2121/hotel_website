@@ -15,7 +15,7 @@ interface Props {
 }
 
 const DisplayDetails = ({ bookingDetails, setDel }: Props) => { 
-  console.log(bookingDetails);
+  // console.log(bookingDetails);
   const handleSubmit = async (id: string) => {
     const res = await axios.delete(`http://127.0.0.1:5000/api/booking/room/${id}`);
     console.log(res);

@@ -18,15 +18,14 @@ interface Res {
 }
 
 interface Res1 {
-  data_hall: BookingHall[];
+  data: BookingHall[];
   loading: boolean;
 }
 
 export const Checkbooking = () => {
   const emailRef = React.useRef<HTMLInputElement>(null);
   const [bookingDetails, setBookingDetails] = React.useState<BookingRoom[]>(null);
-  const [bookingDetails1, setBookingDetails1] =
-    React.useState<BookingHall[]>(null);
+  const [bookingDetails1, setBookingDetailsHall] = React.useState<BookingHall[]>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [clicked, setClicked] = React.useState<boolean>(false);
   const [del, setDel] = React.useState<boolean>(false);
@@ -36,13 +35,16 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://127.0.0.1:5000/api/booking/get/room/${email}`
+      `http://127.0.0.1:5000/api/booking/room/${email}`
     );
     setBookingDetails(data);
+
     const res: Res1 = await axios.get(
-      `http://127.0.0.1:5000/api/booking/get/hall/${email}`
+      `http://127.0.0.1:5000/api/booking/hall/${email}`
     );
-    setBookingDetails1(res.data_hall);
+    console.log('hall')
+    console.log(res)
+    setBookingDetailsHall(res.data);
     setLoading(false);
     setClicked(true);
     window.scrollTo({
@@ -56,13 +58,16 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `http://127.0.0.1:5000/api/booking/get/room/${email}`
+        `http://127.0.0.1:5000/api/booking/room/${email}`
       );
       setBookingDetails(data);
-      const { data_hall }: Res1 = await axios.get(
-        `http://127.0.0.1:5000/api/booking/get/hall/${email}`
+
+
+      const res : Res1 = await axios.get(
+        `http://127.0.0.1:5000/api/booking/hall/${email}`
       );
-      setBookingDetails1(data_hall);
+      
+      setBookingDetailsHall(res.data);
       setLoading(false);
     };
     a();
@@ -149,6 +154,7 @@ export const Checkbooking = () => {
                   }}
                 >
                   {bookingDetails1?.length ? (
+                
                     <DisplayDetailsHall
                       bookingDetails1={bookingDetails1}
                       setDel={setDel}
