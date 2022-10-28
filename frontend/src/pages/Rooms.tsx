@@ -47,11 +47,19 @@ const Rooms = () => {
   let checkout = new Date(checkOut);
 
   const conv = (date: Date) => {
-    if (date.getDate() < 10) {
-      return `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`;
-    } else {
-      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    }
+    if (date.getMonth() === 12) {
+      return `${date.getFullYear() + 1}-01-${date.getDate()}`;
+    } else if (date.getMonth() < 12) {
+      if (date.getDate() < 10) {
+        return `${date.getFullYear()}-${
+          date.getMonth() + 1
+        }-0${date.getDate()}`;
+      } else
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    } else
+      return `${new Date().getFullYear() + 1}-${
+        new Date().getMonth() + 1
+      }-${new Date().getDate()}`;
   };
 
   console.log(conv(checkin));

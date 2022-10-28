@@ -62,7 +62,7 @@ const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
       </h5>
       <Table striped bordered hover>
         <thead>
-          <tr>
+          <tr id="table-headings">
             <th>Name</th>
             <th>Check-in Date</th>
             <th>Check-out Date</th>
