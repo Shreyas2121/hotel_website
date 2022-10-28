@@ -36,11 +36,11 @@ export const Checkbooking = () => {
     const email = emailRef.current.value;
     setLoading(true);
     const { data }: Res = await axios.get(
-      `http://127.0.0.1:5000/api/booking/get/room/${email}`
+      `booking/get/room/${email}`
     );
     setBookingDetails(data);
     const res: Res1 = await axios.get(
-      `http://127.0.0.1:5000/api/booking/get/hall/${email}`
+      `booking/get/hall/${email}`
     );
     setBookingDetails1(res.data_hall);
     setLoading(false);
@@ -56,11 +56,11 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `http://127.0.0.1:5000/api/booking/get/room/${email}`
+        `booking/get/room/${email}`
       );
       setBookingDetails(data);
       const { data_hall }: Res1 = await axios.get(
-        `http://127.0.0.1:5000/api/booking/get/hall/${email}`
+        `booking/get/hall/${email}`
       );
       setBookingDetails1(data_hall);
       setLoading(false);
