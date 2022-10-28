@@ -27,6 +27,7 @@ export const BookingDetails = () => {
   const location = useLocation();
   const { no, checkin, checkout, roomType, roomPrice, totalPrice, key }: State =
     location.state;
+  console.log(location.state);
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const specialReqRef = useRef<HTMLTextAreaElement>(null);
@@ -224,6 +225,7 @@ export const BookingDetails = () => {
                   id="email"
                   name="visitor_email"
                   required={true}
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 />
               </Form.Group>
             </div>
@@ -284,7 +286,7 @@ export const BookingDetails = () => {
                       />
                       <Form.Label className="checkbox" id="check-box">
                         {key} <br />{" "}
-                        {/* <p style={{ fontSize: "0.8rem" }}>₹ {value}</p> */}
+                        <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
                       </Form.Label>
                     </Form.Group>
                   ))}
@@ -355,7 +357,7 @@ export const BookingDetails = () => {
               </tr>
               <tr>
                 <td> Base Price: </td>
-                <td> ₹ {roomPrice / no}</td>
+                <td> ₹ {roomPrice}</td>
               </tr>
               <tr>
                 <td>Room(s):</td>

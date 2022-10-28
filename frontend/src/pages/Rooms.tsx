@@ -48,12 +48,29 @@ const Rooms = () => {
   let checkout = new Date(checkOut);
 
   const conv = (date: Date) => {
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    if (date.getDate() < 10) {
+      return `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`;
+    } else {
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    }
   };
+
+  console.log(conv(checkin));
 
   const handleSearch = async (e) => {
     if (checkIn === "" || checkOut === "") {
       toast.error("Please select checkin and checkout dates");
+      return;
+    }
+
+    if (checkin > checkout) {
+      toast.error("Checkin date cannot be greater than checkout date");
+      return;
+    }
+
+    if (checkin.toDateString() === checkout.toDateString()) {
+      toast.error("Checkin date cannot be equal to checkout date");
+      return;
     }
 
     e.preventDefault();

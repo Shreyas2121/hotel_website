@@ -31,7 +31,7 @@ const Roomcards = ({ roomData, checkin, checkout, status }: Props) => {
   const [no, setNo] = useState(1);
   const [avaiRooms, setAvaiRooms] = useState(0);
   const roomType = roomData.category;
-  const roomPrice = Number(roomData.price);
+  const roomPrice = roomData.price;
 
   const check = () => {
     let keys = Object.keys(status);
