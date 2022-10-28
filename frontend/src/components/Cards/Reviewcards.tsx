@@ -18,7 +18,7 @@ interface Res {
 
 const Reviewcards = ({ featured }) => {
   const { data, loading }: Res = UseFetch(
-    `reviews/${featured}`
+    `reviews${featured}`
 
 
   );

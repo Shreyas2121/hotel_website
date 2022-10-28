@@ -1,4 +1,3 @@
-import { margin } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
@@ -45,9 +44,7 @@ export const BookingDetails = () => {
 
   let total_price = totalPrice;
 
-  const { data, loading }: ResAddon = UseFetch(
-    `addon`
-  );
+  const { data, loading }: ResAddon = UseFetch(`addon`);
   let addOns = {};
   if (!loading) {
     data.forEach((item) => {
@@ -286,8 +283,8 @@ export const BookingDetails = () => {
                       />
                       <Form.Label className="checkbox" id="check-box">
                         {key} <br />{" "}
-                        <p style={{ fontSize: "0.8rem" }}>₹ {value}</p>
                       </Form.Label>
+                      <p style={{ fontSize: "0.8rem" }}>₹ {String(value)}</p>
                     </Form.Group>
                   ))}
                 </div>

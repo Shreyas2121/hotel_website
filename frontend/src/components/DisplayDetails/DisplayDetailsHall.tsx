@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Booking, BookingHall } from "../../types/types";
+import { BookingHall } from "../../types/types";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import { toast } from "react-toastify";
@@ -14,10 +14,9 @@ interface Props {
 }
 
 const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
-  console.log(bookingDetails1);
   const handleSubmit = async (id: string) => {
     const res = await axios.delete(
-      `http://usehotelbackend-env.eba-x3zhkiev.ap-northeast-1.elasticbeanstalk.com/reservation/hall/${id}`
+      `booking/hall/${id}`
     );
     console.log(res);
     if (res.status === 200) {
@@ -78,18 +77,18 @@ const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
             <>
               {booking._id ? (
                 <tr>
-                  <td>{booking.booking_username}</td>
-                  <td>{new Date(booking.booking_check_in).toDateString()}</td>
-                  <td>{new Date(booking.booking_check_out).toDateString()}</td>
-                  <td>{booking.booking_hall_type}</td>
+                  <td>{booking.name}</td>
+                  <td>{new Date(booking.check_in_date).toDateString()}</td>
+                  <td>{new Date(booking.check_out_date).toDateString()}</td>
+                  <td>{booking.category}</td>
 
-                  <td>{booking.booking_total}</td>
+                  <td>{booking.total}</td>
                   <td>
-                    {check(booking.booking_check_in) ? (
+                    {check(booking.check_in_date) ? (
                       <span>
                         {check_ongoin(
-                          booking.booking_check_in,
-                          booking.booking_check_out
+                          booking.check_in_date,
+                          booking.check_out_date
                         ) ? (
                           <span>On-going</span>
                         ) : (
@@ -103,11 +102,11 @@ const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
                     )}
                   </td>
                   <td>
-                    {check(booking.booking_check_in) ? (
+                    {check(booking.check_in_date) ? (
                       <span>
                         {check_ongoin(
-                          booking.booking_check_in,
-                          booking.booking_check_out
+                          booking.check_in_date,
+                          booking.check_out_date
                         ) ? (
                           <span id="Ongoing">
                             --------------------------------
@@ -118,8 +117,8 @@ const DisplayDetailsHall = ({ bookingDetails1, setDel }: Props) => {
                               <Link
                                 to="/addreview"
                                 state={{
-                                  name: booking.booking_username,
-                                  email: booking.booking_useremail,
+                                  name: booking.name,
+                                  email: booking.email,
                                 }}
                               >
                                 Add Review
