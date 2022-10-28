@@ -40,7 +40,7 @@ export const Checkbooking = () => {
     setBookingDetails(data);
 
     const res: Res1 = await axios.get(
-      `booking/get/hall/${email}`
+      `booking/hall/${email}`
     );
     console.log('hall')
     console.log(res)
@@ -58,13 +58,13 @@ export const Checkbooking = () => {
       const email = emailRef.current.value;
       setLoading(true);
       const { data }: Res = await axios.get(
-        `booking/get/room/${email}`
+        `booking/room/${email}`
       );
       setBookingDetails(data);
 
 
       const res : Res1 = await axios.get(
-        `http://127.0.0.1:5000/api/booking/hall/${email}`
+        `booking/hall/${email}`
       );
       
       setBookingDetailsHall(res.data);
