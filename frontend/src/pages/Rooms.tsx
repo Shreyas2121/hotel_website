@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Roomcards from "../components/Cards/Roomcards";
 import "../components/search.css";
-import "./rooms.css";
 import { UseFetch } from "../customHook/UseFetch";
 import { Room } from "../types/types";
 import axios from "axios";

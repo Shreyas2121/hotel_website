@@ -15,9 +15,7 @@
     justify-content: space-evenly;
     margin:0;
     font-size: medium;
-    /* font-weight: bold; */
     padding: 0.4rem 1rem;
-    /* border: white 0.1rem solid; */
     align-items: center;
     border-radius: 0%;
 }
@@ -46,7 +44,6 @@
     height: 2rem;
     border-radius: 5px;
     border: none;
-    padding: 1rem;
     background-color: white;
 }
 

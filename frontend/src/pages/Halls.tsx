@@ -38,8 +38,6 @@ const Halls = () => {
 
   const [status, setStatus] = useState<Status>();
 
-  // const [hallData, setHallData] = useState([]);
-
   const [clicked, setClicked] = useState(false);
 
   const [value, setValue] = useState("");
@@ -50,18 +48,15 @@ const Halls = () => {
   let checkout = new Date(checkOut);
 
   const conv = (date: Date) => {
-
-    if (date.getMonth() === 12) {
-      return `${date.getFullYear() + 1}-01-${date.getDate()}`;
-    } 
-    else if (date.getMonth() < 12) {
-      if (date.getDate() < 10) {
-        return `${date.getFullYear()}-${date.getMonth() + 1}-0${date.getDate()}`;
+    
+    if(date)
+    {
+      const newDate = new Date(date.setMonth(date.getMonth()+2));
+      if (newDate.getMonth() < 10 && newDate.getDate() < 10) {
+        return `${newDate.getFullYear()}-0${newDate.getMonth()+1}-0${newDate.getDate()}`;
       }
-      else
-          return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-      }
-    else return `${new Date().getFullYear() + 1}-${new Date().getMonth() + 1}-${new Date().getDate()}`; 
+      return `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()}`;
+    }
 
   };
 
@@ -139,15 +134,10 @@ const Halls = () => {
                   <input
                     id="check-out"
                     className="input-date"
-                    min={conv(checkin)}
+                    min={checkIn}
                     max={
-                      checkin.getMonth() === 11
-                        ? `${checkin.getFullYear() + 1}-01-${
-                            checkin.getDate() + 1
-                          }`
-                        : `${checkin.getFullYear()}-${checkin.getMonth() + 2}-${
-                            checkin.getDate() + 1
-                          }`
+                      
+                      conv(checkin)
                     }
                     type="date"
                     disabled={checkIn === ""}
